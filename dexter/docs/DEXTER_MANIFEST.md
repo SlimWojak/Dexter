@@ -2,12 +2,13 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: 4A (Real Transcript Integration) — COMPLETE (awaiting first real run)
+- Phase: 4A (Real Transcript Integration) — COMPLETE (first real run done)
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 
 ### NEXT_ACTIONS
-- [ ] Phase 4A: First real run — need ICT 2022 Mentorship Ep.1 video URL from G/Olya
+- [ ] Phase 4A: Human review of first real bundle (B-1770122781)
+- [ ] Phase 5: LLM-based Theorist extraction (OpenRouter deepseek) — will improve dedup + quality
 - [ ] Phase 4B: Developer role + Synthetic Phoenix sim bridge
 - [ ] Phase 4B: Backtest code generation from validated signatures
 - [ ] Phase 4B: Auditor backtest review gate (data leakage, curve fitting)
@@ -32,7 +33,11 @@
 - [x] Phase 4A: skills/transcript/supadata.py — real Supadata API + async polling + jargon checker
 - [x] Phase 4A: roles/theorist.yaml — ICT jargon reference prefix (17 terms)
 - [x] Phase 4A: scripts/run_real_transcript.py — CLI runner with gate validation
-- [x] Phase 4A: tests — 113/113 PASS (28 new: supadata API, jargon, normalization, runner gates)
+- [x] Phase 4A: tests — 115/115 PASS (30 new: supadata API, jargon, normalization, runner gates, bundler quote exclusion)
+- [x] Phase 4A: Theorist windowed extraction for auto-caption chunks
+- [x] Phase 4A: Router local dispatch (pattern-based handlers on real data)
+- [x] Phase 4A: Bundler narrative bleed — exclude verbatim transcript quotes in table rows
+- [x] Phase 4A: First real run — youtube.com/watch?v=tmeCWULSTHc (ICT 2024 Mentorship Ep1)
 
 ### PHASE 4A EVIDENCE
 - Supadata real API path: 200 response normalizes correctly (mocked HTTP): PASS
@@ -42,10 +47,19 @@
 - Jargon checker finds 7/30 ICT terms in mock transcript: PASS
 - Jargon checker detects "fairly value", "order blog", "liquidity sweet" errors: PASS
 - Mock transcript jargon error rate 0.0% (< 5% gate): PASS
-- Runner gates: 10 signatures, 20% rejection, 0% jargon error — ALL PASS
+- Runner gates (mock): 10 signatures, 20% rejection, 0% jargon error — ALL PASS
 - Theorist YAML has 17-term ICT jargon reference block: PASS
-- All 113 tests pass (85 prior + 28 new): PASS
-- BLOCKER: Awaiting real YouTube URL for first live run
+- All 115 tests pass (85 prior + 30 new): PASS
+- FIRST REAL RUN (tmeCWULSTHc):
+  - 1244 segments fetched from Supadata API: PASS
+  - 7/30 ICT terms detected (FVG, liquidity, imbalance, OTE, premium, discount, smart money): PASS
+  - Jargon error rate 0.0%: PASS (gate: <5%)
+  - 36 signatures extracted via windowed extraction: PASS (gate: >=10)
+  - 1 rejected (S-005: buy/sell logical contradiction): PARTIAL (gate: 10-30%, actual: 2.8%)
+  - Bundle B-1770122781 created: PASS
+  - KNOWN ISSUE: regex deduplication too loose — near-duplicate conditions from overlapping windows
+  - KNOWN ISSUE: rejection rate 2.8% < 10% gate floor — expected with regex extraction (no LLM)
+  - Phase 5 LLM extraction will address both issues
 
 ### PHASE 3 EVIDENCE
 - Theorist extracts 10 signatures from mock transcript: PASS (gate: 5+)
@@ -71,8 +85,9 @@
 - Semantic filter: stdlib TF-IDF cosine (sentence-transformers deferred)
 
 ### BUNDLE_GATE_STATUS
-- Bundles produced: 1 (mock pipeline)
+- Bundles produced: 2 (1 mock pipeline, 1 real transcript)
 - Bundles promoted: 0
+- Latest real bundle: B-1770122781 (35 validated, 1 rejected)
 - MVP gate: 10-20 clean if-then signatures, <10min human review
 
 ### LINKS

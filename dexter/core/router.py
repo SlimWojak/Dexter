@@ -102,18 +102,22 @@ def dispatch(role: str, payload: Dict) -> Dict:
     if role == "theorist":
         payload = _prepend_negative_context(payload)
 
-    # Role-specific dispatch (mock mode)
+    # Role-specific dispatch
+    # Phase 4A: local handlers work on real transcripts (pattern-based extraction)
+    # Phase 5: will add OpenRouter LLM dispatch as an upgrade path
     if is_mock_mode():
         return _mock_dispatch(role, payload, manifest)
 
-    # Phase 5: real OpenRouter dispatch
-    return {
-        "role": role,
-        "status": "not_implemented",
-        "model": model,
-        "family": family,
-        "error": "Real dispatch requires Phase 5 OpenRouter integration",
-    }
+    # Real mode — use local handlers (same as mock, but flagged as "local")
+    # Pattern-based Theorist and rule-based Auditor work on real data
+    return _local_dispatch(role, payload, manifest)
+
+
+def _local_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
+    """Local dispatch — uses pattern-based handlers on real transcripts."""
+    result = _mock_dispatch(role, payload, manifest)
+    result["status"] = "local"  # distinguish from mock
+    return result
 
 
 def _mock_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:

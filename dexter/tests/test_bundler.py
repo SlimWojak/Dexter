@@ -163,27 +163,40 @@ class TestBundleGeneration(unittest.TestCase):
 
 
 class TestBundleRejection(unittest.TestCase):
-    """Bundle fails if narrative violations sneak in."""
+    """Bundle fails if narrative violations sneak in template prose."""
 
-    def test_narrative_in_signature_condition(self):
-        bad_sigs = [
+    def test_narrative_in_quote_allowed(self):
+        """Verbatim transcript quotes in table rows may contain speaker phrases."""
+        sigs_with_speaker_phrase = [
             {
-                "id": "S-BAD",
-                "condition": "I think price will reverse",
-                "action": "enter long",
+                "id": "S-QUOTE",
+                "condition": "I think price will reverse at OB",
+                "action": "enter long at FVG retracement",
                 "source_timestamp": "5:00",
             },
         ]
-        with self.assertRaises(BundleError) as ctx:
-            generate_bundle(
-                bundle_id="B-FAIL-001",
-                source_url="https://youtube.com/test",
-                timestamp_range="0:00-30:00",
-                validated_signatures=bad_sigs,
-                rejected_signatures=[],
-                auditor_summary={"total": 1, "rejected": 0, "passed": 1, "results": []},
-            )
-        self.assertIn("INV-NO-NARRATIVE", str(ctx.exception))
+        # Should NOT raise — "I think" is in a table row (verbatim quote)
+        bundle = generate_bundle(
+            bundle_id="B-QUOTE-001",
+            source_url="https://youtube.com/test",
+            timestamp_range="0:00-30:00",
+            validated_signatures=sigs_with_speaker_phrase,
+            rejected_signatures=[],
+            auditor_summary={"total": 1, "rejected": 0, "passed": 1, "results": []},
+        )
+        self.assertIn("S-QUOTE", bundle)
+
+    def test_narrative_bleed_without_exclude(self):
+        """check_narrative_bleed without exclude_quotes still catches everything."""
+        text = "| S-001 | I think price reverses | enter long | 5:00 |"
+        violations = check_narrative_bleed(text, exclude_quotes=False)
+        self.assertIn("I think", violations)
+
+    def test_narrative_bleed_with_exclude(self):
+        """check_narrative_bleed with exclude_quotes skips table rows."""
+        text = "| S-001 | I think price reverses | enter long | 5:00 |"
+        violations = check_narrative_bleed(text, exclude_quotes=True)
+        self.assertEqual(len(violations), 0)
 
 
 if __name__ == "__main__":

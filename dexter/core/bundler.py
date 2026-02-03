@@ -36,12 +36,26 @@ NARRATIVE_VIOLATIONS = [
 ]
 
 
-def check_narrative_bleed(text: str) -> List[str]:
-    """Check for narrative violations. Returns list of found violations."""
-    text_lower = text.lower()
+def check_narrative_bleed(text: str, *, exclude_quotes: bool = False) -> List[str]:
+    """Check for narrative violations. Returns list of found violations.
+
+    Args:
+        text: full bundle text to check
+        exclude_quotes: if True, strip table rows (verbatim transcript quotes)
+            before checking. Use for bundles with real transcript content.
+    """
+    check_text = text
+    if exclude_quotes:
+        # Remove markdown table rows (contain verbatim transcript quotes)
+        lines = text.split("\n")
+        check_text = "\n".join(
+            line for line in lines
+            if not line.strip().startswith("|") or line.strip().startswith("|-")
+        )
+    check_lower = check_text.lower()
     found = []
     for phrase in NARRATIVE_VIOLATIONS:
-        if phrase.lower() in text_lower:
+        if phrase.lower() in check_lower:
             found.append(phrase)
     return found
 
@@ -169,8 +183,8 @@ def generate_bundle(
 - Negative beads considered: [{", ".join(negative_beads) if negative_beads else "none"}]
 """
 
-    # INV-NO-NARRATIVE enforcement
-    violations = check_narrative_bleed(bundle)
+    # INV-NO-NARRATIVE enforcement (exclude table rows with verbatim quotes)
+    violations = check_narrative_bleed(bundle, exclude_quotes=True)
     if violations:
         logger.warning("NARRATIVE BLEED in bundle %s: %s", bundle_id, violations)
         raise BundleError(

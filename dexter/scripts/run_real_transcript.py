@@ -20,7 +20,12 @@ import sys
 from pathlib import Path
 
 # Add project root to path
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(_PROJECT_ROOT))
+
+# Load .env from project root
+from dotenv import load_dotenv
+load_dotenv(_PROJECT_ROOT / ".env")
 
 from skills.transcript.supadata import (
     fetch_transcript,
