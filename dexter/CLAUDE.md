@@ -30,6 +30,25 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 - If context > 50k tokens: spawn fresh session, preserve beads/THEORY.md
 - Bead compression every 20-30 beads via Chronicler
 
+### Phoenix Integration Invariants
+
+INV-DEXTER-ALWAYS-CLAIM: |
+  All Dexter output enters Phoenix as CLAIM_BEAD, never FACT_BEAD.
+  Refinement makes review faster, not unnecessary.
+  Only human (Olya) promotes CLAIM -> FACT.
+
+INV-DEXTER-NO-PROMOTE: |
+  No auto-promotion to Phoenix. Human gate mandatory.
+  Bundles accumulate. Human pulls when ready.
+
+INV-DEXTER-SOURCE-LINK: |
+  Every signature links to video URL + timestamp.
+  Provenance is non-negotiable.
+
+INV-DEXTER-CROSS-FAMILY: |
+  Auditor must be different model family from Theorist.
+  Currently: Theorist=deepseek, Auditor=google.
+
 ## WATCH_OUTS
 
 ### Security
@@ -61,7 +80,7 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 
 ## PHASE EXECUTION
 
-Current: Phase 0 (Scaffold) → Phase 1 (Core Loop + Hardening)
+Current: Phase 5 Complete → Phoenix Integration Established
 
 On phase complete:
 1. Run tests
