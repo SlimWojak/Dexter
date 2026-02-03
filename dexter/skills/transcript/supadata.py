@@ -50,7 +50,7 @@ def _mock_ict_transcript() -> Dict:
             },
             {
                 "start": 48.0,
-                "text": "The power of three: accumulation, manipulation, distribution. Always remember this.",
+                "text": "If a fair value gap forms, it always fills completely, then you enter at the retracement.",
             },
             {
                 "start": 67.0,
@@ -74,7 +74,7 @@ def _mock_ict_transcript() -> Dict:
             },
             {
                 "start": 178.0,
-                "text": "This setup works every time when confluence aligns with higher timeframe order flow.",
+                "text": "When this setup has confluence with higher timeframe order flow, it is guaranteed to work then take the trade.",
             },
         ],
     }
