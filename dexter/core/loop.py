@@ -204,6 +204,20 @@ def process_transcript(transcript_url: str) -> Dict:
                 source="core.loop.process_transcript",
                 metadata={"validated": len(validated), "rejected": len(rejected), "path": str(bundle_path)},
             )
+
+            # Export CLAIM_BEADs for Phoenix integration
+            from core.bundler import export_claim_beads
+            claims_path = export_claim_beads(
+                bundle_id,
+                validated,
+                bundle_meta={
+                    "video_title": transcript.get("title", ""),
+                    "video_url": transcript_url,
+                    "theorist_model": theorist_result.get("model", "unknown"),
+                    "auditor_model": "google/gemini-2.0-flash-exp",
+                },
+            )
+            logger.info("CLAIM_BEADs exported: %s", claims_path)
         except Exception:
             logger.exception("Bundle generation failed for %s", bundle_id)
 

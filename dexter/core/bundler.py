@@ -272,3 +272,77 @@ def read_bundle_index() -> List[Dict]:
                 except json.JSONDecodeError:
                     continue
     return entries
+
+
+# ---------------------------------------------------------------------------
+# Phoenix CLAIM_BEAD bridge
+# ---------------------------------------------------------------------------
+
+def generate_claim_bead(signature: Dict, bundle_meta: Dict) -> Dict:
+    """Generate Phoenix-compatible CLAIM_BEAD from validated signature.
+
+    This is the bridge format for DEXTER -> Phoenix integration.
+    INV-DEXTER-ALWAYS-CLAIM: output is always CLAIM, never FACT.
+    """
+    return {
+        "bead_type": "CLAIM",
+        "source_system": "DEXTER",
+        "source_video": bundle_meta.get("video_title", ""),
+        "source_url": bundle_meta.get("video_url", ""),
+        "source_timestamp": signature.get("source_timestamp", ""),
+        "source_quote": signature.get("source_quote", ""),
+        "signature": {
+            "id": signature.get("id", ""),
+            "condition": signature.get("condition", ""),
+            "action": signature.get("action", ""),
+            "drawer": signature.get("drawer"),
+            "drawer_confidence": signature.get("drawer_confidence", "inferred"),
+            "drawer_basis": signature.get("drawer_basis", ""),
+        },
+        "extraction_meta": {
+            "theorist_model": bundle_meta.get("theorist_model", "deepseek/deepseek-chat"),
+            "auditor_model": bundle_meta.get("auditor_model", "google/gemini-2.0-flash-exp"),
+            "auditor_verdict": "SURVIVED",
+            "extraction_date": datetime.now(timezone.utc).isoformat(),
+            "bundle_id": bundle_meta.get("bundle_id", ""),
+        },
+        "phoenix_meta": {
+            "status": "UNVALIDATED",
+            "promoted_by": None,
+            "promoted_date": None,
+            "cso_validation": None,
+        },
+    }
+
+
+def export_claim_beads(
+    bundle_id: str,
+    validated_signatures: List[Dict],
+    bundle_meta: Dict,
+) -> Path:
+    """Export all signatures from a bundle as CLAIM_BEADs for Phoenix.
+
+    Output: bundles/{bundle_id}_claims.jsonl
+
+    Args:
+        bundle_id: The bundle identifier
+        validated_signatures: List of validated signature dicts
+        bundle_meta: Dict with video_title, video_url, theorist_model, etc.
+
+    Returns:
+        Path to the claims JSONL file.
+    """
+    BUNDLES_DIR.mkdir(parents=True, exist_ok=True)
+    claims_path = BUNDLES_DIR / f"{bundle_id}_claims.jsonl"
+
+    meta = {**bundle_meta, "bundle_id": bundle_id}
+    count = 0
+
+    with open(claims_path, "w") as f:
+        for sig in validated_signatures:
+            claim = generate_claim_bead(sig, meta)
+            f.write(json.dumps(claim) + "\n")
+            count += 1
+
+    logger.info("[BUNDLER] Exported %d CLAIM_BEADs to %s", count, claims_path)
+    return claims_path
