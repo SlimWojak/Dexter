@@ -213,6 +213,68 @@ def format_for_theorist(transcript: Dict) -> str:
     return f"VIDEO: {transcript.get('title', 'unknown')}\n\n" + "\n".join(lines)
 
 
+def chunk_transcript(
+    transcript: Dict,
+    chunk_duration: int = 300,
+    overlap: int = 60,
+) -> List[Dict]:
+    """Split transcript into overlapping chunks for LLM processing.
+
+    Args:
+        transcript: Full transcript with segments
+        chunk_duration: Target chunk size in seconds (default 5 min)
+        overlap: Overlap between chunks in seconds (default 1 min)
+
+    Returns:
+        List of {"start": float, "end": float, "text": str}
+    """
+    segments = transcript.get("segments", [])
+    if not segments:
+        return []
+
+    chunks = []
+    current_start = segments[0].get("start", 0)
+    current_texts: List[str] = []
+    current_end = current_start
+
+    for seg in segments:
+        seg_start = seg.get("start", 0)
+        seg_text = seg.get("text", "")
+
+        # Start new chunk if we exceed duration
+        if seg_start - current_start > chunk_duration and current_texts:
+            chunks.append({
+                "start": current_start,
+                "end": current_end,
+                "text": " ".join(current_texts),
+            })
+            # Start new chunk with overlap
+            overlap_start = max(0, seg_start - overlap)
+            # Gather overlap segments
+            current_start = overlap_start
+            current_texts = []
+            # Re-add recent segments that fall within overlap window
+            for prev_seg in segments:
+                ps = prev_seg.get("start", 0)
+                if overlap_start <= ps < seg_start:
+                    current_texts.append(prev_seg.get("text", ""))
+
+        current_texts.append(seg_text)
+        current_end = seg_start
+
+    # Last chunk
+    if current_texts:
+        chunks.append({
+            "start": current_start,
+            "end": current_end,
+            "text": " ".join(current_texts),
+        })
+
+    logger.info("Chunked %d segments into %d chunks (%ds windows, %ds overlap)",
+                len(segments), len(chunks), chunk_duration, overlap)
+    return chunks
+
+
 # ---------------------------------------------------------------------------
 # Mock transcript (preserved from Phase 3)
 # ---------------------------------------------------------------------------

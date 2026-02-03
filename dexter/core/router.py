@@ -1,6 +1,7 @@
 """Role dispatch — routes tasks to role handlers.
 
-Phase 3: adds mock/real mode, injection guard integration, role-specific handlers.
+Phase 3: mock/local mode with pattern-based handlers.
+Phase 5: LLM mode with OpenRouter dispatch, role-based model routing.
 """
 
 from __future__ import annotations
@@ -80,10 +81,18 @@ def is_mock_mode() -> bool:
     return os.getenv("DEXTER_MOCK_MODE", "true").lower() == "true"
 
 
+def is_llm_mode() -> bool:
+    """Check if LLM extraction is enabled."""
+    return os.getenv("DEXTER_LLM_MODE", "false").lower() == "true"
+
+
 def dispatch(role: str, payload: Dict) -> Dict:
     """Dispatch a task to a role handler.
 
-    Phase 3: mock mode uses local handlers, logs model diversity.
+    Modes:
+        DEXTER_MOCK_MODE=true  → local mock handlers (no API calls)
+        DEXTER_LLM_MODE=true   → LLM via OpenRouter (role-based routing)
+        Neither                 → local pattern-based handlers on real data
     """
     manifest = _load_role(role)
 
@@ -91,8 +100,9 @@ def dispatch(role: str, payload: Dict) -> Dict:
     model = manifest.get("model", "unknown")
     family = manifest.get("family", "unknown")
     logger.info(
-        "Dispatch to [%s]: %s | model=%s family=%s | mock=%s",
-        role, payload.get("task", "unknown"), model, family, is_mock_mode(),
+        "Dispatch to [%s]: %s | model=%s family=%s | mock=%s llm=%s",
+        role, payload.get("task", "unknown"), model, family,
+        is_mock_mode(), is_llm_mode(),
     )
 
     # Injection guard
@@ -102,21 +112,50 @@ def dispatch(role: str, payload: Dict) -> Dict:
     if role == "theorist":
         payload = _prepend_negative_context(payload)
 
-    # Role-specific dispatch
-    # Phase 4A: local handlers work on real transcripts (pattern-based extraction)
-    # Phase 5: will add OpenRouter LLM dispatch as an upgrade path
+    # Mock mode — always use local handlers
     if is_mock_mode():
         return _mock_dispatch(role, payload, manifest)
 
-    # Real mode — use local handlers (same as mock, but flagged as "local")
-    # Pattern-based Theorist and rule-based Auditor work on real data
+    # LLM mode — use OpenRouter for supported roles
+    if is_llm_mode() and role == "theorist":
+        return _llm_dispatch_theorist(payload, manifest)
+
+    # Local mode — pattern-based handlers on real data
     return _local_dispatch(role, payload, manifest)
+
+
+def _llm_dispatch_theorist(payload: Dict, manifest: Dict) -> Dict:
+    """LLM dispatch for Theorist — uses OpenRouter deepseek."""
+    from core.theorist import extract_signatures
+    from core.llm_client import get_model_config
+
+    config = get_model_config("theorist")
+    transcript = payload.get("transcript_data")
+    chunks = payload.get("chunks")
+    negative_beads = payload.get("negative_context", {}).get("beads", [])
+
+    if transcript:
+        signatures = extract_signatures(
+            transcript,
+            negative_beads=negative_beads,
+            chunks=chunks,
+        )
+    else:
+        signatures = []
+
+    return {
+        "role": "theorist",
+        "status": "llm",
+        "model": config["model"],
+        "family": config["family"],
+        "signatures": signatures,
+    }
 
 
 def _local_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
     """Local dispatch — uses pattern-based handlers on real transcripts."""
     result = _mock_dispatch(role, payload, manifest)
-    result["status"] = "local"  # distinguish from mock
+    result["status"] = "local"
     return result
 
 
@@ -154,7 +193,6 @@ def _mock_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
         return {"role": role, "status": "mock", "model": model, "family": family, "error": "no input"}
 
     elif role == "bundler":
-        # Bundler handled externally via core.bundler.generate_bundle
         return {
             "role": role,
             "status": "mock",

@@ -3,7 +3,7 @@
 Extracts if-then signatures from transcript segments.
 Phase 3: mock mode extraction via pattern matching (per-segment).
 Phase 4A: sliding window extraction for real transcripts (auto-caption chunks).
-Phase 5: real LLM extraction via OpenRouter (deepseek-v3.2).
+Phase 5: LLM extraction via OpenRouter (deepseek/deepseek-chat).
 """
 
 from __future__ import annotations
@@ -22,6 +22,62 @@ logger = logging.getLogger("dexter.theorist")
 
 ROLES_DIR = Path(__file__).resolve().parent.parent / "roles"
 
+# OpenRouter model for LLM extraction
+THEORIST_MODEL = "deepseek/deepseek-chat"
+
+# System prompt for LLM Theorist
+THEORIST_SYSTEM_PROMPT = """You are a FORENSIC EXTRACTOR for ICT (Inner Circle Trader) methodology.
+
+ICT JARGON REFERENCE (use these exact terms):
+- FVG = Fair Value Gap (imbalance in price)
+- OB = Order Block (institutional candle)
+- MSS = Market Structure Shift
+- CHOCH = Change of Character
+- OTE = Optimal Trade Entry (61.8-78.6% fib)
+- SMT = Smart Money Technique (divergence between correlated assets)
+- Killzone = High-probability trading window (London/NY open)
+- Displacement = Strong directional move creating imbalance
+- Liquidity = Resting orders (stops, equal highs/lows)
+- Sweep/Raid = Taking liquidity before reversal
+- Breaker = Failed order block that becomes support/resistance
+- Mitigation = Price returning to fill an imbalance
+- Power of Three = Accumulation → Manipulation → Distribution
+- Dealing Range = High-to-low range containing current price action
+- Silver Bullet = Specific FVG entry during killzone windows
+- Draw on Liquidity = Target that price is moving toward
+
+YOUR ONLY JOB: Extract if-then logical statements from the transcript.
+
+RULES:
+- Extract ONLY explicit if-then trading logic
+- Every signature MUST include approximate timestamp (from segment markers)
+- NO interpretation, NO inference, NO "what he probably means"
+- Use canonical ICT terms even if transcript uses informal language
+- If a claim is vague or motivational (not actionable), SKIP IT
+- Deduplicate: if same logic appears twice, keep first occurrence only
+- Skip channel promotion, personal anecdotes, non-trading content
+
+OUTPUT FORMAT (strict JSON array, nothing else):
+[
+  {
+    "id": "S-001",
+    "if": "price sweeps liquidity below equal lows during London killzone",
+    "then": "look for displacement and FVG formation for long entry",
+    "timestamp": "14:32",
+    "source_quote": "verbatim quote, max 30 words",
+    "confidence": "EXPLICIT"
+  }
+]
+
+confidence values: EXPLICIT (directly stated), INFERRED (implied by context), UNCLEAR (ambiguous)
+
+If no clear if-then logic in this segment, return: []
+
+AVOID PATTERNS SIMILAR TO THESE REJECTED SIGNATURES:
+{negative_context}
+
+Extract facts. Not meaning. Not motivation."""
+
 
 def _load_manifest() -> Dict:
     path = ROLES_DIR / "theorist.yaml"
@@ -29,6 +85,119 @@ def _load_manifest() -> Dict:
         return {}
     with open(path) as f:
         return yaml.safe_load(f) or {}
+
+
+def _is_llm_mode() -> bool:
+    """Check if LLM extraction is enabled."""
+    return os.getenv("DEXTER_LLM_MODE", "false").lower() == "true"
+
+
+# ---------------------------------------------------------------------------
+# LLM extraction (Phase 5)
+# ---------------------------------------------------------------------------
+
+def _parse_llm_json(content: str) -> List[Dict]:
+    """Parse JSON array from LLM response, handling markdown code blocks."""
+    text = content.strip()
+    # Handle ```json ... ``` blocks
+    if text.startswith("```"):
+        lines = text.split("\n")
+        # Find the content between ``` markers
+        inside = []
+        in_block = False
+        for line in lines:
+            if line.strip().startswith("```") and not in_block:
+                in_block = True
+                continue
+            elif line.strip() == "```" and in_block:
+                break
+            elif in_block:
+                inside.append(line)
+        text = "\n".join(inside)
+
+    # Try parsing
+    result = json.loads(text)
+    if isinstance(result, list):
+        return result
+    return []
+
+
+def _extract_llm(
+    chunks: List[Dict],
+    negative_beads: Optional[List[Dict]],
+    source_title: str,
+) -> List[Dict]:
+    """Extract signatures using LLM via OpenRouter.
+
+    Processes transcript chunks through deepseek, deduplicates results.
+    """
+    from core.llm_client import call_llm
+
+    # Format negative context
+    neg_context = "None yet."
+    if negative_beads:
+        neg_lines = [
+            f"- {nb.get('id', '?')}: {nb.get('reason', '')}"
+            for nb in negative_beads[:10]
+        ]
+        neg_context = "\n".join(neg_lines)
+
+    system_prompt = THEORIST_SYSTEM_PROMPT.replace("{negative_context}", neg_context)
+
+    all_signatures: List[Dict] = []
+    seen_logic: set = set()
+
+    for chunk_idx, chunk in enumerate(chunks):
+        user_content = (
+            f"TRANSCRIPT SEGMENT [{chunk['start']:.0f}s - {chunk['end']:.0f}s]:\n\n"
+            f"{chunk['text']}\n\n"
+            f"Extract all if-then trading logic from this segment. Return JSON array only."
+        )
+
+        try:
+            result = call_llm(
+                model=THEORIST_MODEL,
+                system_prompt=system_prompt,
+                user_content=user_content,
+                temperature=0.2,
+            )
+
+            signatures = _parse_llm_json(result["content"])
+
+            for sig in signatures:
+                # Normalize for dedup
+                if_clause = sig.get("if", "")
+                then_clause = sig.get("then", "")
+                logic_key = f"{if_clause.lower().strip()}|{then_clause.lower().strip()}"
+
+                if logic_key in seen_logic:
+                    continue
+                seen_logic.add(logic_key)
+
+                sig_id = f"S-{len(all_signatures) + 1:03d}"
+                all_signatures.append({
+                    "id": sig_id,
+                    "condition": f"IF {if_clause}",
+                    "action": f"THEN {then_clause}",
+                    "source_timestamp": sig.get("timestamp", _timestamp_to_str(chunk["start"])),
+                    "source_quote": sig.get("source_quote", "")[:200],
+                    "confidence": sig.get("confidence", "EXPLICIT"),
+                    "source": source_title,
+                })
+
+            logger.info(
+                "[LLM] Chunk %d/%d: %d signatures (total unique: %d)",
+                chunk_idx + 1, len(chunks), len(signatures), len(all_signatures),
+            )
+
+        except json.JSONDecodeError as e:
+            logger.warning("[LLM] JSON parse error on chunk %d: %s", chunk_idx + 1, e)
+            continue
+        except Exception as e:
+            logger.error("[LLM] Extraction error on chunk %d: %s", chunk_idx + 1, e)
+            continue
+
+    return all_signatures
 
 
 # ---------------------------------------------------------------------------
@@ -119,17 +288,12 @@ def _extract_windowed(
     negative_patterns: List[str],
     source_title: str,
 ) -> List[Dict]:
-    """Sliding window extraction for real transcripts with auto-caption chunks.
-
-    Joins consecutive segments into windows of varying sizes, runs pattern
-    matching on joined text, deduplicates by normalized condition text.
-    """
+    """Sliding window extraction for real transcripts with auto-caption chunks."""
     if not segments:
         return []
 
-    # Track seen conditions to deduplicate overlapping windows
-    seen_conditions: Dict[str, int] = {}  # normalized_condition → first segment index
-    raw_matches: List[Tuple[int, str, str, str, str]] = []  # (seg_idx, timestamp, condition, action, quote)
+    seen_conditions: Dict[str, int] = {}
+    raw_matches: List[Tuple[int, str, str, str, str]] = []
 
     for window_size in _WINDOW_SIZES:
         for i in range(len(segments) - window_size + 1):
@@ -142,14 +306,11 @@ def _extract_windowed(
                     condition = match.group(1).strip()
                     action = match.group(2).strip()
 
-                    # Skip short/trivial matches
                     if len(condition) < _MIN_PHRASE_LEN or len(action) < _MIN_PHRASE_LEN:
                         continue
 
-                    # Deduplicate by normalized condition
                     norm_cond = _normalize_text(condition)
                     if norm_cond in seen_conditions:
-                        # Keep the longer action if same condition seen before
                         prev_idx = seen_conditions[norm_cond]
                         prev = raw_matches[prev_idx]
                         if len(action) > len(prev[3]):
@@ -159,12 +320,10 @@ def _extract_windowed(
                     seen_conditions[norm_cond] = len(raw_matches)
                     raw_matches.append((i, timestamp, condition, action, window_text[:200]))
 
-    # Filter negative patterns and build signatures
     signatures = []
     sig_counter = 0
 
     for seg_idx, timestamp, condition, action, quote in raw_matches:
-        # Skip negative patterns
         skip = False
         for neg in negative_patterns:
             if neg.lower() in condition.lower() or neg.lower() in action.lower():
@@ -174,7 +333,6 @@ def _extract_windowed(
         if skip:
             continue
 
-        # Determine confidence
         combined_lower = (condition + " " + action).lower()
         confidence = "EXPLICIT"
         if any(m in combined_lower for m in _ABSOLUTE_MARKERS):
@@ -198,10 +356,8 @@ def _needs_windowed_extraction(segments: List[Dict]) -> bool:
     """Detect if transcript has short auto-caption chunks needing windowed extraction."""
     if len(segments) < 20:
         return False
-    # Sample average segment length
     sample = segments[:min(50, len(segments))]
     avg_len = sum(len(s.get("text", "")) for s in sample) / max(len(sample), 1)
-    # Auto-captions typically have very short chunks (< 60 chars avg)
     return avg_len < 60
 
 
@@ -209,12 +365,14 @@ def extract_signatures(
     transcript: Dict,
     *,
     negative_beads: Optional[List[Dict]] = None,
+    chunks: Optional[List[Dict]] = None,
 ) -> List[Dict]:
     """Extract if-then signatures from a transcript.
 
     Args:
         transcript: dict with "segments" list and "title"
         negative_beads: recent NEGATIVE beads to avoid repeating patterns
+        chunks: pre-built chunks for LLM mode (from chunk_transcript)
 
     Returns:
         List of signature dicts matching Theorist output format.
@@ -222,13 +380,19 @@ def extract_signatures(
     manifest = _load_manifest()
     model = manifest.get("model", "unknown")
     family = manifest.get("family", "unknown")
+    source_title = transcript.get("title", "unknown")
 
     logger.info(
-        "Theorist extracting from '%s' | model=%s family=%s",
-        transcript.get("title", "?"), model, family,
+        "Theorist extracting from '%s' | model=%s family=%s | llm_mode=%s",
+        source_title, model, family, _is_llm_mode(),
     )
 
-    # Build negative pattern list for avoidance
+    # LLM extraction mode (Phase 5)
+    if _is_llm_mode() and chunks:
+        logger.info("Using LLM extraction (%s) on %d chunks", THEORIST_MODEL, len(chunks))
+        return _extract_llm(chunks, negative_beads, source_title)
+
+    # Build negative pattern list for pattern-based extraction
     negative_patterns = []
     if negative_beads:
         for nb in negative_beads:
@@ -237,7 +401,6 @@ def extract_signatures(
         logger.info("Avoiding %d negative patterns", len(negative_patterns))
 
     segments = transcript.get("segments", [])
-    source_title = transcript.get("title", "unknown")
 
     # Choose extraction strategy based on segment characteristics
     if _needs_windowed_extraction(segments):
@@ -247,7 +410,6 @@ def extract_signatures(
         )
         all_signatures = _extract_windowed(segments, negative_patterns, source_title)
     else:
-        # Per-segment extraction (works for mock and pre-joined transcripts)
         all_signatures = []
         sig_counter = 0
         for seg in segments:

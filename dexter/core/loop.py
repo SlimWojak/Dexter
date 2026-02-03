@@ -104,9 +104,10 @@ def process_transcript(transcript_url: str) -> Dict:
     Returns:
         Summary dict with extraction results.
     """
-    from skills.transcript.supadata import fetch_transcript, format_for_theorist
+    from skills.transcript.supadata import fetch_transcript, format_for_theorist, chunk_transcript
     from core.auditor import audit_signature
     from core.bundler import generate_bundle, save_bundle
+    from core.router import is_llm_mode
 
     logger.info("=== PROCESS TRANSCRIPT: %s ===", transcript_url)
 
@@ -123,10 +124,17 @@ def process_transcript(transcript_url: str) -> Dict:
     )
 
     # 2. Theorist extracts signatures
+    # In LLM mode, build chunks for context-windowed extraction
+    chunks = None
+    if is_llm_mode():
+        chunks = chunk_transcript(transcript)
+        logger.info("Built %d chunks for LLM extraction", len(chunks))
+
     theorist_result = dispatch("theorist", {
         "task": "extract_signatures",
         "transcript": formatted,
         "transcript_data": transcript,
+        "chunks": chunks,
     })
     signatures = theorist_result.get("signatures", [])
     logger.info("Theorist extracted %d signatures", len(signatures))
