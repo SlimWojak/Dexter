@@ -1,0 +1,10 @@
+{"id": "AV-001", "pattern": "ignore previous instructions", "category": "prompt_injection", "severity": "critical"}
+{"id": "AV-002", "pattern": "disregard all prior", "category": "prompt_injection", "severity": "critical"}
+{"id": "AV-003", "pattern": "you are now", "category": "role_hijack", "severity": "high"}
+{"id": "AV-004", "pattern": "pretend to be", "category": "role_hijack", "severity": "high"}
+{"id": "AV-005", "pattern": "system prompt", "category": "extraction_attempt", "severity": "high"}
+{"id": "AV-006", "pattern": "reveal your instructions", "category": "extraction_attempt", "severity": "high"}
+{"id": "AV-007", "pattern": "execute this code", "category": "code_injection", "severity": "critical"}
+{"id": "AV-008", "pattern": "run the following", "category": "code_injection", "severity": "high"}
+{"id": "AV-009", "pattern": "<script>", "category": "xss_attempt", "severity": "critical"}
+{"id": "AV-010", "pattern": "javascript:", "category": "xss_attempt", "severity": "high"}

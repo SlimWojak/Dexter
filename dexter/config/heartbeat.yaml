@@ -1,0 +1,31 @@
+# Dexter Heartbeat Configuration — v0.2
+# Polling intervals, jitter, bead compression
+
+heartbeat:
+  interval_seconds: 60
+  jitter_max_seconds: 10
+  health_check_enabled: true
+
+bead_compression:
+  # v0.2: Compress more frequently for jargon-dense ICT content
+  # Trigger whichever threshold hits first
+  max_beads: 25              # Range: 20-30 beads
+  max_tokens: 750            # Range: 500-1000 tokens
+  rationale: "ICT videos are jargon-dense; summarization drift accumulates fast"
+
+chronicler:
+  model: gemini-3-flash
+  clustering:
+    enabled: true
+    similarity_threshold: 0.85  # Cosine similarity for redundancy detection
+    on_redundant: "flag"        # Flag as "REDUNDANT — See T-XXX" (no re-theorize)
+    on_novel: "append_with_cluster_tag"
+
+supervisor:
+  restart_backoff:
+    initial_seconds: 1
+    multiplier: 2
+    max_seconds: 60
+  volume_mount:
+    - "memory/beads/"
+    - "memory/THEORY.md"

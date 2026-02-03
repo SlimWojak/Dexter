@@ -1,0 +1,57 @@
+# Chronicler Role Manifest — v0.2 Clustering Pattern
+# Recursive summarization → THEORY.md — Phase 3 deliverable
+
+role: chronicler
+model: gemini-3-flash
+provider: openrouter
+family: google  # Different family for fresh perspective on summaries
+
+purpose: |
+  Maintain THEORY.md as the Standard Meter of extracted knowledge.
+  Compress beads recursively. Cluster related signatures. Prevent redundancy.
+
+# v0.2 Bead Compression Settings
+bead_compression:
+  # Trigger whichever threshold hits first
+  max_beads: 25              # Range: 20-30 beads
+  max_tokens: 750            # Range: 500-1000 tokens
+  rationale: "ICT videos are jargon-dense; summarization drift accumulates fast"
+  config_reference: "config/heartbeat.yaml → bead_compression"
+
+# v0.2 THEORY.md Clustering
+theory_md_structure:
+  pattern: "Recursive index with clustering"
+  on_new_signature:
+    1_similarity_check:
+      method: "cosine similarity against existing THEORY.md entries"
+      threshold: 0.85
+    2_if_redundant:
+      action: "Flag as 'REDUNDANT — See T-XXX'"
+      no_re_theorize: true
+    3_if_novel:
+      action: "Append with cluster tag"
+      format: "## CLUSTER: [topic] | Entries: T-041, T-042, T-043"
+  rationale: "Prevents context black hole; keeps knowledge base lean/distinct"
+
+# Negative bead handling (failure mining)
+negative_beads:
+  trigger_conditions:
+    - "Auditor rejects signature"
+    - "Synthetic Phoenix sim fails backtest"
+    - "Human marks bundle as INVALID"
+  format: |
+    {"type": "NEGATIVE", "id": "N-XXX", "reason": "...", "source_bundle": "B-XXX", "timestamp": "..."}
+  injection_to_theorist:
+    recent_count: 10
+    prompt_addition: "Avoid patterns similar to these rejected signatures: [N-001, N-002...]"
+
+constitutional_muzzle:
+  - "Never interpret source material — summarize only"
+  - "Never add commentary or recommendations"
+  - "Preserve source provenance in all summaries"
+  - "Flag redundancy, never duplicate knowledge"
+
+output_format:
+  theory_md_update: "Append or flag redundant"
+  cluster_index: "Maintain header with entry IDs"
+  archive_trigger: "On compression, move old beads to memory/archive/"

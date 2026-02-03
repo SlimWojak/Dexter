@@ -1,0 +1,34 @@
+# Dexter — no secrets, no generated beads in repo
+
+.env
+.env.local
+.env.*.local
+*.pem
+credentials/
+*.key
+
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+.venv/
+venv/
+
+# Bead-chain: append-only JSONL per session (generated at runtime)
+beads/*.jsonl
+memory/beads/*.jsonl
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+
+# Build / test
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+.pytest_cache/

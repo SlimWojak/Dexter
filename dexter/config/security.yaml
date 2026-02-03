@@ -1,0 +1,67 @@
+# Dexter Security Configuration — v0.2
+# Sandbox, permissions, audit hooks, drift alerts
+
+sandbox:
+  enabled: true
+  container_name: "dexter-refinery"
+  restart_policy: "unless-stopped"
+  tools_allowed:
+    shell: ["git", "python"]
+    browser: false
+    network: "localhost_only"
+
+injection_guard:
+  # v0.2: 4-layer stateless pre-filter OUTSIDE sandbox
+  location: "pre-sandbox"
+  layers:
+    preprocess:
+      strip_html: true
+      strip_js: true
+      strip_code_comments: true
+      normalize_whitespace: true
+      detect_encoding_tricks: ["base64", "unicode_abuse"]
+    pattern_match:
+      database: "data/attack_vectors.jsonl"
+      updatable: true
+    semantic_filter:
+      embeddings_db: "data/attack_embeddings.npy"
+      threshold: 0.85
+      embedder: "sentence-transformers"
+    action:
+      on_flag: "HALT"
+      log_raw: true
+      alert_auditor: true
+      no_llm_exposure: true
+
+auditor:
+  # v0.2: Bounty Hunter pattern — drift detection
+  drift_alert:
+    enabled: true
+    trigger: "no_rejections_48h"
+    action: "Flag to human: 'Auditor may be drifting — review recent PASS verdicts'"
+    notify: ["console", "log"]
+  
+  backtest_review:
+    enabled: true
+    checks:
+      - "data_leakage"      # Look-ahead bias
+      - "curve_fitting"     # Parameters tuned to historical data
+      - "logic_mismatch"    # Code doesn't match if-then signature
+    gate: "PASS/FAIL"
+    require_line_citations: true
+
+credentials:
+  location: "~/.dexter/credentials/"
+  permissions: "600"
+  env_file_committed: false
+
+network:
+  bind: "localhost"
+  public_ports: false
+  remote_access: "tailscale_optional"
+
+audit:
+  command_logging: true
+  session_tracing: true
+  monthly_review: true
+  log_retention_days: 90

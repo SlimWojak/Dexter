@@ -1,0 +1,1 @@
+# SECURITY — Hardening checklist (placeholder)
