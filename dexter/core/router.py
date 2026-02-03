@@ -1,18 +1,19 @@
 """Role dispatch — routes tasks to role handlers.
 
-Phase 2: adds negative bead prepend for Theorist, model diversity logging.
-Phase 3: will route to actual LLM call via OpenRouter.
+Phase 3: adds mock/real mode, injection guard integration, role-specific handlers.
 """
 
 from __future__ import annotations
 
 import logging
+import os
 from pathlib import Path
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 import yaml
 
 from core.context import read_negative_beads
+from core.injection_guard import scan as injection_scan, InjectionDetected
 
 logger = logging.getLogger("dexter.router")
 
@@ -35,6 +36,11 @@ def _load_role(name: str) -> Dict:
     return manifest
 
 
+def clear_cache() -> None:
+    """Clear role manifest cache (useful for tests)."""
+    _role_cache.clear()
+
+
 def list_roles() -> List[str]:
     """List available role names from roles/ directory."""
     if not ROLES_DIR.exists():
@@ -51,16 +57,33 @@ def _prepend_negative_context(payload: Dict) -> Dict:
         payload["negative_context"] = {
             "instruction": f"Avoid patterns similar to these rejected signatures: [{', '.join(neg_ids)}]",
             "recent_rejections": neg_reasons,
+            "beads": negatives,
         }
         logger.info("Prepended %d negative beads to Theorist context", len(negatives))
     return payload
 
 
+def _check_injection(payload: Dict, role: str) -> None:
+    """Run injection guard on payload. Mode depends on role."""
+    mode = "log_only" if role == "auditor" else "halt"
+    text = str(payload.get("transcript", payload.get("task", "")))
+    if text:
+        try:
+            injection_scan(text, mode=mode)
+        except InjectionDetected:
+            logger.warning("Injection detected in dispatch to [%s]", role)
+            raise
+
+
+def is_mock_mode() -> bool:
+    """Check if running in mock mode (no real API calls)."""
+    return os.getenv("DEXTER_MOCK_MODE", "true").lower() == "true"
+
+
 def dispatch(role: str, payload: Dict) -> Dict:
     """Dispatch a task to a role handler.
 
-    Phase 2: logs model diversity, prepends negatives for Theorist.
-    Phase 3: will route to actual LLM call via OpenRouter.
+    Phase 3: mock mode uses local handlers, logs model diversity.
     """
     manifest = _load_role(role)
 
@@ -68,20 +91,81 @@ def dispatch(role: str, payload: Dict) -> Dict:
     model = manifest.get("model", "unknown")
     family = manifest.get("family", "unknown")
     logger.info(
-        "Dispatch to [%s]: %s | model=%s family=%s",
-        role, payload.get("task", "unknown"), model, family,
+        "Dispatch to [%s]: %s | model=%s family=%s | mock=%s",
+        role, payload.get("task", "unknown"), model, family, is_mock_mode(),
     )
+
+    # Injection guard
+    _check_injection(payload, role)
 
     # Prepend negative beads for Theorist role
     if role == "theorist":
         payload = _prepend_negative_context(payload)
 
+    # Role-specific dispatch (mock mode)
+    if is_mock_mode():
+        return _mock_dispatch(role, payload, manifest)
+
+    # Phase 5: real OpenRouter dispatch
     return {
         "role": role,
-        "status": "stub",
-        "manifest_loaded": manifest.get("name", role),
+        "status": "not_implemented",
         "model": model,
         "family": family,
-        "payload_received": True,
-        "negative_context_prepended": role == "theorist",
+        "error": "Real dispatch requires Phase 5 OpenRouter integration",
     }
+
+
+def _mock_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
+    """Mock dispatch — uses local handlers instead of LLM."""
+    model = manifest.get("model", "unknown")
+    family = manifest.get("family", "unknown")
+
+    if role == "theorist":
+        from core.theorist import extract_signatures
+        transcript = payload.get("transcript_data")
+        negative_beads = payload.get("negative_context", {}).get("beads", [])
+        if transcript:
+            signatures = extract_signatures(transcript, negative_beads=negative_beads)
+        else:
+            signatures = []
+        return {
+            "role": role,
+            "status": "mock",
+            "model": model,
+            "family": family,
+            "signatures": signatures,
+        }
+
+    elif role == "auditor":
+        from core.auditor import audit_signature, audit_batch
+        signature = payload.get("signature")
+        signatures = payload.get("signatures")
+        if signature:
+            result = audit_signature(signature)
+            return {"role": role, "status": "mock", "model": model, "family": family, **result}
+        elif signatures:
+            result = audit_batch(signatures)
+            return {"role": role, "status": "mock", "model": model, "family": family, **result}
+        return {"role": role, "status": "mock", "model": model, "family": family, "error": "no input"}
+
+    elif role == "bundler":
+        # Bundler handled externally via core.bundler.generate_bundle
+        return {
+            "role": role,
+            "status": "mock",
+            "model": model,
+            "family": family,
+            "payload_received": True,
+        }
+
+    else:
+        return {
+            "role": role,
+            "status": "mock",
+            "model": model,
+            "family": family,
+            "manifest_loaded": manifest.get("name", role),
+            "payload_received": True,
+            "negative_context_prepended": role == "theorist",
+        }
