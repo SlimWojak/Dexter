@@ -18,6 +18,7 @@
 ### NEXT_ACTIONS
 - [ ] Morning review: spot-check overnight bundles + drawer tagging
 - [ ] Verify CLAIM_BEAD format in _claims.jsonl files
+- [ ] Investigate injection guard false positives on Ep13/Ep19 (AV-003 "you are now", AV-004 "pretend to be")
 - [ ] Phase 4B: Developer role + Synthetic Phoenix sim bridge
 - [ ] Phase 4B: Backtest code generation from validated signatures
 - [ ] Phase 4B: Auditor backtest review gate (data leakage, curve fitting)
@@ -72,6 +73,9 @@
 - [x] Integration: CLAIM_BEAD export (generate_claim_bead, export_claim_beads, _claims.jsonl)
 - [x] Integration: 5-drawer pre-tagging in Theorist (HTF_BIAS, MARKET_STRUCTURE, PREMIUM_DISCOUNT, ENTRY_MODEL, CONFIRMATION)
 - [x] Integration: Roadmap updated with Phoenix integration section
+- [x] Overnight soak: 20 videos queued, 18 DONE, 2 FAILED (injection guard false positives)
+- [x] Soak results: 424 validated, 9 rejected (2.1% rejection rate), 20 CLAIM_BEAD files (408 beads)
+- [x] Drawer tagging verified: drawers 1-5 active, confidence + basis fields populated
 
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS
@@ -79,8 +83,11 @@
 - Batch top 5: 5 processed, 0 failures, 4 bundles (43 sigs total): PASS
 - CLAIM_BEAD format: bead_type=CLAIM, status=UNVALIDATED, promoted_by=None: PASS
 - Drawer tagging: 5-drawer system in THEORIST_SYSTEM_PROMPT: PASS
-- Index tracking: bundles/index.jsonl with 10 entries: PASS
-- Total API cost (all runs): ~$0.03
+- Index tracking: bundles/index.jsonl with 32 entries: PASS
+- Total API cost (all runs): ~$0.05
+- Overnight soak: 18/20 DONE, 424 validated, 9 rejected, 408 CLAIM_BEADs: PASS
+- Soak failures: 2 injection guard false positives (Ep13 "pretend to be", Ep19 "you are now"): KNOWN
+- Drawer spot-check: drawer=2 (MARKET_STRUCTURE), drawer=4 (ENTRY_MODEL), drawer=1 (HTF_BIAS): PASS
 
 ### PHASE 5 EVIDENCE
 - All roles configured in MODEL_ROUTING (theorist, auditor, bundler, chronicler, cartographer, default): PASS
@@ -146,13 +153,15 @@
 - Semantic filter: stdlib TF-IDF cosine (sentence-transformers deferred)
 
 ### BUNDLE_GATE_STATUS
-- Bundles produced: 7 (3 mock pipeline, 4 real LLM extraction)
+- Bundles produced: 32 (3 mock, 4 pre-soak LLM, 3 batch top-5, 22 overnight soak)
 - Bundles promoted: 0
-- Latest real bundle: B-20260203-133411 (Ep3, 11 validated)
-- Largest bundle: B-20260203-133214 (Ep2, 25 validated)
+- Total validated signatures: 504
+- Total rejected: 12 (2.3% rejection rate)
+- Total CLAIM_BEADs exported: 408
+- Largest bundle: B-20260203-150140 (49 validated)
 - Bundle ID format: B-YYYYMMDD-HHMMSS
-- Index tracking: bundles/index.jsonl (10 entries)
-- CLAIM_BEAD export: bundles/{id}_claims.jsonl
+- Index tracking: bundles/index.jsonl (32 entries)
+- CLAIM_BEAD export: bundles/{id}_claims.jsonl (20 files)
 - MVP gate: 10-20 clean if-then signatures, <10min human review
 
 ### LINKS
