@@ -75,10 +75,182 @@ QUERY_3_PERFORMANCE:
 
 ---
 
+## EXPANDED SCOPE: Researcher Role + Architecture Research
+
+### Context
+
+Perplexity's alpha extends beyond ICT extraction corroboration:
+
+| Use Case | Perplexity Role | Value |
+|----------|-----------------|-------|
+| ICT extraction | Corroboration | "Is this real?" |
+| Pattern validation | Microstructure research | "Why does it work?" |
+| Regime awareness | Condition research | "When does it work?" |
+| Execution optimization | Quant research | "How to best execute?" |
+| Architecture decisions | Systems research | "What's the best model?" |
+| Cross-methodology | Synthesis research | "What else maps to this?" |
+
+### Proposed: "Researcher" Role
+
+```yaml
+role: researcher
+purpose: "Bridge extracted patterns to broader market knowledge"
+model: perplexity/deep-research (async, heavy queries)
+trigger: "Hypothesis formed OR architecture question OR pattern validation needed"
+
+query_types:
+  microstructure:
+    prompt: "Does [ICT concept] map to known market mechanics?"
+    output: { academic_support: bool, papers: [], mechanism: str }
+
+  regime:
+    prompt: "Under what conditions does [pattern] succeed/fail?"
+    output: { favorable: [], unfavorable: [], evidence: [] }
+
+  execution:
+    prompt: "What's optimal execution for [setup type]?"
+    output: { recommendations: [], sources: [], tradeoffs: [] }
+
+  architecture:
+    prompt: "What models exist for [market structure detection]?"
+    output: { approaches: [], pros_cons: [], implementations: [] }
+
+  synthesis:
+    prompt: "How does [ICT concept] relate to [other methodology]?"
+    output: { mappings: [], conflicts: [], combined_insight: str }
+```
+
+---
+
+### Advisory Questions: Researcher Role
+
+#### For Grok (Frontier Scout)
+
+```yaml
+QUERY_5_PERPLEXITY_PATTERNS:
+  context: "Planning to use Perplexity as R&D research layer, not just corroboration"
+  question: |
+    Best practices for using Perplexity Deep Research in agent workflows (Feb 2026)?
+    - Async patterns that don't block heartbeat?
+    - Cost optimization (when Search API vs Deep Research)?
+    - Any OpenClaw community integrations to learn from?
+    - Rate limits / quotas to watch for?
+
+QUERY_6_ACADEMIC_SOURCES:
+  context: "Want to validate ICT patterns against market microstructure research"
+  question: |
+    Best sources for academic trading/microstructure research accessible via Perplexity?
+    - SSRN, arXiv quant-ph, Journal of Finance?
+    - Any APIs for direct academic paper access?
+    - How reliable is Perplexity for citing actual papers vs hallucinating?
+```
+
+#### For Gemini (Wise Owl)
+
+```yaml
+QUERY_5_RESEARCH_INTEGRATION:
+  context: "Researcher role adds microstructure/regime/execution context to bundles"
+  question: |
+    How should research context integrate with CLAIM_BEADs?
+    - Separate "RESEARCH_BEAD" type?
+    - Embedded in signature metadata?
+    - Risk of research context biasing Olya's review?
+    - Should research be visible during promotion decision or after?
+
+QUERY_6_ARCHITECTURE_RESEARCH:
+  context: "Questioning whether MSS state machine is optimal for Phoenix market structure detection"
+  question: |
+    Is using Perplexity to research architecture alternatives a good pattern?
+    - Risk of "shiny object" distraction from working system?
+    - How to evaluate research suggestions vs proven implementation?
+    - Should architecture research be separate workstream from DEXTER?
+```
+
+#### For Phoenix CTO
+
+```yaml
+QUERY_4_MICROSTRUCTURE_LAYER:
+  context: "Perplexity could add 'why it works' context to ICT patterns"
+  question: |
+    Should Phoenix CSO receive microstructure context alongside CLAIM_BEADs?
+    - Does "academic support" change how CSO validates?
+    - Risk of over-weighting researched claims vs experiential ones?
+    - How does this fit the CLAIM -> FACT promotion flow?
+
+QUERY_5_STATE_MACHINE_REVIEW:
+  context: "CTO raised question: Is MSS state machine the right model for Phoenix?"
+  question: |
+    Should we use Perplexity to research alternative market structure models?
+    - Hidden Markov Models?
+    - Order flow state detection?
+    - ML classifiers?
+    Or is this premature optimization given current Phoenix state?
+```
+
+---
+
+### Advisory Questions: Architecture Research
+
+#### For All Advisors
+
+```yaml
+META_QUESTION_ARCHITECTURE:
+  context: |
+    Phoenix currently uses enrichment + MSS state machine for market structure.
+    Perplexity could research alternatives (HMM, order flow, ML classifiers).
+
+  questions:
+    1. "Is architecture research a valid use of DEXTER/Perplexity, or scope creep?"
+    2. "If valid, should it be separate workstream or integrated with extraction?"
+    3. "How do we evaluate 'better' architecture without rebuilding Phoenix?"
+    4. "What's the threshold for 'worth investigating' vs 'distraction'?"
+
+  desired_output: |
+    Clear recommendation on whether/how to pursue architecture research.
+    If yes: Proposed process for research -> evaluation -> decision.
+    If no: Rationale for staying with current approach.
+```
+
+---
+
+### Example Perplexity Research Queries (For Tomorrow's Testing)
+
+```yaml
+TEST_QUERY_1_MICROSTRUCTURE:
+  query: |
+    Academic research on stop-loss clustering and price reversals.
+    Do institutional order flows actually target retail stop levels?
+    Cite quantitative finance papers, not trading blogs.
+  purpose: "Validate ICT 'liquidity sweep' concept"
+
+TEST_QUERY_2_REGIME:
+  query: |
+    How do fair value gap strategies perform in high volatility vs low volatility?
+    Any quantitative backtests comparing VIX levels to FVG fill rates?
+  purpose: "Understand regime sensitivity"
+
+TEST_QUERY_3_ARCHITECTURE:
+  query: |
+    Compare state machine approaches for market structure detection:
+    Rule-based swing points vs Hidden Markov Models vs Order flow states.
+    Which do quantitative trading firms prefer for intraday forex/indices?
+  purpose: "Evaluate Phoenix architecture alternatives"
+
+TEST_QUERY_4_SYNTHESIS:
+  query: |
+    How do ICT/SMC concepts map to Wyckoff methodology?
+    Is 'liquidity sweep' equivalent to 'spring'?
+    Academic or serious practitioner analysis only.
+  purpose: "Cross-methodology synthesis"
+```
+
+---
+
 ## Review Protocol (Tomorrow)
 
 1. **Morning check**: Review overnight soak results (20 videos queued)
 2. **Hardening review**: Walk through HARDENING_ROADMAP.md gaps
 3. **Advisory panel**: Route questions to Grok/Gemini/Phoenix CTO
 4. **Synthesis**: Incorporate feedback into v0.3 roadmap
-5. **Prioritize**: What's Phase 6? Hardening or features?
+5. **Test Perplexity**: Run example research queries, evaluate quality
+6. **Prioritize**: What's Phase 6? Hardening or features or Researcher role?
