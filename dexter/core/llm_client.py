@@ -1,13 +1,15 @@
 """OpenRouter LLM client with role-based model routing.
 
 Phase 5: synchronous httpx client for compatibility with existing pipeline.
-Supports per-role model selection, cross-family diversity validation.
+Supports per-role model selection, cross-family diversity validation,
+rate-limit fallback, and per-call cost logging.
 """
 
 from __future__ import annotations
 
 import logging
 import os
+import time
 from typing import Dict, List, Optional
 
 import httpx
@@ -17,6 +19,12 @@ logger = logging.getLogger("dexter.llm_client")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Role-based model routing — v0.2 spec
+# Temperature rationale:
+#   theorist  0.2 — slight creativity for edge-case if-then capture
+#   auditor   0.1 — very low for deterministic falsification
+#   bundler   0.0 — zero variance on template fill
+#   chronicler 0.3 — enough diversity for summarization without drift
+#   cartographer 0.1 — metadata categorization, cheap/fast
 MODEL_ROUTING: Dict[str, Dict] = {
     "theorist": {
         "model": "deepseek/deepseek-chat",
@@ -56,6 +64,12 @@ MODEL_ROUTING: Dict[str, Dict] = {
     },
 }
 
+# Approximate cost per 1M tokens (USD) — Feb 2026
+MODEL_COSTS: Dict[str, Dict[str, float]] = {
+    "deepseek/deepseek-chat": {"input": 0.14, "output": 0.28},
+    "google/gemini-2.0-flash-exp": {"input": 0.10, "output": 0.40},
+}
+
 
 def _get_api_key() -> Optional[str]:
     """Get OpenRouter API key from environment."""
@@ -92,6 +106,50 @@ def validate_model_diversity(dispatch_log: List[Dict]) -> Dict:
     }
 
 
+def _log_cost(model: str, usage: Dict) -> None:
+    """Log estimated cost for a call."""
+    costs = MODEL_COSTS.get(model)
+    if not costs:
+        return
+    input_tokens = usage.get("prompt_tokens", 0) or 0
+    output_tokens = usage.get("completion_tokens", 0) or 0
+    cost = (
+        (input_tokens / 1_000_000 * costs["input"])
+        + (output_tokens / 1_000_000 * costs["output"])
+    )
+    logger.info("[COST] model=%s cost=$%.6f (in=%d out=%d)", model, cost, input_tokens, output_tokens)
+
+
+def _make_request(
+    client: httpx.Client,
+    model: str,
+    system_prompt: str,
+    user_content: str,
+    temperature: float,
+    max_tokens: int,
+    api_key: str,
+) -> httpx.Response:
+    """Make a single OpenRouter API request."""
+    return client.post(
+        OPENROUTER_BASE_URL,
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://github.com/SlimWojak/Dexter",
+            "X-Title": "Dexter Evidence Refinery",
+        },
+        json={
+            "model": model,
+            "messages": [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_content},
+            ],
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        },
+    )
+
+
 def call_llm(
     model: str,
     system_prompt: str,
@@ -102,6 +160,8 @@ def call_llm(
     timeout: float = 120.0,
 ) -> Dict:
     """Call OpenRouter API with specified model.
+
+    Includes rate-limit fallback: on 429, waits 5s and retries with default model.
 
     Returns:
         {"content": str, "usage": dict, "model": str}
@@ -114,24 +174,25 @@ def call_llm(
         )
 
     with httpx.Client(timeout=timeout) as client:
-        response = client.post(
-            OPENROUTER_BASE_URL,
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://github.com/SlimWojak/Dexter",
-                "X-Title": "Dexter Evidence Refinery",
-            },
-            json={
-                "model": model,
-                "messages": [
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_content},
-                ],
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-            },
+        response = _make_request(
+            client, model, system_prompt, user_content,
+            temperature, max_tokens, api_key,
         )
+
+        # Rate-limit fallback
+        if response.status_code == 429:
+            fallback_model = MODEL_ROUTING["default"]["model"]
+            logger.warning(
+                "[LLM] 429 rate limit on %s. Retrying with %s after 5s.",
+                model, fallback_model,
+            )
+            time.sleep(5)
+            response = _make_request(
+                client, fallback_model, system_prompt, user_content,
+                temperature, max_tokens, api_key,
+            )
+            model = fallback_model
+
         response.raise_for_status()
 
         data = response.json()
@@ -144,6 +205,7 @@ def call_llm(
             usage.get("prompt_tokens"),
             usage.get("completion_tokens"),
         )
+        _log_cost(model, usage)
 
         return {"content": content, "usage": usage, "model": model}
 

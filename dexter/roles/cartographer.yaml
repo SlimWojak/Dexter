@@ -1,0 +1,21 @@
+# Cartographer Role Manifest — Corpus Survey & Mapping
+# Phase 5: survey, categorize, queue
+
+role: cartographer
+model: google/gemini-2.0-flash-exp
+provider: openrouter
+family: google
+
+purpose: |
+  Map the ICT content corpus to enable systematic, prioritized extraction.
+  No recommendations. No quality judgments. Just structure and categorization.
+
+outputs:
+  corpus_map: "corpus/corpus_map.yaml"
+  extraction_queue: "corpus/extraction_queue.yaml"
+  content_clusters: "corpus/content_clusters.md"
+
+invariants:
+  - "INV-NO-RECOMMEND: Never suggest which content is 'better'"
+  - "INV-NO-INTERPRET: Categorize by observable features only"
+  - "INV-HUMAN-QUEUE: Human approves extraction queue before Theorist runs"
