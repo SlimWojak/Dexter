@@ -247,6 +247,14 @@ def save_bundle(
         f.write(json.dumps(index_entry) + "\n")
     logger.info("Index updated: %s", INDEX_FILE)
 
+    # Matrix alert on bundle save
+    try:
+        from skills.comms.matrix import send_bundle_alert
+        import asyncio
+        asyncio.create_task(send_bundle_alert(bundle_id, meta))
+    except Exception as e:
+        logger.warning("Matrix alert failed: %s", e)
+
     return path
 
 
