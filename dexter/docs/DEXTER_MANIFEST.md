@@ -2,14 +2,22 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: 5 (LLM Theorist + Cartographer + Operational Hardening) — COMPLETE
+- Phase: 5+ (Phoenix Integration Established) — OPERATIONAL
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
+- Phoenix CTO: Reviewed and approved architecture
+
+### PHOENIX INTEGRATION
+- Status: BRIDGE ESTABLISHED
+- Format: CLAIM_BEAD spec implemented
+- Drawer tagging: Active (5-drawer system)
+- Human gate: Mandatory (INV-DEXTER-ALWAYS-CLAIM)
+- Phoenix CTO: Reviewed and approved architecture
+- Data flow: DEXTER -> CLAIM_BEADs -> Human review -> Phoenix FACT_BEADs
 
 ### NEXT_ACTIONS
-- [ ] Phase 5: Human review of first LLM-extracted bundle (pending real LLM run)
-- [ ] Phase 5: Run Cartographer on ICT channel (yt-dlp survey)
-- [ ] Phase 5: Run Queue Processor on extraction queue (batch mode)
+- [ ] Morning review: spot-check overnight bundles + drawer tagging
+- [ ] Verify CLAIM_BEAD format in _claims.jsonl files
 - [ ] Phase 4B: Developer role + Synthetic Phoenix sim bridge
 - [ ] Phase 4B: Backtest code generation from validated signatures
 - [ ] Phase 4B: Auditor backtest review gate (data leakage, curve fitting)
@@ -56,6 +64,23 @@
 - [x] Phase 5: core/queue_processor.py — batch extraction from extraction_queue.yaml
 - [x] Phase 5: scripts/run_queue.py — CLI for queue processing (dry_run/execute/limit)
 - [x] Phase 5: tests — 208/208 PASS (93 new: LLM theorist, cartographer, model routing, queue processor)
+
+- [x] Pipeline A: Cartographer surveyed @InnerCircleTrader (790 videos, 286 mentorship)
+- [x] Pipeline B: LLM Theorist quality test — 13 sigs from Ep2, canonical ICT terminology
+- [x] Pipeline C: Batch processing top 5 mentorship — 43 sigs, 4 bundles, 0 failures
+- [x] Integration: CLAUDE.md Phoenix invariants (ALWAYS-CLAIM, NO-PROMOTE, SOURCE-LINK, CROSS-FAMILY)
+- [x] Integration: CLAIM_BEAD export (generate_claim_bead, export_claim_beads, _claims.jsonl)
+- [x] Integration: 5-drawer pre-tagging in Theorist (HTF_BIAS, MARKET_STRUCTURE, PREMIUM_DISCOUNT, ENTRY_MODEL, CONFIRMATION)
+- [x] Integration: Roadmap updated with Phoenix integration section
+
+### PIPELINE EVIDENCE
+- Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS
+- LLM Ep2: 13 unique signatures, canonical ICT terms (FVG, MSS, killzone, OTE): PASS
+- Batch top 5: 5 processed, 0 failures, 4 bundles (43 sigs total): PASS
+- CLAIM_BEAD format: bead_type=CLAIM, status=UNVALIDATED, promoted_by=None: PASS
+- Drawer tagging: 5-drawer system in THEORIST_SYSTEM_PROMPT: PASS
+- Index tracking: bundles/index.jsonl with 10 entries: PASS
+- Total API cost (all runs): ~$0.03
 
 ### PHASE 5 EVIDENCE
 - All roles configured in MODEL_ROUTING (theorist, auditor, bundler, chronicler, cartographer, default): PASS
@@ -121,11 +146,13 @@
 - Semantic filter: stdlib TF-IDF cosine (sentence-transformers deferred)
 
 ### BUNDLE_GATE_STATUS
-- Bundles produced: 2 (1 mock pipeline, 1 real transcript)
+- Bundles produced: 7 (3 mock pipeline, 4 real LLM extraction)
 - Bundles promoted: 0
-- Latest real bundle: B-1770122781 (35 validated, 1 rejected)
-- Bundle ID format: B-YYYYMMDD-HHMMSS (Phase 5+)
-- Index tracking: bundles/index.jsonl
+- Latest real bundle: B-20260203-133411 (Ep3, 11 validated)
+- Largest bundle: B-20260203-133214 (Ep2, 25 validated)
+- Bundle ID format: B-YYYYMMDD-HHMMSS
+- Index tracking: bundles/index.jsonl (10 entries)
+- CLAIM_BEAD export: bundles/{id}_claims.jsonl
 - MVP gate: 10-20 clean if-then signatures, <10min human review
 
 ### LINKS

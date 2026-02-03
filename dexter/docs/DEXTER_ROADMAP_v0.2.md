@@ -584,5 +584,54 @@ on_approval:
 
 ---
 
+## PHOENIX INTEGRATION (Established Feb 3, 2026)
+
+### Relationship
+- DEXTER = Sovereign Evidence Refinery (mines knowledge)
+- Phoenix = Constitutional Trading System (applies knowledge)
+- Bridge = CLAIM_BEADs with mandatory human gate
+
+### Data Flow
+```
+DEXTER extracts IF-THEN signatures
+    -> Pre-tagged by 5-drawer system
+    -> Packaged as CLAIM_BEADs
+    -> Accumulate in bundles/
+    -> Human reviews (Olya, <10min target)
+    -> Approved -> Export to Phoenix claims/
+    -> Phoenix CSO validates against market data
+    -> Validated -> FACT_BEAD -> conditions.yaml
+```
+
+### 5-Drawer Classification System
+```yaml
+Drawer 1 - HTF_BIAS: Higher timeframe directional context
+Drawer 2 - MARKET_STRUCTURE: Structural breaks and formations
+Drawer 3 - PREMIUM_DISCOUNT: Price relative to range
+Drawer 4 - ENTRY_MODEL: Specific entry patterns
+Drawer 5 - CONFIRMATION: Additional validation signals
+```
+
+### Integration Invariants
+- INV-DEXTER-ALWAYS-CLAIM: Output = CLAIM, never FACT
+- INV-DEXTER-NO-PROMOTE: Human gate mandatory
+- INV-DEXTER-SOURCE-LINK: Full provenance required
+- INV-DEXTER-CROSS-FAMILY: Adversarial model diversity
+
+### Operating Rhythm
+- DEXTER runs 24/7, accumulates bundles
+- Matrix alerts on new bundles (glanceable)
+- Human pulls bundles when ready (not pushed)
+- Review target: <10min per bundle
+- Promotion: Manual, deliberate, one-at-a-time
+
+### Future Integration Points
+- S45 Research UX: Integrated review surface
+- Perplexity agent: Research context layer
+- Synthetic River: Hypothesis testing
+- Evidence Pack pipeline: Multi-layer refinement
+
+---
+
 *APPROVED v0.2 — Build-Ready*
 *Human frames. Machine computes. Human promotes.* 🔬🧪
