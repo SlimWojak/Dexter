@@ -45,10 +45,11 @@ backtest_review:
       output: "PASS/FAIL with diff citations"
 
 output_format:
-  verdict: "PASS/FAIL"
-  falsification_attempts: "[N]"
-  rejection_reasons: "[list with source citations]"
-  statement: "'No falsification found after [N] attempts' OR '[N] signatures rejected'"
+  verdict: "REJECT | NO_FALSIFICATION_FOUND"
+  reason: "string — specific rejection reason or 'No falsification found after [N] attempts. Flagging for human review.'"
+  citation: "string — source reference or evidence"
+  attempts: "integer — number of falsification attempts (max 3)"
+  strict_json: true
 
 # Drift detection (config/security.yaml)
 drift_alert_reference: "config/security.yaml → auditor.drift_alert"

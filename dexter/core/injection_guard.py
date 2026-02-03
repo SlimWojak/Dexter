@@ -202,8 +202,19 @@ class InjectionDetected(Exception):
         super().__init__(f"Injection detected: {reason}")
 
 
-def scan(text: str, *, semantic_threshold: float = 0.85) -> dict:
-    """Run all 4 layers. Returns result dict. Raises InjectionDetected on flag.
+def scan(
+    text: str,
+    *,
+    semantic_threshold: float = 0.85,
+    mode: str = "halt",
+) -> Dict:
+    """Run all 4 layers. Returns result dict.
+
+    Args:
+        text: input to scan
+        semantic_threshold: cosine similarity threshold for semantic filter
+        mode: "halt" (default) — raises InjectionDetected on flag
+              "log_only" — logs but only raises if similarity > 0.92
 
     Returns:
         {"clean": True/False, "warnings": [...], "matches": [...]}
@@ -222,8 +233,8 @@ def scan(text: str, *, semantic_threshold: float = 0.85) -> dict:
     p_matches_cleaned = pattern_match(cleaned)
 
     # Merge matches, deduplicate by id
-    seen_ids = set()
-    p_matches = []
+    seen_ids: set = set()
+    p_matches: List[Dict] = []
     for m in p_matches_raw + p_matches_cleaned:
         if m["id"] not in seen_ids:
             seen_ids.add(m["id"])
@@ -243,8 +254,21 @@ def scan(text: str, *, semantic_threshold: float = 0.85) -> dict:
         if s_matches:
             reason_parts.append(f"semantic_flag({len(s_matches)})")
         reason = "; ".join(reason_parts)
-        _log_incident(text, reason, result)
-        raise InjectionDetected(reason, result)
+
+        if mode == "log_only":
+            # Log-only mode: only halt if any semantic match > 0.92
+            high_sim = any(
+                m.get("similarity", 0) > 0.92 for m in s_matches
+            )
+            _log_incident(text, f"[log_only] {reason}", result)
+            if high_sim:
+                raise InjectionDetected(reason, result)
+            logger.info("Log-only mode: flagged but not halted: %s", reason)
+            return result
+        else:
+            # Halt mode (default): always raise
+            _log_incident(text, reason, result)
+            raise InjectionDetected(reason, result)
 
     if warnings:
         logger.info("Preprocess warnings (no halt): %s", warnings)

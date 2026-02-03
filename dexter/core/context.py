@@ -79,3 +79,55 @@ def count_beads() -> int:
 def needs_compression(max_beads: int = 25) -> bool:
     """Check if bead count exceeds compression threshold."""
     return count_beads() >= max_beads
+
+
+# ---------------------------------------------------------------------------
+# Negative bead support (Phase 2: failure feedback loop)
+# ---------------------------------------------------------------------------
+
+_negative_counter = 0
+
+
+def append_negative_bead(
+    reason: str,
+    source_signature: str,
+    *,
+    source_bundle: str = "",
+    metadata: Optional[Dict] = None,
+) -> Dict:
+    """Append a NEGATIVE bead on Auditor REJECT.
+
+    Returns the bead dict that was written.
+    """
+    global _negative_counter
+    _negative_counter += 1
+
+    BEADS_DIR.mkdir(parents=True, exist_ok=True)
+
+    bead = {
+        "id": f"N-{_negative_counter:03d}",
+        "type": "NEGATIVE",
+        "reason": reason,
+        "source_signature": source_signature,
+        "source_bundle": source_bundle,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "metadata": metadata or {},
+    }
+
+    with open(_session_file(), "a") as f:
+        f.write(json.dumps(bead) + "\n")
+
+    return bead
+
+
+def read_negative_beads(limit: int = 10) -> List[Dict]:
+    """Read the most recent NEGATIVE beads from current session.
+
+    Args:
+        limit: max number to return (default 10, per roadmap spec)
+    """
+    all_beads = read_beads()
+    negatives = [b for b in all_beads if b.get("type") == "NEGATIVE"]
+    if limit > 0:
+        negatives = negatives[-limit:]
+    return negatives
