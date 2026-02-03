@@ -171,7 +171,8 @@ def process_transcript(transcript_url: str) -> Dict:
         from core.auditor import audit_batch
         audit_summary = audit_batch(signatures)
 
-        bundle_id = f"B-{int(time.time())}"
+        from core.bundler import generate_bundle_id
+        bundle_id = generate_bundle_id()
         try:
             bundle_content = generate_bundle(
                 bundle_id=bundle_id,
@@ -182,11 +183,19 @@ def process_transcript(transcript_url: str) -> Dict:
                 auditor_summary=audit_summary,
                 negative_beads=[nb.get("id", "?") for nb in read_negative_beads(limit=10)],
                 provenance={
-                    "transcript_method": "Supadata (mock)",
+                    "transcript_method": "Supadata",
                     "theorist_model": theorist_result.get("model", "unknown"),
                 },
             )
-            bundle_path = save_bundle(bundle_id, bundle_content)
+            bundle_path = save_bundle(
+                bundle_id,
+                bundle_content,
+                metadata={
+                    "source_url": transcript_url,
+                    "validated": len(validated),
+                    "rejected": len(rejected),
+                },
+            )
             logger.info("Bundle saved: %s", bundle_path)
 
             append_bead(

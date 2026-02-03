@@ -18,6 +18,13 @@ logger = logging.getLogger("dexter.bundler")
 
 BUNDLES_DIR = Path(__file__).resolve().parent.parent / "bundles"
 TEMPLATE_PATH = BUNDLES_DIR / "BUNDLE_TEMPLATE.md"
+INDEX_FILE = BUNDLES_DIR / "index.jsonl"
+
+
+def generate_bundle_id() -> str:
+    """Generate bundle ID in B-YYYYMMDD-HHMMSS format (UTC)."""
+    now = datetime.now(timezone.utc)
+    return f"B-{now.strftime('%Y%m%d-%H%M%S')}"
 
 # INV-NO-NARRATIVE enforcement
 NARRATIVE_VIOLATIONS = [
@@ -204,11 +211,56 @@ def _auditor_statement(summary: Dict) -> str:
     return f"No falsification found after {MAX_ATTEMPTS} attempts"
 
 
-def save_bundle(bundle_id: str, content: str) -> Path:
-    """Save bundle to bundles/ directory. Returns file path."""
+def save_bundle(
+    bundle_id: str,
+    content: str,
+    *,
+    metadata: Optional[Dict] = None,
+) -> Path:
+    """Save bundle to bundles/ directory and append to index.jsonl.
+
+    Args:
+        bundle_id: The bundle identifier (e.g. B-20260203-143000)
+        content: Full markdown bundle content
+        metadata: Optional dict with source_url, validated, rejected counts
+
+    Returns:
+        Path to the saved bundle file.
+    """
     BUNDLES_DIR.mkdir(parents=True, exist_ok=True)
     path = BUNDLES_DIR / f"{bundle_id}.md"
     with open(path, "w") as f:
         f.write(content)
     logger.info("Bundle saved: %s", path)
+
+    # Append to index.jsonl
+    meta = metadata or {}
+    index_entry = {
+        "bundle_id": bundle_id,
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "path": str(path),
+        "source_url": meta.get("source_url", ""),
+        "validated": meta.get("validated", 0),
+        "rejected": meta.get("rejected", 0),
+    }
+    with open(INDEX_FILE, "a") as f:
+        f.write(json.dumps(index_entry) + "\n")
+    logger.info("Index updated: %s", INDEX_FILE)
+
     return path
+
+
+def read_bundle_index() -> List[Dict]:
+    """Read all entries from index.jsonl. Returns list of dicts."""
+    if not INDEX_FILE.exists():
+        return []
+    entries = []
+    with open(INDEX_FILE) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    entries.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+    return entries
