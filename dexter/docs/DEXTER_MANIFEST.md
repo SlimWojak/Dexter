@@ -2,13 +2,14 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: 4A (Real Transcript Integration) — COMPLETE (first real run done)
+- Phase: 5 (LLM Theorist + Cartographer + Operational Hardening) — COMPLETE
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 
 ### NEXT_ACTIONS
-- [ ] Phase 4A: Human review of first real bundle (B-1770122781)
-- [ ] Phase 5: LLM-based Theorist extraction (OpenRouter deepseek) — will improve dedup + quality
+- [ ] Phase 5: Human review of first LLM-extracted bundle (pending real LLM run)
+- [ ] Phase 5: Run Cartographer on ICT channel (yt-dlp survey)
+- [ ] Phase 5: Run Queue Processor on extraction queue (batch mode)
 - [ ] Phase 4B: Developer role + Synthetic Phoenix sim bridge
 - [ ] Phase 4B: Backtest code generation from validated signatures
 - [ ] Phase 4B: Auditor backtest review gate (data leakage, curve fitting)
@@ -38,6 +39,41 @@
 - [x] Phase 4A: Router local dispatch (pattern-based handlers on real data)
 - [x] Phase 4A: Bundler narrative bleed — exclude verbatim transcript quotes in table rows
 - [x] Phase 4A: First real run — youtube.com/watch?v=tmeCWULSTHc (ICT 2024 Mentorship Ep1)
+
+- [x] Phase 5: core/llm_client.py — OpenRouter client with role-based MODEL_ROUTING
+- [x] Phase 5: Model routing — per-role model/family/temperature/max_tokens config
+- [x] Phase 5: Cross-family diversity validation (Theorist=deepseek, Auditor=google)
+- [x] Phase 5: Rate-limit fallback (429 → sleep 5s → retry with default model)
+- [x] Phase 5: Per-call cost logging (MODEL_COSTS lookup, $/1M tokens)
+- [x] Phase 5: core/theorist.py — LLM extraction via OpenRouter deepseek (THEORIST_SYSTEM_PROMPT)
+- [x] Phase 5: LLM JSON parsing (plain + ```json code blocks), dedup by if|then key
+- [x] Phase 5: skills/transcript/supadata.py — chunk_transcript() (5min overlapping windows)
+- [x] Phase 5: core/router.py — LLM dispatch path + is_llm_mode()
+- [x] Phase 5: core/cartographer.py — corpus survey via yt-dlp, categorization, queue strategies
+- [x] Phase 5: roles/cartographer.yaml — INV-NO-RECOMMEND, INV-NO-INTERPRET, INV-HUMAN-QUEUE
+- [x] Phase 5: scripts/run_cartographer.py — CLI for channel survey
+- [x] Phase 5: core/bundler.py — B-YYYYMMDD-HHMMSS bundle IDs + index.jsonl tracking
+- [x] Phase 5: core/queue_processor.py — batch extraction from extraction_queue.yaml
+- [x] Phase 5: scripts/run_queue.py — CLI for queue processing (dry_run/execute/limit)
+- [x] Phase 5: tests — 208/208 PASS (93 new: LLM theorist, cartographer, model routing, queue processor)
+
+### PHASE 5 EVIDENCE
+- All roles configured in MODEL_ROUTING (theorist, auditor, bundler, chronicler, cartographer, default): PASS
+- Theorist=deepseek family, Auditor=google family (cross-family veto): PASS
+- Rate-limit fallback: 429 triggers 5s sleep + retry with default model (mocked): PASS
+- Cost logging: deepseek ($0.14/$0.28 per 1M in/out), gemini ($0.10/$0.40): PASS
+- LLM JSON parsing handles plain arrays and ```json code blocks: PASS
+- LLM dedup: same if|then across chunks kept only once: PASS
+- Negative context prepended to system prompt for LLM extraction: PASS
+- Bad JSON / API errors skip chunk without crash: PASS
+- Cartographer categorization: MENTORSHIP, LECTURE, LIVE_SESSION, QA, REVIEW, UNKNOWN: PASS
+- Duration buckets: SHORT (<10min), MEDIUM (10-60min), LONG (>60min): PASS
+- View tiers: VIRAL (>1M), HIGH (>100K), MEDIUM (>10K), LOW: PASS
+- Queue strategies: mentorship_first, chronological, views: PASS
+- Bundle ID format B-YYYYMMDD-HHMMSS (17 chars, UTC): PASS
+- index.jsonl write + read round-trip: PASS
+- Queue processor: dry_run, limit, execute, failure handling: PASS
+- All 208 tests pass: PASS
 
 ### PHASE 4A EVIDENCE
 - Supadata real API path: 200 response normalizes correctly (mocked HTTP): PASS
@@ -88,6 +124,8 @@
 - Bundles produced: 2 (1 mock pipeline, 1 real transcript)
 - Bundles promoted: 0
 - Latest real bundle: B-1770122781 (35 validated, 1 rejected)
+- Bundle ID format: B-YYYYMMDD-HHMMSS (Phase 5+)
+- Index tracking: bundles/index.jsonl
 - MVP gate: 10-20 clean if-then signatures, <10min human review
 
 ### LINKS
