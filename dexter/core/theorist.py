@@ -57,6 +57,24 @@ RULES:
 - Deduplicate: if same logic appears twice, keep first occurrence only
 - Skip channel promotion, personal anecdotes, non-trading content
 
+DRAWER CLASSIFICATION:
+For each signature, classify into one of 5 drawers:
+
+Drawer 1 - HTF BIAS: Higher timeframe directional context
+  Examples: Weekly bias, daily trend, institutional positioning
+
+Drawer 2 - MARKET STRUCTURE: Structural breaks and formations
+  Examples: MSS, CHoCH, BOS, swing points, equal highs/lows
+
+Drawer 3 - PREMIUM/DISCOUNT: Price relative to range
+  Examples: Above/below 50% fib, dealing range position, equilibrium
+
+Drawer 4 - ENTRY MODEL: Specific entry patterns
+  Examples: FVG entry, order block, liquidity sweep trigger
+
+Drawer 5 - CONFIRMATION: Additional validation
+  Examples: SMT divergence, volume, time/session, displacement
+
 OUTPUT FORMAT (strict JSON array, nothing else):
 [
   {
@@ -65,11 +83,15 @@ OUTPUT FORMAT (strict JSON array, nothing else):
     "then": "look for displacement and FVG formation for long entry",
     "timestamp": "14:32",
     "source_quote": "verbatim quote, max 30 words",
-    "confidence": "EXPLICIT"
+    "confidence": "EXPLICIT",
+    "drawer": 4,
+    "drawer_confidence": "explicit",
+    "drawer_basis": "ICT explicitly taught this as entry model pattern"
   }
 ]
 
 confidence values: EXPLICIT (directly stated), INFERRED (implied by context), UNCLEAR (ambiguous)
+drawer_confidence values: explicit (ICT named the category), inferred (clear from context)
 
 If no clear if-then logic in this segment, return: []
 
@@ -183,6 +205,9 @@ def _extract_llm(
                     "source_quote": sig.get("source_quote", "")[:200],
                     "confidence": sig.get("confidence", "EXPLICIT"),
                     "source": source_title,
+                    "drawer": sig.get("drawer"),
+                    "drawer_confidence": sig.get("drawer_confidence", "inferred"),
+                    "drawer_basis": sig.get("drawer_basis", ""),
                 })
 
             logger.info(
