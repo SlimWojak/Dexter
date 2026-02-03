@@ -6,26 +6,28 @@ queue:
   duration_bucket: MEDIUM
   id: kt6V4ai60fI
   position: 1
-  status: QUEUED
+  status: DONE
   title: ICT Mentorship 2022 Introduction
   upload_date: ''
   url: https://www.youtube.com/watch?v=kt6V4ai60fI
   view_count: 4367069
   view_tier: VIRAL
-- category: MENTORSHIP
+- bundle_id: B-20260203-133214
+  category: MENTORSHIP
   description: Take notes, we dive deeper each new episodes and build on the previous
     episode.
   duration: 2976.0
   duration_bucket: MEDIUM
   id: tmeCWULSTHc
   position: 2
-  status: QUEUED
+  status: DONE
   title: 2022 ICT Mentorship Episode 2
   upload_date: ''
   url: https://www.youtube.com/watch?v=tmeCWULSTHc
   view_count: 3636310
   view_tier: VIRAL
-- category: MENTORSHIP
+- bundle_id: B-20260203-133252
+  category: MENTORSHIP
   description: "2016 Premium ICT Mentorship Core Content Video Lectures\nAudio and\
     \ visuals are exactly as they were distributed in September 2016. \n\nCFTC RULE\
     \ 4.41 – HYPOTHETICAL OR SIMULATED PERFORMANCE..."
@@ -33,13 +35,14 @@ queue:
   duration_bucket: MEDIUM
   id: 0LhteuLVuDU
   position: 3
-  status: QUEUED
+  status: DONE
   title: ICT Mentorship Core Content - Month 1 - Elements Of A Trade Setup
   upload_date: ''
   url: https://www.youtube.com/watch?v=0LhteuLVuDU
   view_count: 2724856
   view_tier: VIRAL
-- category: MENTORSHIP
+- bundle_id: B-20260203-133411
+  category: MENTORSHIP
   description: 'Internal Range Liquidity & Market Structure Shifts
 
 
@@ -48,7 +51,7 @@ queue:
   duration_bucket: MEDIUM
   id: nQfHZ2DEJ8c
   position: 4
-  status: QUEUED
+  status: DONE
   title: 2022 ICT Mentorship Episode 3
   upload_date: ''
   url: https://www.youtube.com/watch?v=nQfHZ2DEJ8c
@@ -62,7 +65,7 @@ queue:
   duration_bucket: LONG
   id: XN8tuO4QIRw
   position: 5
-  status: QUEUED
+  status: DONE
   title: ICT Mentorship 2023 Ep 01
   upload_date: ''
   url: https://www.youtube.com/watch?v=XN8tuO4QIRw
