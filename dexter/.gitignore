@@ -19,6 +19,9 @@ venv/
 beads/*.jsonl
 memory/beads/*.jsonl
 
+# Injection guard logs (generated at runtime)
+memory/injection_logs/
+
 # IDE / OS
 .idea/
 .vscode/
