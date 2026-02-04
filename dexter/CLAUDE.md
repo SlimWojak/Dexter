@@ -49,6 +49,29 @@ INV-DEXTER-CROSS-FAMILY: |
   Auditor must be different model family from Theorist.
   Currently: Theorist=deepseek, Auditor=google.
 
+### Advisor Synthesis Invariants (2026-02-04)
+
+INV-DEXTER-ICT-NATIVE: |
+  Theorist uses raw ICT terminology.
+  Translation to Phoenix drawer names happens at Bundler only.
+  Prevents feedback loop where Dexter mirrors Phoenix jargon.
+
+INV-FACT-ENCAPSULATES-CLAIM: |
+  Every FACT bead references source CLAIM_ID for forensic trace.
+  Enables "search and destroy" if extraction logic found flawed.
+
+INV-CALIBRATION-FOILS: |
+  Validation batches MAY include foils. Operator-configurable.
+  Foil approval flags session. Default-reject is primary guard.
+
+INV-RUNAWAY-CAP: |
+  Agent loops hard-capped at N turns (10-20).
+  No-output > X minutes → halt.
+  Daily cost ceiling enforced.
+
+INV-BEAD-AUDIT-TRAIL: |
+  All beads auditable end-to-end with full provenance chain.
+
 ## WATCH_OUTS
 
 ### Security
@@ -80,14 +103,22 @@ INV-DEXTER-CROSS-FAMILY: |
 
 ## PHASE EXECUTION
 
-Current: Phase 5 Complete → Phoenix Integration Established
+Current: OPERATIONAL_MVP → Post-Advisor Synthesis (2026-02-04)
 
-On phase complete:
+Active Priorities (see `docs/SPRINT_ROADMAP.md`):
+- P1: Chronicler implementation (URGENT — memory unbounded)
+- P2: Back-propagation seam (Olya NO → NEGATIVE_BEAD → Theorist)
+- P3: Scope constraint (BLOCKED — awaiting CSO curriculum)
+- P4: Auditor prompt hardening (target 10% rejection floor)
+- P5: Queue atomicity (write-tmp + rename pattern)
+- P6: Runaway guards (turn cap + cost ceiling + watchdog)
+
+On task complete:
 1. Run tests
 2. Git commit + push
-3. Update DEXTER_MANIFEST.md
+3. Update DEXTER_MANIFEST.md NEXT_ACTIONS
 4. Report to channel
-5. Await CTO/Human gate before next phase
+5. Await CTO/Human gate before next priority
 
 ## COMMS
 

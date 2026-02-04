@@ -15,14 +15,41 @@
 - Phoenix CTO: Reviewed and approved architecture
 - Data flow: DEXTER -> CLAIM_BEADs -> Human review -> Phoenix FACT_BEADs
 
-### NEXT_ACTIONS
-- [ ] Morning review: spot-check overnight bundles + drawer tagging
-- [ ] Verify CLAIM_BEAD format in _claims.jsonl files
-- [ ] Investigate injection guard false positives on Ep13/Ep19 (AV-003 "you are now", AV-004 "pretend to be")
-- [ ] Phase 4B: Developer role + Synthetic Phoenix sim bridge
-- [ ] Phase 4B: Backtest code generation from validated signatures
-- [ ] Phase 4B: Auditor backtest review gate (data leakage, curve fitting)
-- [ ] Phase 4B: Failure mining loop with sim-fed NEGATIVE_BEADs
+### NEXT_ACTIONS (Post-Advisor Synthesis 2026-02-04)
+
+**P1 — CHRONICLER (URGENT):**
+- [ ] Implement recursive summarization every 20-30 beads
+- [ ] Produce THEORY.md summary + index
+- [ ] Archive raw beads to archive/
+- [ ] Preserve negatives in dedicated section
+
+**P2 — BACK-PROPAGATION SEAM (NEW):**
+- [ ] Design Olya rejection → NEGATIVE_BEAD flow
+- [ ] Feed NEGATIVE_BEADs back to Theorist context
+- [ ] Document seam in ROLE_CONTRACTS.md
+
+**P3 — SCOPE CONSTRAINT:**
+- [ ] BLOCKED: Awaiting CSO curriculum (24-48h from 2026-02-04)
+- [ ] Bound extraction to CSO-provided video list when received
+
+**P4 — AUDITOR HARDENING:**
+- [ ] Harden Auditor prompt (target: 10% rejection floor)
+- [ ] Monitor rejection rate post-hardening
+- [ ] Third family (Llama/Qwen) if still <5%
+
+**P5 — QUEUE ATOMICITY:**
+- [ ] Fix save_queue() with write-tmp + rename pattern
+- [ ] Ship before scaling past current batch sizes
+
+**P6 — RUNAWAY GUARDS:**
+- [ ] Hard turn cap (10-20 turns per agent loop)
+- [ ] Daily cost ceiling
+- [ ] No-output watchdog (halt if no output > X minutes)
+
+**LOWER PRIORITY:**
+- [ ] Injection guard tuning (whitelist ICT speech patterns — 2/20 affected)
+- [ ] Researcher role (Perplexity) — defer until CSO curriculum defined
+- [ ] Daemon mode (launchd, logging, Matrix alerts)
 
 ### COMPLETED
 - [x] v0.2 Roadmap synthesized
@@ -164,6 +191,18 @@
 - CLAIM_BEAD export: bundles/{id}_claims.jsonl (20 files)
 - MVP gate: 10-20 clean if-then signatures, <10min human review
 
+### NEW INVARIANTS (Advisor Synthesis 2026-02-04)
+```yaml
+INV-DEXTER-ICT-NATIVE: "Theorist uses raw ICT terminology. Translation at Bundler only."
+INV-FACT-ENCAPSULATES-CLAIM: "Every FACT bead references source CLAIM_ID for forensic trace."
+INV-CALIBRATION-FOILS: "Validation batches MAY include foils. Operator-configurable."
+INV-RUNAWAY-CAP: "Agent loops hard-capped at N turns. No-output > X min → halt."
+INV-BEAD-AUDIT-TRAIL: "All beads auditable end-to-end with full provenance chain."
+```
+
 ### LINKS
-- Roadmap: `docs/DEXTER_ROADMAP_v0.2.md`
-- Sibling: https://github.com/SlimWojak/phoenix
+- Sprint Roadmap: `docs/SPRINT_ROADMAP.md` (current priorities)
+- Build History: `docs/DEXTER_ROADMAP_v0.2.md` (phases 0-5)
+- Phoenix Manifest: `docs/PHOENIX_MANIFEST.md` (sibling system)
+- Advisor Synthesis: `docs/POST_S44_SYNTHESIS_v0.1.md`
+- Sibling Repo: https://github.com/SlimWojak/phoenix
