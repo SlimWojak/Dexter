@@ -566,20 +566,30 @@ all_refinements_integrated:
 
 ---
 
-## NEXT ACTIONS
+## NEXT ACTIONS (HISTORICAL — All Complete)
 
 ```yaml
+# This section documents what was planned at v0.2 design time.
+# All items have been completed. See docs/SPRINT_ROADMAP.md for current priorities.
+
 immediate:
   - [x] Lateral check complete (Wise Owl + Grok Scout)
   - [x] v0.2 synthesized by Cursor Opus
-  - [ ] G approval of v0.2
-  - [ ] Confirm ICT 2022 Mentorship playlist URL with Olya
+  - [x] G approval of v0.2 — APPROVED
+  - [x] ICT 2024 Mentorship used (2022 Mentorship = curated curriculum TBD)
 
 on_approval:
-  - [ ] Cursor Opus: Complete Phase 0 repo structure init
-  - [ ] Claude Code CLI: Begin Phase 1 (core loop + hardening)
-  - [ ] Spin Docker Sandbox on Mac Mini
-  - [ ] First heartbeat running within 48hr
+  - [x] Phase 0 repo structure init — COMPLETE 2026-02-03
+  - [x] Phase 1 (core loop + hardening) — COMPLETE 2026-02-03
+  - [x] Phase 2 (Auditor + Bundler) — COMPLETE 2026-02-03
+  - [x] Phase 3 (Theorist + full loop) — COMPLETE 2026-02-03
+  - [x] Phase 4A (Real transcripts) — COMPLETE 2026-02-03
+  - [x] Phase 5 (LLM Theorist + Cartographer) — COMPLETE 2026-02-03
+  - [x] Phoenix Integration — SPEC COMPLETE 2026-02-03
+  - [x] Overnight soak (20 videos) — COMPLETE 2026-02-04
+
+current_state: OPERATIONAL_MVP
+current_priorities: See docs/SPRINT_ROADMAP.md (P1-P6)
 ```
 
 ---

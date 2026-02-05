@@ -223,14 +223,105 @@ context_in_30_seconds:
 
 ---
 
+## SEED IDEAS (Vision, Not Sprint Scope)
+
+```yaml
+HIGHEST_ALPHA — OLYA_MANIFEST:
+  concept: |
+    Dexter extracts from Olya's OWN content (journals, notes, trade logs).
+    Three ore sources converge:
+      - ICT content (tradition — what's taught)
+      - Lateral educators (Blessed Trader PDFs, etc.)
+      - Olya's cognitive exhaust (practice — what she actually does)
+    The delta between teaching and practice IS the edge.
+  phase: 6+ ("Oracle's Archive")
+
+PARALLEL_SYNTHETIC_PHOENIX:
+  concept: Dexter agents test hypotheses on Phoenix sim with 5yr backdata.
+  prerequisite: Phoenix sim environment must exist
+  phase: 8+ (Carpark)
+
+FLYWHEEL_AMP:
+  concept: Continuous mining + journal ingestion + rejection tuning + dynasty memory.
+  prerequisite: P1 Chronicler must ship first
+  phase: 6-7
+
+RESEARCHER_ROLE:
+  concept: Perplexity as R&D layer (microstructure, regime, execution research).
+  status: SCOPED_NOT_BUILT — defer until curriculum defined
+  
+SELF_UPGRADING_META:
+  classification: CARPARK (constitutional muzzle stays tight)
+  risk: Highest authority drift risk — park until trust earned
+```
+
+---
+
+## ADVISOR RULINGS (2026-02-04)
+
+```yaml
+promotion_states:
+  ruling: Binary CLAIM/FACT (GPT wins, rich metadata on FACT)
+  rejected: OWL's PROVISIONAL_FACT (gray authority risk)
+  adopted: OWL's provenance chain (FACT encapsulates CLAIM_ID)
+
+calibration_protocol:
+  default_reject: Approval requires explicit action
+  delta_input: Edit ≥1 parameter per 5 signatures
+  view_separation: Dexter vs Perplexity shown separately
+  foils: Optional, operator-configurable
+
+auditor_sequence: Prompt harden → monitor → third family if <5%
+
+atom_budget: 32-48 features across 5 drawers
+```
+
+---
+
+## KNOWN GAPS
+
+```yaml
+critical:
+  chronicler: Not implemented (beads unbounded — P1 URGENT)
+  queue_atomicity: save_queue() does full YAML rewrite (crash corruption risk)
+  auditor_leniency: 2.1% rejection rate too low (target 10%)
+
+operational:
+  injection_false_positives: 2/20 videos (Ep13 "pretend to be", Ep19 "you are now")
+  matrix_alerts: Cosmetic warning (non-blocking)
+  sync_pipeline: Won't scale past 100+ videos
+  daemon_mode: Not configured (manual TMUX + Amphetamine)
+
+pending:
+  runaway_guards: P6 (turn cap, cost ceiling, watchdog)
+  researcher_role: Perplexity (defer until curriculum)
+  developer_role: Backtest code generation (far horizon)
+```
+
+---
+
+## SECURITY STACK
+
+```yaml
+L1_containment: Docker --network none
+L2_input_sanitization: 4-layer injection guard
+L3_runaway_prevention: Turn cap + cost ceiling (PENDING)
+L4_stall_detection: No-output watchdog (PENDING)
+L5_credentials: Composio auth (FUTURE)
+```
+
+---
+
 ## RELATED DOCUMENTS
 
 | Document | Location | Purpose |
 |----------|----------|---------|
+| `COLD_START.md` | `docs/` | Quick orientation for new CTO |
 | `DEXTER_MANIFEST.md` | `docs/` | Operational status + evidence |
 | `DEXTER_ROADMAP_v0.2.md` | `docs/` | Build history (phases 0-5) |
 | `PHOENIX_MANIFEST.md` | `docs/` | Phoenix system reference |
 | `POST_S44_SYNTHESIS_v0.1.md` | `docs/` | Advisor synthesis source |
+| `addendum_from_CTO_Opus_Review.md` | `docs/` | Seed ideas (Olya_Manifest) |
 | `ROLE_CONTRACTS.md` | `docs/` | Role boundaries |
 | `CLAUDE.md` | root | Build agent orientation |
 
