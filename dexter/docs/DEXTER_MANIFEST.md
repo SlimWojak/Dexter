@@ -2,12 +2,13 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: EXTRACTION_READY (P1-P6 complete, P3.4 pending)
-- Tests: 322/322 PASS
+- Phase: EXTRACTION_ACTIVE (P3.4b complete, P3.4c pending)
+- Tests: 346/346 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
 - Sources: 5 registered (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
+- Stage 1 Extraction: 2 videos processed, 14 validated, 2 rejected (12.5%)
 
 ### PHOENIX INTEGRATION
 - Status: BRIDGE ESTABLISHED
@@ -34,7 +35,10 @@
 - [x] P3.1: PDF + MD ingesters (skills/document/pdf_ingester.py, md_ingester.py)
 - [x] P3.2: ICT 2022 Mentorship playlist survey (24 videos, CANON tier)
 - [x] P3.3: Unified extraction runner (scripts/run_source_extraction.py)
-- [ ] P3.4: First multi-source extraction run (YouTube + PDF + MD)
+- [x] P3.4a: Anthropic direct API + tier-based model routing
+- [x] P3.4b: Stage 1 extraction (DeepSeek) — 2 ICT videos, 14 validated, 2 rejected
+- [ ] P3.4c: Stage 1 extraction (Anthropic) — Olya notes (Opus), Layer 0 (Sonnet)
+- [ ] P3.4d: Extraction summary + full MANIFEST update
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern
