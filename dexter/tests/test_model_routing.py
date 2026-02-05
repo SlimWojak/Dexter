@@ -23,7 +23,7 @@ from core.llm_client import (
     get_model_config,
     validate_model_diversity,
     _log_cost,
-    _get_api_key,
+    _get_openrouter_key,
     call_llm,
     call_llm_for_role,
 )
@@ -148,18 +148,18 @@ class TestApiKey(unittest.TestCase):
 
     @patch.dict(os.environ, {"OPENROUTER_KEY": "test-key-123"}, clear=False)
     def test_openrouter_key(self):
-        self.assertEqual(_get_api_key(), "test-key-123")
+        self.assertEqual(_get_openrouter_key(), "test-key-123")
 
     @patch.dict(os.environ, {"OPENROUTER_API_KEY": "alt-key-456"}, clear=False)
     def test_openrouter_api_key_fallback(self):
         os.environ.pop("OPENROUTER_KEY", None)
-        self.assertEqual(_get_api_key(), "alt-key-456")
+        self.assertEqual(_get_openrouter_key(), "alt-key-456")
 
     @patch.dict(os.environ, {}, clear=True)
     def test_no_key_returns_none(self):
         os.environ.pop("OPENROUTER_KEY", None)
         os.environ.pop("OPENROUTER_API_KEY", None)
-        self.assertIsNone(_get_api_key())
+        self.assertIsNone(_get_openrouter_key())
 
 
 class TestCallLlm(unittest.TestCase):
