@@ -143,17 +143,15 @@ def process_youtube_queue(
     delay_seconds: float = 5.0,
     source_tier: str = "ICT_LEARNING",
 ) -> Dict:
-    """Process YouTube video queue."""
+    """Process YouTube video queue through full extraction pipeline."""
     from core.queue_processor import process_queue
-
-    # Set source tier in environment for pipeline to use
-    os.environ["DEXTER_SOURCE_TIER"] = source_tier
 
     return process_queue(
         queue_path=queue_path,
         limit=limit,
         dry_run=dry_run,
         delay_seconds=delay_seconds,
+        source_tier=source_tier,
     )
 
 
@@ -164,8 +162,11 @@ def process_pdf_source(
     dry_run: bool = False,
     source_tier: str = "LATERAL",
 ) -> Dict:
-    """Process PDF documents from a source directory."""
-    from skills.document.pdf_ingester import ingest_pdf
+    """Process PDF documents through full extraction pipeline.
+
+    Uses process_document() for Theorist → Auditor → Bundler flow.
+    """
+    from core.loop import process_document
 
     pdfs = sorted(source_dir.glob("*.pdf"))
     if limit > 0:
@@ -176,7 +177,8 @@ def process_pdf_source(
     results = []
     processed = 0
     failed = 0
-    total_chunks = 0
+    total_signatures = 0
+    total_validated = 0
 
     for pdf in pdfs:
         if dry_run:
@@ -185,24 +187,30 @@ def process_pdf_source(
             continue
 
         try:
-            logger.info("Ingesting: %s", pdf.name)
-            ingested = ingest_pdf(pdf)
-            chunks = ingested.get("chunks", [])
+            logger.info("Extracting from: %s (tier=%s)", pdf.name, source_tier)
+            result = process_document(
+                str(pdf),
+                source_tier=source_tier,
+                source_type="pdf",
+            )
 
-            # Override source tier
-            for chunk in chunks:
-                chunk["source_tier"] = source_tier
-
-            total_chunks += len(chunks)
+            total_signatures += result.get("total_extracted", 0)
+            total_validated += result.get("validated", 0)
             processed += 1
             results.append({
                 "file": pdf.name,
                 "status": "DONE",
-                "chunks": len(chunks),
-                "pages": ingested.get("total_pages", 0),
+                "extracted": result.get("total_extracted", 0),
+                "validated": result.get("validated", 0),
+                "rejected": result.get("rejected", 0),
+                "bundle_id": result.get("bundle_id"),
+                "theorist_model": result.get("theorist_model"),
             })
-            logger.info("Ingested %s: %d chunks from %d pages",
-                       pdf.name, len(chunks), ingested.get("total_pages", 0))
+            logger.info(
+                "Extracted %s: %d signatures (%d validated) model=%s",
+                pdf.name, result.get("total_extracted", 0),
+                result.get("validated", 0), result.get("theorist_model"),
+            )
 
         except Exception as e:
             logger.exception("Failed processing %s: %s", pdf.name, e)
@@ -216,7 +224,8 @@ def process_pdf_source(
     return {
         "processed": processed,
         "failed": failed,
-        "total_chunks": total_chunks,
+        "total_signatures": total_signatures,
+        "total_validated": total_validated,
         "dry_run": dry_run,
         "results": results,
     }
@@ -229,8 +238,11 @@ def process_markdown_source(
     dry_run: bool = False,
     source_tier: str = "OLYA_PRIMARY",
 ) -> Dict:
-    """Process Markdown files from a source directory."""
-    from skills.document.md_ingester import ingest_markdown
+    """Process Markdown files through full extraction pipeline.
+
+    Uses process_document() for Theorist → Auditor → Bundler flow.
+    """
+    from core.loop import process_document
 
     mds = sorted(source_dir.glob("*.md"))
     if limit > 0:
@@ -241,7 +253,8 @@ def process_markdown_source(
     results = []
     processed = 0
     failed = 0
-    total_chunks = 0
+    total_signatures = 0
+    total_validated = 0
 
     for md in mds:
         if dry_run:
@@ -250,24 +263,30 @@ def process_markdown_source(
             continue
 
         try:
-            logger.info("Ingesting: %s", md.name)
-            ingested = ingest_markdown(md)
-            chunks = ingested.get("chunks", [])
+            logger.info("Extracting from: %s (tier=%s)", md.name, source_tier)
+            result = process_document(
+                str(md),
+                source_tier=source_tier,
+                source_type="markdown",
+            )
 
-            # Override source tier
-            for chunk in chunks:
-                chunk["source_tier"] = source_tier
-
-            total_chunks += len(chunks)
+            total_signatures += result.get("total_extracted", 0)
+            total_validated += result.get("validated", 0)
             processed += 1
             results.append({
                 "file": md.name,
                 "status": "DONE",
-                "chunks": len(chunks),
-                "sections": ingested.get("total_sections", 0),
+                "extracted": result.get("total_extracted", 0),
+                "validated": result.get("validated", 0),
+                "rejected": result.get("rejected", 0),
+                "bundle_id": result.get("bundle_id"),
+                "theorist_model": result.get("theorist_model"),
             })
-            logger.info("Ingested %s: %d chunks from %d sections",
-                       md.name, len(chunks), ingested.get("total_sections", 0))
+            logger.info(
+                "Extracted %s: %d signatures (%d validated) model=%s",
+                md.name, result.get("total_extracted", 0),
+                result.get("validated", 0), result.get("theorist_model"),
+            )
 
         except Exception as e:
             logger.exception("Failed processing %s: %s", md.name, e)
@@ -281,7 +300,8 @@ def process_markdown_source(
     return {
         "processed": processed,
         "failed": failed,
-        "total_chunks": total_chunks,
+        "total_signatures": total_signatures,
+        "total_validated": total_validated,
         "dry_run": dry_run,
         "results": results,
     }

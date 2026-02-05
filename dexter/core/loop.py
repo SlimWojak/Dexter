@@ -104,15 +104,25 @@ def heartbeat_tick(cfg: dict, tick_count: int) -> None:
 # Phase 3: Full extraction pipeline
 # ---------------------------------------------------------------------------
 
-def process_transcript(transcript_url: str) -> Dict:
+def process_transcript(
+    transcript_url: str,
+    *,
+    source_tier: Optional[str] = None,
+    source_file: Optional[str] = None,
+) -> Dict:
     """Full Dexter extraction loop (synchronous, mock mode compatible).
 
     Pipeline:
       1. Fetch transcript (Supadata stub)
-      2. Theorist extracts signatures
+      2. Theorist extracts signatures (tier-aware model routing)
       3. Auditor validates each signature
       4. Bundler packages validated signatures
       5. Log results, update beads
+
+    Args:
+        transcript_url: YouTube URL to fetch transcript from
+        source_tier: Tier for model routing (OLYA_PRIMARY, CANON, LATERAL, ICT_LEARNING)
+        source_file: Source filename for CLAIM_BEAD metadata
 
     Returns:
         Summary dict with extraction results.
@@ -122,7 +132,7 @@ def process_transcript(transcript_url: str) -> Dict:
     from core.bundler import generate_bundle, save_bundle
     from core.router import is_llm_mode
 
-    logger.info("=== PROCESS TRANSCRIPT: %s ===", transcript_url)
+    logger.info("=== PROCESS TRANSCRIPT: %s (tier=%s) ===", transcript_url, source_tier or "default")
 
     # 1. Fetch transcript
     transcript = fetch_transcript(transcript_url)
@@ -148,6 +158,8 @@ def process_transcript(transcript_url: str) -> Dict:
         "transcript": formatted,
         "transcript_data": transcript,
         "chunks": chunks,
+        "source_tier": source_tier,
+        "source_file": source_file or transcript.get("video_id"),
     })
     signatures = theorist_result.get("signatures", [])
     logger.info("Theorist extracted %d signatures", len(signatures))
@@ -228,6 +240,8 @@ def process_transcript(transcript_url: str) -> Dict:
                     "video_url": transcript_url,
                     "theorist_model": theorist_result.get("model", "unknown"),
                     "auditor_model": "google/gemini-2.0-flash-exp",
+                    "source_tier": source_tier,
+                    "provider": theorist_result.get("provider", "openrouter"),
                 },
             )
             logger.info("CLAIM_BEADs exported: %s", claims_path)
@@ -263,6 +277,204 @@ def _compute_timestamp_range(transcript: Dict) -> str:
     start_str = f"{int(start) // 60}:{int(start) % 60:02d}"
     end_str = f"{int(end) // 60}:{int(end) % 60:02d}"
     return f"{start_str}-{end_str}"
+
+
+# ---------------------------------------------------------------------------
+# Phase 3.4: Document extraction pipeline
+# ---------------------------------------------------------------------------
+
+def process_document(
+    file_path: str,
+    *,
+    source_tier: Optional[str] = None,
+    source_type: Optional[str] = None,
+) -> Dict:
+    """Full Dexter extraction loop for documents (PDF/Markdown).
+
+    Pipeline:
+      1. Ingest document (extract text, chunk)
+      2. Theorist extracts signatures (tier-aware model routing)
+      3. Auditor validates each signature
+      4. Bundler packages validated signatures
+      5. Log results, update beads
+
+    Args:
+        file_path: Path to document file
+        source_tier: Tier for model routing (OLYA_PRIMARY, CANON, LATERAL, ICT_LEARNING)
+        source_type: Override type ("pdf" or "markdown", auto-detected if None)
+
+    Returns:
+        Summary dict with extraction results.
+    """
+    from pathlib import Path
+    from core.auditor import audit_signature
+    from core.bundler import generate_bundle, save_bundle, export_claim_beads, generate_bundle_id
+    from core.router import is_llm_mode
+
+    file_path = Path(file_path)
+    if not file_path.exists():
+        raise FileNotFoundError(f"Document not found: {file_path}")
+
+    # Auto-detect document type
+    suffix = file_path.suffix.lower()
+    if source_type is None:
+        if suffix == ".pdf":
+            source_type = "pdf"
+        elif suffix in (".md", ".markdown"):
+            source_type = "markdown"
+        else:
+            raise ValueError(f"Unknown document type: {suffix}")
+
+    logger.info("=== PROCESS DOCUMENT: %s (type=%s, tier=%s) ===",
+                file_path.name, source_type, source_tier or "default")
+
+    # 1. Ingest document
+    if source_type == "pdf":
+        from skills.document.pdf_ingester import ingest_pdf
+        ingested = ingest_pdf(file_path, source_tier=source_tier)
+    else:
+        from skills.document.md_ingester import ingest_markdown
+        ingested = ingest_markdown(file_path, source_tier=source_tier)
+
+    chunks = ingested.get("chunks", [])
+    logger.info("Ingested document: %s (%d chunks)", file_path.name, len(chunks))
+
+    append_bead(
+        bead_type="DOCUMENT_INGEST",
+        content=file_path.name,
+        source="core.loop.process_document",
+        metadata={
+            "source_type": source_type,
+            "source_tier": source_tier,
+            "chunks": len(chunks),
+        },
+    )
+
+    # 2. Theorist extracts signatures
+    theorist_result = dispatch("theorist", {
+        "task": "extract_signatures",
+        "transcript_data": {"title": file_path.name, "segments": []},
+        "chunks": chunks,
+        "source_tier": source_tier,
+        "source_file": file_path.name,
+    })
+    signatures = theorist_result.get("signatures", [])
+    logger.info("Theorist extracted %d signatures (model=%s)",
+                len(signatures), theorist_result.get("model"))
+
+    append_bead(
+        bead_type="EXTRACTION",
+        content=f"extracted_{len(signatures)}_signatures",
+        source="core.loop.process_document",
+        metadata={
+            "count": len(signatures),
+            "theorist_model": theorist_result.get("model"),
+            "source_tier": source_tier,
+        },
+    )
+
+    # 3. Auditor validates each signature
+    validated = []
+    rejected = []
+    for sig in signatures:
+        result = audit_signature(sig)
+        if result["verdict"] == "REJECT":
+            rejected.append(sig)
+            append_negative_bead(
+                reason=result["reason"],
+                source_signature=sig.get("id", "unknown"),
+            )
+            logger.info("REJECTED %s: %s", sig.get("id"), result["reason"])
+        else:
+            validated.append(sig)
+            logger.info("PASSED %s", sig.get("id"))
+
+    logger.info("Audit: %d validated, %d rejected", len(validated), len(rejected))
+
+    # 4. Bundle validated signatures
+    bundle_path = None
+    bundle_id = None
+    if validated:
+        from core.auditor import audit_batch
+        audit_summary = audit_batch(signatures)
+
+        bundle_id = generate_bundle_id()
+        try:
+            bundle_content = generate_bundle(
+                bundle_id=bundle_id,
+                source_url=str(file_path),
+                timestamp_range=f"doc:{len(chunks)}_chunks",
+                validated_signatures=validated,
+                rejected_signatures=rejected,
+                auditor_summary=audit_summary,
+                negative_beads=[nb.get("id", "?") for nb in read_negative_beads(limit=10)],
+                provenance={
+                    "document_type": source_type,
+                    "theorist_model": theorist_result.get("model", "unknown"),
+                    "source_tier": source_tier,
+                },
+            )
+            bundle_path = save_bundle(
+                bundle_id,
+                bundle_content,
+                metadata={
+                    "source_file": str(file_path),
+                    "source_type": source_type,
+                    "source_tier": source_tier,
+                    "validated": len(validated),
+                    "rejected": len(rejected),
+                },
+            )
+            logger.info("Bundle saved: %s", bundle_path)
+
+            append_bead(
+                bead_type="BUNDLE",
+                content=bundle_id,
+                source="core.loop.process_document",
+                metadata={
+                    "validated": len(validated),
+                    "rejected": len(rejected),
+                    "path": str(bundle_path),
+                },
+            )
+
+            # Export CLAIM_BEADs for Phoenix integration
+            claims_path = export_claim_beads(
+                bundle_id,
+                validated,
+                bundle_meta={
+                    "source_file": file_path.name,
+                    "source_type": source_type,
+                    "theorist_model": theorist_result.get("model", "unknown"),
+                    "auditor_model": "google/gemini-2.0-flash-exp",
+                    "source_tier": source_tier,
+                    "provider": theorist_result.get("provider", "openrouter"),
+                },
+            )
+            logger.info("CLAIM_BEADs exported: %s", claims_path)
+
+        except Exception:
+            logger.exception("Bundle generation failed for %s", bundle_id)
+
+    # 5. Summary
+    summary = {
+        "source_file": str(file_path),
+        "source_type": source_type,
+        "source_tier": source_tier,
+        "total_extracted": len(signatures),
+        "validated": len(validated),
+        "rejected": len(rejected),
+        "bundle_id": bundle_id,
+        "bundle_path": str(bundle_path) if bundle_path else None,
+        "theorist_model": theorist_result.get("model"),
+    }
+
+    logger.info(
+        "=== COMPLETE: %d extracted, %d validated, %d rejected, bundle=%s ===",
+        len(signatures), len(validated), len(rejected), bundle_id,
+    )
+
+    return summary
 
 
 # ---------------------------------------------------------------------------

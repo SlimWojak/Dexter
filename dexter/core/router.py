@@ -125,20 +125,36 @@ def dispatch(role: str, payload: Dict) -> Dict:
 
 
 def _llm_dispatch_theorist(payload: Dict, manifest: Dict) -> Dict:
-    """LLM dispatch for Theorist — uses OpenRouter deepseek."""
-    from core.theorist import extract_signatures
-    from core.llm_client import get_model_config
+    """LLM dispatch for Theorist — uses tier-based model routing.
 
-    config = get_model_config("theorist")
+    Supports source_tier for model selection:
+    - OLYA_PRIMARY: Opus
+    - CANON: Sonnet
+    - LATERAL/ICT_LEARNING: DeepSeek (default)
+    """
+    from core.theorist import extract_signatures
+    from core.llm_client import get_tier_model_config
+
+    # Extract tier-routing parameters from payload
+    source_tier = payload.get("source_tier")
+    source_file = payload.get("source_file")
+
+    config = get_tier_model_config("theorist", source_tier)
     transcript = payload.get("transcript_data")
     chunks = payload.get("chunks")
     negative_beads = payload.get("negative_context", {}).get("beads", [])
 
-    if transcript:
+    if transcript or chunks:
+        # For document extraction, transcript may be minimal/synthetic
+        if not transcript:
+            transcript = {"title": source_file or "document", "segments": []}
+
         signatures = extract_signatures(
             transcript,
             negative_beads=negative_beads,
             chunks=chunks,
+            source_tier=source_tier,
+            source_file=source_file,
         )
     else:
         signatures = []
@@ -148,6 +164,8 @@ def _llm_dispatch_theorist(payload: Dict, manifest: Dict) -> Dict:
         "status": "llm",
         "model": config["model"],
         "family": config["family"],
+        "provider": config.get("provider", "openrouter"),
+        "source_tier": source_tier,
         "signatures": signatures,
     }
 
@@ -167,9 +185,21 @@ def _mock_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
     if role == "theorist":
         from core.theorist import extract_signatures
         transcript = payload.get("transcript_data")
+        chunks = payload.get("chunks")
         negative_beads = payload.get("negative_context", {}).get("beads", [])
-        if transcript:
-            signatures = extract_signatures(transcript, negative_beads=negative_beads)
+        source_tier = payload.get("source_tier")
+        source_file = payload.get("source_file")
+
+        if transcript or chunks:
+            if not transcript:
+                transcript = {"title": source_file or "document", "segments": []}
+            signatures = extract_signatures(
+                transcript,
+                negative_beads=negative_beads,
+                chunks=chunks,
+                source_tier=source_tier,
+                source_file=source_file,
+            )
         else:
             signatures = []
         return {
@@ -177,6 +207,7 @@ def _mock_dispatch(role: str, payload: Dict, manifest: Dict) -> Dict:
             "status": "mock",
             "model": model,
             "family": family,
+            "source_tier": source_tier,
             "signatures": signatures,
         }
 

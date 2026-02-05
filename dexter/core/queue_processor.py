@@ -91,6 +91,7 @@ def process_queue(
     limit: int = 0,
     dry_run: bool = False,
     delay_seconds: float = 5.0,
+    source_tier: Optional[str] = None,
 ) -> Dict:
     """Process extraction queue — fetch transcripts and run pipeline.
 
@@ -98,11 +99,17 @@ def process_queue(
         queue_path: Path to extraction_queue.yaml (default: corpus/extraction_queue.yaml)
         limit: Max videos to process (0 = all pending)
         dry_run: If True, log what would be processed without running
+        source_tier: Tier for model routing (reads DEXTER_SOURCE_TIER env if None)
         delay_seconds: Pause between videos (rate limiting)
 
     Returns:
         Summary dict with processed/skipped/failed counts.
     """
+    import os
+
+    # Resolve source tier: explicit param > env var > default
+    tier = source_tier or os.environ.get("DEXTER_SOURCE_TIER", "ICT_LEARNING")
+
     queue_data = load_queue(queue_path)
     pending = get_pending_videos(queue_data)
 
@@ -137,13 +144,13 @@ def process_queue(
             results.append({"video_id": video_id, "title": title, "action": "dry_run"})
             continue
 
-        logger.info("Processing [%d/%d]: %s — %s", processed + 1, len(pending), video_id, title)
+        logger.info("Processing [%d/%d]: %s — %s (tier=%s)", processed + 1, len(pending), video_id, title, tier)
         update_video_status(queue_data, video_id, "PROCESSING")
         save_queue(queue_data, queue_path)
 
         try:
             from core.loop import process_transcript
-            summary = process_transcript(url)
+            summary = process_transcript(url, source_tier=tier, source_file=video_id)
             update_video_status(
                 queue_data,
                 video_id,
