@@ -28,9 +28,11 @@
 - [x] Feed NEGATIVE_BEADs back to Theorist context
 - [x] Document seam in ROLE_CONTRACTS.md
 
-**P3 — SCOPE CONSTRAINT:**
-- [ ] BLOCKED: Awaiting CSO curriculum (24-48h from 2026-02-04)
-- [ ] Bound extraction to CSO-provided video list when received
+**P3 — SOURCE INGESTION PIPELINE (IN PROGRESS):**
+- [x] P3.1: PDF + MD ingesters (skills/document/pdf_ingester.py, md_ingester.py)
+- [x] P3.2: ICT 2022 Mentorship playlist survey (24 videos, CANON tier)
+- [x] P3.3: Unified extraction runner (scripts/run_source_extraction.py)
+- [ ] P3.4: First multi-source extraction run (YouTube + PDF + MD)
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern
@@ -142,6 +144,22 @@
 - [x] P6.1 Guard integration: Loop halts cleanly on guard breach with GUARD_BREACH bead
 - [x] P6.1 Guard integration: tests — 4 new integration tests, 302/302 PASS total
 
+- [x] P3.1 PDF ingester: skills/document/pdf_ingester.py (PyMuPDF extraction, chunking)
+- [x] P3.1 MD ingester: skills/document/md_ingester.py (section preservation, chunking)
+- [x] P3.1 Source materials: Blessed Trader (18 PDFs), Olya notes (22 PDFs), Layer 0 (1 MD)
+- [x] P3.1 Source tier tagging: CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING
+- [x] P3.1 tests: 20 new tests for document ingestion
+
+- [x] P3.2 Cartographer enhanced: playlist recognition, topic detection, source tier
+- [x] P3.2 ICT 2022 Mentorship: 24 videos surveyed, MENTORSHIP_2022 category
+- [x] P3.2 Topic detection: KILLZONE(5), MARKET_STRUCTURE(4), BIAS(3), etc.
+- [x] P3.2 Dedicated output files: ict_2022_mentorship_*.yaml
+
+- [x] P3.3 Unified runner: scripts/run_source_extraction.py
+- [x] P3.3 Multi-source orchestration: YouTube, PDF, Markdown
+- [x] P3.3 Source discovery: --status shows all sources
+- [x] P3.3 tests: 322/322 PASS total
+
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS
 - LLM Ep2: 13 unique signatures, canonical ICT terms (FVG, MSS, killzone, OTE): PASS
@@ -182,6 +200,22 @@
 - 22 new tests (schema, ingestion, injection, integration, edge cases): PASS
 - All 255 tests pass (233 prior + 22 new): PASS
 - Learning loop operational: Human → NEGATIVE_BEAD → Theorist avoidance: PASS
+
+### P3 SOURCE INGESTION EVIDENCE
+- PDF ingester: PyMuPDF extraction + character-based chunking: PASS
+- MD ingester: section preservation + character-based chunking: PASS
+- Source tiers: CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING: PASS
+- Blessed Trader: 18 PDFs discovered (LATERAL tier): PASS
+- Olya notes: 22 PDFs discovered (OLYA_PRIMARY tier): PASS
+- Layer 0: 1 MD, 64 sections, 5660 chunks (OLYA_PRIMARY tier): PASS
+- Cartographer playlist recognition: ICT 2022 Mentorship auto-detected: PASS
+- Topic detection: KILLZONE(5), MARKET_STRUCTURE(4), BIAS(3), etc.: PASS
+- ICT 2022 survey: 24 videos, all MENTORSHIP_2022, CANON tier: PASS
+- Unified runner status: 5 sources discovered via --status: PASS
+- Dry-run mode: logs actions without execution: PASS
+- Type filtering: --type pdf/markdown/youtube: PASS
+- 20 new document ingester tests: PASS
+- 322/322 total tests: PASS
 
 ### P1 CHRONICLER EVIDENCE
 - core/chronicler.py created with compress_beads(), cluster_by_drawer(), detect_redundant_pairs(): PASS
