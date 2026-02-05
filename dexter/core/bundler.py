@@ -298,6 +298,7 @@ def generate_claim_bead(signature: Dict, bundle_meta: Dict) -> Dict:
             "drawer": signature.get("drawer"),
             "drawer_confidence": signature.get("drawer_confidence", "inferred"),
             "drawer_basis": signature.get("drawer_basis", ""),
+            "source_file": signature.get("source_file"),  # For document extractions
         },
         "extraction_meta": {
             "theorist_model": bundle_meta.get("theorist_model", "deepseek/deepseek-chat"),
@@ -305,6 +306,8 @@ def generate_claim_bead(signature: Dict, bundle_meta: Dict) -> Dict:
             "auditor_verdict": "SURVIVED",
             "extraction_date": datetime.now(timezone.utc).isoformat(),
             "bundle_id": bundle_meta.get("bundle_id", ""),
+            "source_tier": bundle_meta.get("source_tier"),
+            "provider": bundle_meta.get("provider", "openrouter"),
         },
         "phoenix_meta": {
             "status": "UNVALIDATED",
