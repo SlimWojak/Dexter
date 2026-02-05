@@ -58,3 +58,8 @@
 {"timestamp": "2026-02-05T09:32:49.205326+00:00", "cost_usd": 0.015, "model": "unknown", "session_total": 0.015, "daily_total": 0.015}
 {"timestamp": "2026-02-05T09:32:49.206255+00:00", "cost_usd": 0.001, "model": "unknown", "session_total": 0.001, "daily_total": 0.001}
 {"timestamp": "2026-02-05T09:32:49.331589+00:00", "cost_usd": 0.01, "model": "test", "session_total": 0.01, "daily_total": 0.01}
+{"timestamp": "2026-02-05T10:46:30.346793+00:00", "cost_usd": 0.001, "model": "unknown", "session_total": 0.001, "daily_total": 0.001}
+{"timestamp": "2026-02-05T10:46:30.347300+00:00", "cost_usd": 0.015, "model": "unknown", "session_total": 0.015, "daily_total": 0.015}
+{"timestamp": "2026-02-05T10:46:30.347818+00:00", "cost_usd": 0.015, "model": "unknown", "session_total": 0.015, "daily_total": 0.015}
+{"timestamp": "2026-02-05T10:46:30.348763+00:00", "cost_usd": 0.001, "model": "unknown", "session_total": 0.001, "daily_total": 0.001}
+{"timestamp": "2026-02-05T10:46:30.481588+00:00", "cost_usd": 0.01, "model": "test", "session_total": 0.01, "daily_total": 0.01}
