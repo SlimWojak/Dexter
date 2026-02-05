@@ -1,0 +1,132 @@
+dry_run: false
+failed: 0
+processed: 21
+results:
+- bundle_id: null
+  rejected: 0
+  status: DONE
+  title: ICT Forex - The ICT Asian Killzone
+  validated: 0
+  video_id: ley5HZs4bUM
+- bundle_id: B-20260205-125108
+  rejected: 1
+  status: DONE
+  title: ICT Forex - The ICT London Killzone
+  validated: 6
+  video_id: G8OEsUAoIWE
+- bundle_id: B-20260205-125115
+  rejected: 1
+  status: DONE
+  title: ICT Forex - The ICT New York Killzone
+  validated: 5
+  video_id: plNN9n7nrxc
+- bundle_id: B-20260205-125122
+  rejected: 1
+  status: DONE
+  title: ICT Forex - The ICT London Close  Killzone
+  validated: 2
+  video_id: 3OEUIkkcmLE
+- bundle_id: B-20260205-125131
+  rejected: 1
+  status: DONE
+  title: ICT Forex - The Weekly Bias - Excellence In Short Term Tradi
+  validated: 7
+  video_id: Yqio1Ja0lIQ
+- bundle_id: B-20260205-125152
+  rejected: 0
+  status: DONE
+  title: ICT Forex - Time & Price Theory
+  validated: 2
+  video_id: Sb9m_dxr4bI
+- bundle_id: B-20260205-125200
+  rejected: 0
+  status: DONE
+  title: ICT Forex - Accumulation - Manipulation - Distribution
+  validated: 1
+  video_id: dIT4HTFYGGo
+- bundle_id: B-20260205-125209
+  rejected: 0
+  status: DONE
+  title: ICT Forex - Implementing The Asian Range
+  validated: 19
+  video_id: JA0mLNJeytY
+- bundle_id: B-20260205-125216
+  rejected: 0
+  status: DONE
+  title: ICT Forex - Understanding The ICT Judas Swing
+  validated: 2
+  video_id: xJMbva8SjzE
+- bundle_id: B-20260205-125223
+  rejected: 1
+  status: DONE
+  title: ICT Forex - Essentials To Trading The Daily Bias
+  validated: 2
+  video_id: vJvcZGGeTZU
+- bundle_id: B-20260205-125230
+  rejected: 0
+  status: DONE
+  title: ICT Forex - Trading The Key Swing Points
+  validated: 3
+  video_id: T0JyGdJ28fM
+- bundle_id: B-20260205-125239
+  rejected: 2
+  status: DONE
+  title: ICT Forex - Money Management That Works
+  validated: 12
+  video_id: RtMRykCZtC4
+- bundle_id: B-20260205-125246
+  rejected: 0
+  status: DONE
+  title: ICT Forex - The ICT Smart Money Technique or SMT
+  validated: 3
+  video_id: isXicdayBwA
+- bundle_id: B-20260205-125257
+  rejected: 2
+  status: DONE
+  title: ICT Forex - The ICT ATM Method
+  validated: 1
+  video_id: 30petm6SZz0
+- bundle_id: B-20260205-125308
+  rejected: 6
+  status: DONE
+  title: OTE Primer - Intro To ICT Optimal Trade Entry
+  validated: 11
+  video_id: Cg0-CFJOJvg
+- bundle_id: B-20260205-125319
+  rejected: 1
+  status: DONE
+  title: ICT Forex - Target Selection & Profit Objectives
+  validated: 6
+  video_id: nNEt9QTCTtk
+- bundle_id: B-20260205-125327
+  rejected: 3
+  status: DONE
+  title: ICT Forex - Trade Psychology & Effective Journaling
+  validated: 21
+  video_id: QSqIeu9tjek
+- bundle_id: null
+  rejected: 0
+  status: DONE
+  title: ICT Forex - COT Insights For Effective Price Action Analysis
+  validated: 0
+  video_id: aWgYCfvnlqM
+- bundle_id: B-20260205-125352
+  rejected: 0
+  status: DONE
+  title: ICT Forex - How To Find Explosive Price Moves Before They Ha
+  validated: 9
+  video_id: uxsmSMsuleY
+- bundle_id: B-20260205-125406
+  rejected: 3
+  status: DONE
+  title: ICT Forex - Higher Time Frame Concepts
+  validated: 9
+  video_id: YcAfcpUCbDw
+- bundle_id: B-20260205-125432
+  rejected: 1
+  status: DONE
+  title: ICT Forex - Secrets To Swing Trading
+  validated: 6
+  video_id: 9CCrlTIrkxw
+skipped: 0
+total_pending: 0
