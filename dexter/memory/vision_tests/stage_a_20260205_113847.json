@@ -1,0 +1,25 @@
+{
+  "stage": "A",
+  "source": "/Users/tradingclawd/dexter/data/sources/olya_notes/OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf",
+  "timestamp": "2026-02-05T11:38:47.974285+00:00",
+  "result": {
+    "description": "# EURUSD 5MIN ENTRIES EXAMPLES - Chart Analysis\n\n## Overview\nThis is a TradingView chart showing EUR/USD price action on what appears to be a 5-minute timeframe. The chart displays a clean price action view without indicators.\n\n---\n\n## 1. DRAWN ZONES & RECTANGLES\n- **No visible rectangles, shaded zones, or highlighted areas** are present on this chart\n- The chart appears to be a clean/unmarked price action display\n\n---\n\n## 2. LABELED PRICE LEVELS\n- **No visible price level annotations** or horizontal line labels\n- Price scale visible on right side but specific values are not legible due to image resolution\n\n---\n\n## 3. TEXT ANNOTATIONS & NOTES\n- **Title text (top left of chart area):** Partially visible but not fully legible due to image quality\n- **\"TradingView\"** watermark/branding visible in bottom left corner\n- **Header above chart:** \"\ud83d\udccc EURUSD 5MIN ENTRIES EXAMPLES\" (with pushpin emoji)\n\n---\n\n## 4. ICT CONCEPT MARKERS\n- **No visible ICT markings** such as:\n  - No Order Blocks (+OB, -OB)\n  - No Fair Value Gaps (FVG)\n  - No Liquidity markers (BSL, SSL)\n  - No MSS markers\n\n---\n\n## 5. FIBONACCI LEVELS\n- **No Fibonacci retracements or extensions visible**\n\n---\n\n## 6. ARROWS & DIRECTIONAL INDICATORS\n- **No entry/exit arrows present**\n- **No directional bias indicators marked**\n\n---\n\n## 7. TIME/SESSION MARKERS\n- **No killzone boundaries marked**\n- Timeline visible at bottom but specific times not legible\n\n---\n\n## 8. STRUCTURAL ELEMENTS\n- **Price Action Observation:**\n  - Left portion: Sharp decline followed by consolidation\n  - Middle portion: Ranging/consolidation phase\n  - Right portion: Upward movement with higher highs forming\n\n---\n\n## Summary\nThis appears to be a **clean, unmarked chart** presented as a base example for EUR/USD 5-minute entries. No specific trade setups, zones, or ICT concepts have been annotated on this particular screenshot. The chart shows raw price action without overlays or markings.",
+    "model": "claude-opus-4-5-20251101",
+    "usage": {
+      "prompt_tokens": 2095,
+      "completion_tokens": 535
+    },
+    "source_type": "VISUAL",
+    "source_file": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf",
+    "page_num": 1,
+    "provenance": "page 1 (vision)"
+  },
+  "formatted_length": 2036,
+  "terms_found": [
+    "ob",
+    "fvg",
+    "liquidity",
+    "bsl",
+    "ssl"
+  ]
+}

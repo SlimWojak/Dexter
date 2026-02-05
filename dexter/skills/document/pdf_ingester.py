@@ -52,7 +52,7 @@ def _load_fitz():
         )
 
 
-# Vision extraction prompt for image-heavy PDF pages
+# Vision extraction prompt for image-heavy PDF pages (legacy, kept for compatibility)
 VISION_EXTRACT_PROMPT = """Extract all visible text, annotations, labels, and structured content from this image.
 
 IMPORTANT:
@@ -66,13 +66,24 @@ IMPORTANT:
 Return ONLY the extracted text, no commentary or analysis."""
 
 
-def _extract_page_image_text(page, page_num: int, fitz) -> str:
-    """Extract text from an image-heavy page using Gemini Vision.
+def _extract_page_image_text(
+    page,
+    page_num: int,
+    fitz,
+    *,
+    source_tier: str = "LATERAL",
+    use_trading_vision: bool = True,
+) -> str:
+    """Extract text from an image-heavy page using vision API.
+
+    P3.5: Uses the enhanced vision extractor for trading content.
 
     Args:
         page: PyMuPDF page object
         page_num: Page number (1-indexed)
         fitz: PyMuPDF module
+        source_tier: Source tier for model selection
+        use_trading_vision: If True, use enhanced trading chart extraction
 
     Returns:
         Extracted text from the page image
@@ -82,25 +93,48 @@ def _extract_page_image_text(page, page_num: int, fitz) -> str:
         logger.debug("Vision extract disabled for page %d (set DEXTER_VISION_EXTRACT=true)", page_num)
         return ""
 
+    # Render page to image
+    mat = fitz.Matrix(150 / 72, 150 / 72)  # 150 DPI
+    pix = page.get_pixmap(matrix=mat)
+    img_bytes = pix.tobytes("png")
+    img_base64 = base64.b64encode(img_bytes).decode("utf-8")
+
+    # P3.5: Use enhanced trading vision extraction
+    if use_trading_vision:
+        try:
+            from skills.document.vision_extractor import extract_chart_description, extract_notes_description
+
+            # Use Opus for OLYA_PRIMARY, Sonnet for others
+            use_opus = source_tier in ("OLYA_PRIMARY", "CANON")
+
+            # Try notes extraction (better for text-heavy content with charts)
+            result = extract_notes_description(
+                img_base64,
+                source_tier=source_tier,
+                use_opus=use_opus,
+            )
+            extracted_text = result.get("description", "").strip()
+
+            if extracted_text:
+                logger.info("[VISION P3.5] Page %d: extracted %d chars via trading vision",
+                           page_num, len(extracted_text))
+                return extracted_text
+
+        except ImportError:
+            logger.debug("Enhanced vision extractor not available, falling back to basic OCR")
+        except Exception as e:
+            logger.warning("[VISION P3.5] Page %d trading extraction failed: %s, trying basic OCR",
+                          page_num, e)
+
+    # Fallback to basic OCR via llm_client
     try:
         from core.llm_client import call_vision_extract
 
-        # Render page to image at reasonable resolution (150 DPI)
-        mat = fitz.Matrix(150 / 72, 150 / 72)  # 150 DPI
-        pix = page.get_pixmap(matrix=mat)
-
-        # Convert to PNG bytes
-        img_bytes = pix.tobytes("png")
-
-        # Base64 encode
-        img_base64 = base64.b64encode(img_bytes).decode("utf-8")
-
-        # Call vision API
         result = call_vision_extract(img_base64, VISION_EXTRACT_PROMPT)
         extracted_text = result.get("content", "").strip()
 
         if extracted_text:
-            logger.info("[VISION] Page %d: extracted %d chars", page_num, len(extracted_text))
+            logger.info("[VISION] Page %d: extracted %d chars via basic OCR", page_num, len(extracted_text))
             return extracted_text
         else:
             logger.debug("[VISION] Page %d: no text extracted", page_num)
@@ -118,12 +152,16 @@ def extract_text_from_pdf(
     pdf_path: Path,
     *,
     min_text_chars: int = MIN_TEXT_CHARS_PER_PAGE,
+    source_tier: Optional[str] = None,
 ) -> Dict:
     """Extract text from a PDF file.
+
+    P3.5: Now uses enhanced trading vision extraction for image-heavy pages.
 
     Args:
         pdf_path: Path to PDF file
         min_text_chars: Minimum chars for page to be considered text-heavy
+        source_tier: Source tier for vision model selection
 
     Returns:
         {
@@ -142,7 +180,11 @@ def extract_text_from_pdf(
     if not pdf_path.exists():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
-    logger.info("Extracting text from PDF: %s", pdf_path.name)
+    # Auto-detect source tier if not provided
+    if source_tier is None:
+        source_tier = determine_source_tier(pdf_path)
+
+    logger.info("Extracting text from PDF: %s (tier=%s)", pdf_path.name, source_tier)
 
     doc = fitz.open(pdf_path)
     pages = []
@@ -166,11 +208,15 @@ def extract_text_from_pdf(
             })
             all_text.append(text.strip())
         else:
-            # Image-heavy page — try vision extraction
+            # Image-heavy page — try vision extraction (P3.5 enhanced)
             image_heavy_pages.append(page_num + 1)
             logger.debug("Page %d is image-heavy (%d chars), trying vision...", page_num + 1, char_count)
 
-            vision_text = _extract_page_image_text(page, page_num + 1, fitz)
+            vision_text = _extract_page_image_text(
+                page, page_num + 1, fitz,
+                source_tier=source_tier,
+                use_trading_vision=True,
+            )
             if vision_text:
                 pages.append({
                     "page_num": page_num + 1,
@@ -475,8 +521,14 @@ def ingest_pdf(
     pdf_path = Path(pdf_path)
     tier = source_tier or determine_source_tier(pdf_path)
 
-    # Extract
-    extracted = extract_text_from_pdf(pdf_path)
+    # Extract (P3.5: pass tier for vision model selection)
+    extracted = extract_text_from_pdf(pdf_path, source_tier=tier)
+
+    # Build set of vision-extracted pages for source_type tagging
+    vision_pages = set()
+    for page in extracted.get("pages", []):
+        if page.get("extraction_method") == "vision":
+            vision_pages.add(page.get("page_num"))
 
     # Chunk (P3.4d: page-based by default)
     raw_chunks = chunk_pdf_text(extracted, chunk_size=chunk_size, overlap=overlap)
@@ -490,14 +542,22 @@ def ingest_pdf(
                 provenance = f"page {chunk['page_start']}"
             else:
                 provenance = f"pages {chunk['page_start']}-{chunk['page_end']}"
+
+            # P3.5: Check if chunk is from vision-extracted pages
+            chunk_pages = range(chunk["page_start"], chunk["page_end"] + 1)
+            has_vision = any(p in vision_pages for p in chunk_pages)
         else:
             provenance = f"chars {chunk['char_start']}-{chunk['char_end']}"
+            has_vision = False
+
+        # P3.5: Set source_type based on extraction method
+        source_type = "VISUAL" if has_vision else "DOCUMENT"
 
         chunks.append({
             "chunk_num": chunk["chunk_num"],
             "text": chunk["text"],
             "source_file": pdf_path.name,
-            "source_type": "pdf",
+            "source_type": source_type,
             "source_tier": tier,
             "provenance": provenance,
         })
