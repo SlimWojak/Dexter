@@ -27,13 +27,21 @@ Human frames. Machine computes. Human promotes.
 ## Quick Status
 
 ```yaml
-phase: OPERATIONAL_MVP
+phase: EXTRACTION_READY
 signatures_validated: 504
 bundles_created: 32
-corpus_mapped: 790 videos
-tests: 208/208 PASS
+corpus_mapped: 790 videos (full) + 24 videos (ICT 2022)
+tests: 322/322 PASS
 cost: $0.003/video
 overnight_soak: 18/20 videos, 424 validated
+document_pipeline: OPERATIONAL
+
+sources_registered:
+  ict_2022_mentorship: 24 videos (CANON)
+  blessed_trader: 18 PDFs (LATERAL)
+  olya_notes: 22 PDFs (OLYA_PRIMARY)
+  layer_0: 1 MD (OLYA_PRIMARY)
+  full_channel: 790 videos (ICT_LEARNING)
 ```
 
 ---
@@ -56,12 +64,12 @@ If exploring further:
 
 | Priority | Task | Risk | Status |
 |----------|------|------|--------|
-| **P1** | Chronicler implementation | HIGH (memory unbounded) | URGENT |
-| **P2** | Back-propagation seam | HIGH (no learning without this) | PENDING |
-| **P3** | CSO curriculum scoping | MEDIUM (unbounded extraction) | BLOCKED (awaiting Olya) |
-| **P4** | Auditor hardening | MEDIUM (2.1% rejection too low) | PENDING |
-| **P5** | Queue atomicity | MEDIUM (crash corruption) | PENDING (5-line fix) |
-| **P6** | Runaway guards | MEDIUM (token burn) | PENDING |
+| **P1** | Chronicler implementation | MITIGATED | COMPLETE |
+| **P2** | Back-propagation seam | MITIGATED | COMPLETE |
+| **P3** | Source ingestion pipeline | LOW | IN_PROGRESS (P3.4 pending) |
+| **P4** | Auditor hardening | MITIGATED | COMPLETE |
+| **P5** | Queue atomicity | MITIGATED | COMPLETE |
+| **P6** | Runaway guards | MITIGATED | COMPLETE |
 
 ---
 
@@ -83,16 +91,23 @@ roles:
   theorist: deepseek/deepseek-chat (extraction)
   auditor: google/gemini-2.0-flash-exp (adversarial veto — DIFFERENT family)
   bundler: deepseek/deepseek-chat (template filling)
-  chronicler: google/gemini-2.0-flash-exp (summarization — NOT IMPLEMENTED)
+  chronicler: google/gemini-2.0-flash-exp (summarization — IMPLEMENTED)
   cartographer: google/gemini-2.0-flash-exp (corpus mapping)
 
 memory:
   beads: Append-only JSONL per day
-  theory_md: Recursive summary (PENDING — Chronicler P1)
-  
+  theory_md: Recursive summary (IMPLEMENTED — Chronicler P1)
+  archive: Session bead archival (IMPLEMENTED)
+
 bridge:
   format: CLAIM_BEAD JSONL with 5-drawer tags
   files: bundles/{id}_claims.jsonl
+
+source_pipeline:
+  pdf_ingester: skills/document/pdf_ingester.py
+  md_ingester: skills/document/md_ingester.py
+  unified_runner: scripts/run_source_extraction.py
+  tiers: [CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING]
 ```
 
 ---
@@ -139,14 +154,15 @@ OTHERS:
 
 ```yaml
 critical:
-  - Chronicler not implemented (beads growing unbounded)
-  - Queue writes non-atomic (crash = corruption)
-  - Auditor too lenient (2.1% rejection, target 10%)
+  - ALL MITIGATED (P1-P6 COMPLETE)
 
 operational:
   - 2 injection false positives (ICT speech patterns)
   - No daemon mode (manual TMUX + Amphetamine)
   - Sync pipeline won't scale past 100+ videos
+
+pending:
+  - P3.4 extraction run (infrastructure ready)
 ```
 
 ---
@@ -156,8 +172,8 @@ operational:
 ```yaml
 L1: Docker --network none (containment)
 L2: 4-layer injection guard (input sanitization)
-L3: Turn cap + cost ceiling (PENDING — P6)
-L4: No-output watchdog (PENDING — P6)
+L3: Turn cap + cost ceiling (IMPLEMENTED — P6)
+L4: No-output watchdog (IMPLEMENTED — P6)
 L5: Composio auth (FUTURE)
 ```
 
@@ -175,8 +191,11 @@ cat docs/SPRINT_ROADMAP.md       # Current priorities
 cat docs/DEXTER_MANIFEST.md      # Evidence + status
 cat bundles/index.jsonl | tail   # Recent bundles
 
+# Source inventory
+python3 scripts/run_source_extraction.py --status
+
 # Test health
-pytest tests/ -v                  # Should be 208/208 PASS
+pytest tests/ -v                  # Should be 322/322 PASS
 ```
 
 ---

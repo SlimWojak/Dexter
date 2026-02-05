@@ -7,18 +7,35 @@
 ## CURRENT STATUS
 
 ```yaml
-phase: OPERATIONAL_MVP
+phase: EXTRACTION_READY
 soak_complete: true
 signatures_validated: 504
 bundles_created: 32
-corpus_mapped: 790 videos
-tests: 302/302 PASS
+corpus_mapped: 790 videos (full) + 24 videos (ICT 2022)
+tests: 322/322 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
+
+# Core priorities (all complete)
 chronicler: IMPLEMENTED (P1 COMPLETE)
 backprop_seam: IMPLEMENTED (P2 COMPLETE)
 queue_atomicity: IMPLEMENTED (P5 COMPLETE)
 auditor_hardening: IMPLEMENTED (P4 COMPLETE)
 runaway_guards: IMPLEMENTED (P6 COMPLETE)
+
+# Source ingestion (in progress)
+source_pipeline: OPERATIONAL
+  pdf_ingester: IMPLEMENTED (P3.1)
+  md_ingester: IMPLEMENTED (P3.1)
+  unified_runner: IMPLEMENTED (P3.3)
+  ict_2022_survey: COMPLETE (P3.2)
+  extraction_run: PENDING (P3.4)
+
+sources_registered:
+  ict_2022_mentorship: 24 videos (CANON)
+  blessed_trader: 18 PDFs (LATERAL)
+  olya_notes: 22 PDFs (OLYA_PRIMARY)
+  layer_0: 1 MD (OLYA_PRIMARY)
+  full_channel: 790 videos (ICT_LEARNING)
 ```
 
 ---
@@ -84,17 +101,28 @@ evidence:
   - Chronicler integration verified
 ```
 
-### P3: SCOPE CONSTRAINT — AWAITING CSO CURRICULUM
+### P3: SOURCE INGESTION PIPELINE — IN PROGRESS
 ```yaml
-status: BLOCKED (awaiting CSO input)
-risk: MEDIUM (unbounded extraction dilutes signal)
+status: IN_PROGRESS (P3.1-P3.3 COMPLETE, P3.4 PENDING)
+risk: LOW (infrastructure ready, extraction run pending)
 description: |
-  CSO providing curated curriculum (24-48h).
-  Bound Dexter extraction to specified videos/modules.
-  "Forensic surgeon, not morgue consumer" (Olya).
-  Depth over breadth: 1-3 core setups at exhaustive depth first.
-source: CSO strategic input
-owner: G + CSO Team
+  Multi-source extraction capability: YouTube, PDF, Markdown.
+  Source tier tagging: CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING.
+  Unified orchestration via scripts/run_source_extraction.py.
+source: CSO strategic input + lateral source requirement
+owner: Dexter COO
+completed_sub_tasks:
+  P3.1: PDF + MD ingesters (skills/document/)
+  P3.2: ICT 2022 Mentorship playlist survey (24 videos, CANON)
+  P3.3: Unified extraction runner (5 sources registered)
+pending:
+  P3.4: First multi-source extraction run
+evidence:
+  - skills/document/pdf_ingester.py (PyMuPDF extraction)
+  - skills/document/md_ingester.py (section preservation)
+  - scripts/run_source_extraction.py (multi-source orchestrator)
+  - corpus/ict_2022_mentorship_*.yaml (playlist survey)
+  - tests: 322/322 PASS (20 new document ingester tests)
 ```
 
 ### P4: AUDITOR PROMPT HARDENING — COMPLETE
@@ -249,17 +277,61 @@ phoenix_next: S47 Lease Implementation (separate track)
 
 ```yaml
 bootstrap_sequence:
-  1: cat docs/SPRINT_ROADMAP.md (this file)
-  2: cat docs/DEXTER_MANIFEST.md (system status)
-  3: Check bundles/index.jsonl (extraction state)
-  4: Confirm CSO curriculum received (if ready)
+  1: cat docs/COLD_START.md (quick orientation)
+  2: cat docs/SPRINT_ROADMAP.md (this file)
+  3: cat docs/DEXTER_MANIFEST.md (system status)
+  4: python3 scripts/run_source_extraction.py --status (source inventory)
+  5: Check bundles/index.jsonl (extraction state)
 
 context_in_30_seconds:
-  - Overnight soak: 504 signatures, 32 bundles
-  - Advisor synthesis complete: 4 new invariants
-  - CSO input: Depth > breadth, curated curriculum coming
-  - P1: Chronicler (memory). P2: Back-propagation seam.
+  - P1-P6 ALL COMPLETE: Chronicler, backprop, auditor, queue, guards
+  - P3 IN_PROGRESS: Source pipeline operational, extraction run pending
+  - 5 sources registered: ICT 2022 (24), Blessed (18), Olya (22), Layer0 (1), Full (790)
+  - Tests: 322/322 PASS
+  - Next action: P3.4 multi-source extraction run
   - Phoenix S47 is separate track. Dexter operates independently.
+```
+
+---
+
+## EXTRACTION CAMPAIGN (Upcoming)
+
+```yaml
+phase: P3.4 — First Multi-Source Extraction Run
+status: READY_TO_EXECUTE
+
+sources_ready:
+  ict_2022_mentorship:
+    type: youtube
+    count: 24 videos
+    tier: CANON
+    topics: [KILLZONE, MARKET_STRUCTURE, BIAS, RISK, TIME_PRICE, OTE, PSYCHOLOGY]
+    command: "python3 scripts/run_source_extraction.py --source ict_2022_mentorship --execute"
+
+  blessed_trader:
+    type: pdf
+    count: 18 documents
+    tier: LATERAL
+    command: "python3 scripts/run_source_extraction.py --source blessed_trader --execute"
+
+  olya_notes:
+    type: pdf
+    count: 22 documents
+    tier: OLYA_PRIMARY
+    command: "python3 scripts/run_source_extraction.py --source olya_notes --execute"
+
+recommended_sequence:
+  1: ICT 2022 first 3 videos (test run, verify output quality)
+  2: Blessed Trader PDFs (lateral context)
+  3: Olya notes (highest alpha source)
+  4: ICT 2022 remaining 21 videos
+
+guards_active:
+  turn_cap: 20 per loop
+  cost_ceiling: $1.00/day, $0.50/session
+  watchdog: 5 min no-output halt
+
+human_gate: Required before each batch
 ```
 
 ---
@@ -346,8 +418,8 @@ pending:
 ```yaml
 L1_containment: Docker --network none
 L2_input_sanitization: 4-layer injection guard
-L3_runaway_prevention: Turn cap + cost ceiling (PENDING)
-L4_stall_detection: No-output watchdog (PENDING)
+L3_runaway_prevention: Turn cap + cost ceiling (IMPLEMENTED — P6)
+L4_stall_detection: No-output watchdog (IMPLEMENTED — P6)
 L5_credentials: Composio auth (FUTURE)
 ```
 

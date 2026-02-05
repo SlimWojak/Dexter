@@ -2,10 +2,12 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: 5+ (Phoenix Integration Established) — OPERATIONAL
+- Phase: EXTRACTION_READY (P1-P6 complete, P3.4 pending)
+- Tests: 322/322 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
+- Sources: 5 registered (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
 
 ### PHOENIX INTEGRATION
 - Status: BRIDGE ESTABLISHED

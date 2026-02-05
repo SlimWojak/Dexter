@@ -49,13 +49,15 @@ You do NOT touch Phoenix. You do NOT auto-promote outputs.
 
 ## CURRENT STATE (Update this section each session)
 
-As of: 2026-02-04
-- Phases complete: 0-5 + Integration + Soak
-- Tests: 208/208 PASS
+As of: 2026-02-05
+- Phases complete: 0-5 + Integration + Soak + P1-P6
+- Tests: 322/322 PASS
 - Signatures validated: 504
 - Bundles: 32
-- Corpus: 790 videos mapped
-- Active priority: P1 Chronicler
+- Corpus: 790 videos (full) + 24 videos (ICT 2022)
+- Sources registered: 5 (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
+- Document pipeline: OPERATIONAL
+- Active priority: P3.4 (first multi-source extraction run)
 
 ## KEY RELATIONSHIPS
 

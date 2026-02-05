@@ -27,24 +27,29 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 ## QUICK STATUS (Update this section on major changes)
 
 ```yaml
-phase: OPERATIONAL_MVP
-tests: 258/258 PASS
+phase: EXTRACTION_READY
+tests: 322/322 PASS
 signatures_validated: 504
 bundles_created: 32
-corpus_mapped: 790 videos
+corpus_mapped: 790 videos (full) + 24 videos (ICT 2022 Mentorship)
 overnight_soak: 18/20 videos processed
 cost_per_video: ~$0.003
-chronicler: IMPLEMENTED (P1 COMPLETE)
-backprop_seam: IMPLEMENTED (P2 COMPLETE)
-queue_atomicity: IMPLEMENTED (P5 COMPLETE)
+document_pipeline: OPERATIONAL
+
+sources_registered:
+  ict_2022_mentorship: 24 videos (CANON tier)
+  blessed_trader: 18 PDFs (LATERAL tier)
+  olya_notes: 22 PDFs (OLYA_PRIMARY tier)
+  layer_0: 1 MD file (OLYA_PRIMARY tier)
+  full_channel: 790 videos (ICT_LEARNING tier)
 
 active_priorities:
   P1: Chronicler — COMPLETE (2026-02-05)
   P2: Back-propagation seam — COMPLETE (2026-02-05)
-  P3: CSO curriculum scoping (awaiting Olya input)
-  P4: Auditor hardening (2.1% rejection too low)
+  P3: Source ingestion — IN_PROGRESS (P3.1-P3.3 COMPLETE, P3.4 pending)
+  P4: Auditor hardening — COMPLETE (2026-02-05)
   P5: Queue atomicity — COMPLETE (2026-02-05)
-  P6: Runaway guards (turn cap, cost ceiling)
+  P6: Runaway guards — COMPLETE (2026-02-05, including guard integration)
 ```
 
 ---
@@ -75,7 +80,7 @@ active_priorities:
 
 ### Context Management
 - If context > 50k tokens: spawn fresh session, preserve beads/THEORY.md
-- Bead compression every 20-30 beads via Chronicler (PENDING implementation)
+- Bead compression every 20-30 beads via Chronicler (IMPLEMENTED — P1 COMPLETE)
 
 ### Phoenix Integration Invariants
 
@@ -175,14 +180,20 @@ roles: [theorist, auditor, bundler, chronicler, cartographer]
 
 memory:
   beads: Append-only JSONL per calendar day
-  theory_md: Recursive summarization (Chronicler — PENDING)
-  archive: Compressed old beads (PENDING)
+  theory_md: Recursive summarization (Chronicler — IMPLEMENTED)
+  archive: Compressed old beads (IMPLEMENTED)
 
 bridge:
   format: CLAIM_BEAD JSONL with drawer tags + provenance
   export: bundles/{id}_claims.jsonl
   invariant: INV-DEXTER-ALWAYS-CLAIM (never auto-promote)
-  
+
+document_ingestion:
+  pdf_ingester: skills/document/pdf_ingester.py (PyMuPDF + chunking)
+  md_ingester: skills/document/md_ingester.py (section preservation + chunking)
+  unified_runner: scripts/run_source_extraction.py (multi-source orchestrator)
+  source_tiers: [CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING]
+
 5_drawer_system:
   drawer_1: HTF_BIAS (Higher timeframe directional context)
   drawer_2: MARKET_STRUCTURE (Structural breaks and formations)
@@ -199,19 +210,21 @@ bridge:
 L1_containment:
   docker: "--network none" (network isolation)
   sandbox: docker-sandbox.sh wrapper
-  
+
 L2_input_sanitization:
   injection_guard: 4-layer (preprocess → regex → TF-IDF semantic → halt)
   attack_db: data/attack_vectors.jsonl (auditable, extensible)
   threshold: cosine similarity > 0.85 = flag
-  
-L3_runaway_prevention:  # PENDING implementation
-  turn_cap: 10-20 turns per agent loop
-  cost_ceiling: Daily limit
-  
-L4_stall_detection:  # PENDING implementation
-  watchdog: No-output > X minutes → halt
-  
+
+L3_runaway_prevention:  # IMPLEMENTED (P6 COMPLETE)
+  turn_cap: 20 turns per loop (configurable via config/guards.yaml)
+  cost_ceiling: $1.00/day, $0.50/session (configurable)
+  guard_manager: core/guards.py (unified orchestration)
+
+L4_stall_detection:  # IMPLEMENTED (P6 COMPLETE)
+  watchdog: 5 minutes no-output → halt (configurable)
+  heartbeat: Updated on each output
+
 L5_credentials:  # FUTURE
   composio: Auth management (not implemented)
 ```
@@ -287,9 +300,7 @@ SELF_UPGRADING_META:
 
 ```yaml
 critical:
-  - Chronicler not implemented (beads unbounded — P1 URGENT)
-  - Queue writes non-atomic (crash corruption risk — P5)
-  - 2.1% rejection rate (Auditor too lenient — P4)
+  - ALL MITIGATED (P1-P6 COMPLETE)
 
 operational:
   - 2 injection false positives (ICT speech patterns: Ep13, Ep19)
@@ -298,7 +309,7 @@ operational:
   - Daemon mode not configured (manual TMUX + Amphetamine)
 
 pending_implementation:
-  - Runaway guards (P6 — turn cap, cost ceiling, watchdog)
+  - P3.4: First multi-source extraction run (infrastructure ready)
   - Researcher role (Perplexity — defer until curriculum)
   - Developer role (backtest code generation — far horizon)
 ```
@@ -340,15 +351,22 @@ pending_implementation:
 
 ## PHASE EXECUTION
 
-Current: OPERATIONAL_MVP → Post-Advisor Synthesis (2026-02-04)
+Current: EXTRACTION_READY (2026-02-05)
 
-Active Priorities (see `docs/SPRINT_ROADMAP.md`):
-- P1: Chronicler implementation (URGENT — memory unbounded)
-- P2: Back-propagation seam (Olya NO → NEGATIVE_BEAD → Theorist)
-- P3: Scope constraint (BLOCKED — awaiting CSO curriculum)
-- P4: Auditor prompt hardening (target 10% rejection floor)
-- P5: Queue atomicity (write-tmp + rename pattern)
-- P6: Runaway guards (turn cap + cost ceiling + watchdog)
+Completed Priorities:
+- P1: Chronicler — COMPLETE (recursive summarization + archival)
+- P2: Back-propagation seam — COMPLETE (learning loop operational)
+- P4: Auditor hardening — COMPLETE (v0.3 Bounty Hunter, rate tracking)
+- P5: Queue atomicity — COMPLETE (atomic write pattern)
+- P6: Runaway guards — COMPLETE (turn cap, cost ceiling, watchdog)
+
+Active Priorities:
+- P3: Source ingestion (P3.1-P3.3 COMPLETE, P3.4 extraction run PENDING)
+
+Next Actions:
+- P3.4: Execute first multi-source extraction (ICT 2022 + PDFs)
+- Monitor Auditor rejection rate post-hardening
+- Human review of extraction output
 
 On task complete:
 1. Run tests
