@@ -134,7 +134,13 @@
 - [x] P6 Runaway guards: config/guards.yaml configuration file
 - [x] P6 Runaway guards: core/guards.py (TurnCapGuard, CostCeilingGuard, StallWatchdogGuard)
 - [x] P6 Runaway guards: GuardManager for unified orchestration
-- [x] P6 Runaway guards: tests — 25 new tests, 298/298 PASS total
+- [x] P6 Runaway guards: tests — 25 new tests
+
+- [x] P6.1 Guard integration: GuardManager initialized in loop.run()
+- [x] P6.1 Guard integration: Turn tracking on each heartbeat tick
+- [x] P6.1 Guard integration: Cost tracking hooked into llm_client._log_cost()
+- [x] P6.1 Guard integration: Loop halts cleanly on guard breach with GUARD_BREACH bead
+- [x] P6.1 Guard integration: tests — 4 new integration tests, 302/302 PASS total
 
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS

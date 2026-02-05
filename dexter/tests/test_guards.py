@@ -280,5 +280,116 @@ runaway_guards:
                 os.unlink(f.name)
 
 
+class TestGuardLoopIntegration(unittest.TestCase):
+    """Test guard integration with main loop."""
+
+    def test_guards_import_from_loop(self):
+        """Guards can be imported from loop module."""
+        from core.loop import get_guards, record_llm_cost
+        # These should not raise
+        self.assertIsNotNone(get_guards)
+        self.assertIsNotNone(record_llm_cost)
+
+    def test_record_llm_cost_without_guards(self):
+        """record_llm_cost handles missing guards gracefully."""
+        from core.loop import record_llm_cost
+        # Should not crash even without guards initialized
+        record_llm_cost(0.001, "test-model")
+
+    def test_guard_manager_initialized_in_run(self):
+        """GuardManager is initialized when loop starts."""
+        import tempfile
+        from pathlib import Path
+        from core.loop import run, get_guards, _running
+        import core.loop as loop_mod
+
+        # Create minimal config
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as f:
+            f.write("""
+heartbeat:
+  interval_seconds: 1
+  jitter_max_seconds: 0
+  health_check_enabled: false
+bead_compression:
+  max_beads: 100
+""")
+            f.flush()
+
+            try:
+                # Reset state
+                loop_mod._running = True
+                loop_mod._guards = None
+
+                # Run once
+                run(Path(f.name), once=True)
+
+                # Guards should have been initialized
+                guards = get_guards()
+                self.assertIsNotNone(guards)
+            finally:
+                os.unlink(f.name)
+                loop_mod._running = True
+                loop_mod._guards = None
+
+    def test_loop_halts_on_turn_cap(self):
+        """Loop stops when turn cap is reached."""
+        import tempfile
+        from pathlib import Path
+        import core.loop as loop_mod
+
+        # Create config with very low turn cap
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as hb_f:
+            hb_f.write("""
+heartbeat:
+  interval_seconds: 0
+  jitter_max_seconds: 0
+  health_check_enabled: false
+bead_compression:
+  max_beads: 100
+""")
+            hb_f.flush()
+
+            with tempfile.NamedTemporaryFile(mode="w", suffix=".yaml", delete=False) as guard_f:
+                guard_f.write("""
+runaway_guards:
+  enabled: true
+  turn_cap:
+    enabled: true
+    max_turns: 3
+    warn_at: 2
+    action: halt
+  cost_ceiling:
+    enabled: false
+  stall_watchdog:
+    enabled: false
+""")
+                guard_f.flush()
+
+                try:
+                    # Patch guards config path
+                    import core.guards as guards_mod
+                    original_path = guards_mod.CONFIG_PATH
+                    guards_mod.CONFIG_PATH = Path(guard_f.name)
+
+                    # Reset state
+                    loop_mod._running = True
+                    loop_mod._guards = None
+
+                    # Run loop (should stop at turn 3)
+                    from core.loop import run
+                    run(Path(hb_f.name), once=False)  # Will run until guard breach
+
+                    # Verify guard was triggered
+                    guards = loop_mod._guards
+                    if guards and guards.turn_cap:
+                        self.assertFalse(guards.turn_cap.can_continue())
+                finally:
+                    os.unlink(hb_f.name)
+                    os.unlink(guard_f.name)
+                    guards_mod.CONFIG_PATH = original_path
+                    loop_mod._running = True
+                    loop_mod._guards = None
+
+
 if __name__ == "__main__":
     unittest.main()

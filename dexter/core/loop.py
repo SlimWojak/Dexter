@@ -30,6 +30,7 @@ from core.context import (
     read_negative_beads,
 )
 from core.router import dispatch
+from core.guards import GuardManager
 
 logging.basicConfig(
     level=logging.INFO,
@@ -41,12 +42,24 @@ logger = logging.getLogger("dexter.loop")
 DEFAULT_CONFIG = Path(__file__).resolve().parent.parent / "config" / "heartbeat.yaml"
 
 _running = True
+_guards: Optional[GuardManager] = None  # Global guard manager for cost tracking hooks
 
 
 def _handle_signal(signum, frame):
     global _running
     logger.info("Received signal %d. Shutting down gracefully.", signum)
     _running = False
+
+
+def get_guards() -> Optional[GuardManager]:
+    """Get the global guard manager (for cost tracking hooks)."""
+    return _guards
+
+
+def record_llm_cost(cost_usd: float, model: str = "unknown") -> None:
+    """Record LLM cost to guard manager (called from llm_client)."""
+    if _guards:
+        _guards.on_cost(cost_usd, model)
 
 
 def load_config(config_path: Path) -> dict:
@@ -263,7 +276,7 @@ def run(config_path: Path, *, once: bool = False, transcript: Optional[str] = No
         once: if True, run one tick and exit
         transcript: if set, process this transcript URL then exit
     """
-    global _running
+    global _running, _guards
 
     signal.signal(signal.SIGTERM, _handle_signal)
     signal.signal(signal.SIGINT, _handle_signal)
@@ -272,6 +285,13 @@ def run(config_path: Path, *, once: bool = False, transcript: Optional[str] = No
     hb = cfg["heartbeat"]
     interval = hb.get("interval_seconds", 60)
     jitter_max = hb.get("jitter_max_seconds", 10)
+
+    # Initialize runaway guards (P6)
+    _guards = GuardManager.from_config()
+    logger.info(
+        "Guards initialized: %s",
+        _guards.status() if _guards else "disabled",
+    )
 
     logger.info("Heartbeat started. interval=%ds jitter=+/-%ds", interval, jitter_max)
 
@@ -283,9 +303,32 @@ def run(config_path: Path, *, once: bool = False, transcript: Optional[str] = No
     tick_count = 0
 
     while _running:
+        # Check guards before each tick (P6 runaway prevention)
+        if _guards and not _guards.can_continue():
+            guard_status = _guards.status()
+            logger.error(
+                "[GUARD BREACH] Loop halted by runaway guards: %s",
+                guard_status,
+            )
+            append_bead(
+                bead_type="GUARD_BREACH",
+                content="loop_halted",
+                source="core.loop.run",
+                metadata=guard_status,
+            )
+            break
+
         tick_count += 1
+
+        # Record turn for guard tracking
+        if _guards:
+            _guards.on_turn()
+
         try:
             heartbeat_tick(cfg, tick_count)
+            # Record successful output (resets stall watchdog)
+            if _guards:
+                _guards.on_output()
         except Exception:
             logger.exception("Error in heartbeat tick %d", tick_count)
 
@@ -298,6 +341,10 @@ def run(config_path: Path, *, once: bool = False, transcript: Optional[str] = No
         deadline = time.monotonic() + sleep_time
         while _running and time.monotonic() < deadline:
             time.sleep(min(1.0, deadline - time.monotonic()))
+
+    # Log final guard status
+    if _guards:
+        logger.info("Final guard status: %s", _guards.status())
 
     logger.info("Heartbeat stopped after %d ticks.", tick_count)
 

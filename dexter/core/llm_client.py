@@ -107,7 +107,7 @@ def validate_model_diversity(dispatch_log: List[Dict]) -> Dict:
 
 
 def _log_cost(model: str, usage: Dict) -> None:
-    """Log estimated cost for a call."""
+    """Log estimated cost for a call and record to guard manager."""
     costs = MODEL_COSTS.get(model)
     if not costs:
         return
@@ -118,6 +118,13 @@ def _log_cost(model: str, usage: Dict) -> None:
         + (output_tokens / 1_000_000 * costs["output"])
     )
     logger.info("[COST] model=%s cost=$%.6f (in=%d out=%d)", model, cost, input_tokens, output_tokens)
+
+    # Record cost to guard manager (P6 cost ceiling)
+    try:
+        from core.loop import record_llm_cost
+        record_llm_cost(cost, model)
+    except ImportError:
+        pass  # Guard integration not available (e.g., in tests)
 
 
 def _make_request(

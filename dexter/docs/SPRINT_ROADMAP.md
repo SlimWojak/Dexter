@@ -12,7 +12,7 @@ soak_complete: true
 signatures_validated: 504
 bundles_created: 32
 corpus_mapped: 790 videos
-tests: 298/298 PASS
+tests: 302/302 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
 chronicler: IMPLEMENTED (P1 COMPLETE)
 backprop_seam: IMPLEMENTED (P2 COMPLETE)
@@ -40,6 +40,7 @@ runaway_guards: IMPLEMENTED (P6 COMPLETE)
 | P5 | Queue atomicity (crash-safe writes) | ✅ COMPLETE | 2026-02-05 |
 | P4 | Auditor hardening (v0.3 Bounty Hunter) | ✅ COMPLETE | 2026-02-05 |
 | P6 | Runaway guards (turn cap, cost, watchdog) | ✅ COMPLETE | 2026-02-05 |
+| P6.1 | Guard integration into main loop | ✅ COMPLETE | 2026-02-05 |
 
 ---
 
@@ -336,7 +337,6 @@ operational:
 pending:
   researcher_role: Perplexity (defer until curriculum)
   developer_role: Backtest code generation (far horizon)
-  guard_integration: Guards module ready but not integrated into loop.py yet
 ```
 
 ---
