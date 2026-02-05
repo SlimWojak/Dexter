@@ -1,0 +1,407 @@
+generated: '2026-02-05T08:57:02.463466+00:00'
+playlist_name: ICT 2022 Mentorship
+queue:
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1711
+  duration_bucket: MEDIUM
+  id: 7WM8qdkanIY
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 1
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - What New Traders Should Focus On
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=7WM8qdkanIY
+  view_count: 2200000
+  view_tier: VIRAL
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1224
+  duration_bucket: MEDIUM
+  id: tlKC9nvLRK0
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 2
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Considerations In Risk Management
+  topics:
+  - RISK
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=tlKC9nvLRK0
+  view_count: 598000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 2505
+  duration_bucket: MEDIUM
+  id: xGFCIUFxsbw
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 3
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: Essentials To ICT Market Structure
+  topics:
+  - MARKET_STRUCTURE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=xGFCIUFxsbw
+  view_count: 1400000
+  view_tier: VIRAL
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 800
+  duration_bucket: MEDIUM
+  id: ley5HZs4bUM
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 4
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT Asian Killzone
+  topics:
+  - KILLZONE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=ley5HZs4bUM
+  view_count: 654000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1295
+  duration_bucket: MEDIUM
+  id: G8OEsUAoIWE
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 5
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT London Killzone
+  topics:
+  - KILLZONE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=G8OEsUAoIWE
+  view_count: 835000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 951
+  duration_bucket: MEDIUM
+  id: plNN9n7nrxc
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 6
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT New York Killzone
+  topics:
+  - KILLZONE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=plNN9n7nrxc
+  view_count: 650000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 574
+  duration_bucket: SHORT
+  id: 3OEUIkkcmLE
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 7
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT London Close  Killzone
+  topics:
+  - KILLZONE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=3OEUIkkcmLE
+  view_count: 369000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 2295
+  duration_bucket: MEDIUM
+  id: Yqio1Ja0lIQ
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 8
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The Weekly Bias - Excellence In Short Term Trading
+  topics:
+  - BIAS
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=Yqio1Ja0lIQ
+  view_count: 679000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1280
+  duration_bucket: MEDIUM
+  id: Sb9m_dxr4bI
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 9
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Time & Price Theory
+  topics:
+  - TIME_PRICE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=Sb9m_dxr4bI
+  view_count: 789000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1192
+  duration_bucket: MEDIUM
+  id: dIT4HTFYGGo
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 10
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Accumulation - Manipulation - Distribution
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=dIT4HTFYGGo
+  view_count: 702000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 2349
+  duration_bucket: MEDIUM
+  id: JA0mLNJeytY
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 11
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Implementing The Asian Range
+  topics:
+  - KILLZONE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=JA0mLNJeytY
+  view_count: 603000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 847
+  duration_bucket: MEDIUM
+  id: xJMbva8SjzE
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 12
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Understanding The ICT Judas Swing
+  topics:
+  - MARKET_STRUCTURE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=xJMbva8SjzE
+  view_count: 801000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1160
+  duration_bucket: MEDIUM
+  id: vJvcZGGeTZU
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 13
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Essentials To Trading The Daily Bias
+  topics:
+  - BIAS
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=vJvcZGGeTZU
+  view_count: 866000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 518
+  duration_bucket: SHORT
+  id: T0JyGdJ28fM
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 14
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Trading The Key Swing Points
+  topics:
+  - MARKET_STRUCTURE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=T0JyGdJ28fM
+  view_count: 327000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 2573
+  duration_bucket: MEDIUM
+  id: RtMRykCZtC4
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 15
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Money Management That Works
+  topics:
+  - RISK
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=RtMRykCZtC4
+  view_count: 321000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1176
+  duration_bucket: MEDIUM
+  id: isXicdayBwA
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 16
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT Smart Money Technique or SMT
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=isXicdayBwA
+  view_count: 577000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 873
+  duration_bucket: MEDIUM
+  id: 30petm6SZz0
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 17
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - The ICT ATM Method
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=30petm6SZz0
+  view_count: 333000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 2680
+  duration_bucket: MEDIUM
+  id: Cg0-CFJOJvg
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 18
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: OTE Primer - Intro To ICT Optimal Trade Entry
+  topics:
+  - OTE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=Cg0-CFJOJvg
+  view_count: 887000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1115
+  duration_bucket: MEDIUM
+  id: nNEt9QTCTtk
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 19
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Target Selection & Profit Objectives
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=nNEt9QTCTtk
+  view_count: 216000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 3477
+  duration_bucket: MEDIUM
+  id: QSqIeu9tjek
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 20
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Trade Psychology & Effective Journaling
+  topics:
+  - PSYCHOLOGY
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=QSqIeu9tjek
+  view_count: 321000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 579
+  duration_bucket: SHORT
+  id: aWgYCfvnlqM
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 21
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - COT Insights For Effective Price Action Analysis
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=aWgYCfvnlqM
+  view_count: 236000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 924
+  duration_bucket: MEDIUM
+  id: uxsmSMsuleY
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 22
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - How To Find Explosive Price Moves Before They Happen
+  topics: []
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=uxsmSMsuleY
+  view_count: 287000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1636
+  duration_bucket: MEDIUM
+  id: YcAfcpUCbDw
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 23
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Higher Time Frame Concepts
+  topics:
+  - BIAS
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=YcAfcpUCbDw
+  view_count: 262000
+  view_tier: HIGH
+- category: MENTORSHIP_2022
+  description: ''
+  duration: 1650
+  duration_bucket: MEDIUM
+  id: 9CCrlTIrkxw
+  playlist_id: PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  position: 24
+  source_tier: CANON
+  source_url: https://youtube.com/playlist?list=PLVgHx4Z63paah1dHyad1OMJQJdm6iP2Yn
+  status: QUEUED
+  title: ICT Forex - Secrets To Swing Trading
+  topics:
+  - MARKET_STRUCTURE
+  upload_date: ''
+  url: https://www.youtube.com/watch?v=9CCrlTIrkxw
+  view_count: 285000
+  view_tier: HIGH
+source_tier: CANON
+strategy: chronological
+total: 24

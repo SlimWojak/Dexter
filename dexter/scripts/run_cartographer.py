@@ -42,15 +42,26 @@ def main():
         choices=["mentorship_first", "chronological", "views"],
         help="Queue prioritization strategy (default: mentorship_first)",
     )
+    parser.add_argument(
+        "--prefix",
+        default=None,
+        help="Output file prefix (auto-generated from playlist name if not provided)",
+    )
     args = parser.parse_args()
 
     print(f"Surveying: {args.channel_url}")
     print(f"Strategy: {args.strategy}")
+    if args.prefix:
+        print(f"Output prefix: {args.prefix}")
     print("=" * 60)
 
-    result = run_cartographer(args.channel_url, args.strategy)
+    result = run_cartographer(args.channel_url, args.strategy, args.prefix)
 
     print(f"\nVideos found: {result['videos_found']}")
+    if result.get("playlist_name"):
+        print(f"Playlist: {result['playlist_name']}")
+    if result.get("source_tier"):
+        print(f"Source tier: {result['source_tier']}")
     print(f"Corpus map: {result['corpus_map']}")
     print(f"Extraction queue: {result['extraction_queue']}")
     print(f"Clusters report: {result['clusters_report']}")
@@ -59,6 +70,11 @@ def main():
         print("\nCategories:")
         for cat, count in sorted(result["categories"].items()):
             print(f"  {cat}: {count}")
+
+    if result.get("topics"):
+        print("\nTopics detected:")
+        for topic, count in sorted(result["topics"].items(), key=lambda x: -x[1]):
+            print(f"  {topic}: {count}")
 
     if result.get("top_5_queue"):
         print("\nTop 5 in queue:")
