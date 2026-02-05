@@ -32,19 +32,23 @@
 - [ ] BLOCKED: Awaiting CSO curriculum (24-48h from 2026-02-04)
 - [ ] Bound extraction to CSO-provided video list when received
 
-**P4 — AUDITOR HARDENING:**
-- [ ] Harden Auditor prompt (target: 10% rejection floor)
-- [ ] Monitor rejection rate post-hardening
-- [ ] Third family (Llama/Qwen) if still <5%
+**P4 — AUDITOR HARDENING (COMPLETE):**
+- [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern
+- [x] Add 6 mandatory falsification attacks (provenance, falsifiability, logical, tautology, ambiguity, canon)
+- [x] Add rejection rate tracking with flags (RUBBER_STAMP, CRITICAL_LOW, BELOW_TARGET)
+- [ ] Monitor rejection rate post-hardening (operational)
+- [ ] Third family (Llama/Qwen) if still <5% (future if needed)
 
 **P5 — QUEUE ATOMICITY (COMPLETE):**
 - [x] Fix save_queue() with write-tmp + rename pattern
 - [x] Ship before scaling past current batch sizes
 
-**P6 — RUNAWAY GUARDS:**
-- [ ] Hard turn cap (10-20 turns per agent loop)
-- [ ] Daily cost ceiling
-- [ ] No-output watchdog (halt if no output > X minutes)
+**P6 — RUNAWAY GUARDS (COMPLETE):**
+- [x] Hard turn cap (20 turns default, configurable)
+- [x] Daily cost ceiling ($1.00/day default)
+- [x] Session cost ceiling ($0.50/session default)
+- [x] No-output watchdog (5 min timeout default)
+- [x] GuardManager for unified guard orchestration
 
 **LOWER PRIORITY:**
 - [ ] Injection guard tuning (whitelist ICT speech patterns — 2/20 affected)
@@ -121,6 +125,16 @@
 
 - [x] P5 Queue atomicity: save_queue() now uses write-tmp + atomic rename
 - [x] P5 Queue atomicity: tests — 3 new tests, 258/258 PASS total
+
+- [x] P4 Auditor hardening: roles/auditor.yaml v0.3 Bounty Hunter pattern
+- [x] P4 Auditor hardening: 6 mandatory falsification attacks (+ tautology, ambiguity)
+- [x] P4 Auditor hardening: Rejection rate tracking (RUBBER_STAMP/CRITICAL_LOW/BELOW_TARGET flags)
+- [x] P4 Auditor hardening: tests — 12 new tests (tautology, ambiguity, rate tracking)
+
+- [x] P6 Runaway guards: config/guards.yaml configuration file
+- [x] P6 Runaway guards: core/guards.py (TurnCapGuard, CostCeilingGuard, StallWatchdogGuard)
+- [x] P6 Runaway guards: GuardManager for unified orchestration
+- [x] P6 Runaway guards: tests — 25 new tests, 298/298 PASS total
 
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS

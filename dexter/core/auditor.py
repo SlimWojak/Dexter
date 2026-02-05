@@ -109,6 +109,79 @@ def _check_logical_consistency(signature: Dict) -> Optional[Dict]:
     return None
 
 
+def _check_tautology(signature: Dict) -> Optional[Dict]:
+    """REJECT if condition restates or implies the action (circular logic)."""
+    condition = str(signature.get("condition", "")).lower()
+    action = str(signature.get("action", "")).lower()
+
+    # Normalize for comparison
+    cond_words = set(condition.split())
+    action_words = set(action.split())
+
+    # Direct tautology patterns
+    tautology_pairs = [
+        ("price goes up", "price increases"),
+        ("price goes down", "price decreases"),
+        ("bullish", "expect bullishness"),
+        ("bearish", "expect bearishness"),
+        ("price rises", "price moves up"),
+        ("price falls", "price moves down"),
+    ]
+
+    for cond_pattern, action_pattern in tautology_pairs:
+        if cond_pattern in condition and action_pattern in action:
+            return {
+                "verdict": "REJECT",
+                "reason": f"Tautology — condition '{cond_pattern}' restates action '{action_pattern}'",
+                "citation": "Circular logic: condition implies action by definition",
+                "attempts": 1,
+            }
+
+    # High overlap detection (>70% word overlap = suspicious)
+    if len(cond_words) >= 3 and len(action_words) >= 3:
+        overlap = cond_words & action_words
+        overlap_ratio = len(overlap) / min(len(cond_words), len(action_words))
+        if overlap_ratio > 0.7:
+            return {
+                "verdict": "REJECT",
+                "reason": f"Tautology suspected — {len(overlap)} words overlap between condition and action",
+                "citation": "High word overlap suggests circular reasoning",
+                "attempts": 1,
+            }
+    return None
+
+
+def _check_ambiguity(signature: Dict) -> Optional[Dict]:
+    """REJECT if condition is not actionable without subjective interpretation."""
+    condition = str(signature.get("condition", "")).lower()
+    action = str(signature.get("action", "")).lower()
+
+    # Ambiguous/subjective markers
+    ambiguous_markers = [
+        "looks", "feels", "seems", "appears", "might",
+        "could be", "probably", "maybe", "sort of", "kind of",
+        "looks good", "looks bad", "looks weak", "looks strong",
+        "feels heavy", "feels light", "feels right",
+    ]
+
+    for marker in ambiguous_markers:
+        if marker in condition:
+            return {
+                "verdict": "REJECT",
+                "reason": f"Ambiguity — condition contains subjective marker: '{marker}'",
+                "citation": "Conditions must be objectively testable without interpretation",
+                "attempts": 1,
+            }
+        if marker in action:
+            return {
+                "verdict": "REJECT",
+                "reason": f"Ambiguity — action contains subjective marker: '{marker}'",
+                "citation": "Actions must be concrete and executable",
+                "attempts": 1,
+            }
+    return None
+
+
 def _check_canon_conflict(signature: Dict, theory_text: str) -> Optional[Dict]:
     """REJECT if signature contradicts existing THEORY.md canon."""
     if not theory_text:
@@ -167,10 +240,13 @@ def audit_signature(signature: Dict) -> Dict:
     )
 
     # Run rejection criteria in order (fail fast)
+    # 6 mandatory falsification attacks per v0.3 Bounty Hunter spec
     checks = [
         ("provenance", lambda s: _check_provenance(s)),
         ("falsifiability", lambda s: _check_falsifiability(s)),
         ("logical_consistency", lambda s: _check_logical_consistency(s)),
+        ("tautology", lambda s: _check_tautology(s)),
+        ("ambiguity", lambda s: _check_ambiguity(s)),
         ("canon_conflict", lambda s: _check_canon_conflict(s, _load_theory())),
     ]
 
@@ -200,10 +276,15 @@ def audit_signature(signature: Dict) -> Dict:
 
 
 def audit_batch(signatures: List[Dict]) -> Dict:
-    """Audit a batch of signatures. Returns summary with per-signature results."""
+    """Audit a batch of signatures. Returns summary with per-signature results.
+
+    v0.3 Bounty Hunter: Tracks rejection rate and flags low-rejection batches.
+    Target: 10% rejection floor. <5% triggers warning.
+    """
     results = []
     rejected = 0
     passed = 0
+    rejection_reasons: Dict[str, int] = {}
 
     for sig in signatures:
         result = audit_signature(sig)
@@ -211,13 +292,55 @@ def audit_batch(signatures: List[Dict]) -> Dict:
         results.append(result)
         if result["verdict"] == "REJECT":
             rejected += 1
+            # Track rejection reasons for analysis
+            check_failed = result.get("check_failed", "unknown")
+            rejection_reasons[check_failed] = rejection_reasons.get(check_failed, 0) + 1
         else:
             passed += 1
 
+    # Calculate rejection rate
+    total = len(signatures)
+    rejection_rate = rejected / total if total > 0 else 0.0
+
+    # v0.3 Bounty Hunter: Flag low rejection rates
+    # Target floor: 10%. Warning at <5%. 0% = rubber stamp.
+    rate_status = "OK"
+    if total >= 5:  # Only flag on meaningful batches
+        if rejection_rate == 0.0:
+            rate_status = "RUBBER_STAMP"
+            logger.error(
+                "[AUDITOR] RUBBER STAMP ALERT: 0%% rejection on batch of %d. "
+                "Auditor may have failed. Manual review required.",
+                total,
+            )
+        elif rejection_rate < 0.05:
+            rate_status = "CRITICAL_LOW"
+            logger.warning(
+                "[AUDITOR] CRITICAL: Rejection rate %.1f%% < 5%% floor. "
+                "Batch may be rubber-stamped. Total=%d, Rejected=%d",
+                rejection_rate * 100, total, rejected,
+            )
+        elif rejection_rate < 0.10:
+            rate_status = "BELOW_TARGET"
+            logger.warning(
+                "[AUDITOR] WARNING: Rejection rate %.1f%% below 10%% target. "
+                "Total=%d, Rejected=%d",
+                rejection_rate * 100, total, rejected,
+            )
+
+    logger.info(
+        "[AUDITOR] Batch complete: %d total, %d rejected (%.1f%%), status=%s",
+        total, rejected, rejection_rate * 100, rate_status,
+    )
+
     return {
-        "total": len(signatures),
+        "total": total,
         "rejected": rejected,
         "passed": passed,
+        "rejection_rate": rejection_rate,
+        "rejection_rate_pct": round(rejection_rate * 100, 1),
+        "rate_status": rate_status,
+        "rejection_reasons": rejection_reasons,
         "results": results,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }

@@ -1,0 +1,33 @@
+# Runaway Guards Configuration — P6
+# Prevents token burn, infinite loops, and stalled agents.
+#
+# INV-RUNAWAY-CAP: Agent loops hard-capped at N turns. No-output > X min → halt.
+
+runaway_guards:
+  enabled: true
+
+  turn_cap:
+    enabled: true
+    max_turns: 20  # Hard limit per agent loop invocation
+    warn_at: 15    # Log warning when approaching limit
+    action: "halt"  # halt | warn_and_continue
+
+  cost_ceiling:
+    enabled: true
+    daily_limit_usd: 1.00  # $1/day default
+    session_limit_usd: 0.50  # $0.50 per session
+    action: "halt"  # halt | warn_and_continue
+    reset_hour_utc: 0  # Midnight UTC reset
+
+  stall_watchdog:
+    enabled: true
+    timeout_minutes: 5  # Halt if no output for 5 minutes
+    check_interval_seconds: 30  # How often to check for stalls
+    action: "halt"  # halt | warn_and_continue
+
+# Logging and alerting
+alerts:
+  log_every_turn: true  # Log turn count each iteration
+  log_cost_per_call: true  # Log cost after each LLM call
+  warn_threshold_turns: 0.75  # Warn at 75% of turn cap
+  warn_threshold_cost: 0.80  # Warn at 80% of cost ceiling
