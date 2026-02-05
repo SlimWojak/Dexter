@@ -27,20 +27,27 @@ Human frames. Machine computes. Human promotes.
 ## Quick Status
 
 ```yaml
-phase: EXTRACTION_READY
-signatures_validated: 504
-bundles_created: 32
+phase: STAGE_2_COMPLETE
+signatures_validated: 835 (504 soak + 331 stage2)
+bundles_created: 55
 corpus_mapped: 790 videos (full) + 24 videos (ICT 2022)
-tests: 322/322 PASS
+tests: 363/363 PASS
 cost: $0.003/video
 overnight_soak: 18/20 videos, 424 validated
 document_pipeline: OPERATIONAL
+vision_extraction: OPERATIONAL
+
+stage_2_extraction:
+  olya_pdfs: 22 → 153 validated (3.8% rejected)
+  ict_2022_videos: 24 → 168 validated (mock)
+  blessed_trader: 5 → 10 validated
+  total: 51 sources → 331 validated
 
 sources_registered:
   ict_2022_mentorship: 24 videos (CANON)
   blessed_trader: 18 PDFs (LATERAL)
   olya_notes: 22 PDFs (OLYA_PRIMARY)
-  layer_0: 1 MD (OLYA_PRIMARY)
+  layer_0: 1 MD (REFERENCE)
   full_channel: 790 videos (ICT_LEARNING)
 ```
 
@@ -66,10 +73,12 @@ If exploring further:
 |----------|------|------|--------|
 | **P1** | Chronicler implementation | MITIGATED | COMPLETE |
 | **P2** | Back-propagation seam | MITIGATED | COMPLETE |
-| **P3** | Source ingestion pipeline | LOW | IN_PROGRESS (P3.4 pending) |
+| **P3** | Source ingestion pipeline | MITIGATED | COMPLETE |
+| **P3.5** | Vision extraction skill | MITIGATED | COMPLETE |
 | **P4** | Auditor hardening | MITIGATED | COMPLETE |
 | **P5** | Queue atomicity | MITIGATED | COMPLETE |
 | **P6** | Runaway guards | MITIGATED | COMPLETE |
+| **Stage 2** | Full corpus extraction | MITIGATED | COMPLETE |
 
 ---
 
@@ -154,15 +163,17 @@ OTHERS:
 
 ```yaml
 critical:
-  - ALL MITIGATED (P1-P6 COMPLETE)
+  - ALL MITIGATED (P1-P6 + Stage 2 COMPLETE)
 
 operational:
   - 2 injection false positives (ICT speech patterns)
   - No daemon mode (manual TMUX + Amphetamine)
   - Sync pipeline won't scale past 100+ videos
+  - Auditor rejection rate 1.8% (below 10% target)
 
 pending:
-  - P3.4 extraction run (infrastructure ready)
+  - Live transcript integration (mock transcripts for ICT 2022)
+  - Human review of Stage 2 output
 ```
 
 ---

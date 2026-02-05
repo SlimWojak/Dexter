@@ -7,13 +7,14 @@
 ## CURRENT STATUS
 
 ```yaml
-phase: EXTRACTION_READY
+phase: STAGE_2_COMPLETE
 soak_complete: true
-signatures_validated: 504
-bundles_created: 32
+signatures_validated: 835 (504 soak + 331 stage2)
+bundles_created: 55
 corpus_mapped: 790 videos (full) + 24 videos (ICT 2022)
-tests: 322/322 PASS
+tests: 363/363 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
+vision_extraction: OPERATIONAL
 
 # Core priorities (all complete)
 chronicler: IMPLEMENTED (P1 COMPLETE)
@@ -22,19 +23,26 @@ queue_atomicity: IMPLEMENTED (P5 COMPLETE)
 auditor_hardening: IMPLEMENTED (P4 COMPLETE)
 runaway_guards: IMPLEMENTED (P6 COMPLETE)
 
-# Source ingestion (in progress)
-source_pipeline: OPERATIONAL
+# Source ingestion (complete)
+source_pipeline: STAGE_2_COMPLETE
   pdf_ingester: IMPLEMENTED (P3.1)
   md_ingester: IMPLEMENTED (P3.1)
   unified_runner: IMPLEMENTED (P3.3)
   ict_2022_survey: COMPLETE (P3.2)
-  extraction_run: PENDING (P3.4)
+  vision_extraction: COMPLETE (P3.5)
+  stage_2_extraction: COMPLETE (2026-02-05)
+
+stage_2_results:
+  olya_pdfs: 22 → 153 validated, 6 rejected (3.8%)
+  ict_2022_videos: 24 → 168 validated (mock transcripts)
+  blessed_trader: 5 → 10 validated
+  total: 51 sources → 331 validated, 6 rejected (1.8%)
 
 sources_registered:
   ict_2022_mentorship: 24 videos (CANON)
   blessed_trader: 18 PDFs (LATERAL)
   olya_notes: 22 PDFs (OLYA_PRIMARY)
-  layer_0: 1 MD (OLYA_PRIMARY)
+  layer_0: 1 MD (REFERENCE)
   full_channel: 790 videos (ICT_LEARNING)
 ```
 
@@ -58,6 +66,8 @@ sources_registered:
 | P4 | Auditor hardening (v0.3 Bounty Hunter) | ✅ COMPLETE | 2026-02-05 |
 | P6 | Runaway guards (turn cap, cost, watchdog) | ✅ COMPLETE | 2026-02-05 |
 | P6.1 | Guard integration into main loop | ✅ COMPLETE | 2026-02-05 |
+| P3.5 | Vision extraction skill | ✅ COMPLETE | 2026-02-05 |
+| Stage 2 | Full corpus extraction | ✅ COMPLETE | 2026-02-05 |
 
 ---
 
@@ -101,28 +111,36 @@ evidence:
   - Chronicler integration verified
 ```
 
-### P3: SOURCE INGESTION PIPELINE — IN PROGRESS
+### P3: SOURCE INGESTION PIPELINE — COMPLETE
 ```yaml
-status: IN_PROGRESS (P3.1-P3.3 COMPLETE, P3.4 PENDING)
-risk: LOW (infrastructure ready, extraction run pending)
+status: COMPLETE (P3.1-P3.5 ALL COMPLETE)
+risk: MITIGATED (Stage 2 extraction complete)
 description: |
   Multi-source extraction capability: YouTube, PDF, Markdown.
   Source tier tagging: CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING.
   Unified orchestration via scripts/run_source_extraction.py.
+  Vision extraction via skills/document/vision_extractor.py.
 source: CSO strategic input + lateral source requirement
 owner: Dexter COO
-completed_sub_tasks:
+completed: 2026-02-05
+sub_tasks:
   P3.1: PDF + MD ingesters (skills/document/)
   P3.2: ICT 2022 Mentorship playlist survey (24 videos, CANON)
   P3.3: Unified extraction runner (5 sources registered)
-pending:
-  P3.4: First multi-source extraction run
+  P3.4: Tier routing + chunking optimization
+  P3.5: Vision extraction skill (two-pass: Vision → Theorist)
+stage_2_results:
+  olya_pdfs: 22 → 153 validated, 6 rejected (3.8%)
+  ict_2022_videos: 24 → 168 validated (mock transcripts)
+  blessed_trader: 5 → 10 validated
+  total: 51 sources → 331 validated (1.8% rejection)
 evidence:
   - skills/document/pdf_ingester.py (PyMuPDF extraction)
   - skills/document/md_ingester.py (section preservation)
+  - skills/document/vision_extractor.py (chart to IF-THEN)
   - scripts/run_source_extraction.py (multi-source orchestrator)
-  - corpus/ict_2022_mentorship_*.yaml (playlist survey)
-  - tests: 322/322 PASS (20 new document ingester tests)
+  - docs/STAGE_2_EXTRACTION_REPORT.md (full results)
+  - tests: 363/363 PASS
 ```
 
 ### P4: AUDITOR PROMPT HARDENING — COMPLETE

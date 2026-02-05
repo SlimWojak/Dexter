@@ -50,14 +50,16 @@ You do NOT touch Phoenix. You do NOT auto-promote outputs.
 ## CURRENT STATE (Update this section each session)
 
 As of: 2026-02-05
-- Phases complete: 0-5 + Integration + Soak + P1-P6
-- Tests: 322/322 PASS
-- Signatures validated: 504
-- Bundles: 32
+- Phases complete: 0-5 + Integration + Soak + P1-P6 + P3.5 + Stage 2
+- Tests: 363/363 PASS
+- Signatures validated: 835 (504 soak + 331 stage2)
+- Bundles: 55
 - Corpus: 790 videos (full) + 24 videos (ICT 2022)
 - Sources registered: 5 (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
 - Document pipeline: OPERATIONAL
-- Active priority: P3.4 (first multi-source extraction run)
+- Vision extraction: OPERATIONAL (two-pass architecture)
+- Stage 2 complete: 51 sources → 331 validated, 1.8% rejection
+- Active priority: Human review of Stage 2 output
 
 ## KEY RELATIONSHIPS
 

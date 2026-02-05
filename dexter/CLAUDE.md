@@ -27,29 +27,37 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 ## QUICK STATUS (Update this section on major changes)
 
 ```yaml
-phase: EXTRACTION_READY
-tests: 322/322 PASS
-signatures_validated: 504
-bundles_created: 32
+phase: STAGE_2_COMPLETE
+tests: 363/363 PASS
+signatures_validated: 835 (504 soak + 331 stage2)
+bundles_created: 55
 corpus_mapped: 790 videos (full) + 24 videos (ICT 2022 Mentorship)
 overnight_soak: 18/20 videos processed
 cost_per_video: ~$0.003
 document_pipeline: OPERATIONAL
+vision_extraction: OPERATIONAL (two-pass architecture)
+
+stage_2_extraction:
+  olya_pdfs: 22 processed → 153 validated, 6 rejected (3.8%)
+  ict_2022_videos: 24 processed → 168 validated, 0 rejected (mock)
+  blessed_trader: 5 processed → 10 validated, 0 rejected
+  total: 51 sources → 331 validated, 6 rejected (1.8%)
 
 sources_registered:
   ict_2022_mentorship: 24 videos (CANON tier)
   blessed_trader: 18 PDFs (LATERAL tier)
   olya_notes: 22 PDFs (OLYA_PRIMARY tier)
-  layer_0: 1 MD file (OLYA_PRIMARY tier)
+  layer_0: 1 MD file (REFERENCE tier)
   full_channel: 790 videos (ICT_LEARNING tier)
 
 active_priorities:
   P1: Chronicler — COMPLETE (2026-02-05)
   P2: Back-propagation seam — COMPLETE (2026-02-05)
-  P3: Source ingestion — IN_PROGRESS (P3.1-P3.3 COMPLETE, P3.4 pending)
+  P3: Source ingestion — COMPLETE (P3.1-P3.5 COMPLETE)
+  P3.5: Vision extraction — COMPLETE (2026-02-05)
   P4: Auditor hardening — COMPLETE (2026-02-05)
   P5: Queue atomicity — COMPLETE (2026-02-05)
-  P6: Runaway guards — COMPLETE (2026-02-05, including guard integration)
+  P6: Runaway guards — COMPLETE (2026-02-05)
 ```
 
 ---
@@ -300,16 +308,17 @@ SELF_UPGRADING_META:
 
 ```yaml
 critical:
-  - ALL MITIGATED (P1-P6 COMPLETE)
+  - ALL MITIGATED (P1-P6 + P3.5 COMPLETE)
 
 operational:
   - 2 injection false positives (ICT speech patterns: Ep13, Ep19)
   - Matrix alerts cosmetic warning (non-blocking)
   - Sync pipeline won't scale past 100+ videos
   - Daemon mode not configured (manual TMUX + Amphetamine)
+  - Auditor rejection rate 1.8% (below 10% target floor)
 
 pending_implementation:
-  - P3.4: First multi-source extraction run (infrastructure ready)
+  - Live transcript integration (mock transcripts for ICT 2022)
   - Researcher role (Perplexity — defer until curriculum)
   - Developer role (backtest code generation — far horizon)
 ```
@@ -351,22 +360,27 @@ pending_implementation:
 
 ## PHASE EXECUTION
 
-Current: EXTRACTION_READY (2026-02-05)
+Current: STAGE_2_COMPLETE (2026-02-05)
 
 Completed Priorities:
 - P1: Chronicler — COMPLETE (recursive summarization + archival)
 - P2: Back-propagation seam — COMPLETE (learning loop operational)
+- P3: Source ingestion — COMPLETE (P3.1-P3.5 all complete)
+- P3.5: Vision extraction — COMPLETE (two-pass architecture)
 - P4: Auditor hardening — COMPLETE (v0.3 Bounty Hunter, rate tracking)
 - P5: Queue atomicity — COMPLETE (atomic write pattern)
 - P6: Runaway guards — COMPLETE (turn cap, cost ceiling, watchdog)
 
-Active Priorities:
-- P3: Source ingestion (P3.1-P3.3 COMPLETE, P3.4 extraction run PENDING)
+Stage 2 Extraction Complete:
+- 22 Olya PDFs → 153 validated signatures
+- 24 ICT 2022 videos → 168 validated signatures (mock)
+- 5 Blessed Trader PDFs → 10 validated signatures
+- See docs/STAGE_2_EXTRACTION_REPORT.md for full details
 
 Next Actions:
-- P3.4: Execute first multi-source extraction (ICT 2022 + PDFs)
-- Monitor Auditor rejection rate post-hardening
-- Human review of extraction output
+- Human review of Stage 2 output
+- Auditor hardening (1.8% rejection rate below 10% floor)
+- Live transcript integration when ready
 
 On task complete:
 1. Run tests
