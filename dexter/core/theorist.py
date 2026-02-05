@@ -148,12 +148,24 @@ def _extract_llm(
     chunks: List[Dict],
     negative_beads: Optional[List[Dict]],
     source_title: str,
+    source_tier: Optional[str] = None,
+    source_file: Optional[str] = None,
 ) -> List[Dict]:
-    """Extract signatures using LLM via OpenRouter.
+    """Extract signatures using LLM with tier-based routing.
 
-    Processes transcript chunks through deepseek, deduplicates results.
+    Processes chunks through appropriate model based on source tier:
+    - OLYA_PRIMARY: Opus (highest quality)
+    - CANON: Sonnet (high quality)
+    - LATERAL/ICT_LEARNING: DeepSeek (cost-effective)
+
+    Args:
+        chunks: List of text chunks to process
+        negative_beads: Recent NEGATIVE beads to avoid
+        source_title: Title for provenance
+        source_tier: Source tier for model routing
+        source_file: Source filename for CLAIM_BEAD metadata
     """
-    from core.llm_client import call_llm
+    from core.llm_client import call_llm_for_role, load_drawer_reference_context
 
     # Format negative context
     neg_context = "None yet."
@@ -164,25 +176,50 @@ def _extract_llm(
         ]
         neg_context = "\n".join(neg_lines)
 
-    system_prompt = THEORIST_SYSTEM_PROMPT.replace("{negative_context}", neg_context)
+    # Load drawer reference context
+    drawer_context = load_drawer_reference_context()
+    if drawer_context:
+        system_prompt = THEORIST_SYSTEM_PROMPT.replace("{negative_context}", neg_context)
+        system_prompt = f"{drawer_context}\n\n{system_prompt}"
+    else:
+        system_prompt = THEORIST_SYSTEM_PROMPT.replace("{negative_context}", neg_context)
 
     all_signatures: List[Dict] = []
     seen_logic: set = set()
+    theorist_model_used: Optional[str] = None
 
     for chunk_idx, chunk in enumerate(chunks):
-        user_content = (
-            f"TRANSCRIPT SEGMENT [{chunk['start']:.0f}s - {chunk['end']:.0f}s]:\n\n"
-            f"{chunk['text']}\n\n"
-            f"Extract all if-then trading logic from this segment. Return JSON array only."
-        )
+        # Build user content - handle both transcript chunks and document chunks
+        if "start" in chunk and "end" in chunk:
+            # Transcript chunk
+            user_content = (
+                f"TRANSCRIPT SEGMENT [{chunk['start']:.0f}s - {chunk['end']:.0f}s]:\n\n"
+                f"{chunk['text']}\n\n"
+                f"Extract all if-then trading logic from this segment. Return JSON array only."
+            )
+            chunk_timestamp = _timestamp_to_str(chunk["start"])
+        else:
+            # Document chunk (PDF/MD)
+            section_info = chunk.get("section_title", "")
+            section_prefix = f"[Section: {section_info}]\n\n" if section_info else ""
+            user_content = (
+                f"DOCUMENT EXCERPT:\n\n"
+                f"{section_prefix}{chunk.get('text', chunk.get('content', ''))}\n\n"
+                f"Extract all if-then trading logic from this excerpt. Return JSON array only."
+            )
+            chunk_timestamp = chunk.get("chunk_index", chunk_idx)
 
         try:
-            result = call_llm(
-                model=THEORIST_MODEL,
+            result = call_llm_for_role(
+                role="theorist",
                 system_prompt=system_prompt,
                 user_content=user_content,
-                temperature=0.2,
+                source_tier=source_tier,
             )
+
+            # Track which model was actually used
+            if theorist_model_used is None:
+                theorist_model_used = result.get("model", "unknown")
 
             signatures = _parse_llm_json(result["content"])
 
@@ -201,18 +238,23 @@ def _extract_llm(
                     "id": sig_id,
                     "condition": f"IF {if_clause}",
                     "action": f"THEN {then_clause}",
-                    "source_timestamp": sig.get("timestamp", _timestamp_to_str(chunk["start"])),
+                    "source_timestamp": sig.get("timestamp", str(chunk_timestamp)),
                     "source_quote": sig.get("source_quote", "")[:200],
                     "confidence": sig.get("confidence", "EXPLICIT"),
                     "source": source_title,
                     "drawer": sig.get("drawer"),
                     "drawer_confidence": sig.get("drawer_confidence", "inferred"),
                     "drawer_basis": sig.get("drawer_basis", ""),
+                    # P3.4 metadata for CLAIM_BEADs
+                    "source_tier": source_tier,
+                    "source_file": source_file,
+                    "theorist_model": theorist_model_used,
                 })
 
             logger.info(
-                "[LLM] Chunk %d/%d: %d signatures (total unique: %d)",
+                "[LLM] Chunk %d/%d: %d signatures (total unique: %d) tier=%s model=%s",
                 chunk_idx + 1, len(chunks), len(signatures), len(all_signatures),
+                source_tier or "default", theorist_model_used,
             )
 
         except json.JSONDecodeError as e:
@@ -391,13 +433,17 @@ def extract_signatures(
     *,
     negative_beads: Optional[List[Dict]] = None,
     chunks: Optional[List[Dict]] = None,
+    source_tier: Optional[str] = None,
+    source_file: Optional[str] = None,
 ) -> List[Dict]:
-    """Extract if-then signatures from a transcript.
+    """Extract if-then signatures from a transcript or document.
 
     Args:
         transcript: dict with "segments" list and "title"
         negative_beads: recent NEGATIVE beads to avoid repeating patterns
-        chunks: pre-built chunks for LLM mode (from chunk_transcript)
+        chunks: pre-built chunks for LLM mode (from chunk_transcript or document ingester)
+        source_tier: Source tier for model routing (OLYA_PRIMARY, CANON, LATERAL, ICT_LEARNING)
+        source_file: Source filename for CLAIM_BEAD metadata
 
     Returns:
         List of signature dicts matching Theorist output format.
@@ -408,14 +454,14 @@ def extract_signatures(
     source_title = transcript.get("title", "unknown")
 
     logger.info(
-        "Theorist extracting from '%s' | model=%s family=%s | llm_mode=%s",
-        source_title, model, family, _is_llm_mode(),
+        "Theorist extracting from '%s' | model=%s family=%s | llm_mode=%s | tier=%s",
+        source_title, model, family, _is_llm_mode(), source_tier or "default",
     )
 
-    # LLM extraction mode (Phase 5)
+    # LLM extraction mode (Phase 5+)
     if _is_llm_mode() and chunks:
-        logger.info("Using LLM extraction (%s) on %d chunks", THEORIST_MODEL, len(chunks))
-        return _extract_llm(chunks, negative_beads, source_title)
+        logger.info("Using LLM extraction on %d chunks (tier=%s)", len(chunks), source_tier or "default")
+        return _extract_llm(chunks, negative_beads, source_title, source_tier, source_file)
 
     # Build negative pattern list for pattern-based extraction
     negative_patterns = []

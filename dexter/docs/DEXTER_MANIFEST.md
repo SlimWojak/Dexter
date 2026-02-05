@@ -2,14 +2,39 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: EXTRACTION_ACTIVE (P3.4c done, chunking optimization needed)
-- Tests: 346/346 PASS
+- Phase: STAGE_1_COMPLETE (P3.4d done, awaiting CTO + G review)
+- Tests: 351/351 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
-- Sources: 5 registered (ict_2022: 24, blessed: 18, olya: 22, layer_0: 1, full: 790)
-- Stage 1 Extraction: 2 videos processed, 14 validated, 2 rejected (12.5%)
-- Tier Routing: Verified (OLYA_PRIMARY→Opus, CANON→Sonnet, LATERAL/ICT→DeepSeek)
+- Sources: 4 extraction targets + 1 reference (layer_0 reclassified)
+- Stage 1 Extraction: Complete — see summary below
+- Tier Routing: Verified + optimized chunking (1 chunk/document vs 300-400)
+
+### STAGE 1 EXTRACTION SUMMARY (P3.4d Complete)
+
+**Per-Tier Results:**
+| Tier | Source Type | Model | Chunks | Sigs | Rejected | Rate | Cost | Notes |
+|------|-------------|-------|--------|------|----------|------|------|-------|
+| OLYA_PRIMARY | PDF (notes) | Opus | 2 | 21 | 2 | 10.5% | ~$0.31 | 5min scalps, market direction |
+| LATERAL | PDF (charts) | DeepSeek | 2 | 0 | 0 | N/A | ~$0.26 | Visual-only, no IF-THEN rules |
+| ICT_LEARNING | YouTube | DeepSeek | ~50 | 14 | 2 | 12.5% | ~$0.01 | 2022 Mentorship pilot |
+| CANON | N/A | Sonnet | — | — | — | — | — | Awaiting curriculum |
+| REFERENCE | MD (spec) | N/A | 0 | 0 | 0 | N/A | $0 | Layer 0 reclassified |
+
+**Key Findings:**
+1. **Olya PDFs yield high-quality IF-THEN rules** — 21 signatures from 2 PDFs, clear conditions/actions
+2. **Blessed Trader PDFs are visual examples** — chart images without extractable logic, 0 signatures
+3. **Auditor rejection rate healthy** — 10.5-12.5% across tiers (above 5% floor)
+4. **Chunking optimization worked** — 1 chunk/document vs 300-400 previously, cost reduced 100x
+5. **Layer 0 correctly excluded** — Phoenix spec is REFERENCE, not extraction target
+
+**Sample Signatures (Olya 5min Scalps):**
+- S-001: IF clear liquidity draw + no opposite side liquidity + 5min MMM visible → THEN setup valid
+- S-005: IF opposite side strong FVG still open → THEN invalidated (no trade)
+- S-008: IF all checklist conditions met → THEN enter at OTE just under 0.62 fib
+
+**Stage 1 Gate Status:** COMPLETE — awaiting CTO + G + Olya review before Stage 2
 
 ### PHOENIX INTEGRATION
 - Status: BRIDGE ESTABLISHED
@@ -45,8 +70,13 @@
   - Olya PDF: 401 chunks × $0.042 = ~$17/document
   - **RECOMMENDATION**: Increase chunk size to 8k-16k OR use Sonnet/DeepSeek for documents
   - **SKIP**: Layer 0 extraction (Phoenix spec, not ICT teaching — circular)
-- [ ] P3.4d: Chunking optimization for documents (8k chunks, minimal overlap)
-- [ ] P3.4e: Extraction summary + full MANIFEST update
+- [x] P3.4d: Chunking optimization + extraction rerun
+  - PDF: Page-based chunking (8k-16k chars, page boundaries)
+  - MD: Section-based chunking (## headers, combine small sections)
+  - Layer 0 reclassified as REFERENCE (not extraction target)
+  - Olya PDFs (Opus): 2 chunks, 21 sigs, 10.5% rejection
+  - Blessed Trader (DeepSeek): 2 chunks, 0 sigs (visual examples)
+- [ ] P3.4e: Stage 2 — full Olya corpus extraction (BLOCKED: awaiting review)
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern

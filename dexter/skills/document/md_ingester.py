@@ -18,9 +18,12 @@ logger = logging.getLogger("dexter.md_ingester")
 # Heading patterns
 HEADING_PATTERN = re.compile(r"^(#{1,6})\s+(.+)$", re.MULTILINE)
 
-# Chunk settings
-DEFAULT_CHUNK_SIZE = 2000  # characters
-DEFAULT_OVERLAP = 400  # characters
+# Chunk settings (P3.4d: Optimized for documents, not transcripts)
+# Section-based chunking preferred; only split very large sections
+DEFAULT_CHUNK_SIZE = 12000  # characters (for large section splits)
+DEFAULT_OVERLAP = 200  # minimal overlap
+MIN_SECTION_COMBINE = 2000  # combine sections smaller than this
+MAX_SECTION_SIZE = 16000  # split sections larger than this
 
 
 def parse_markdown_sections(content: str) -> List[Dict]:
@@ -105,42 +108,49 @@ def _chunk_by_sections(
     chunk_size: int,
     overlap: int,
 ) -> List[Dict]:
-    """Chunk by respecting section boundaries where possible."""
+    """Chunk by respecting section boundaries (P3.4d optimized).
+
+    Strategy:
+    - Combine small sections (< MIN_SECTION_COMBINE) into larger chunks
+    - Keep medium sections as standalone chunks
+    - Split very large sections (> MAX_SECTION_SIZE) at paragraphs
+    - Minimal overlap to maintain context
+    """
     chunks = []
     chunk_num = 1
     current_text = []
     current_char_count = 0
     current_section_titles = []
 
+    # Use configurable thresholds
+    max_size = max(chunk_size, MAX_SECTION_SIZE)
+    min_combine = MIN_SECTION_COMBINE
+
     for section in sections:
         section_text = section["content"]
         section_title = section["title"]
         section_chars = len(section_text)
 
-        # If adding this section would exceed chunk size
-        if current_char_count + section_chars > chunk_size and current_text:
-            # Save current chunk
-            chunks.append({
-                "chunk_num": chunk_num,
-                "text": "\n\n".join(current_text),
-                "sections": current_section_titles.copy(),
-                "section": current_section_titles[0] if current_section_titles else "",
-            })
-            chunk_num += 1
+        if not section_text.strip():
+            continue
 
-            # Start new chunk with overlap (last part of previous)
-            if overlap > 0 and current_text:
-                overlap_text = "\n\n".join(current_text)[-overlap:]
-                current_text = [overlap_text] if overlap_text.strip() else []
-                current_char_count = len(overlap_text)
-            else:
+        # If single section is larger than max, split it at paragraphs
+        if section_chars > max_size:
+            # Save current accumulated chunk first
+            if current_text:
+                chunks.append({
+                    "chunk_num": chunk_num,
+                    "text": "\n\n".join(current_text),
+                    "sections": current_section_titles.copy(),
+                    "section": current_section_titles[0] if current_section_titles else "",
+                })
+                chunk_num += 1
                 current_text = []
                 current_char_count = 0
-            current_section_titles = []
+                current_section_titles = []
 
-        # If single section is larger than chunk_size, split it
-        if section_chars > chunk_size:
-            sub_chunks = _chunk_by_size(section_text, chunk_size, overlap)
+            # Split large section at paragraphs
+            sub_chunks = _split_section_at_paragraphs(section_text, section_title, max_size)
             for sub in sub_chunks:
                 chunks.append({
                     "chunk_num": chunk_num,
@@ -149,12 +159,40 @@ def _chunk_by_sections(
                     "section": section_title,
                 })
                 chunk_num += 1
-        else:
-            # Add section to current chunk
-            if section_text.strip():
-                current_text.append(f"## {section_title}\n{section_text}")
-                current_char_count += section_chars
-                current_section_titles.append(section_title)
+            continue
+
+        # If adding this section would exceed max size, save current chunk
+        if current_char_count + section_chars > max_size and current_text:
+            chunks.append({
+                "chunk_num": chunk_num,
+                "text": "\n\n".join(current_text),
+                "sections": current_section_titles.copy(),
+                "section": current_section_titles[0] if current_section_titles else "",
+            })
+            chunk_num += 1
+            current_text = []
+            current_char_count = 0
+            current_section_titles = []
+
+        # Add section to current chunk
+        header_prefix = "#" * section.get("level", 2)
+        current_text.append(f"{header_prefix} {section_title}\n{section_text}")
+        current_char_count += section_chars
+        current_section_titles.append(section_title)
+
+        # If this section alone is large enough, close the chunk
+        # (but allow combining small sections)
+        if current_char_count >= min_combine and section_chars >= min_combine:
+            chunks.append({
+                "chunk_num": chunk_num,
+                "text": "\n\n".join(current_text),
+                "sections": current_section_titles.copy(),
+                "section": current_section_titles[0] if current_section_titles else "",
+            })
+            chunk_num += 1
+            current_text = []
+            current_char_count = 0
+            current_section_titles = []
 
     # Save remaining
     if current_text:
@@ -163,6 +201,35 @@ def _chunk_by_sections(
             "text": "\n\n".join(current_text),
             "sections": current_section_titles,
             "section": current_section_titles[0] if current_section_titles else "",
+        })
+
+    return chunks
+
+
+def _split_section_at_paragraphs(text: str, title: str, max_size: int) -> List[Dict]:
+    """Split a large section at paragraph boundaries."""
+    paragraphs = text.split("\n\n")
+    chunks = []
+    current = []
+    current_size = 0
+
+    for para in paragraphs:
+        para_size = len(para)
+
+        if current_size + para_size > max_size and current:
+            chunks.append({
+                "text": f"## {title} (continued)\n" + "\n\n".join(current),
+            })
+            current = []
+            current_size = 0
+
+        current.append(para)
+        current_size += para_size
+
+    if current:
+        prefix = f"## {title}" if not chunks else f"## {title} (continued)"
+        chunks.append({
+            "text": prefix + "\n" + "\n\n".join(current),
         })
 
     return chunks

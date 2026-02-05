@@ -73,10 +73,11 @@ SOURCE_CONFIGS = {
         "description": "Olya's personal trading notes",
     },
     "layer_0": {
-        "type": "markdown",
+        "type": "reference",  # P3.4d: Not extraction target, Theorist context only
         "source_dir": "layer_0",
-        "source_tier": "OLYA_PRIMARY",
-        "description": "Layer 0 foundational context",
+        "source_tier": "CANON",
+        "description": "Layer 0 foundational context (REFERENCE - not extracted)",
+        "role": "REFERENCE",  # Load as Theorist context, not extraction target
     },
     "full_channel": {
         "type": "youtube",
@@ -129,6 +130,17 @@ def discover_sources() -> Dict[str, Dict]:
                 source_info["item_count"] = len(mds)
                 source_info["pending_count"] = len(mds)
                 source_info["source_path"] = str(source_dir)
+
+        elif config["type"] == "reference":
+            # P3.4d: Reference sources are not extraction targets
+            source_dir = SOURCES_DIR / config["source_dir"]
+            if source_dir.exists():
+                files = list(source_dir.glob("*.*"))
+                source_info["available"] = True
+                source_info["item_count"] = len(files)
+                source_info["pending_count"] = 0  # Never pending - not extracted
+                source_info["source_path"] = str(source_dir)
+                source_info["role"] = "REFERENCE"
 
         sources[name] = source_info
 

@@ -32,9 +32,12 @@ SOURCE_TIERS = {
 # Minimum text threshold for a page to be considered "text-heavy"
 MIN_TEXT_CHARS_PER_PAGE = 100
 
-# Chunk settings (match supadata chunking pattern)
-DEFAULT_CHUNK_SIZE = 2000  # characters (rough equivalent of 5min transcript)
-DEFAULT_OVERLAP = 400  # characters (~1min overlap equivalent)
+# Chunk settings for PDFs (optimized for documents, not transcripts)
+# P3.4d: Increased chunk size to reduce API calls with expensive models
+DEFAULT_CHUNK_SIZE = 12000  # characters (target: 5-20 chunks per document)
+DEFAULT_OVERLAP = 200  # minimal overlap for document continuity
+MIN_CHUNK_SIZE = 8000  # minimum chunk before combining with next page
+MAX_CHUNK_SIZE = 16000  # maximum before splitting
 
 
 def _load_fitz():
@@ -209,25 +212,174 @@ def extract_text_from_pdf(
     }
 
 
+def chunk_pdf_by_pages(
+    extracted: Dict,
+    *,
+    min_chunk_size: int = MIN_CHUNK_SIZE,
+    max_chunk_size: int = MAX_CHUNK_SIZE,
+) -> List[Dict]:
+    """Chunk PDF by page boundaries (P3.4d optimization).
+
+    Uses natural page breaks to create larger, coherent chunks.
+    Combines small pages, splits very large pages.
+
+    Args:
+        extracted: Output from extract_text_from_pdf()
+        min_chunk_size: Minimum chars before combining with next page
+        max_chunk_size: Maximum chars before splitting
+
+    Returns:
+        List of {"chunk_num": int, "text": str, "page_start": int, "page_end": int}
+    """
+    pages = extracted.get("pages", [])
+    if not pages:
+        return []
+
+    chunks = []
+    chunk_num = 1
+    current_text = []
+    current_char_count = 0
+    current_page_start = 1
+
+    for page in pages:
+        page_text = page.get("text", "").strip()
+        page_num = page.get("page_num", 0)
+        page_chars = len(page_text)
+
+        if not page_text:
+            continue
+
+        # If this page alone exceeds max, split it
+        if page_chars > max_chunk_size:
+            # Save current accumulated chunk first
+            if current_text:
+                chunks.append({
+                    "chunk_num": chunk_num,
+                    "text": "\n\n".join(current_text),
+                    "page_start": current_page_start,
+                    "page_end": page_num - 1,
+                })
+                chunk_num += 1
+                current_text = []
+                current_char_count = 0
+
+            # Split the large page at paragraph breaks
+            sub_chunks = _split_large_text(page_text, max_chunk_size)
+            for i, sub_text in enumerate(sub_chunks):
+                chunks.append({
+                    "chunk_num": chunk_num,
+                    "text": sub_text,
+                    "page_start": page_num,
+                    "page_end": page_num,
+                    "sub_chunk": i + 1,
+                })
+                chunk_num += 1
+            current_page_start = page_num + 1
+            continue
+
+        # If adding this page would exceed max, save current and start new
+        if current_char_count + page_chars > max_chunk_size and current_text:
+            chunks.append({
+                "chunk_num": chunk_num,
+                "text": "\n\n".join(current_text),
+                "page_start": current_page_start,
+                "page_end": page_num - 1,
+            })
+            chunk_num += 1
+            current_text = []
+            current_char_count = 0
+            current_page_start = page_num
+
+        # Add page to current chunk
+        current_text.append(page_text)
+        current_char_count += page_chars
+
+        # If we've reached minimum size and next page would likely exceed max,
+        # close the chunk (but don't close if we haven't reached min yet)
+        if current_char_count >= min_chunk_size:
+            # Check if this is a good place to break
+            # (We'll continue accumulating if still under max)
+            pass
+
+    # Save remaining
+    if current_text:
+        last_page = pages[-1].get("page_num", len(pages))
+        chunks.append({
+            "chunk_num": chunk_num,
+            "text": "\n\n".join(current_text),
+            "page_start": current_page_start,
+            "page_end": last_page,
+        })
+
+    logger.info(
+        "Chunked %d pages into %d chunks (page-based, %d-%d char targets)",
+        len(pages), len(chunks), min_chunk_size, max_chunk_size,
+    )
+
+    return chunks
+
+
+def _split_large_text(text: str, max_size: int) -> List[str]:
+    """Split large text at paragraph boundaries."""
+    paragraphs = text.split("\n\n")
+    chunks = []
+    current = []
+    current_size = 0
+
+    for para in paragraphs:
+        para_size = len(para)
+
+        if current_size + para_size > max_size and current:
+            chunks.append("\n\n".join(current))
+            current = []
+            current_size = 0
+
+        current.append(para)
+        current_size += para_size
+
+    if current:
+        chunks.append("\n\n".join(current))
+
+    return chunks
+
+
 def chunk_pdf_text(
     extracted: Dict,
     *,
     chunk_size: int = DEFAULT_CHUNK_SIZE,
     overlap: int = DEFAULT_OVERLAP,
+    use_page_chunking: bool = True,
 ) -> List[Dict]:
-    """Chunk extracted PDF text into overlapping windows.
+    """Chunk extracted PDF text.
 
-    Similar to supadata chunk_transcript() but uses character-based windows
-    instead of time-based.
+    P3.4d: Default to page-based chunking for better document coherence.
 
     Args:
         extracted: Output from extract_text_from_pdf()
-        chunk_size: Target chunk size in characters
-        overlap: Overlap between chunks in characters
+        chunk_size: Target chunk size in characters (for legacy mode)
+        overlap: Overlap between chunks in characters (for legacy mode)
+        use_page_chunking: If True, use page-based chunking (default)
 
     Returns:
-        List of {"chunk_num": int, "text": str, "source_page_start": int, "source_page_end": int}
+        List of chunk dicts
     """
+    # P3.4d: Use page-based chunking by default
+    if use_page_chunking:
+        page_chunks = chunk_pdf_by_pages(extracted)
+        # Convert to standard format
+        return [
+            {
+                "chunk_num": c["chunk_num"],
+                "text": c["text"],
+                "char_start": 0,  # Not applicable for page chunking
+                "char_end": len(c["text"]),
+                "page_start": c.get("page_start"),
+                "page_end": c.get("page_end"),
+            }
+            for c in page_chunks
+        ]
+
+    # Legacy character-based chunking (for transcripts or special cases)
     full_text = extracted.get("full_text", "")
     if not full_text:
         return []
@@ -241,7 +393,6 @@ def chunk_pdf_text(
 
         # Try to break at word boundary
         if end < len(full_text):
-            # Look for space/newline near end
             for i in range(end, max(start, end - 100), -1):
                 if full_text[i] in " \n":
                     end = i + 1
@@ -327,19 +478,28 @@ def ingest_pdf(
     # Extract
     extracted = extract_text_from_pdf(pdf_path)
 
-    # Chunk
+    # Chunk (P3.4d: page-based by default)
     raw_chunks = chunk_pdf_text(extracted, chunk_size=chunk_size, overlap=overlap)
 
     # Add metadata to each chunk
     chunks = []
     for chunk in raw_chunks:
+        # Use page provenance if available, else char range
+        if chunk.get("page_start") and chunk.get("page_end"):
+            if chunk["page_start"] == chunk["page_end"]:
+                provenance = f"page {chunk['page_start']}"
+            else:
+                provenance = f"pages {chunk['page_start']}-{chunk['page_end']}"
+        else:
+            provenance = f"chars {chunk['char_start']}-{chunk['char_end']}"
+
         chunks.append({
             "chunk_num": chunk["chunk_num"],
             "text": chunk["text"],
             "source_file": pdf_path.name,
             "source_type": "pdf",
             "source_tier": tier,
-            "provenance": f"chars {chunk['char_start']}-{chunk['char_end']}",
+            "provenance": provenance,
         })
 
     logger.info(

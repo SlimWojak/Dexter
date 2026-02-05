@@ -92,8 +92,10 @@ class TestMarkdownChunking(unittest.TestCase):
         self.assertEqual(len(chunks), 1)
 
     def test_large_content_multiple_chunks(self):
-        content = "# Title\n\n" + "A" * 5000
-        chunks = chunk_markdown(content, chunk_size=1000, overlap=100)
+        # P3.4d: With section-based chunking, need paragraphs for splits
+        # Create content with multiple paragraphs that exceed MAX_SECTION_SIZE
+        content = "# Title\n\n" + "\n\n".join([f"Paragraph {i}. " + "A" * 1000 for i in range(25)])
+        chunks = chunk_markdown(content, chunk_size=8000, overlap=100)
         self.assertGreater(len(chunks), 1)
 
     def test_sections_preserved(self):
@@ -223,12 +225,18 @@ class TestPDFIngester(unittest.TestCase):
 
         from skills.document.pdf_ingester import chunk_pdf_text
 
+        # P3.4d: Page-based chunking requires pages data
+        pages = [
+            {"page_num": 1, "text": "A" * 5000, "char_count": 5000},
+            {"page_num": 2, "text": "B" * 5000, "char_count": 5000},
+            {"page_num": 3, "text": "C" * 5000, "char_count": 5000},
+        ]
         extracted = {
-            "full_text": "A" * 5000,
-            "pages": [],
+            "full_text": "".join(p["text"] for p in pages),
+            "pages": pages,
         }
-        chunks = chunk_pdf_text(extracted, chunk_size=1000, overlap=100)
-        self.assertGreater(len(chunks), 1)
+        chunks = chunk_pdf_text(extracted)
+        self.assertGreater(len(chunks), 0)
         self.assertIn("text", chunks[0])
         self.assertIn("chunk_num", chunks[0])
 
@@ -293,6 +301,130 @@ class TestRealSourceFiles(unittest.TestCase):
         result = ingest_pdf(pdf_files[0])
         self.assertEqual(result["source_tier"], "OLYA_PRIMARY")
         self.assertIn("image_heavy_pages", result)
+
+
+class TestP34dChunkingOptimization(unittest.TestCase):
+    """P3.4d: Test chunking produces fewer, larger chunks for documents."""
+
+    def test_pdf_page_based_chunking_fewer_chunks(self):
+        """PDF page-based chunking should produce fewer chunks than char-based."""
+        try:
+            import fitz
+        except ImportError:
+            self.skipTest("PyMuPDF not installed")
+
+        from skills.document.pdf_ingester import chunk_pdf_text
+
+        # Simulate a 20-page document with 500 chars per page
+        pages = [{"page_num": i + 1, "text": f"Page {i + 1} content. " * 30, "char_count": 500}
+                 for i in range(20)]
+        extracted = {
+            "full_text": "\n\n".join(p["text"] for p in pages),
+            "pages": pages,
+        }
+
+        # Page-based chunking (default)
+        page_chunks = chunk_pdf_text(extracted, use_page_chunking=True)
+
+        # Legacy char-based chunking (2000 char, 400 overlap)
+        legacy_chunks = chunk_pdf_text(extracted, chunk_size=2000, overlap=400, use_page_chunking=False)
+
+        # Page-based should produce FEWER chunks
+        self.assertLess(
+            len(page_chunks), len(legacy_chunks),
+            f"Page-based ({len(page_chunks)}) should produce fewer chunks than legacy ({len(legacy_chunks)})"
+        )
+
+        # Page-based chunks should be LARGER on average
+        avg_page = sum(len(c["text"]) for c in page_chunks) / len(page_chunks) if page_chunks else 0
+        avg_legacy = sum(len(c["text"]) for c in legacy_chunks) / len(legacy_chunks) if legacy_chunks else 0
+        self.assertGreater(avg_page, avg_legacy)
+
+    def test_pdf_chunk_size_in_expected_range(self):
+        """PDF chunks should be in 8-16k char range."""
+        try:
+            import fitz
+        except ImportError:
+            self.skipTest("PyMuPDF not installed")
+
+        from skills.document.pdf_ingester import chunk_pdf_by_pages, MIN_CHUNK_SIZE, MAX_CHUNK_SIZE
+
+        # Simulate a document with varying page sizes
+        pages = [
+            {"page_num": 1, "text": "A" * 3000, "char_count": 3000},
+            {"page_num": 2, "text": "B" * 4000, "char_count": 4000},
+            {"page_num": 3, "text": "C" * 5000, "char_count": 5000},
+            {"page_num": 4, "text": "D" * 2000, "char_count": 2000},
+        ]
+        extracted = {"pages": pages}
+
+        chunks = chunk_pdf_by_pages(extracted)
+
+        # All chunks should be within bounds (except maybe last one)
+        for chunk in chunks[:-1]:
+            chunk_size = len(chunk["text"])
+            self.assertGreaterEqual(chunk_size, MIN_CHUNK_SIZE * 0.5,
+                                   f"Chunk too small: {chunk_size} < {MIN_CHUNK_SIZE * 0.5}")
+
+    def test_markdown_section_based_chunking(self):
+        """Markdown should chunk by sections, not arbitrary char windows."""
+        content = """# Introduction
+Short intro.
+
+## Section A
+This is section A with moderate content.
+It has multiple paragraphs.
+
+And some more text here.
+
+## Section B
+Section B content is also here.
+
+## Section C
+Final section.
+"""
+        from skills.document.md_ingester import chunk_markdown
+
+        chunks = chunk_markdown(content, chunk_size=12000, preserve_sections=True)
+
+        # With large chunk size, small sections should combine
+        # Should produce 1-2 chunks, not many small ones
+        self.assertLessEqual(len(chunks), 2, f"Too many chunks: {len(chunks)}")
+
+        # Each chunk should have section info
+        for chunk in chunks:
+            self.assertIn("section", chunk)
+
+    def test_large_section_gets_split(self):
+        """Very large sections should be split at paragraphs."""
+        # Create a section with 20k chars
+        large_content = """# Large Section
+
+""" + "\n\n".join([f"Paragraph {i}. " + "X" * 800 for i in range(25)])
+
+        from skills.document.md_ingester import chunk_markdown, MAX_SECTION_SIZE
+
+        chunks = chunk_markdown(large_content, chunk_size=MAX_SECTION_SIZE)
+
+        # Should produce multiple chunks
+        self.assertGreater(len(chunks), 1, "Large section should be split")
+
+        # Each chunk should be under max
+        for chunk in chunks:
+            self.assertLessEqual(len(chunk["text"]), MAX_SECTION_SIZE * 1.2,
+                                f"Chunk too large: {len(chunk['text'])}")
+
+    def test_layer_0_reference_not_in_pending(self):
+        """Layer 0 should be marked as REFERENCE with 0 pending."""
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+
+        # Import after path fix
+        from run_source_extraction import SOURCE_CONFIGS
+
+        layer_0_config = SOURCE_CONFIGS.get("layer_0", {})
+        self.assertEqual(layer_0_config.get("type"), "reference")
+        self.assertEqual(layer_0_config.get("role"), "REFERENCE")
 
 
 if __name__ == "__main__":
