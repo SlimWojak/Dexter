@@ -1,0 +1,334 @@
+# DRAWER 1: FOUNDATION — "What ARE these concepts?"
+# VERSION: DRAFT v0
+# PURPOSE: Definitions, invariants, prohibitions (things that NEVER change)
+# RULE: Concept definitions live HERE ONLY (other drawers reference)
+
+schema_version: "1.0.0"
+created: "2026-01-23"
+label: "v1.0 — Updated with GAP 7 (liquidity status) + GAP 9 (PDH/PDL definition)"
+
+# =============================================================================
+# CONCEPT DEFINITIONS
+# =============================================================================
+
+definitions:
+  # --- MARKET STRUCTURE ---
+  MSS:
+    name: "Market Structure Shift"
+    alias: ["BOS"]  # BOS = MSS, same thing
+    definition: "Close beyond prior swing + displacement + FVG"
+    components: [close_beyond_swing, displacement, fvg_created_or_respected]
+    universal: true  # Same logic all timeframes
+    ref: "L0:42-95, NEX:L7"
+    note: "BOS = MSS (use MSS only)"
+
+  swing:
+    name: "Swing Point"
+    types: [swing_high, swing_low]
+    detection: "Local pivot (lookback=3 bars)"
+    validation: "UNVALIDATED until immediate displacement reaction (1-3 bars)"
+    ref: "L0:629-659"
+
+  order_flow:
+    name: "Order Flow"
+    states:
+      bullish: "HH + HL (higher high + higher low)"
+      bearish: "LH + LL (lower high + lower low)"
+      mixed: "HH + LL or LH + HL (conflicting)"
+      neutral: "Insufficient data"
+    ref: "L0:423-455, NEX:L7"
+
+  # --- IMBALANCES ---
+  displacement:
+    name: "Displacement"
+    definition: "Energetic move with intent (10+ pips in 3-5 bars)"
+    components:
+      - {name: forceful_exit, desc: "Price forcefully EXITS prior balance"}
+      - {name: structure_removal, desc: "Removes structure of that timeframe"}
+      - {name: imbalance_left, desc: "FVG created OR respected"}
+      - {name: one_sided, desc: "Strong bodies (>70%), no hesitation"}
+      - {name: no_rotation, desc: "No rotation back into balance"}
+    universal: true  # NO pip thresholds, same logic all TFs
+    ref: "L0:162-220, NEX:L6"
+
+  FVG:
+    name: "Fair Value Gap"
+    alias: ["imbalance"]
+    detection:
+      bullish: "candle_A.high < candle_C.low"
+      bearish: "candle_A.low > candle_C.high"
+    components: [fvg_top, fvg_bottom, fvg_mid, fvg_ce]
+    ce: "Consequent Encroachment = 50% midpoint"
+    universal: true  # NO pip thresholds, NO body checks
+    ref: "L0:222-298, NEX:L5"
+
+  FVG_respect:
+    name: "FVG Respect"
+    conditions:
+      - {name: shallow_return, desc: "≤50% of FVG depth"}
+      - {name: corrective_character, desc: "Not impulsive"}
+      - {name: no_acceptance, desc: "No rotation in zone"}
+      - {name: continuation, desc: "Resumes original direction"}
+      - {name: structure_intact, desc: "No structure break"}
+    ref: "L0:262-300"
+
+  BISI_SIBI:
+    name: "Largest FVG in displacement"
+    BISI: "Buyside Imbalance Sellside Inefficiency (largest bullish FVG)"
+    SIBI: "Sellside Imbalance Buyside Inefficiency (largest bearish FVG)"
+    ref: "NEX:L5"
+
+  # --- ORDER BLOCKS ---
+  OB:
+    name: "Order Block"
+    definition: "Last opposing candle before displacement"
+    bullish_OB: "Last DOWN candle before bullish displacement (support)"
+    bearish_OB: "Last UP candle before bearish displacement (resistance)"
+    zone: "BODY only (NOT wicks)"
+    MT: "Mean Threshold = 50% of body"
+    quality: "Body >70% = beefy, >50% = acceptable, <50% = weak"
+    ref: "NEX:L9"
+    critical: "Focus on BODY only. Wicks are broker-based."
+
+  IFVG:
+    name: "Inverse FVG"
+    definition: "FVG broken with displacement — polarity flips"
+    ref: "NEX:L5"
+
+  BPR:
+    name: "Balanced Price Range"
+    definition: "Overlapping bullish and bearish FVGs"
+    ref: "NEX:L5"
+
+  # --- LIQUIDITY ---
+  liquidity:
+    name: "Liquidity Pool"
+    definition: "Stop orders accumulated above highs / below lows"
+    types:
+      BSL: "Buy-side liquidity (above highs)"
+      SSL: "Sell-side liquidity (below lows)"
+    pools: [pdh, pdl, pwh, pwl, equal_highs, equal_lows, swing_high, swing_low, session_high, session_low]
+    ref: "L0:521-523, NEX:L3"
+
+  equal_highs_lows:
+    name: "Equal Highs/Lows"
+    definition: "Multiple touches within tolerance (liquidity pool)"
+    parameters: {tolerance_pips: 10, min_touches: 3}
+    ref: "L0:521-523"
+
+  liquidity_status:
+    name: "Liquidity Level Status"
+    principle: "Liquidity is defined by IMPACT, not by TIME."
+    one_line_rule: "LIQUIDITY_UNDELIVERED is the destination. LIQUIDITY_SWEEP is the trigger."
+    states:
+      LIQUIDITY_UNDELIVERED:
+        quality: "⭐ PRIMARY TARGET"
+        valid_target: true
+        priority: 1
+        desc: "Price has not touched/exceeded level — liquidity still resting"
+        note: "The destination — market is drawn to untaken liquidity"
+      LIQUIDITY_SWEEP:
+        quality: "transitional"
+        valid_target: false
+        priority: 2
+        desc: "Price traded through level — liquidity was TAKEN"
+        note: "The trigger — identifies liquidity removal, NOT a trading objective"
+        next_states: "Evolves to BREAK or REJECTED"
+      REJECTED:
+        quality: "bias_confirmation"
+        valid_target: false
+        priority: 3
+        desc: "Liquidity swept then rejected back"
+        note: "Used for BIAS confirmation only, not as trading objective"
+      BREAK:
+        quality: "invalid"
+        valid_target: false
+        priority: 4
+        desc: "Close beyond level + consequence detected"
+        note: "Level broken with structural impact — no longer valid"
+    consequence_types: [displacement, mss, fvg, liquidity_sweep]
+    deprecated_terms:
+      - {old: "NOT_DELIVERED", new: "LIQUIDITY_UNDELIVERED"}
+      - {old: "LIQUIDITY_RUN", new: "LIQUIDITY_SWEEP"}
+      - {old: "DELIVERED_WITH_CONSEQUENCE", new: "BREAK"}
+      - {old: "defended", new: "REJECTED"}
+      - {old: "weakly defended", new: "LIQUIDITY_UNDELIVERED"}
+    ref: "L0:GAP-7, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+  sweep:
+    name: "Liquidity Sweep"
+    definition: "Price exceeds liquidity level + returns"
+    formula: "Liquidity taken + swept INTO PDA + reversal confirmation"
+    extension:
+      tap: "<5 pips (weak)"
+      sweep: "5-20 pips (ideal)"
+      displacement: ">20 pips (not sweep, momentum)"
+    ref: "NEX:L3"
+
+  inducement:
+    name: "Inducement"
+    definition: "Price action designed to trap traders into wrong-side positions before reversal"
+    distinct_from_manipulation:
+      manipulation: "Active displacement showing institutional intent — the SWITCH"
+      inducement: "Passive trap setup, looks like breakout/breakdown, fails — the BAIT"
+    recognition:
+      - "Price exceeds obvious level (high/low/trendline/round number)"
+      - "Lacks displacement characteristics (weak move, no conviction, small bodies)"
+      - "Quickly reverses, trapping breakout traders"
+      - "Often occurs during manipulation hour (first hour of session)"
+    olya_note: "Inducement is the bait. Manipulation is the switch."
+    common_locations:
+      - "Equal highs/lows (retail magnets)"
+      - "Round numbers (psychological levels)"
+      - "Trendlines (technical trader traps)"
+      - "Previous session highs/lows"
+    how_to_use:
+      - "Recognize inducement as trap, NOT as signal"
+      - "Wait for manipulation (displacement) to confirm direction"
+      - "Trade AWAY from inducement level after confirmation"
+    ref: "L0:manipulation_hour, NEX:L3"
+
+  # --- RANGES ---
+  IPDA:
+    name: "Interbank Price Delivery Algorithm"
+    definition: "ICT-defined lookback windows for institutional algorithms"
+    ranges:
+      ipda_20: {lookback: 20, type: short_term}
+      ipda_40: {lookback: 40, type: medium_term}
+      ipda_60: {lookback: 60, type: long_term}
+    usage: [bootstrap_context, external_liquidity, structure_bounds]
+    ref: "L0:703-735"
+
+  # --- PDH/PDL/PWH/PWL (GAP 9) ---
+  pdh_pdl:
+    name: "Previous Day High/Low"
+    forex_day:
+      start: "17:00 NY"
+      end: "17:00 NY next day"
+      note: "Forex Trading Day, NOT midnight"
+    pdh: "Highest WICK in prior completed Forex day"
+    pdl: "Lowest WICK in prior completed Forex day"
+    measurement: "Wicks only (not closes) — liquidity sits at wick extremes"
+    dst_handling: "Always NY local time (America/New_York), auto-adjusts EDT/EST"
+    critical_rules:
+      - "⛔ Do NOT use midnight (00:00) boundaries"
+      - "⛔ Do NOT use candle closes"
+      - "⛔ Do NOT hardcode UTC offsets"
+      - "✅ Always use 17:00 NY boundaries"
+      - "✅ Always use wicks (extremes)"
+    ref: "L0:GAP-9, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+  pwh_pwl:
+    name: "Previous Week High/Low"
+    forex_week:
+      start: "Sunday 17:00 NY"
+      end: "Sunday 17:00 NY next week"
+    pwh: "Highest WICK in prior completed Forex week"
+    pwl: "Lowest WICK in prior completed Forex week"
+    same_rules_as: "pdh_pdl (wicks, 17:00 boundaries, NY local time)"
+    ref: "L0:GAP-9, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+  dealing_range:
+    name: "Dealing Range"
+    definition: "Operating boundaries from MSS"
+    priority_hierarchy:
+      1: "Equal Highs/Lows (liquidity)"
+      2: "External PDH/PDL/PWH/PWL"
+      3: "MSS Swings"
+      4: "Validated Swings"
+    ref: "L0:481-590"
+
+  premium_discount:
+    name: "Premium/Discount"
+    formula: "compare(close, structural_equilibrium)"
+    states:
+      premium: {condition: "close > equilibrium", bias: SELL}
+      discount: {condition: "close < equilibrium", bias: BUY}
+      equilibrium: {condition: "close == equilibrium", bias: NO_TRADE}
+    ref: "L0:694-720"
+    note: "Structure-based, NOT time-based"
+
+  # --- PDA TYPES ---
+  PDA:
+    name: "Price Delivery Array"
+    types:
+      - {name: FVG, role: imbalance}
+      - {name: OB, role: institutional_accumulation}
+      - {name: IFVG, role: inverted_imbalance}
+      - {name: BPR, role: strong_reaction_zone}
+    tracking: [respected, broken, untested]
+    ref: "L0:757-790"
+
+  # --- MMXM ---
+  MMXM:
+    name: "Market Maker Move"
+    definition: "Failed auction (consolidation → manipulation → rejection → reversal)"
+    NOT: "rigid 3-phase template"
+    roles:
+      manipulation: "Trade AWAY from MMXM (origin)"
+      target: "Trade TOWARDS MMXM (objective)"
+    consolidation: "Original boundaries = the target (NOT manipulation extreme)"
+    ref: "L0:722-820"
+
+  # --- MMM ---
+  MMM:
+    name: "Market Maker Model"
+    models:
+      MMBM: "Market Maker Buy Model (bullish reversal)"
+      MMSM: "Market Maker Sell Model (bearish reversal)"
+    phases: [accumulation, manipulation, distribution]
+    ref: "NEX:MMM"
+
+# =============================================================================
+# INVARIANTS (Universal Rules — NEVER violated)
+# =============================================================================
+
+invariants:
+  structure:
+    - {id: "INV-001", rule: "Structure exists ONLY after MSS", violation: "Swings/ranges without MSS", ref: "L0:14-21"}
+    - {id: "INV-002", rule: "BOS = MSS (same thing, use MSS only)", violation: "Using BOS terminology", ref: "L0:GAP-2"}
+    - {id: "INV-003", rule: "Bootstrap uses PDH/PDL/PWH/PWL ONLY", violation: "Arbitrary levels for first MSS", ref: "L0:98-100"}
+    - {id: "INV-004", rule: "MSS requires displacement + FVG", violation: "MSS from close-only break", ref: "L0:55-70"}
+
+  range:
+    - {id: "INV-005", rule: "Range priority: Liquidity > External > MSS > Validated", violation: "Using time-based range", ref: "L0:490-520"}
+    - {id: "INV-006", rule: "Validated swing needs immediate reaction (1-3 bars)", violation: "Delayed reaction = balance", ref: "L0:640-660"}
+    - {id: "INV-007", rule: "Structural range PRIMARY, time-based SECONDARY", violation: "PDH/PDL as main dealing range", ref: "NEX:L8"}
+
+  signals:
+    - {id: "INV-008", rule: "Displacement is QUALITATIVE (no pip thresholds)", violation: "Pip-based displacement threshold", ref: "L0:162-165"}
+    - {id: "INV-009", rule: "FVG detection universal (all TFs same)", violation: "Timeframe-specific FVG logic", ref: "L0:222-225"}
+    - {id: "INV-010", rule: "FVG respect uses 5 conditions (all required)", violation: "Partial FVG respect check", ref: "L0:262-270"}
+
+  liquidity:
+    - {id: "INV-011", rule: "Only LIQUIDITY_UNDELIVERED is a valid target (SWEEP/REJECTED/BREAK are NOT targets)", violation: "Targeting LIQUIDITY_SWEEP, REJECTED, or BREAK level", ref: "L0:GAP-7"}
+
+  bias:
+    - {id: "INV-012", rule: "Bias set at 00:00 NY, frozen until next day", violation: "Intraday bias change", ref: "L0:24-30"}
+    - {id: "INV-013", rule: "Trade requires: MSS + range + objective + not equilibrium", violation: "Trading with incomplete context", ref: "L0:1310-1330"}
+    - {id: "INV-014", rule: "Weekly = limits only, Daily = execution direction", violation: "Using Weekly for entry decisions", ref: "L0:300-315"}
+
+  mmxm:
+    - {id: "INV-015", rule: "Higher TF MMXM overrides lower TF", violation: "H1 MMXM > Daily MMXM", ref: "L0:730"}
+    - {id: "INV-016", rule: "MMXM valid only after last Daily MSS", violation: "Using pre-MSS MMXM", ref: "L0:745"}
+    - {id: "INV-017", rule: "Post-expansion = impulsive delivery only", violation: "Grind triggers post-expansion", ref: "L0:GAP-8"}
+    - {id: "INV-018", rule: "Post-expansion state permanent until new MSS", violation: "Reverting without MSS", ref: "L0:1060"}
+
+  enrichment:
+    - {id: "INV-019", rule: "First touch beats multiple touches", violation: "Rewarding confluence over freshness", ref: "NEX:L10"}
+    - {id: "INV-020", rule: "Layer stores COUNTS, evaluator applies THRESHOLDS", violation: "Threshold decisions in enrichment", ref: "NEX:L11"}
+    - {id: "INV-021", rule: "OB uses BODY only (not wicks)", violation: "Using full candle for OB zone", ref: "NEX:L9"}
+
+# =============================================================================
+# PROHIBITIONS (Things we NEVER do)
+# =============================================================================
+
+prohibitions:
+  - {id: "PRO-001", rule: "No swing without MSS", ref: "L0:1340"}
+  - {id: "PRO-002", rule: "No range without MSS", ref: "L0:1341"}
+  - {id: "PRO-003", rule: "No Daily re-biasing intraday", ref: "L0:1342"}
+  - {id: "PRO-004", rule: "No trading from equilibrium", ref: "L0:1343"}
+  - {id: "PRO-005", rule: "No Weekly for execution", ref: "L0:1344"}
+  - {id: "PRO-006", rule: "No H4/H1 unless post_expansion", ref: "L0:1345"}
+  - {id: "PRO-007", rule: "No forward_fill in enrichment", ref: "Phoenix:INV"}
+  - {id: "PRO-008", rule: "No synthetic fills without flag", ref: "Phoenix:DATA_CONTRACT"}

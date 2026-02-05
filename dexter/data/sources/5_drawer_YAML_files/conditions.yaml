@@ -1,0 +1,298 @@
+# DRAWER 3: CONDITIONS — "Is this setup valid?"
+# VERSION: DRAFT v0
+# PURPOSE: Range selection, alignment, location, confluence scoring
+# RULE: Answers "Should I be looking for a trade here?"
+
+schema_version: "1.1.0"
+created: "2026-01-23"
+updated: "2026-01-30"
+label: "v1.0 — Updated with blur fixes (3Q reference, P/D reference, PDA status tracking)"
+
+# =============================================================================
+# BIAS INPUT (from Context — BLUR-001)
+# =============================================================================
+# ✅ BLUR-001: 3Q framework CALCULATED in Context, CONSUMED here
+
+bias_input:
+  id: "SIG-COND-BIAS-INPUT"
+  name: "Trade Bias Input"
+  source: "context.bias_framework"
+  note: "Bias calculated in Context (Drawer 2), consumed here for permission logic"
+  
+  inputs:
+    - {col: trade_bias, source: "context.bias_synthesis.trade_bias", values: [long_only, short_only, both, none]}
+    - {col: bias_note, source: "context.bias_synthesis.bias_note"}
+    - {col: htf_direction, source: "context.Q3_respect.htf_direction"}
+    - {col: zone, source: "context.Q1_location.zone"}
+    - {col: position_pct, source: "context.Q1_location.position_pct"}
+    - {col: dol_primary, source: "context.Q2_objective.dol_primary"}
+    - {col: dol_secondary, source: "context.Q2_objective.dol_secondary"}
+  
+  validation:
+    - {check: "trade_bias IN [long_only, short_only, both, none]"}
+    - {check: "IF trade_bias == none THEN permission = NO_TRADE"}
+  
+  ref: "CSO:filing_blurs_fixes_v1.yaml:BLUR-001"
+
+# =============================================================================
+# PREMIUM / DISCOUNT CHECK (from Context — BLUR-002)
+# =============================================================================
+# ✅ BLUR-002: P/D CALCULATED in Context, read-only reference here
+
+signals:
+  pd_state_check:
+    id: "SIG-COND-010"
+    name: "Premium/Discount Gate"
+    source: "context.structural_pd_state"
+    note: "Read-only reference — NO calculation here (BLUR-002)"
+    
+    inputs:
+      - {col: pd_state, source: "context.structural_pd_state.pd_state", values: [premium, discount, equilibrium]}
+      - {col: position_pct, source: "context.structural_pd_state.position_pct"}
+    
+    validation:
+      - {check: "pd_state IN [premium, discount, equilibrium]"}
+      - {check: "IF pd_state == equilibrium THEN permission = NO_TRADE"}
+    
+    alignment_logic:
+      long_valid: "pd_state == discount"
+      short_valid: "pd_state == premium"
+      no_trade: "pd_state == equilibrium"
+    
+    ref: "CSO:filing_blurs_fixes_v1.yaml:BLUR-002"
+
+  structural_position:
+    id: "SIG-COND-011"
+    name: "Structural Position %"
+    source: "context.structural_pd_state.position_pct"
+    note: "Read from context — NO calculation here"
+    ref: "NEX:L8:132-138, CSO:filing_blurs_fixes_v1.yaml:BLUR-002"
+
+# =============================================================================
+# ALIGNMENT
+# =============================================================================
+
+  weekly_daily_alignment:
+    id: "SIG-COND-020"
+    name: "Weekly/Daily Alignment"
+    weekly_role: "macro permission, objectives, limits ONLY"
+    daily_role: "anchor direction, execution range"
+    alignment_logic:
+      - {condition: "weekly == daily", result: strong_alignment}
+      - {condition: "daily == neutral", result: defer_to_weekly}
+      - {condition: "weekly != daily", result: both_allowed}
+    ref: "L0:300-330"
+
+  htf_alignment:
+    id: "SIG-COND-021"
+    name: "HTF Alignment Count"
+    timeframes: [weekly, daily, h4]
+    outputs:
+      - {col: htf_bullish_count, type: int, range: [0, 3]}
+      - {col: htf_bearish_count, type: int, range: [0, 3]}
+      - {col: htf_unanimous, type: bool, formula: "count == 3"}
+    ref: "NEX:L11:68-92"
+
+  entry_htf_match:
+    id: "SIG-COND-022"
+    name: "Entry Matches HTF"
+    outputs:
+      - {col: entry_matches_htf_long, formula: "htf_long AND layers >= 2"}
+      - {col: entry_matches_htf_short, formula: "htf_short AND layers >= 2"}
+    ref: "NEX:L11:174-184"
+
+  layer_confluence:
+    id: "SIG-COND-023"
+    name: "Layer Confluence"
+    outputs:
+      - {col: layers_supporting_long, type: int, range: [0, 5]}
+      - {col: layers_supporting_short, type: int, range: [0, 5]}
+      - {col: entry_direction_unanimous, formula: "layers >= 4 AND opposing == 0"}
+      - {col: conflicting_signals, formula: "long > 0 AND short > 0", weight: -0.3}
+    ref: "NEX:L11:98-163"
+
+# =============================================================================
+# PDA STATUS TRACKING (from Context Registry — BLUR-003)
+# =============================================================================
+# ✅ BLUR-003: Context DETECTS PDAs, Conditions TRACKS STATUS
+
+  pda_status_tracking:
+    id: "SIG-COND-030"
+    name: "PDA Status Evaluation"
+    source: "context.pda_detection (immutable registry)"
+    note: "Evaluates current status, gates trades (BLUR-003)"
+    
+    inputs: [pda_id, pda_type, price_levels, timeframe, timestamp]  # From context registry
+    
+    status_evaluation:
+      untouched:
+        condition: "No price interaction yet"
+        trade_permission: "Highest quality"
+      tapped:
+        condition: "Price touched but did not accept"
+        trade_permission: "Valid, lower quality"
+      respected:
+        condition: "Price returned shallowly, rejected, continued"
+        trade_permission: "Valid, confirms level"
+      violated:
+        condition: "Price accepted through level (broke structure)"
+        trade_permission: "INVALID - do not use"
+    
+    tracking_columns:
+      - {col: pda_age_bars, type: int, desc: "Bars since detection"}
+      - {col: pda_touch_count, type: int, desc: "Number of touches"}
+      - {col: pda_fill_pct, type: float, desc: "How much filled (for FVGs)"}
+      - {col: pda_status, values: [untouched, tapped, respected, violated]}
+      - {col: pda_freshness_score, type: float, range: [0, 10]}
+    
+    trade_gate:
+      rule: "IF pda_status == violated THEN permission = NO_TRADE"
+    
+    ref: "CSO:filing_blurs_fixes_v1.yaml:BLUR-003"
+
+  fvg_status:
+    id: "SIG-COND-031"
+    name: "FVG Status (inherits from pda_status_tracking)"
+    source: "context.pda_detection.fvg_detection"
+    additional_columns:
+      - {col: fvg_fill_pct, formula: "fill_depth / fvg_size"}
+      - {col: fvg_fully_broken, formula: "fill_pct >= 100%"}
+      - {col: in_fvg, formula: "price BETWEEN fvg_low AND fvg_high"}
+    ref: "NEX:L5"
+
+  ob_status:
+    id: "SIG-COND-032"
+    name: "OB Status (inherits from pda_status_tracking)"
+    source: "context.pda_detection.ob_detection"
+    additional_columns:
+      - {col: ob_touch_count, type: int}
+      - {col: ob_fully_broken, formula: "close accepted through body"}
+      - {col: in_ob, formula: "price BETWEEN ob_body_low AND ob_body_high"}
+    note: "BODY only, NOT wicks"
+    ref: "NEX:L9"
+
+# =============================================================================
+# TIMING FRESHNESS
+# =============================================================================
+
+  freshness_score:
+    id: "SIG-COND-040"
+    name: "Entry Freshness Score"
+    col: "entry_freshness_score"
+    type: float
+    range: [0, 10]
+    components:
+      - fvg_age
+      - ob_age
+      - touch_count
+      - bars_since_structure_break
+    note: "First touch beats fifth confluence"
+    ref: "NEX:L10:127-158"
+
+  zone_freshness:
+    id: "SIG-COND-041"
+    name: "Zone Age/Touch"
+    outputs:
+      - {col: fvg_up_age_bars, condition: "fresh if <= 5"}
+      - {col: fvg_touch_count, condition: "fresh if == 1"}
+      - {col: bars_since_structure_break, condition: "recent if <= 20"}
+      - {col: bars_since_sweep, condition: "recent if <= 15"}
+    ref: "NEX:L10:52-104"
+
+# =============================================================================
+# OTE (Optimal Trade Entry Zone)
+# =============================================================================
+
+  ote:
+    id: "SIG-COND-050"
+    name: "Optimal Trade Entry"
+    definition: "Fibonacci retracement zone representing high-probability entry"
+    fib_levels: {start: 0.62, end: 0.79}
+    calculation: "Retracement zone from recent swing high to swing low"
+    usage:
+      long: "Enter in OTE zone when retracing from swing low"
+      short: "Enter in OTE zone when retracing from swing high"
+    note: "OTE is evaluator logic, not enrichment column"
+    ref: "NEX:L8:295-315"
+
+# =============================================================================
+# COMPOSITE GATES
+# =============================================================================
+
+composite_gates:
+  high_quality_long:
+    id: "GATE-COND-001"
+    name: "High Quality Long"
+    requires:
+      - "in_structural_discount"
+      - "entry_matches_htf_long"
+    
+    evaluator_inputs:
+      - {col: freshness_score, type: float}
+      - {col: touch_count, type: int}
+    
+    note: "Thresholds (freshness >= 6, touches <= 2) applied by evaluator"
+    output: "GRADE_A_LONG"
+    ref: "NEX:L11"
+
+  high_quality_short:
+    id: "GATE-COND-002"
+    name: "High Quality Short"
+    requires:
+      - "in_structural_premium"
+      - "entry_matches_htf_short"
+    
+    evaluator_inputs:
+      - {col: freshness_score, type: float}
+      - {col: touch_count, type: int}
+    
+    note: "Thresholds (freshness >= 6, touches <= 2) applied by evaluator"
+    output: "GRADE_A_SHORT"
+    ref: "NEX:L11"
+
+  alignment_gate:
+    id: "GATE-COND-003"
+    name: "Alignment Gate"
+    requires: ["htf_count >= 2", "layers >= 3"]
+    output: "ALIGNED"
+
+  freshness_gate:
+    id: "GATE-COND-004"
+    name: "Freshness Gate"
+    requires: ["age <= 10", "break <= 30"]
+    output: "FRESH"
+
+# =============================================================================
+# CONFLICTS (Flagged)
+# =============================================================================
+
+conflicts:
+  - id: "CONFLICT-COND-001"
+    desc: "L8 uses structural P/D, L11 uses daily P/D"
+    recommendation: "Align L11 to structural"
+    refs: ["NEX:L8:73-82", "NEX:L11:110-111"]
+  
+  - id: "CONFLICT-COND-002"
+    desc: "✅ RESOLVED: Thresholds moved to evaluator, Conditions outputs counts only"
+    recommendation: "N/A - resolved"
+    refs: ["NEX:L10:127-158", "NEX:L11:7-9"]
+
+# =============================================================================
+# LAYER DEPENDENCIES
+# =============================================================================
+
+layer_dependencies:
+  layer_8_premium_discount:
+    depends_on: [L0_dealing_range, L2_pdh_pdl]
+    ref: "NEX:L8"
+  
+  layer_10_timing:
+    depends_on: [L3_sweeps, L5_fvg, L7_structure, L9_ob]
+    ref: "NEX:L10"
+  
+  layer_11_alignment:
+    depends_on: [L0.5_htf_bias, L5_fvg, L7_order_flow, L8_pd, L9_ob]
+    runs: "LAST"
+    ref: "NEX:L11"
+
+pipeline_order: [L0, L0.5, L1, L2, L3, L5, L6, L7, L8, L9, L10, L11]

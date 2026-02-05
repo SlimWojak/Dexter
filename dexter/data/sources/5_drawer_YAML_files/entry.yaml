@@ -1,0 +1,359 @@
+# DRAWER 4: ENTRY — "When/how to act?"
+# VERSION: DRAFT v0
+# PURPOSE: Timing, triggers, execution details
+# RULE: Answers "What is the specific entry signal?"
+
+schema_version: "1.0.0"
+created: "2026-01-23"
+label: "DRAFT v0 — 5-drawer extraction, pending Olya validation"
+
+# =============================================================================
+# SESSIONS (Time Windows)
+# =============================================================================
+# All times NY timezone. Only US DST applies.
+
+sessions:
+  asia:
+    id: "SIG-ENTRY-001"
+    name: "Asia Session"
+    start: "19:00"
+    end: "00:00"
+    duration: "5 hours"
+    role: "Range formation"
+    note: "Crosses midnight"
+    ref: "NEX:L1"
+
+  london:
+    id: "SIG-ENTRY-002"
+    name: "London Session"
+    start: "02:00"
+    end: "05:00"
+    duration: "3 hours"
+    role: "High volatility, major moves"
+    ref: "NEX:L1"
+
+  new_york:
+    id: "SIG-ENTRY-003"
+    name: "New York Session"
+    start: "07:00"
+    end: "10:00"
+    duration: "3 hours"
+    role: "Continuation or reversal"
+    ref: "NEX:L1"
+
+  off_session:
+    times:
+      - {name: "Asia-London gap", range: "00:00-02:00"}
+      - {name: "London-NY gap", range: "05:00-07:00"}
+      - {name: "NY-Asia gap", range: "10:00-19:00"}
+    role: "Low resistance liquidity"
+    ref: "NEX:L3"
+
+# =============================================================================
+# KILL ZONES (High-Conviction Windows)
+# =============================================================================
+# KZ = 1 hour into session (after manipulation hour)
+
+kill_zones:
+  asia_kz:
+    id: "SIG-ENTRY-010"
+    name: "Asia Kill Zone"
+    start: "20:00"
+    end: "21:00"
+    duration: "1 hour"
+    logic: "1 hour into Asia (after 19:00)"
+    ref: "NEX:L1"
+
+  lokz:
+    id: "SIG-ENTRY-011"
+    name: "London Kill Zone"
+    start: "03:00"
+    end: "04:00"
+    duration: "1 hour"
+    logic: "1 hour into London (after 02:00)"
+    ref: "NEX:L1"
+
+  nykz:
+    id: "SIG-ENTRY-012"
+    name: "New York Kill Zone"
+    start: "08:00"
+    end: "09:00"
+    duration: "1 hour"
+    logic: "1 hour into NY (after 07:00)"
+    ref: "NEX:L1"
+
+  manipulation_hour:
+    description: "First hour of each session"
+    times: ["19:00-20:00", "02:00-03:00", "07:00-08:00"]
+    role: "Stop hunts, fake moves"
+    ref: "NEX:L1"
+
+# =============================================================================
+# DAY OF WEEK
+# =============================================================================
+
+day_of_week:
+  monday:
+    dow: 0
+    context: "consolidation"
+    note: "Often range-bound, establishing context"
+    ref: "NEX:L1"
+
+  tuesday:
+    dow: 1
+    context: "how_low_forming"
+    note: "High or Low of Week often set"
+    ref: "NEX:L1"
+
+  wednesday:
+    dow: 2
+    context: "how_low_forming"
+    note: "High or Low of Week often set"
+    ref: "NEX:L1"
+
+  thursday:
+    dow: 3
+    context: "distribution"
+    note: "Trend continuation or reversal"
+    ref: "NEX:L1"
+
+  friday:
+    dow: 4
+    context: "distribution"
+    note: "Week closes, often profit-taking"
+    ref: "NEX:L1"
+
+# =============================================================================
+# REFERENCE LEVELS
+# =============================================================================
+
+reference_levels:
+  weekly_open:
+    id: "SIG-ENTRY-020"
+    name: "Weekly Open"
+    definition: "Price at Sunday 17:00 NY"
+    extend_until: "Friday close"
+    usage: "Key weekly reference"
+    ref: "NEX:L1"
+
+  ny_midnight_open:
+    id: "SIG-ENTRY-021"
+    name: "NY Midnight Open"
+    definition: "Price at 00:00 NY each day"
+    extend_until: "End of that day"
+    usage: "Key daily reference, best entries often near"
+    ref: "NEX:L1"
+
+# =============================================================================
+# ENTRY TRIGGERS
+# =============================================================================
+
+triggers:
+  sweep_entry:
+    id: "SIG-ENTRY-030"
+    name: "Sweep Entry"
+    formula: "Liquidity taken + swept INTO PDA + reversal confirmation"
+    components:
+      - {name: liquidity_pool, desc: "PDH/PDL/session/swing"}
+      - {name: extension, desc: "Qualitative sweep (ref: foundation.sweep, GAP-7)"}
+      - {name: pda_destination, desc: "Swept into HTF PDA"}
+      - {name: confirmation, desc: "MSS or displacement"}
+    note: "Quality assessment performed by evaluator based on component presence"
+    components_required:
+      - liquidity_pool
+      - extension (qualitative)
+      - pda_destination
+      - confirmation
+    ref: "NEX:L3"
+
+  displacement_entry:
+    id: "SIG-ENTRY-031"
+    name: "Displacement Entry"
+    trigger: "Qualitative displacement (ref: foundation.displacement)"
+    components:
+      - forceful_exit
+      - structure_removal
+      - fvg_created
+      - one_sided_intent
+      - no_rotation
+    validation: "is_valid_displacement == True"
+    ref: "foundation.displacement, L0:162-220"
+
+  ltf_mss_entry:
+    id: "SIG-ENTRY-032"
+    name: "LTF MSS Entry"
+    timeframes: [5m, 15m]
+    components: [structure_break, displacement, fvg]
+    ref: "NEX:L7"
+
+  ob_entry:
+    id: "SIG-ENTRY-033"
+    name: "Order Block Entry"
+    entry_level: "MT (Mean Threshold = 50% of body)"
+    quality_factors:
+      - "Body >70% (beefy)"
+      - "Fast displacement away"
+      - "FVG coupled"
+    ref: "NEX:L9"
+
+  fvg_entry:
+    id: "SIG-ENTRY-034"
+    name: "FVG Entry"
+    entry_levels:
+      - "FVG top (bearish)"
+      - "FVG bottom (bullish)"
+      - "FVG CE (50%)"
+    priority: "15m > 5m for entries"
+    ref: "NEX:L5"
+
+# =============================================================================
+# ENTRY TIMING (Sweep Quality)
+# =============================================================================
+
+sweep_timing:
+  priority:
+    - {timing: "kill_zone", priority: "highest", confidence: 3}
+    - {timing: "session", priority: "medium", confidence: 2}
+    - {timing: "off_session", priority: "lower", confidence: 1}
+  ref: "NEX:L3"
+
+# =============================================================================
+# LIQUIDITY POOLS FOR SWEEPS
+# =============================================================================
+
+liquidity_pools:
+  session_based:
+    - {pool: asia_high, desc: "High of Asia session 19:00-00:00"}
+    - {pool: asia_low, desc: "Low of Asia session"}
+    - {pool: london_high, desc: "High of London session 02:00-05:00"}
+    - {pool: london_low, desc: "Low of London session"}
+    - {pool: ny_high, desc: "High of NY session 07:00-10:00"}
+    - {pool: ny_low, desc: "Low of NY session"}
+  
+  daily_weekly:
+    - {pool: pdh, desc: "Previous Day High"}
+    - {pool: pdl, desc: "Previous Day Low"}
+    - {pool: pwh, desc: "Previous Week High"}
+    - {pool: pwl, desc: "Previous Week Low"}
+  
+  low_resistance:
+    - {pool: off_session_high, desc: "Highs during dead time"}
+    - {pool: off_session_low, desc: "Lows during dead time"}
+  
+  swing:
+    - {pool: swing_high, desc: "Recent swing high"}
+    - {pool: swing_low, desc: "Recent swing low"}
+  
+  ref: "NEX:L3"
+
+# =============================================================================
+# ENTRY EXECUTION
+# =============================================================================
+
+execution:
+  stop_placement:
+    id: "SIG-ENTRY-040"
+    options:
+      - {name: "Full candle", desc: "Above/below full OB candle", risk: "wider"}
+      - {name: "Body", desc: "Above/below OB body", risk: "tighter"}
+      - {name: "Swing", desc: "Behind recent swing", risk: "standard"}
+    ref: "NEX:L9"
+
+  position_sizing:
+    note: "NOT in scope for Layer 0 — handled by risk management"
+    ref: "L0:1967-1983"
+
+# =============================================================================
+# MMM ENTRY PATTERNS (Distribution Phase)
+# =============================================================================
+
+mmm_entry_patterns:
+  mmbm_distribution:
+    model: "Market Maker Buy Model (bullish reversal)"
+    phase: "distribution"
+    entries:
+      - {pattern: "LONG_OB_ENTRY", desc: "Retracement into +OB"}
+      - {pattern: "LONG_FVG_ENTRY", desc: "Retracement into BISI FVG"}
+      - {pattern: "LONG_OTE_ENTRY", desc: "Retracement into OTE zone"}
+    ref: "NEX:MMM"
+
+  mmsm_distribution:
+    model: "Market Maker Sell Model (bearish reversal)"
+    phase: "distribution"
+    entries:
+      - {pattern: "SHORT_OB_ENTRY", desc: "Retracement into -OB"}
+      - {pattern: "SHORT_FVG_ENTRY", desc: "Retracement into SIBI FVG"}
+      - {pattern: "SHORT_OTE_ENTRY", desc: "Retracement into OTE zone"}
+    ref: "NEX:MMM"
+
+  phase_actions:
+    accumulation: "WAIT — wait for manipulation"
+    manipulation: "WAIT — wait for MSS confirmation"
+    distribution: "ACTIVE — look for entry patterns"
+    ref: "NEX:MMM"
+
+# =============================================================================
+# OTE (Optimal Trade Entry)
+# =============================================================================
+# NOTE: OTE DEFINITION moved to conditions.yaml (SIG-COND-050)
+# This section references it for entry triggers only
+
+ote_trigger:
+  id: "SIG-ENTRY-050"
+  name: "OTE Entry Trigger"
+  definition_ref: "conditions.yaml:SIG-COND-050"
+  trigger: "Price enters OTE zone (0.62-0.79 fib)"
+  ref: "NEX:L8:295-315"
+
+# =============================================================================
+# TIMING COLUMNS
+# =============================================================================
+
+timing_columns:
+  session:
+    - is_asia_session
+    - is_london_session
+    - is_ny_session
+    - session_name
+    - is_session_overlap
+  
+  kill_zone:
+    - is_kz_asia
+    - is_kz_lokz
+    - is_kz_nykz
+    - kz_active
+    - kz_name
+    - is_manipulation_hour
+  
+  reference:
+    - weekly_open_price
+    - ny_midnight_open
+    - price_vs_weekly_open
+    - price_vs_midnight_open
+  
+  day_of_week:
+    - day_of_week
+    - dow_context
+    - is_how_low_day
+  
+  utility:
+    - minutes_into_session
+    - minutes_until_kz
+    - is_trading_hours
+  
+  ref: "NEX:L1"
+
+# =============================================================================
+# GAPS (Thin areas in sources)
+# =============================================================================
+
+gaps:
+  - id: "GAP-ENTRY-001"
+    area: "Specific entry price calculation"
+    note: "FVG top/bottom vs CE — evaluator decides"
+    status: "flagged"
+
+  - id: "GAP-ENTRY-002"
+    area: "Multi-entry scaling"
+    note: "Not covered in LAYER_0 — deferred to management"
+    status: "flagged"

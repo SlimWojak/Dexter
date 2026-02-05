@@ -1,0 +1,185 @@
+# CSO KNOWLEDGE — 5-DRAWER INDEX
+# VERSION: v1.2
+# ARCHITECTURE: 5 conceptual drawers answering fundamental questions
+# LABEL: "v1.2 — Added GATE_GLOSSARY.yaml + inducement definition"
+
+schema_version: "1.1.0"
+created: "2026-01-23"
+updated: "2026-01-30"
+
+# =============================================================================
+# DRAWER ARCHITECTURE
+# =============================================================================
+
+architecture:
+  principle: "Each drawer answers ONE question. Concept lives in ONE place."
+  deduplication: "Definitions in FOUNDATION only. Other drawers reference."
+  sources:
+    primary: "docs/olya_skills/LAYER_0_HTF_CONTEXT_CLEAN.md"
+    secondary: "nex/meridian_gold/enrichment_specs/*.md"
+  
+  supplementary_files:
+    gate_glossary:
+      file: "GATE_GLOSSARY.yaml"
+      purpose: "Maps Phoenix gate outputs to drawer concepts"
+      usage: "CSO reads gate name → knows drawer location + meaning"
+
+# =============================================================================
+# DRAWERS
+# =============================================================================
+
+drawers:
+  - drawer: 1
+    name: "foundation"
+    file: "foundation.yaml"
+    question: "What ARE these concepts?"
+    contains:
+      - concept definitions (MSS, FVG, OB, displacement, liquidity, IPDA)
+      - invariants (INV-*) — universal rules that NEVER change
+      - prohibitions (PRO-*) — things we NEVER do
+      - GAP 7 (liquidity status 4-state model)
+      - GAP 9 (PDH/PDL/PWH/PWL forex day definition)
+    counts:
+      definitions: 22  # Actual verified count
+      invariants: 21
+      prohibitions: 8
+    status: "v1.1 — GAP 7 + GAP 9 + inducement definition"
+
+  - drawer: 2
+    name: "context"
+    file: "context.yaml"
+    question: "Where is the market?"
+    contains:
+      - HTF structure (weekly/daily MSS, swings, ranges)
+      - daily state (type of day, phase, classification)
+      - objectives (DOL, targets, liquidity status)
+      - warmup states / state machine
+      - 3Q framework (OWNER per BLUR-001)
+      - P/D state calculation (OWNER per BLUR-002)
+      - PDA detection & registry (OWNER per BLUR-003)
+      - PDH/PDL/PWH/PWL calculation (GAP 9)
+      - Post-expansion impulsive vs grind (GAP 8)
+    counts:
+      signals: 30  # 12 main + 5 (3Q) + 1 (P/D) + 12 (PDA with all subsections)
+      warmup_states: 6
+      key_principles: 10
+      validation_checks: 10
+    status: "v1.1 — GAP 8-9 + BLUR 1-3 COMPLETE (3Q framework, P/D calc, PDA detection ALL owned)"
+
+  - drawer: 3
+    name: "conditions"
+    file: "conditions.yaml"
+    question: "Is this setup valid?"
+    contains:
+      - bias input (REFERENCE to context per BLUR-001)
+      - P/D check (REFERENCE to context per BLUR-002)
+      - PDA status tracking (CONSUMER per BLUR-003)
+      - range selection / operating range
+      - alignment (HTF/ITF agreement)
+      - confluence scoring
+    counts:
+      signals: 13  # Actual count from conditions.yaml
+      composite_gates: 4
+      conflicts: 2  # May be resolved now
+    status: "v1.0 — BLUR 1-3 integrated (consumer role)"
+
+  - drawer: 4
+    name: "entry"
+    file: "entry.yaml"
+    question: "When/how to act?"
+    contains:
+      - timing (sessions, kill zones, day of week)
+      - triggers (sweep, displacement, LTF MSS)
+      - execution (entry price, stop placement)
+      - liquidity pools
+    counts:
+      signals: 15
+      sessions: 3
+      kill_zones: 3
+      triggers: 5
+      reference_levels: 2
+      liquidity_pools: 14
+
+  - drawer: 5
+    name: "management"
+    file: "management.yaml"
+    question: "How to manage the trade?"
+    contains:
+      - targets (partials, full exit, post-expansion)
+      - stops (initial, trailing, invalidation)
+      - adjustments (re-entry, scale, hold vs exit)
+    counts:
+      signals: 13  # Actual count from management.yaml
+      gaps_flagged: 6
+    note: "THINNEST drawer — sources focus on context/conditions"
+
+# =============================================================================
+# TOTALS
+# =============================================================================
+
+totals:
+  files: 5
+  definitions: 22  # Actual verified count
+  signals: 71  # context: 30, conditions: 13, entry: 15, management: 13
+  invariants: 21
+  prohibitions: 8
+  composite_gates: 4
+  gaps_resolved: 9  # GAP 1-9 all resolved
+  blur_fixes_applied: 3  # BLUR-001, BLUR-002, BLUR-003
+
+# =============================================================================
+# ARCHIVED STRUCTURE
+# =============================================================================
+
+archived:
+  location: "cso/knowledge/archive/"
+  reason: "Replaced by 5-drawer structure"
+  files:
+    - archive/htf/htf_structure.yaml
+    - archive/htf/htf_signals.yaml
+    - archive/htf/htf_bias.yaml
+    - archive/htf/htf_state_machine.yaml
+    - archive/htf/index.yaml
+    - archive/htf/EXTRACTION_AUDIT.md
+    - archive/htf/EXTRACTION_LOG.md
+    - archive/nex_baseline/entry_quality.yaml
+    - archive/nex_baseline/CONSOLIDATION_LOG.md
+
+# =============================================================================
+# VALIDATION STATUS
+# =============================================================================
+
+validation:
+  schema_valid: true  # All YAML parses
+  no_duplicates: true  # Definitions in FOUNDATION only, BLUR-001/002/003 fixed
+  traceable: true  # source_ref on all
+  gaps_documented: true  # Management gaps flagged
+  
+  resolved:
+    - "GAP 7: Liquidity status 4-state model (LIQUIDITY_UNDELIVERED/SWEEP/REJECTED/BREAK)"
+    - "GAP 8: Post-expansion impulsive vs grind classification"
+    - "GAP 9: PDH/PDL/PWH/PWL Forex day definition (17:00 NY)"
+    - "BLUR-001: 3Q framework ownership (Context owns, Conditions references)"
+    - "BLUR-002: P/D calculation ownership (Foundation defines, Context calculates, Conditions reads)"
+    - "BLUR-003: PDA ownership split (Context detects, Conditions tracks status)"
+  
+  pending:
+    - "CSO/Olya final validation of all 5 drawers"
+    - "MANAGEMENT drawer remains thin (flagged gaps)"
+
+# =============================================================================
+# USAGE NOTES
+# =============================================================================
+
+usage:
+  cso_validation:
+    1: "Check FOUNDATION for concept definition"
+    2: "Check CONTEXT for market state"
+    3: "Check CONDITIONS for setup validity"
+    4: "Check ENTRY for timing/trigger"
+    5: "Check MANAGEMENT for trade handling"
+  
+  adding_concepts:
+    rule: "New definitions → FOUNDATION"
+    rule2: "New signals → appropriate drawer by question"
+    rule3: "Always dedupe against existing"

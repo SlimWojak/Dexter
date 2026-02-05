@@ -1,0 +1,339 @@
+# DRAWER 5: MANAGEMENT — "How to manage the trade?"
+# VERSION: DRAFT v0
+# PURPOSE: Targets, stops, adjustments
+# RULE: Answers "What do I do after entry?"
+
+schema_version: "1.0.0"
+created: "2026-01-23"
+label: "DRAFT v0 — 5-drawer extraction, pending Olya validation"
+
+# =============================================================================
+# NOTE: MANAGEMENT IS THIN IN SOURCES
+# =============================================================================
+# LAYER_0 doc focuses on context/conditions, not trade management
+# NEX MMM has basic phase logic but limited management detail
+# This drawer flags gaps for Olya validation
+
+# =============================================================================
+# TARGETS
+# =============================================================================
+
+targets:
+  primary_target:
+    id: "SIG-MGMT-001"
+    name: "Daily Objective Target"
+    source: "Q2 Objective (Draw on Liquidity)"
+    priority:
+      1: "MMXM high/low (original consolidation)"
+      2: "PDH/PDL"
+      3: "PWH/PWL"
+      4: "Daily/Weekly FVG"
+    filter: "status IN (NOT_DELIVERED, LIQUIDITY_RUN)"
+    ref: "L0:822-880"
+
+  partial_targets:
+    id: "SIG-MGMT-002"
+    name: "Partial Exit Levels"
+    options:
+      - {level: "1R", action: "partial", note: "Risk-free position"}
+      - {level: "nearest_pda", action: "partial", note: "Exit into resistance/support"}
+      - {level: "equilibrium", action: "partial", note: "50% of range"}
+      - {level: "objective", action: "full_exit", note: "Target reached"}
+    note: "GAP — specific partial rules not detailed in sources"
+    ref: "NEX:MMM"
+
+  post_expansion_targets:
+    id: "SIG-MGMT-003"
+    name: "Post-Expansion Targets"
+    context: "After daily objective delivered with displacement"
+    mode: "REBALANCE"
+    targets: "H4/H1 PDAs become targets"
+    daily_role: "Direction filter only"
+    ref: "L0:1040-1080"
+
+# =============================================================================
+# STOPS
+# =============================================================================
+
+stops:
+  initial_stop:
+    id: "SIG-MGMT-010"
+    name: "Initial Stop Placement"
+    options:
+      - {name: "Full candle", placement: "Beyond full OB candle (high/low)", risk: "wider, safer"}
+      - {name: "Body", placement: "Beyond OB body boundary", risk: "tighter, aggressive"}
+      - {name: "Swing", placement: "Behind recent swing point", risk: "structure-based"}
+      - {name: "MT", placement: "Beyond Mean Threshold", risk: "OB-specific"}
+    ref: "NEX:L9"
+
+  invalidation:
+    id: "SIG-MGMT-011"
+    name: "Trade Invalidation"
+    conditions:
+      - "Price closes through OB body"
+      - "FVG fully broken (not just CE)"
+      - "New MSS against trade direction"
+      - "Displacement against trade direction"
+    ref: "L0, NEX:L5, NEX:L7"
+
+  trailing_stop:
+    id: "SIG-MGMT-012"
+    name: "Trailing Stop"
+    note: "GAP — trailing logic not detailed in sources"
+    options:
+      - {method: "swing_trail", desc: "Trail behind new swing points"}
+      - {method: "pda_trail", desc: "Trail behind new PDAs"}
+      - {method: "break_even", desc: "Move to entry after 1R"}
+    status: "flagged_for_olya"
+
+# =============================================================================
+# STATE TRANSITIONS (MMM-based)
+# =============================================================================
+
+state_transitions:
+  mmm_lifecycle:
+    id: "SIG-MGMT-020"
+    name: "MMM Trade Lifecycle"
+    phases:
+      accumulation:
+        action: "WAIT"
+        note: "No entry — wait for manipulation"
+      manipulation:
+        action: "ALERT"
+        note: "MSS forming — prepare for entry"
+      distribution:
+        action: "ACTIVE"
+        entries: "Retracements to OB/FVG/OTE"
+        exits: "Targets + invalidation"
+    ref: "NEX:MMM"
+
+  expansion_lifecycle:
+    id: "SIG-MGMT-021"
+    name: "Daily Expansion Lifecycle"
+    states:
+      PRE_EXPANSION:
+        operating_range: "Daily range"
+        targets: "Daily objective"
+        management: "Standard"
+      POST_EXPANSION:
+        operating_range: "H4/H1 range"
+        targets: "H4/H1 PDAs"
+        mode: "REBALANCE"
+        management: "Shift to lower TF"
+    trigger: "Objective delivered WITH displacement"
+    persistence: "Until new Daily MSS"
+    ref: "L0:1020-1100"
+
+# =============================================================================
+# ADJUSTMENTS
+# =============================================================================
+
+adjustments:
+  re_entry:
+    id: "SIG-MGMT-030"
+    name: "Re-Entry Rules"
+    conditions:
+      - "Stopped out but structure intact"
+      - "New PDA respected"
+      - "Fresh touch (not stale zone)"
+    note: "GAP — specific re-entry criteria not detailed"
+    status: "flagged_for_olya"
+
+  scaling:
+    id: "SIG-MGMT-031"
+    name: "Position Scaling"
+    options:
+      - {type: "scale_out", trigger: "Partial targets reached"}
+      - {type: "scale_in", trigger: "Additional confluence at new PDA"}
+    note: "GAP — scaling rules not detailed in sources"
+    status: "flagged_for_olya"
+
+  hold_vs_exit:
+    id: "SIG-MGMT-032"
+    name: "Hold vs Exit Decision"
+    hold_conditions:
+      - "Structure still bullish/bearish per order_flow"
+      - "PDAs still respected"
+      - "Objective not yet delivered"
+    exit_conditions:
+      - "MSS against position"
+      - "Displacement against position"
+      - "Objective delivered with consequence"
+      - "New Daily MSS resets context"
+    ref: "L0, NEX:L7"
+
+# =============================================================================
+# OPPOSITE SIDE TRACKING (MMM)
+# =============================================================================
+
+opposite_side_tracking:
+  id: "SIG-MGMT-040"
+  name: "Opposite Side PDAs"
+  description: "Track OBs/FVGs formed during opposite phase"
+  usage:
+    MMSM_distribution: "+OBs from buy side become resistance on retrace"
+    MMBM_distribution: "-OBs from sell side become support on retrace"
+  action: "Note for partial exits or trailing stops"
+  ref: "NEX:MMM"
+
+# =============================================================================
+# GRIND vs IMPULSIVE DELIVERY
+# =============================================================================
+
+delivery_classification:
+  id: "SIG-MGMT-050"
+  name: "Objective Delivery Classification"
+  impulsive_valid:
+    - "Clear directional push"
+    - "Strong candle bodies (>70%)"
+    - "No slow overlap"
+    - "FVG created during approach"
+    - "One-sided intent"
+  grind_invalid:
+    - "Slow creep to level"
+    - "Multiple hesitant touches"
+    - "Overlapping candles (>60%)"
+    - "No FVG during approach"
+  consequence:
+    impulsive: "POST_EXPANSION triggered"
+    grind: "Remains PRE_EXPANSION"
+  ref: "L0:1080-1100"
+
+# =============================================================================
+# GAPS (Areas requiring Olya input)
+# =============================================================================
+
+gaps:
+  - id: "GAP-MGMT-001"
+    area: "Partial exit rules"
+    status: "RESOLVED"
+    decision: "NO PARTIALS"
+    rule:
+      partial_exits: NO
+      position_management: "Full position held to TP or SL"
+      style: "Set & forget"
+      scope: "ALL strategies (D15MB, Asia Scalp, future)"
+      rationale: "Simplicity, no mid-trade decisions, maximum profit if target hit"
+      exits_only_by:
+        - "TP (objective reached)"
+        - "SL (invalidation)"
+
+  - id: "GAP-MGMT-002"
+    area: "Trailing stop logic"
+    status: "RESOLVED"
+    decision: "TRAIL TO BREAKEVEN ONLY"
+    rule:
+      trailing_stops: YES
+      type: "Breakeven only (no further trailing)"
+      
+      triggers:
+        trigger_1:
+          name: "New 15m High/Low break"
+          condition_long: "current_price > highest_15m_high_since_entry"
+          condition_short: "current_price < lowest_15m_low_since_entry"
+        
+        trigger_2:
+          name: "Floating profit ≥ +1R"
+          condition: "abs(current_price - entry) >= abs(entry - original_sl)"
+          note: "Price moved favorable distance equal to initial risk distance"
+          measurement: "Risk multiple (NOT % of account equity)"
+      
+      action:
+        when: "EITHER trigger met (OR logic)"
+        move_sl_to: "entry_price"
+        result: "Zero risk (breakeven)"
+      
+      after_breakeven:
+        rule: "SL locked at entry, no further trailing"
+        exits: "Only TP or BE-SL"
+      
+      scope: "ALL strategies"
+      rationale: "Protect capital once profitable, preserve set & forget simplicity"
+
+  - id: "GAP-MGMT-003"
+    area: "Re-entry criteria"
+    status: "RESOLVED"
+    decision: "NO RE-ENTRY"
+    rule:
+      re_entry: NO
+      logic: "One attempt per setup/narrative"
+      invalidation: "If SL hit → trade finished for that narrative"
+      
+      exception:
+        condition: "New MSS occurs"
+        rationale: "New MSS = new narrative = new opportunity"
+        allowed: "Fresh entry on new narrative structure"
+      
+      scope: "ALL strategies"
+      rationale: "Prevents revenge trading, respects invalidation signal"
+
+  - id: "GAP-MGMT-004"
+    area: "Position scaling"
+    status: "RESOLVED"
+    decision: "NO SCALING"
+    rule:
+      position_scaling: NO
+      entry: "Full position at single entry point"
+      exit: "Full position at single exit (TP or SL or BE-SL)"
+      no_scaling_in: "Do not add to position"
+      no_scaling_out: "Do not partial exit"
+      
+      scope: "ALL strategies"
+      rationale: "Single entry, single exit - maximum simplicity and clarity"
+      note: "Aligns with GAP-001 (no partials)"
+
+  - id: "GAP-MGMT-005"
+    area: "Time-based exits"
+    status: "RESOLVED"
+    decision: "NO TIME EXITS"
+    rule:
+      time_based_exits: NO
+      exit_logic: "Price-based only (TP or SL or BE-SL)"
+      overnight_holds: "Allowed"
+      no_forced_close: "No session end exits, no time limits"
+      
+      exits_only_by:
+        - "TP (objective reached)"
+        - "SL (invalidation)"
+        - "BE-SL (after trigger, see GAP-002)"
+      
+      scope: "ALL strategies"
+      rationale: "Let price reach objective or invalidation naturally, no artificial time constraints"
+
+  - id: "GAP-MGMT-006"
+    area: "Risk per trade"
+    status: "RESOLVED"
+    decision: "FIXED RISK"
+    rule:
+      risk_per_trade: FIXED
+      percentage: 1.0  # 1% account equity per trade
+      no_variability: "Same risk regardless of setup quality"
+      no_grading: "No A/B/C/F quality scaling"
+      
+      calculation:
+        formula: "position_size = (account_equity × 0.01) / (risk_distance_pips × pip_value)"
+        defined_once: "Risk calculated at entry, never adjusted"
+        constant: "Every trade risks exactly 1% account equity"
+      
+      scope: "ALL strategies"
+      rationale: "Simplicity, consistency, no subjective quality judgments required"
+
+# =============================================================================
+# SCOPE BOUNDARIES
+# =============================================================================
+
+scope_notes:
+  in_scope:
+    - "Target identification (from context)"
+    - "Stop placement options"
+    - "Invalidation rules"
+    - "MMM phase transitions"
+    - "Post-expansion behavior"
+  
+  out_of_scope:
+    - "Position sizing calculation"
+    - "Risk management rules"
+    - "Portfolio allocation"
+    - "Account-level constraints"
+  
+  note: "Management is thinnest drawer — sources focus on context/conditions"

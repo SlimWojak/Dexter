@@ -1,0 +1,637 @@
+# DRAWER 2: CONTEXT — "Where is the market?"
+# VERSION: DRAFT v0
+# PURPOSE: HTF structure, daily state, objectives, warmup states
+# RULE: Answers "What is the current market environment?"
+
+schema_version: "1.1.0"
+created: "2026-01-23"
+updated: "2026-01-30"
+label: "v1.1 — Updated with GAP 7-9 + BLUR 1-3 fixes COMPLETE (3Q framework added, P/D calc added, PDA detection added)"
+
+# =============================================================================
+# EXECUTION TIMING
+# =============================================================================
+
+execution_timing:
+  weekly_context: {frequency: "once per week", time: "Sunday 17:00 NY", purpose: "Macro permission, objectives, limits"}
+  daily_analysis: {frequency: "once per day", time: "00:00 NY", purpose: "Component detection (ranges, PDAs, liquidity)"}
+  daily_bias: {frequency: "once per day", time: "00:00 NY (after analysis)", purpose: "3Q framework, set trade bias"}
+  locked_until: "next 00:00 NY"
+  ref: "L0:41-52"
+
+data_requirements:
+  weekly_candles: "52+ weeks"
+  daily_candles: "90+ days"
+
+# =============================================================================
+# HTF STRUCTURE DETECTION
+# =============================================================================
+
+signals:
+  # --- WEEKLY ---
+  weekly_mss:
+    id: "SIG-CTX-001"
+    name: "Weekly MSS"
+    timeframe: HTF
+    conditions: [break_prior_swing, displacement_qualitative, fvg_exists]
+    outputs: [weekly_mss_exists, weekly_mss_direction, weekly_swing_high, weekly_swing_low]
+    ref: "L0:42-95"
+
+  weekly_range:
+    id: "SIG-CTX-002"
+    name: "Weekly Range"
+    method: "last_bullish_mss.low → last_bearish_mss.high"
+    outputs: [weekly_range_high, weekly_range_low, weekly_equilibrium]
+    ref: "L0:330-381"
+
+  weekly_role:
+    id: "SIG-CTX-003"
+    name: "Weekly Role Boundaries"
+    used_only_for: ["Major external objectives (PWH/PWL)", "Macro PDAs", "Expansion limits"]
+    NOT_used_for: ["Execution ranges", "Daily bias overrides", "P/D for entries", "Intraday decisions"]
+    ref: "L0:384-409"
+
+  # --- DAILY ---
+  daily_mss:
+    id: "SIG-CTX-004"
+    name: "Daily MSS"
+    timeframe: HTF
+    conditions: [break_prior_swing, displacement_qualitative, fvg_exists]
+    outputs: [daily_mss_exists, daily_mss_direction]
+    ref: "L0:370-420"
+
+  bootstrap_mss:
+    id: "SIG-CTX-005"
+    name: "Bootstrap MSS"
+    description: "First MSS when NO_STRUCTURE state"
+    valid_boundaries: [pdh, pdl, pwh, pwl]
+    ref: "L0:98-160"
+    note: "ONLY PDH/PDL/PWH/PWL valid for bootstrap"
+
+  daily_order_flow:
+    id: "SIG-CTX-006"
+    name: "Daily Order Flow"
+    states: {bullish: "HH + HL", bearish: "LH + LL", mixed: "HH + LL or LH + HL", neutral: "Not enough swings"}
+    outputs: [order_flow]
+    ref: "L0:423-455"
+
+  daily_dealing_range:
+    id: "SIG-CTX-007"
+    name: "Daily Dealing Range"
+    priority_hierarchy:
+      1: {type: liquidity, target: equal_highs_lows}
+      2: {type: liquidity, target: "pdh|pdl|pwh|pwl"}
+      3: {type: structure, target: mss_swings}
+      4: {type: structure, target: validated_swings}
+    outputs: [dealing_range_high, dealing_range_low, dealing_range_equilibrium, dealing_range_method]
+    ref: "L0:481-590"
+
+  validated_swing:
+    id: "SIG-CTX-008"
+    name: "Validated Swing"
+    candidate: "local pivot (lookback=3)"
+    validation: "immediate displacement (1-3 candles after touch)"
+    ref: "L0:592-680"
+
+  ipda_ranges:
+    id: "SIG-CTX-009"
+    name: "IPDA Ranges"
+    ranges:
+      ipda_20: {lookback: 20, type: short_term}
+      ipda_40: {lookback: 40, type: medium_term}
+      ipda_60: {lookback: 60, type: long_term}
+    outputs: [ipda_20_high, ipda_20_low, ipda_40_high, ipda_40_low, ipda_60_high, ipda_60_low]
+    ref: "L0:703-735"
+
+# =============================================================================
+# PDH/PDL/PWH/PWL (GAP 9)
+# =============================================================================
+
+  pdh_pdl_calculation:
+    id: "SIG-CTX-018"
+    name: "PDH/PDL Forex Day Calculation"
+    definition_ref: "foundation.yaml:pdh_pdl"
+    calculation:
+      forex_day: "17:00 NY → 17:00 NY next day (local time, DST-adjusted)"
+      pdh: "Highest WICK in prior completed Forex day"
+      pdl: "Lowest WICK in prior completed Forex day"
+    outputs:
+      - {col: pdh, type: float, desc: "Previous Day High (wick)"}
+      - {col: pdl, type: float, desc: "Previous Day Low (wick)"}
+      - {col: forex_day_start, type: datetime}
+      - {col: forex_day_end, type: datetime}
+    critical_rules:
+      - "⛔ Do NOT use midnight (00:00) boundaries"
+      - "⛔ Do NOT use candle closes"
+      - "✅ Use wicks only — liquidity sits at extremes"
+    ref: "L0:GAP-9, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+  pwh_pwl_calculation:
+    id: "SIG-CTX-019"
+    name: "PWH/PWL Forex Week Calculation"
+    definition_ref: "foundation.yaml:pwh_pwl"
+    calculation:
+      forex_week: "Sunday 17:00 NY → Sunday 17:00 NY next week"
+      pwh: "Highest WICK in prior completed Forex week"
+      pwl: "Lowest WICK in prior completed Forex week"
+    outputs:
+      - {col: pwh, type: float, desc: "Previous Week High (wick)"}
+      - {col: pwl, type: float, desc: "Previous Week Low (wick)"}
+    ref: "L0:GAP-9, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+# =============================================================================
+# OBJECTIVES (Draw on Liquidity)
+# =============================================================================
+
+  daily_objective:
+    id: "SIG-CTX-010"
+    name: "Daily Objective"
+    priority_hierarchy:
+      1: {type: mmxm, target: "mmxm_high|mmxm_low"}
+      2: {type: liquidity, target: "pdh|pdl"}
+      3: {type: liquidity, target: "pwh|pwl"}
+      4: {type: imbalance, target: "daily_fvg|weekly_fvg"}
+    filter: "status == LIQUIDITY_UNDELIVERED"  # ✅ GAP 7: Only UNDELIVERED is valid target
+    note: "LIQUIDITY_SWEEP is the trigger, not the destination"
+    outputs: [objective_price, objective_type, objective_priority, objective_status]
+    ref: "L0:822-880, L0:GAP-7"
+
+# =============================================================================
+# 3Q FRAMEWORK (BIAS SYNTHESIS) - OWNER per BLUR-001
+# =============================================================================
+# Context CALCULATES bias, Conditions CONSUMES it
+
+bias_framework:
+  id: "SIG-CTX-3Q"
+  name: "Three Questions Framework"
+  purpose: "Synthesize daily trade bias from HTF context"
+  execution: "00:00 NY daily, frozen until next day"
+  note: "OWNER role per BLUR-001 - conditions.yaml reads from this"
+  ref: "L0:1350-1500, CSO:filing_blurs_fixes_v1.yaml:BLUR-001"
+  
+  Q1_location:
+    id: "SIG-CTX-Q1"
+    question: "Where is price RIGHT NOW?"
+    purpose: "Determine current price position in context"
+    
+    outputs:
+      - {col: position_pct, type: float, desc: "% position in dealing range"}
+      - {col: zone, type: str, values: [premium, discount, equilibrium]}
+      - {col: nearest_pda, type: dict, desc: "Closest PDA and distance"}
+      - {col: in_pda, type: bool, desc: "Currently inside PDA zone"}
+    
+    zones:
+      deep_discount: "<25%"
+      discount: "25-50%"
+      equilibrium: "~50%"
+      premium: "50-75%"
+      deep_premium: ">75%"
+    
+    calculation:
+      position_pct: "(current_price - dealing_range_low) / (dealing_range_high - dealing_range_low) * 100"
+      zone: "compare(current_price, dealing_range_equilibrium)"
+      nearest_pda: "find_nearest(current_price, all_pdas)"
+      in_pda: "check_inside_any_pda(current_price, all_pdas)"
+    
+    ref: "L0:1352-1388"
+  
+  Q2_objective:
+    id: "SIG-CTX-Q2"
+    question: "Where is price LIKELY TO GO?"
+    purpose: "Identify clear external draw on liquidity"
+    requires: "daily_mss.exists == True"
+    
+    outputs:
+      - {col: dol_primary, type: dict, desc: "Primary target"}
+      - {col: dol_secondary, type: dict, desc: "Secondary target"}
+      - {col: expected_path, type: str, desc: "Narrative description"}
+    
+    target_priority:
+      1: "MMXM High/Low (original consolidation)"
+      2: "PDH/PDL"
+      3: "PWH/PWL"
+      4: "Daily/Weekly FVG"
+    
+    filters:
+      - "Target must be external (unreached)"
+      - "Target must align with daily_mss.direction"
+      - "Target status must be LIQUIDITY_UNDELIVERED"
+    
+    logic:
+      - {step: 1, action: "Get all liquidity levels in direction"}
+      - {step: 2, action: "Filter by status == LIQUIDITY_UNDELIVERED"}
+      - {step: 3, action: "Sort by priority then distance"}
+      - {step: 4, action: "Select nearest high-priority target"}
+      - {step: 5, action: "If no target found → return None"}
+    
+    no_objective_result: "trade_bias = none"
+    
+    ref: "L0:1390-1429"
+  
+  Q3_respect:
+    id: "SIG-CTX-Q3"
+    question: "Where is price COMING FROM?"
+    purpose: "Determine HTF directional intent from behavior"
+    
+    outputs:
+      - {col: htf_direction, values: [bullish, bearish, neutral]}
+      - {col: confidence, values: [high, medium, low]}
+      - {col: structure_bias, type: str, desc: "From order flow"}
+      - {col: pda_bias, type: str, desc: "From PDA respect"}
+    
+    components:
+      structure_component:
+        source: "daily_order_flow"
+        bullish: "HH + HL pattern"
+        bearish: "LH + LL pattern"
+        ranging: "Mixed or insufficient data"
+      
+      pda_component:
+        method: "Count respected PDAs by direction"
+        bullish: "More bullish PDAs held than bearish"
+        bearish: "More bearish PDAs held than bullish"
+        neutral: "Equal or unclear"
+    
+    combination_logic:
+      - {condition: "structure_bias == pda_bias", result: "htf_direction = bias", confidence: high}
+      - {condition: "structure_bias == ranging", result: "htf_direction = pda_bias", confidence: medium}
+      - {condition: "structure_bias != pda_bias", result: "htf_direction = neutral", confidence: low}
+    
+    ref: "L0:1431-1475"
+  
+  bias_synthesis:
+    id: "SIG-CTX-BIAS-SYNTHESIS"
+    name: "Trade Bias Synthesis"
+    purpose: "Combine 3 questions into final trade bias"
+    inputs: [q1_location, q2_objective, q3_respect]
+    
+    outputs:
+      - {col: trade_bias, values: [long_only, short_only, both, none]}
+      - {col: bias_note, type: str, desc: "Explanation"}
+    
+    decision_tree:
+      - {check: "htf_direction == neutral", result: "trade_bias = none", reason: "No clear HTF direction"}
+      - {check: "zone == equilibrium", result: "trade_bias = none", reason: "At equilibrium - no directional edge"}
+      - {check: "dol_primary == None", result: "trade_bias = none", reason: "No clear objective"}
+      - {check: "htf_direction == bullish", result: "trade_bias = long_only", reason: "Bullish HTF context"}
+      - {check: "htf_direction == bearish", result: "trade_bias = short_only", reason: "Bearish HTF context"}
+    
+    frozen_until: "next 00:00 NY"
+    
+    ref: "L0:1477-1505"
+
+# =============================================================================
+# PREMIUM/DISCOUNT STATE CALCULATION - OWNER per BLUR-002
+# =============================================================================
+# Foundation defines formula, Context calculates, Conditions reads
+
+structural_pd_state:
+  id: "SIG-CTX-PD-STATE"
+  name: "Structural Premium/Discount State"
+  source_formula: "foundation.premium_discount"
+  note: "OWNER role per BLUR-002 - conditions.yaml reads from this"
+  ref: "L0:694-720, CSO:filing_blurs_fixes_v1.yaml:BLUR-002"
+  
+  inputs:
+    - current_price
+    - dealing_range_equilibrium
+    - dealing_range_high
+    - dealing_range_low
+  
+  calculation:
+    pd_state:
+      formula: "compare(current_price, dealing_range_equilibrium)"
+      values:
+        premium: "current_price > equilibrium"
+        discount: "current_price < equilibrium"
+        equilibrium: "current_price == equilibrium"
+    
+    position_pct:
+      formula: "(current_price - dealing_range_low) / (dealing_range_high - dealing_range_low) * 100"
+      range: [0, 100]
+    
+    distance_from_eq:
+      formula: "abs(current_price - dealing_range_equilibrium) * 10000"
+      unit: "pips"
+  
+  outputs:
+    - {col: pd_state, values: [premium, discount, equilibrium]}
+    - {col: position_pct, type: float, range: [0, 100]}
+    - {col: distance_from_eq_pips, type: float}
+  
+  validation:
+    - {check: "dealing_range exists", else: "pd_state = unknown"}
+    - {check: "equilibrium defined", else: "pd_state = unknown"}
+
+# =============================================================================
+# PDA DETECTION & REGISTRY - OWNER per BLUR-003
+# =============================================================================
+# Context DETECTS and REGISTERS (immutable), Conditions TRACKS STATUS (mutable)
+
+pda_detection:
+  id: "SIG-CTX-PDA-DETECT"
+  name: "PDA Detection & Registration"
+  purpose: "Detect PDAs from price action, store immutable metadata"
+  note: "OWNER role per BLUR-003 - conditions.yaml evaluates status"
+  ref: "L0:757-820, CSO:filing_blurs_fixes_v1.yaml:BLUR-003"
+  
+  fvg_detection:
+    id: "SIG-CTX-PDA-FVG"
+    name: "FVG Detection"
+    source_definition: "foundation.FVG"
+    logic: "uses foundation.FVG.detection (universal across all TFs)"
+    
+    detection_rule:
+      bullish: "candle_A.high < candle_C.low"
+      bearish: "candle_A.low > candle_C.high"
+    
+    outputs:
+      - {col: fvg_id, type: str, desc: "Unique identifier (timestamp-based)"}
+      - {col: fvg_high, type: float, desc: "Top boundary (wick)"}
+      - {col: fvg_low, type: float, desc: "Bottom boundary (wick)"}
+      - {col: fvg_ce, type: float, desc: "Consequent Encroachment (50%)"}
+      - {col: fvg_mid, type: float, desc: "Midpoint"}
+      - {col: fvg_direction, values: [bullish, bearish]}
+      - {col: fvg_timeframe, values: [5m, 15m, 1h, 4h, daily, weekly]}
+      - {col: fvg_timestamp, type: datetime, desc: "When formed"}
+      - {col: fvg_size_pips, type: float, desc: "Gap size"}
+    
+    note: "Immutable - stored at detection, never changed"
+    ref: "foundation.FVG, L0:222-298"
+  
+  ob_detection:
+    id: "SIG-CTX-PDA-OB"
+    name: "Order Block Detection"
+    source_definition: "foundation.OB"
+    logic: "Last opposing candle before displacement"
+    
+    detection_rule:
+      bullish_ob: "Last DOWN candle before bullish displacement"
+      bearish_ob: "Last UP candle before bearish displacement"
+    
+    outputs:
+      - {col: ob_id, type: str, desc: "Unique identifier"}
+      - {col: ob_body_high, type: float, desc: "Body top (NOT wick)"}
+      - {col: ob_body_low, type: float, desc: "Body bottom (NOT wick)"}
+      - {col: ob_mt, type: float, desc: "Mean Threshold (50% of body)"}
+      - {col: ob_direction, values: [bullish, bearish]}
+      - {col: ob_timeframe, values: [5m, 15m, 1h, 4h, daily]}
+      - {col: ob_timestamp, type: datetime}
+      - {col: ob_body_pct, type: float, desc: "Body percentage for quality determination"}
+    
+    note: "Quality grading (beefy/acceptable/weak) defined in Foundation, referenced here"
+    
+    note_immutable: "Immutable - stored at detection, BODY ONLY (not wicks)"
+    ref: "foundation.OB, NEX:L9"
+  
+  ifvg_detection:
+    id: "SIG-CTX-PDA-IFVG"
+    name: "Inverse FVG Detection"
+    definition: "FVG broken with displacement - polarity flips"
+    
+    outputs:
+      - {col: ifvg_id, type: str}
+      - {col: ifvg_original_fvg_id, type: str, desc: "Reference to original FVG"}
+      - {col: ifvg_high, type: float}
+      - {col: ifvg_low, type: float}
+      - {col: ifvg_direction, values: [bullish, bearish], desc: "Flipped from original"}
+      - {col: ifvg_timestamp, type: datetime}
+    
+    note: "Created when FVG broken with displacement"
+    ref: "foundation.IFVG, NEX:L5"
+  
+  bpr_detection:
+    id: "SIG-CTX-PDA-BPR"
+    name: "Balanced Price Range Detection"
+    definition: "Overlapping bullish and bearish FVGs"
+    
+    outputs:
+      - {col: bpr_id, type: str}
+      - {col: bpr_high, type: float, desc: "Top of overlap"}
+      - {col: bpr_low, type: float, desc: "Bottom of overlap"}
+      - {col: bpr_fvg_bull_id, type: str, desc: "Bullish FVG component"}
+      - {col: bpr_fvg_bear_id, type: str, desc: "Bearish FVG component"}
+      - {col: bpr_timestamp, type: datetime}
+    
+    note: "Strong reaction zones - balance of opposing flows"
+    ref: "foundation.BPR, NEX:L5"
+  
+  pda_registry:
+    description: "Central registry of all detected PDAs (immutable)"
+    structure: |
+      {
+        pda_id: str,           # Unique identifier
+        pda_type: str,         # fvg | ob | ifvg | bpr
+        price_levels: {...},   # Type-specific boundaries
+        timeframe: str,        # Detection timeframe
+        timestamp: datetime,   # When formed
+        direction: str,        # bullish | bearish
+        metadata: {...}        # Type-specific immutable data
+      }
+    
+    persistence: "Stored until no longer relevant (MSS reset, age limit, etc.)"
+    
+    note: |
+      Context creates and maintains this registry.
+      Conditions READS from registry to evaluate STATUS.
+      Status (respected/broken/untested) is MUTABLE (tracked in Conditions).
+      Registry itself is IMMUTABLE (set at detection).
+
+  dol_framework:
+    id: "SIG-CTX-011"
+    name: "Draw on Liquidity Framework"
+    paths:
+      - {from: liquidity, to: liquidity, code: liq_to_liq}
+      - {from: liquidity, to: imbalance, code: liq_to_imb}
+      - {from: imbalance, to: liquidity, code: imb_to_liq}
+      - {from: imbalance, to: imbalance, code: imb_to_imb}
+    bullish_dol: "BSL (buy-side liquidity above)"
+    bearish_dol: "SSL (sell-side liquidity below)"
+    ref: "NEX:LAYER_0_5"
+
+  structural_consequence:
+    id: "SIG-CTX-012"
+    name: "Structural Consequence at Level"
+    consequence_types:
+      - {type: displacement, check: "displacement_event.origin near level (5 pips)"}
+      - {type: mss, check: "mss_event.origin near level (5 pips)"}
+      - {type: fvg, check: "fvg boundary near level"}
+      - {type: structure_change, check: "structure_change.price near level"}
+    tolerance_pips: 5
+    ref: "L0:1205-1263"
+
+# =============================================================================
+# MMXM CONTEXT
+# =============================================================================
+
+  mmxm_detection:
+    id: "SIG-CTX-013"
+    name: "MMXM Detection"
+    description: "Failed auction (consolidation → manipulation → rejection → reversal)"
+    timeframe_priority:
+      daily: {weight: 1, role: macro_intent}
+      h4: {weight: 2, role: htf_rebalance}
+      h1: {weight: 3, role: execution_only}
+    lookback: "since last Daily MSS"
+    ref: "L0:722-820"
+
+  mmxm_as_manipulation:
+    id: "SIG-CTX-014"
+    name: "MMXM as Manipulation (Origin)"
+    role: "Trade AWAY from MMXM"
+    conditions: [liquidity_sweep, failed_auction, displacement_away, fvg_present, structural_consequence]
+    ref: "L0:745-780"
+
+  mmxm_as_target:
+    id: "SIG-CTX-015"
+    name: "MMXM as Target (Objective)"
+    role: "Trade TOWARDS MMXM"
+    note: "MMXM IS the liquidity pool — no sweep required at MMXM"
+    conditions: [mmxm_post_mss, correct_zone, htf_aligned, separate_sweep, displacement_toward, fvg_support]
+    ref: "L0:782-820"
+
+# =============================================================================
+# STRUCTURE STATE
+# =============================================================================
+
+  structure_state:
+    id: "SIG-CTX-016"
+    name: "Daily Structure State"
+    states:
+      PRE_EXPANSION:
+        operating_range: "use_daily"
+        pd_source: "daily_range"
+      POST_EXPANSION:
+        operating_range: "shift_to_h4_h1"
+        mode: "REBALANCE"
+        daily_role: "direction filter only"
+    persistence: "PERMANENT until new Daily MSS"
+    ref: "L0:1040-1080"
+
+  post_expansion_trigger:
+    id: "SIG-CTX-017"
+    name: "Post-Expansion Detection"
+    principle: "Displacement defines intent. FVG enables execution."
+    classification_rule: "Based on FINAL APPROACH, not the start. If price has to negotiate, it's a grind."
+    
+    impulsive_delivery:
+      rule: "ALL conditions required"
+      conditions:
+        A_candle_structure:
+          requirement: "At least ONE displacement-grade candle"
+          threshold: "Candle body ≥ 60% of total range"
+        B_speed:
+          requirement: "Objective reached within ≤3 execution candles"
+          note: "⛔ No pip-based speed thresholds"
+        C_opposing_candles:
+          requirement: "≤1 opposing candle allowed during delivery"
+          rules: ["Must be small-bodied", "Must NOT overlap >50% of prior impulse candle"]
+        D_fvg:
+          classification: "FVG NOT required to classify as impulsive"
+          execution: "FVG IS required for post-expansion trading"
+          logic:
+            impulsive_with_fvg: "Post-Expansion + trading allowed"
+            impulsive_no_fvg: "Post-Expansion + trading BLOCKED"
+    
+    grind_delivery:
+      rule: "ANY disqualifier sufficient"
+      disqualifiers:
+        - {condition: "Objective reached in >3 candles", reason: "Too slow, negotiated"}
+        - {condition: "≥2 probes / touches of objective level", reason: "Hesitation, testing"}
+        - {condition: "2+ overlapping candles with no expansion", reason: "No intent"}
+        - {condition: "No displacement-grade candle", reason: "Lacks intent"}
+        - {condition: "≥2 opposing candles", reason: "Back-and-forth = negotiation"}
+    
+    mixed_signals:
+      fast_start_slow_finish: "→ GRIND"
+      slow_start_fast_finish: "→ IMPULSIVE"
+      fvg_on_final: "→ Confirms IMPULSIVE"
+      early_impulse_fades: "→ GRIND"
+    
+    ref: "L0:GAP-8, CSO:layer_0_gaps_7_to_11_RESOLVED_v2.yaml"
+
+# =============================================================================
+# WARMUP STATES (State Machine)
+# =============================================================================
+
+warmup_states:
+  states:
+    - {state: NO_STRUCTURE, tradeable: false, reason: "Waiting for first MSS", next: WEEKLY_ONLY}
+    - {state: WEEKLY_ONLY, tradeable: false, reason: "Weekly exists, waiting Daily MSS", next: NO_RANGE}
+    - {state: NO_RANGE, tradeable: false, reason: "Daily MSS exists, no range", next: NO_OBJECTIVE}
+    - {state: NO_OBJECTIVE, tradeable: false, reason: "Range exists, no draw", next: EQUILIBRIUM}
+    - {state: EQUILIBRIUM, tradeable: false, reason: "At equilibrium — no edge", next: FULL_CONTEXT}
+    - {state: FULL_CONTEXT, tradeable: true, reason: "All HTF components valid"}
+  ref: "L0:1828-1899"
+
+# =============================================================================
+# VALIDATION CHECKLIST
+# =============================================================================
+
+validation_checklist:
+  checks:
+    - {check: weekly_mss_detected, desc: "Weekly MSS detected (or confirmed none needed)"}
+    - {check: daily_mss_confirmed, desc: "Daily MSS detected and confirmed"}
+    - {check: daily_range_defined, desc: "Daily range defined (structure-based)"}
+    - {check: objective_identified, desc: "Daily objective identified and aligned"}
+    - {check: objective_undelivered, desc: "Objective status = LIQUIDITY_UNDELIVERED"}
+    - {check: not_equilibrium, desc: "Premium/Discount zone determined (NOT equilibrium)"}
+    - {check: bias_synthesized, desc: "Trade bias synthesized from 3 questions"}
+    - {check: pdas_tracked, desc: "All PDAs tracked (respected/broken/untested)"}
+    - {check: liquidity_pools_identified, desc: "Liquidity pools identified"}
+    - {check: state_machine_full_context, desc: "State machine in FULL_CONTEXT state"}
+  ref: "L0:1935-1948"
+
+# =============================================================================
+# KEY PRINCIPLES
+# =============================================================================
+
+key_principles:
+  principles:
+    - {num: 1, rule: "Weekly sets limits. Daily proves intent and defines direction."}
+    - {num: 2, rule: "After Daily expansion, execution shifts to H4/H1 rebalance mode."}
+    - {num: 3, rule: "Without MSS → no structure."}
+    - {num: 4, rule: "Without MSS → no range."}
+    - {num: 5, rule: "Without objective → no trade."}
+    - {num: 6, rule: "Objective must be LIQUIDITY_UNDELIVERED (untaken liquidity)."}
+    - {num: 7, rule: "Post-expansion = impulsive delivery. Grind rejected."}
+    - {num: 8, rule: "Structure > Time: Ranges from MSS, NOT PDH/PDL."}
+    - {num: 9, rule: "Bias = 3 Questions: Location + Objective + Respect."}
+    - {num: 10, rule: "One bias per day: Set at 00:00 NY, frozen until next day."}
+  ref: "L0:1952-1963"
+
+# =============================================================================
+# OUTPUT SCHEMA
+# =============================================================================
+
+output_schema:
+  schema:
+    weekly: [mss_exists, mss_direction, range, pwh, pwl, weekly_fvgs, weekly_obs]
+    daily: [mss_exists, mss_direction, order_flow, dealing_range, structure_state, pdas, liquidity_pools, objective]
+    bias:
+      q1_location:
+        - position_pct
+        - zone
+        - nearest_pda
+        - in_pda
+      q2_objective:
+        - dol_primary
+        - dol_secondary
+        - expected_path
+      q3_respect:
+        - htf_direction
+        - confidence
+        - structure_bias
+        - pda_bias
+      synthesis:
+        - trade_bias
+        - bias_note
+        - frozen_until
+    pd_state:
+      - pd_state
+      - position_pct
+      - distance_from_eq_pips
+    pda_registry:
+      - "list of all detected PDAs with immutable metadata"
+    meta: [analysis_timestamp, analysis_date, tradeable]
+  ref: "L0:1745-1823"
