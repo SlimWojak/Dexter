@@ -30,12 +30,32 @@ def load_queue(queue_path: Optional[Path] = None) -> Dict:
 
 
 def save_queue(data: Dict, queue_path: Optional[Path] = None) -> None:
-    """Save updated queue back to YAML file."""
+    """Save updated queue back to YAML file with atomic write.
+
+    Uses write-tmp + rename pattern for crash safety:
+    1. Write to .tmp file
+    2. Flush + fsync to ensure data on disk
+    3. Atomic rename (os.replace is atomic on POSIX)
+
+    Crash at any point = either old file or new file, never partial.
+    """
+    import os
+
     path = queue_path or EXTRACTION_QUEUE_FILE
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w") as f:
+
+    # Write to temporary file first
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+
+    with open(tmp_path, "w") as f:
         yaml.dump(data, f, default_flow_style=False, allow_unicode=True)
-    logger.info("Queue saved: %s", path)
+        f.flush()
+        os.fsync(f.fileno())  # Ensure data is written to disk
+
+    # Atomic rename (POSIX guarantees this is atomic)
+    os.replace(tmp_path, path)
+
+    logger.info("Queue saved (atomic): %s", path)
 
 
 def get_pending_videos(queue_data: Dict) -> List[Dict]:

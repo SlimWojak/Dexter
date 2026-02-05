@@ -37,9 +37,9 @@
 - [ ] Monitor rejection rate post-hardening
 - [ ] Third family (Llama/Qwen) if still <5%
 
-**P5 — QUEUE ATOMICITY:**
-- [ ] Fix save_queue() with write-tmp + rename pattern
-- [ ] Ship before scaling past current batch sizes
+**P5 — QUEUE ATOMICITY (COMPLETE):**
+- [x] Fix save_queue() with write-tmp + rename pattern
+- [x] Ship before scaling past current batch sizes
 
 **P6 — RUNAWAY GUARDS:**
 - [ ] Hard turn cap (10-20 turns per agent loop)
@@ -118,6 +118,9 @@
 - [x] P2 Back-propagation: Chronicler integration verified (no regression)
 - [x] P2 Back-propagation: tests — 22 new tests, 255/255 PASS total
 - [x] P2 Back-propagation: ROLE_CONTRACTS.md updated with seam documentation
+
+- [x] P5 Queue atomicity: save_queue() now uses write-tmp + atomic rename
+- [x] P5 Queue atomicity: tests — 3 new tests, 258/258 PASS total
 
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS

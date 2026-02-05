@@ -89,6 +89,53 @@ class TestSaveQueue(unittest.TestCase):
         finally:
             path.unlink()
 
+    def test_atomic_write_no_tmp_left(self):
+        """After successful save, .tmp file should not exist."""
+        data = _make_queue_data()
+        fd, path_str = tempfile.mkstemp(suffix=".yaml")
+        os.close(fd)
+        path = Path(path_str)
+        tmp_path = path.with_suffix(path.suffix + ".tmp")
+        try:
+            save_queue(data, path)
+            # .tmp file should be gone after atomic rename
+            self.assertFalse(tmp_path.exists())
+            # Main file should exist with correct content
+            self.assertTrue(path.exists())
+            reloaded = load_queue(path)
+            self.assertEqual(reloaded["total"], 3)
+        finally:
+            if path.exists():
+                path.unlink()
+            if tmp_path.exists():
+                tmp_path.unlink()
+
+    def test_atomic_write_creates_parent_dirs(self):
+        """save_queue should create parent directories if needed."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            path = Path(tmpdir) / "subdir" / "queue.yaml"
+            data = _make_queue_data()
+            save_queue(data, path)
+            self.assertTrue(path.exists())
+            reloaded = load_queue(path)
+            self.assertEqual(reloaded["total"], 3)
+
+    def test_atomic_write_integrity(self):
+        """File should have complete content after atomic write."""
+        data = _make_queue_data(10)  # More data to verify integrity
+        fd, path_str = tempfile.mkstemp(suffix=".yaml")
+        os.close(fd)
+        path = Path(path_str)
+        try:
+            save_queue(data, path)
+            reloaded = load_queue(path)
+            # All 10 videos should be present
+            self.assertEqual(len(reloaded["queue"]), 10)
+            for i, v in enumerate(reloaded["queue"]):
+                self.assertEqual(v["id"], f"vid{i}")
+        finally:
+            path.unlink()
+
 
 class TestGetPendingVideos(unittest.TestCase):
 

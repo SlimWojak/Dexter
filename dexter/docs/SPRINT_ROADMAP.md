@@ -12,10 +12,11 @@ soak_complete: true
 signatures_validated: 504
 bundles_created: 32
 corpus_mapped: 790 videos
-tests: 255/255 PASS
+tests: 258/258 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
 chronicler: IMPLEMENTED (P1 COMPLETE)
 backprop_seam: IMPLEMENTED (P2 COMPLETE)
+queue_atomicity: IMPLEMENTED (P5 COMPLETE)
 ```
 
 ---
@@ -34,6 +35,7 @@ backprop_seam: IMPLEMENTED (P2 COMPLETE)
 | Soak | Overnight extraction (20 videos) | ✅ COMPLETE | 2026-02-04 |
 | P1 | Chronicler (recursive summarization) | ✅ COMPLETE | 2026-02-05 |
 | P2 | Back-propagation seam (learning loop) | ✅ COMPLETE | 2026-02-05 |
+| P5 | Queue atomicity (crash-safe writes) | ✅ COMPLETE | 2026-02-05 |
 
 ---
 
@@ -102,16 +104,19 @@ source: Advisor synthesis
 owner: Dexter COO
 ```
 
-### P5: QUEUE ATOMICITY
+### P5: QUEUE ATOMICITY — COMPLETE
 ```yaml
-status: PENDING
-risk: MEDIUM (state corruption on crash)
+status: COMPLETE
+risk: MITIGATED (crash-safe writes)
 description: |
-  save_queue() does full YAML rewrite.
-  Fix: write-tmp + rename pattern (5 lines).
-  Ship before scaling past current batch sizes.
+  save_queue() now uses write-tmp + atomic rename.
+  Crash at any point = old file or new file, never partial.
 source: COO codebase notes
 owner: Dexter COO
+completed: 2026-02-05
+evidence:
+  - core/queue_processor.py: save_queue() with fsync + os.replace
+  - tests: 3 new atomic write tests
 ```
 
 ### P6: RUNAWAY GUARDS — NEW
