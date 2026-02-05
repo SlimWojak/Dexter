@@ -33,7 +33,7 @@ class TestModelRouting(unittest.TestCase):
     """Test role-based model configuration."""
 
     def test_all_roles_configured(self):
-        expected_roles = ["theorist", "auditor", "bundler", "chronicler", "cartographer", "default"]
+        expected_roles = ["theorist", "auditor", "bundler", "chronicler", "cartographer", "vision_extract", "default"]
         for role in expected_roles:
             self.assertIn(role, MODEL_ROUTING, f"Missing config for role: {role}")
 

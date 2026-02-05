@@ -110,6 +110,13 @@ MODEL_ROUTING: Dict[str, Dict] = {
         "temperature": 0.1,
         "max_tokens": 2048,
     },
+    "vision_extract": {
+        "model": "google/gemini-2.0-flash-exp",
+        "provider": "openrouter",
+        "family": "google",
+        "temperature": 0.0,  # Deterministic for OCR
+        "max_tokens": 4096,
+    },
     "default": {
         "model": "deepseek/deepseek-chat",
         "provider": "openrouter",
@@ -480,6 +487,116 @@ def call_llm_for_role(
     )
 
     return result
+
+
+def call_vision_extract(
+    image_base64: str,
+    prompt: str,
+    *,
+    timeout: float = 60.0,
+) -> Dict:
+    """Call Claude Vision for image text extraction (OCR).
+
+    Uses Claude Sonnet via Anthropic direct API with image input.
+    Fast and cost-effective for OCR tasks.
+
+    Args:
+        image_base64: Base64-encoded image data (PNG or JPEG)
+        prompt: Extraction prompt
+        timeout: Request timeout
+
+    Returns:
+        {"content": str, "usage": dict, "model": str}
+    """
+    api_key = _get_anthropic_key()
+    if not api_key:
+        raise ValueError("ANTHROPIC_API_KEY not set for vision extraction")
+
+    # Use Sonnet for vision (good quality, lower cost than Opus)
+    model = "claude-sonnet-4-5-20250929"
+
+    # Build Anthropic-format message with image
+    messages = [
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "image",
+                    "source": {
+                        "type": "base64",
+                        "media_type": "image/png",
+                        "data": image_base64,
+                    },
+                },
+                {
+                    "type": "text",
+                    "text": prompt,
+                },
+            ],
+        }
+    ]
+
+    with httpx.Client(timeout=timeout) as client:
+        response = client.post(
+            "https://api.anthropic.com/v1/messages",
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": model,
+                "messages": messages,
+                "max_tokens": 4096,
+            },
+        )
+
+        if response.status_code == 429:
+            logger.warning("[VISION] Rate limited, waiting 5s...")
+            import time
+            time.sleep(5)
+            response = client.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "x-api-key": api_key,
+                    "anthropic-version": "2023-06-01",
+                    "Content-Type": "application/json",
+                },
+                json={
+                    "model": model,
+                    "messages": messages,
+                    "max_tokens": 4096,
+                },
+            )
+
+        response.raise_for_status()
+        data = response.json()
+
+        # Parse Anthropic response format
+        content = ""
+        for block in data.get("content", []):
+            if block.get("type") == "text":
+                content += block.get("text", "")
+
+        usage = data.get("usage", {})
+        normalized_usage = {
+            "prompt_tokens": usage.get("input_tokens", 0),
+            "completion_tokens": usage.get("output_tokens", 0),
+        }
+
+        _log_cost(model, normalized_usage)
+
+        logger.info(
+            "[VISION] model=%s tokens_in=%s tokens_out=%s",
+            model, normalized_usage.get("prompt_tokens", "?"),
+            normalized_usage.get("completion_tokens", "?"),
+        )
+
+        return {
+            "content": content,
+            "usage": normalized_usage,
+            "model": model,
+        }
 
 
 # =============================================================================

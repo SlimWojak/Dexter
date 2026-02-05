@@ -5,11 +5,15 @@ P3: Source Ingestion Pipeline
 Extracts text from PDFs, handles mixed content (text + images),
 chunks for Theorist processing with source tier tagging.
 
+P3.4-fix: Image-heavy pages extracted via Gemini Vision OCR.
+
 Dependencies: PyMuPDF (fitz)
 """
 
 from __future__ import annotations
 
+import base64
+import io
 import logging
 import os
 from pathlib import Path
@@ -43,6 +47,68 @@ def _load_fitz():
             "PyMuPDF not installed. Run: pip install PyMuPDF\n"
             "Or add to requirements.txt and reinstall."
         )
+
+
+# Vision extraction prompt for image-heavy PDF pages
+VISION_EXTRACT_PROMPT = """Extract all visible text, annotations, labels, and structured content from this image.
+
+IMPORTANT:
+- Preserve any trading terminology, price levels, and chart annotations exactly as written
+- Include all text boxes, labels, headers, and captions
+- For tables or structured content, preserve the structure
+- If there are bullet points or numbered lists, maintain the format
+- Include any handwritten annotations if readable
+- For charts: extract axis labels, data labels, annotations, but do NOT interpret price action
+
+Return ONLY the extracted text, no commentary or analysis."""
+
+
+def _extract_page_image_text(page, page_num: int, fitz) -> str:
+    """Extract text from an image-heavy page using Gemini Vision.
+
+    Args:
+        page: PyMuPDF page object
+        page_num: Page number (1-indexed)
+        fitz: PyMuPDF module
+
+    Returns:
+        Extracted text from the page image
+    """
+    # Check if vision extraction is enabled
+    if os.getenv("DEXTER_VISION_EXTRACT", "false").lower() != "true":
+        logger.debug("Vision extract disabled for page %d (set DEXTER_VISION_EXTRACT=true)", page_num)
+        return ""
+
+    try:
+        from core.llm_client import call_vision_extract
+
+        # Render page to image at reasonable resolution (150 DPI)
+        mat = fitz.Matrix(150 / 72, 150 / 72)  # 150 DPI
+        pix = page.get_pixmap(matrix=mat)
+
+        # Convert to PNG bytes
+        img_bytes = pix.tobytes("png")
+
+        # Base64 encode
+        img_base64 = base64.b64encode(img_bytes).decode("utf-8")
+
+        # Call vision API
+        result = call_vision_extract(img_base64, VISION_EXTRACT_PROMPT)
+        extracted_text = result.get("content", "").strip()
+
+        if extracted_text:
+            logger.info("[VISION] Page %d: extracted %d chars", page_num, len(extracted_text))
+            return extracted_text
+        else:
+            logger.debug("[VISION] Page %d: no text extracted", page_num)
+            return ""
+
+    except ImportError:
+        logger.warning("Vision extraction unavailable (llm_client not found)")
+        return ""
+    except Exception as e:
+        logger.warning("[VISION] Page %d extraction failed: %s", page_num, e)
+        return ""
 
 
 def extract_text_from_pdf(
@@ -87,27 +153,49 @@ def extract_text_from_pdf(
         text = page.get_text()
         char_count = len(text.strip())
 
-        pages.append({
-            "page_num": page_num + 1,  # 1-indexed for human readability
-            "text": text.strip(),
-            "char_count": char_count,
-        })
-
         if char_count >= min_text_chars:
+            # Text-heavy page — use extracted text
+            pages.append({
+                "page_num": page_num + 1,
+                "text": text.strip(),
+                "char_count": char_count,
+                "extraction_method": "text",
+            })
             all_text.append(text.strip())
         else:
-            # Log as image-heavy (mostly charts/screenshots)
+            # Image-heavy page — try vision extraction
             image_heavy_pages.append(page_num + 1)
-            logger.debug("Page %d is image-heavy (%d chars)", page_num + 1, char_count)
+            logger.debug("Page %d is image-heavy (%d chars), trying vision...", page_num + 1, char_count)
+
+            vision_text = _extract_page_image_text(page, page_num + 1, fitz)
+            if vision_text:
+                pages.append({
+                    "page_num": page_num + 1,
+                    "text": vision_text,
+                    "char_count": len(vision_text),
+                    "extraction_method": "vision",
+                })
+                all_text.append(vision_text)
+            else:
+                # No text extracted from either method
+                pages.append({
+                    "page_num": page_num + 1,
+                    "text": text.strip(),  # Keep any minimal text
+                    "char_count": char_count,
+                    "extraction_method": "text_minimal",
+                })
+                if text.strip():
+                    all_text.append(text.strip())
 
     doc.close()
 
     text_pages = total_pages - len(image_heavy_pages)
+    vision_pages = sum(1 for p in pages if p.get("extraction_method") == "vision")
     full_text = "\n\n".join(all_text)
 
     logger.info(
-        "Extracted %d pages (%d text, %d image-heavy) from %s",
-        total_pages, text_pages, len(image_heavy_pages), pdf_path.name,
+        "Extracted %d pages (%d text, %d image-heavy, %d via vision) from %s",
+        total_pages, text_pages, len(image_heavy_pages), vision_pages, pdf_path.name,
     )
 
     return {
