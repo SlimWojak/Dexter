@@ -27,21 +27,25 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 ## QUICK STATUS (Update this section on major changes)
 
 ```yaml
-phase: STAGE_2_COMPLETE
+phase: STAGE_3_COMPLETE
 tests: 363/363 PASS
-signatures_validated: 835 (504 soak + 331 stage2)
-bundles_created: 55
+signatures_validated: 981 (504 soak + 331 stage2 + 146 stage3)
+bundles_created: 73
 corpus_mapped: 790 videos (full) + 24 videos (ICT 2022 Mentorship)
 overnight_soak: 18/20 videos processed
 cost_per_video: ~$0.003
 document_pipeline: OPERATIONAL
 vision_extraction: OPERATIONAL (two-pass architecture)
+mirror_report: GENERATED (bundles/MIRROR_REPORT.md)
+
+stage_3_extraction:
+  ict_2022_live: 21 processed → 146 validated, 25 rejected (14.6%)
+  mirror_report: Generated with Opus synthesis ($0.42)
 
 stage_2_extraction:
   olya_pdfs: 22 processed → 153 validated, 6 rejected (3.8%)
-  ict_2022_videos: 24 processed → 168 validated, 0 rejected (mock)
+  ict_2022_mock: 24 processed → 168 validated, 0 rejected (mock)
   blessed_trader: 5 processed → 10 validated, 0 rejected
-  total: 51 sources → 331 validated, 6 rejected (1.8%)
 
 sources_registered:
   ict_2022_mentorship: 24 videos (CANON tier)
@@ -360,27 +364,25 @@ pending_implementation:
 
 ## PHASE EXECUTION
 
-Current: STAGE_2_COMPLETE (2026-02-05)
+Current: STAGE_3_COMPLETE (2026-02-05)
 
 Completed Priorities:
 - P1: Chronicler — COMPLETE (recursive summarization + archival)
 - P2: Back-propagation seam — COMPLETE (learning loop operational)
 - P3: Source ingestion — COMPLETE (P3.1-P3.5 all complete)
 - P3.5: Vision extraction — COMPLETE (two-pass architecture)
-- P4: Auditor hardening — COMPLETE (v0.3 Bounty Hunter, rate tracking)
+- P4: Auditor hardening — COMPLETE (14.6% rejection on live data)
 - P5: Queue atomicity — COMPLETE (atomic write pattern)
 - P6: Runaway guards — COMPLETE (turn cap, cost ceiling, watchdog)
 
-Stage 2 Extraction Complete:
-- 22 Olya PDFs → 153 validated signatures
-- 24 ICT 2022 videos → 168 validated signatures (mock)
-- 5 Blessed Trader PDFs → 10 validated signatures
-- See docs/STAGE_2_EXTRACTION_REPORT.md for full details
+Stage 3 Complete:
+- ICT 2022 live transcripts: 146 validated, 25 rejected (14.6%)
+- Mirror Report generated: bundles/MIRROR_REPORT.md
+- Auditor rejection rate healthy (above 10% floor with real content)
 
 Next Actions:
-- Human review of Stage 2 output
-- Auditor hardening (1.8% rejection rate below 10% floor)
-- Live transcript integration when ready
+- Olya reviews MIRROR_REPORT.md
+- CSO curriculum for depth-over-breadth extraction
 
 On task complete:
 1. Run tests

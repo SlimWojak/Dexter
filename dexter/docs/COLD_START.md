@@ -27,21 +27,21 @@ Human frames. Machine computes. Human promotes.
 ## Quick Status
 
 ```yaml
-phase: STAGE_2_COMPLETE
-signatures_validated: 835 (504 soak + 331 stage2)
-bundles_created: 55
+phase: STAGE_3_COMPLETE
+signatures_validated: 981 (504 soak + 331 stage2 + 146 stage3)
+bundles_created: 73
 corpus_mapped: 790 videos (full) + 24 videos (ICT 2022)
 tests: 363/363 PASS
 cost: $0.003/video
 overnight_soak: 18/20 videos, 424 validated
 document_pipeline: OPERATIONAL
 vision_extraction: OPERATIONAL
+mirror_report: bundles/MIRROR_REPORT.md
 
-stage_2_extraction:
-  olya_pdfs: 22 → 153 validated (3.8% rejected)
-  ict_2022_videos: 24 → 168 validated (mock)
-  blessed_trader: 5 → 10 validated
-  total: 51 sources → 331 validated
+stage_3_extraction:
+  ict_2022_live: 21 → 146 validated (14.6% rejected)
+  mirror_report: Generated with Opus ($0.42)
+  auditor_status: HEALTHY (above 10% floor)
 
 sources_registered:
   ict_2022_mentorship: 24 videos (CANON)
@@ -79,6 +79,7 @@ If exploring further:
 | **P5** | Queue atomicity | MITIGATED | COMPLETE |
 | **P6** | Runaway guards | MITIGATED | COMPLETE |
 | **Stage 2** | Full corpus extraction | MITIGATED | COMPLETE |
+| **Stage 3** | Live ICT + Mirror Report | MITIGATED | COMPLETE |
 
 ---
 

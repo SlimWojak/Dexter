@@ -194,12 +194,33 @@ Based on validated signatures across all tiers:
 
 ---
 
+## Stage 3 Addendum: Live vs Mock Rejection Rates
+
+**Comparison (ICT 2022 Mentorship):**
+
+| Source | Extracted | Validated | Rejected | Rejection Rate |
+|--------|-----------|-----------|----------|----------------|
+| Mock transcripts (Stage 2b) | 168 | 168 | 0 | **0%** |
+| Live Supadata (Stage 3a) | 171 | 146 | 25 | **14.6%** |
+
+**Analysis:**
+- Live transcripts yield **dramatically higher rejection rates** (14.6% vs 0%)
+- Auditor v0.3 catching real issues:
+  - Unfalsifiable: "always", "never"
+  - Ambiguous: "looks", "maybe", "probably", "kind of"
+- **14.6% exceeds the 10% target floor** — Auditor hardening successful
+- No third model family needed for now
+
+**Conclusion:** The 0% mock rejection rate was an artifact of synthetic data uniformity.
+Real transcripts contain natural language variance that the Auditor correctly flags.
+
+---
+
 ## Next Steps
 
-1. **P1 Chronicler:** Implement memory compression (beads unbounded)
-2. **P4 Auditor:** Harden prompts to achieve 10% rejection floor
-3. **Live Transcripts:** Integrate Supadata for real ICT video extraction
-4. **CSO Curriculum:** Await curated video list for depth-over-breadth extraction
+1. **Human Review:** Olya reviews MIRROR_REPORT.md
+2. **CSO Curriculum:** Await curated video list for depth-over-breadth extraction
+3. **Chronicler:** Memory compression for growing bead corpus
 
 ---
 

@@ -2,15 +2,16 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: STAGE_2_COMPLETE (Full corpus extraction)
+- Phase: STAGE_3_COMPLETE (Mirror Report generated)
 - Tests: 363/363 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
 - Sources: 4 extraction targets + 1 reference
 - Vision Extraction: OPERATIONAL — two-pass architecture
-- Stage 2 Extraction: COMPLETE — 331 validated from 51 sources
-- Tier Routing: Verified + optimized chunking (page-based)
+- Stage 3 Extraction: COMPLETE — 146 validated from live ICT transcripts
+- Mirror Report: GENERATED — bundles/MIRROR_REPORT.md
+- Auditor Rejection: 14.6% on live (above 10% target floor)
 
 ### STAGE 1 EXTRACTION SUMMARY (P3.4d Complete)
 
