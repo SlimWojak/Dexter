@@ -1,0 +1,44 @@
+{
+  "stage": "C",
+  "source": "/Users/tradingclawd/dexter/data/sources/olya_notes/OLYA 7 \u2705 A+ SETUPS.pdf",
+  "timestamp": "2026-02-05T11:47:16.199514+00:00",
+  "visual_pages_count": 7,
+  "formatted_for_theorist_length": 10978,
+  "pages": [
+    {
+      "page_num": 1,
+      "description_length": 1608,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 2,
+      "description_length": 1631,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 7,
+      "description_length": 1580,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 8,
+      "description_length": 1311,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 9,
+      "description_length": 1300,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 10,
+      "description_length": 1523,
+      "model": "claude-opus-4-5-20251101"
+    },
+    {
+      "page_num": 11,
+      "description_length": 1441,
+      "model": "claude-opus-4-5-20251101"
+    }
+  ]
+}

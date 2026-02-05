@@ -1,0 +1,440 @@
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 1]
+
+=== CHART/IMAGE CONTENT ===
+# Extracted Content from Trading Notes Screenshot
+
+## Header
+- ✅ **A+ SETUPS**
+- **03/09 BUY-DAY**
+
+---
+
+## Chart 1: 1hr
+- Platform: TradingView
+- Price action shows downtrend followed by consolidation and upward movement
+- Legend visible on right side (text too small to read clearly)
+- Horizontal lines/levels marked on chart
+- Labels visible but text is not legible at this resolution
+
+---
+
+## Chart 2: 15min
+- Platform: TradingView
+- Similar price structure to 1hr chart with more detail
+- Legend box visible with multiple items (text not legible)
+- Horizontal reference lines present
+- Price shows decline then recovery pattern
+
+---
+
+## Chart 3: 10min Breaker
+- Platform: TradingView
+- Legend box with multiple colored items (green indicators visible)
+- Horizontal levels marked
+- Labels on chart (text not clearly legible)
+- "IP" label visible on chart
+- Price structure shows consolidation area
+
+---
+
+## Chart 4: 5min
+- Platform: TradingView
+- Legend box with multiple items including green indicators
+- Horizontal levels/zones marked
+- Labels visible including what appears to be "IP" markers
+- "sell side" text visible
+- Price action shows detailed intraday movement
+
+---
+
+## Chart 5: 2min
+- (Label only - chart not visible in image)
+
+---
+
+## Notes on Legibility
+The chart legends and annotations contain text that is too small to accurately transcribe at this image resolution. The visible elements include:
+- Multiple colored legend items (green boxes visible)
+- Horizontal price levels
+- Time-based annotations
+- "IP" markers on lower timeframe charts
+- "sell side" notation visible on 5min chart
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 2]
+
+=== CHART/IMAGE CONTENT ===
+# Extracted Content from Trading Notes Screenshot
+
+## Header
+**05/09 CONTINUATION**
+
+---
+
+## Chart 1 - Top (appears to be higher timeframe)
+**Timeframe:** Not clearly labeled
+
+**Platform:** TradingView
+
+**Legend/Key (right side - green and red indicators):**
+- (Text too small/blurry to read accurately)
+- Multiple bullet points with green and red colored indicators visible
+
+**Chart Features:**
+- Price action showing downtrend followed by consolidation and upward move
+- Yellow highlighted zone/box visible in the middle-right portion of chart
+- Horizontal lines marking levels (appears to show "PDH" and "PDL" labels)
+
+---
+
+## Chart 2
+**Timeframe:** 1hr
+
+**Platform:** TradingView
+
+**Legend/Key (right side):**
+- Multiple green bullet points (text not legible due to image resolution)
+- Red indicator items visible
+
+**Chart Features:**
+- Extended price action showing similar pattern to top chart
+- Downtrend, consolidation, then upward movement
+
+---
+
+## Chart 3
+**Timeframe:** 15min
+
+**Platform:** TradingView
+
+**Legend/Key (right side):**
+- Green bullet points
+- Red indicators
+- (Specific text not legible)
+
+---
+
+## Chart 4
+**Timeframe:** 10min
+
+**Platform:** TradingView
+
+**Legend/Key (right side):**
+- Green bullet points
+- Red indicators
+
+---
+
+## Chart 5 (labeled at bottom)
+**Timeframe:** 5min
+
+*(Chart image not shown in screenshot - only label visible)*
+
+---
+
+## Notes:
+- All charts appear to be from TradingView platform
+- Charts show what appears to be the same instrument across multiple timeframes (multi-timeframe analysis)
+- Legend text on right side of charts is too small/low resolution to accurately transcribe
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 7]
+
+=== CHART/IMAGE CONTENT ===
+# Trading Notes Screenshot Extraction
+
+## Visible Content
+
+### Chart Labels/Timeframes
+- **15min**
+- **10min**
+- **5min**
+- **2min**
+
+### Chart Platform Watermark
+- "TradingView" (visible at bottom left of each chart)
+
+---
+
+## Chart Content Analysis
+
+### Top Chart (Unlabeled - appears to be higher timeframe)
+- Price action showing consolidation on left side
+- Upward movement in middle section
+- Peak followed by decline on right side
+- Overall pattern: accumulation → markup → distribution
+
+### 15min Chart
+- Extended consolidation/accumulation phase on left
+- Strong upward impulse move in center-right
+- Choppy/volatile price action at highs on right side
+- Clear trending structure visible
+
+### 10min Chart
+- Similar structure to 15min
+- Consolidation on left
+- Strong bullish impulse in center
+- Volatile ranging at highs on right portion
+
+### 5min Chart
+- More detailed price action visible
+- Choppy accumulation on left side
+- Gradual upward movement transitioning to stronger impulse
+- Price appears to be in consolidation/pullback at right edge
+
+### 2min Label
+- Label visible but corresponding chart is not shown in image
+
+---
+
+## Header Text (Top of Charts - Partially Legible)
+- Text appears to reference instrument/pair information but is too small/blurry to accurately transcribe
+
+---
+
+## Notes
+- All charts appear to be from TradingView platform
+- Charts show the same instrument across multiple timeframes (multi-timeframe analysis)
+- No additional annotations, drawings, or text notes visible on charts
+- No tables, checklists, or bullet points present in image
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 8]
+
+=== CHART/IMAGE CONTENT ===
+# Trading Notes Screenshot Extraction
+
+## Headers/Titles
+
+**11/06 EURUSD LONG**
+**4hr BULLISH BREAK OUT**
+
+**1hr NOT READY YET**
+
+**15MIN**
+
+**5MIN**
+
+---
+
+## Chart Content
+
+### Chart 1 (Top - appears to be Daily or higher timeframe)
+- Platform: TradingView
+- Pair: EURUSD
+- Shows upward price movement/breakout pattern
+- Price action moving from lower left to upper right
+- Some horizontal annotation lines visible in middle section
+
+### Chart 2 (4hr timeframe)
+- Platform: TradingView
+- Shows bullish breakout structure
+- Price consolidation followed by upward movement
+- Clear higher highs and higher lows pattern visible
+
+### Chart 3 (1hr timeframe)
+- Platform: TradingView
+- Label indicates "NOT READY YET"
+- Shows similar price structure but awaiting confirmation
+- Upward trending price action on right side of chart
+
+### Chart 4 (15MIN timeframe)
+- Platform: TradingView
+- Shows more detailed price action
+- Multiple swing highs and lows visible
+- Strong bullish move visible on right portion of chart
+
+### Chart 5 (5MIN timeframe)
+- Label only visible, chart not shown in image
+
+---
+
+## Observations
+- Multi-timeframe analysis approach (Daily/4hr/1hr/15min/5min)
+- 4hr showing bullish breakout confirmation
+- 1hr timeframe noted as not yet confirming setup
+- Top-down analysis methodology being applied
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 9]
+
+=== CHART/IMAGE CONTENT ===
+# Trading Notes Extraction
+
+## Header Text
+**12/06 EURUSD LONG IN PREMIUM**
+
+---
+
+## Chart 1 - Top (Unlabeled timeframe)
+- Platform: TradingView
+- Shows uptrending price action with higher highs and higher lows
+- Price moves from lower left to upper right
+- Some consolidation/pullback visible on the right side
+
+---
+
+## Chart 2 - 4hr
+- Platform: TradingView
+- Label: "4hr"
+- Uptrending structure visible
+- Series of swing highs and swing lows moving upward
+- Sharp move up on the right side of chart
+
+---
+
+## Chart 3 - 1hr
+- Platform: TradingView
+- Label: "1hr"
+- More detailed price action
+- Choppy/ranging action in the middle section
+- Upward movement on the right portion of chart
+
+---
+
+## Chart 4 - 15min
+- Platform: TradingView
+- Label: "15min"
+- Contains horizontal lines (appears to be support/resistance levels)
+- Text annotation visible but not legible in image
+- Shows detailed intraday price movement
+- Sharp decline followed by recovery on right side
+
+---
+
+## Label at Bottom
+**5min**
+
+(Note: The 5min chart image appears to be missing/cut off from the document)
+
+---
+
+## Observations
+- Multi-timeframe analysis presented (4hr → 1hr → 15min → 5min)
+- All charts from TradingView platform
+- Trade direction: LONG
+- Context: "IN PREMIUM" (ICT terminology indicating price in premium zone)
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 10]
+
+=== CHART/IMAGE CONTENT ===
+# Trading Notes Screenshot Extraction
+
+## Header/Title
+**28/08 EURUSD LONG IN PREMIUM, CLOSE TO HTF**
+
+---
+
+## Chart 1 - Top Chart (appears to be Higher Timeframe)
+- Platform: TradingView
+- Shows upward price movement from left to right
+- Price action shows consolidation followed by bullish expansion
+- Horizontal lines visible (likely support/resistance levels)
+
+---
+
+## Chart 2 - 1hr (1 Hour Timeframe)
+- Platform: TradingView
+- Price action shows:
+  - Initial decline on left side
+  - Consolidation/ranging period in middle
+  - Bullish expansion toward right side
+  - Overall upward trajectory
+- Horizontal reference lines visible
+
+---
+
+## Chart 3 - 15min (15 Minute Timeframe)
+- Platform: TradingView
+- More detailed price action visible
+- Shows similar structure to 1hr:
+  - Decline/pullback
+  - Base formation
+  - Bullish move upward
+- Horizontal lines marking key levels
+
+---
+
+## Chart 4 - 10min (10 Minute Timeframe)
+- Platform: TradingView
+- Most granular view shown
+- Price action details:
+  - Choppy/volatile movement on left
+  - Consolidation in middle section
+  - Strong bullish expansion on right side
+- Horizontal reference levels marked
+
+---
+
+## Chart 5 - 5min (5 Minute Timeframe)
+- Label visible: "5min"
+- Chart image not shown/cut off in screenshot
+
+---
+
+## Observations
+- Multi-timeframe analysis displayed (HTF → 1hr → 15min → 10min → 5min)
+- All charts from TradingView platform
+- Trade direction: LONG
+- Context: "IN PREMIUM, CLOSE TO HTF" suggests entry in premium array near higher timeframe level
+
+---
+
+[VISUAL CONTENT: OLYA 7 ✅ A+ SETUPS.pdf page 11]
+
+=== CHART/IMAGE CONTENT ===
+# Trading Notes Screenshot Extraction
+
+## Chart 1 (Top)
+
+**Header Text:**
+- "MNQUSD.swap.cfd" (partial, appears to be instrument name)
+- "TradingView" (bottom left watermark)
+
+**Chart Content:**
+- Line chart showing price action
+- Price movement shows initial decline, consolidation, then significant upward movement
+- A horizontal line/level is drawn across the middle portion of the chart
+- Right side shows continued volatile price action with peaks and valleys
+- Time axis visible at bottom (dates not clearly legible)
+- Price axis on right side (values not clearly legible)
+
+---
+
+## Text Between Charts
+
+**"2min"**
+
+---
+
+## Chart 2 (Bottom)
+
+**Header Text:**
+- Similar header to Chart 1 (partially visible)
+- "TradingView" (bottom left watermark)
+
+**Chart Content:**
+- 2-minute timeframe chart
+- Similar price structure to Chart 1
+- Shows price action with initial choppy movement on left
+- Gradual rise through middle section
+- Sharp upward spike followed by volatile trading on right portion
+- Horizontal line/level drawn across chart
+- Small text annotation visible in middle-right area (not legible)
+- Time axis at bottom
+- Price axis on right side
+
+---
+
+## Visual Elements
+
+- Both charts appear to be from TradingView platform
+- Dark/black background with white/light colored price line
+- Horizontal reference lines drawn on both charts
+- Charts appear to show the same instrument at potentially different timeframes or zoom levels

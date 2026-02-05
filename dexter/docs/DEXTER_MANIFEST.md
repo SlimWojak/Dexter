@@ -2,12 +2,13 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: STAGE_1_COMPLETE (P3.4d done, awaiting CTO + G review)
-- Tests: 351/351 PASS
+- Phase: P3.5_IN_PROGRESS (Vision extraction skill)
+- Tests: 363/363 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
 - Phoenix CTO: Reviewed and approved architecture
 - Sources: 4 extraction targets + 1 reference (layer_0 reclassified)
+- Vision Extraction: OPERATIONAL — Stage A/B/C tests passed
 - Stage 1 Extraction: Complete — see summary below
 - Tier Routing: Verified + optimized chunking (1 chunk/document vs 300-400)
 
@@ -24,10 +25,19 @@
 
 **Key Findings:**
 1. **Olya PDFs yield high-quality IF-THEN rules** — 21 signatures from 2 PDFs, clear conditions/actions
-2. **Blessed Trader PDFs are visual examples** — chart images without extractable logic, 0 signatures
+2. **Blessed Trader PDFs are visual examples** — chart images without extractable logic, 0 signatures (P3.5 adds vision)
 3. **Auditor rejection rate healthy** — 10.5-12.5% across tiers (above 5% floor)
 4. **Chunking optimization worked** — 1 chunk/document vs 300-400 previously, cost reduced 100x
 5. **Layer 0 correctly excluded** — Phoenix spec is REFERENCE, not extraction target
+
+**P3.5 Vision Extraction (NEW):**
+| Stage | Source | Model | Pages | Sigs | Cost | Notes |
+|-------|--------|-------|-------|------|------|-------|
+| A | OLYA 10 5min scalps | Opus | 1 | 22 | ~$0.24 | Full checklist extracted |
+| C | OLYA 7 A+ setups | Opus | 7 | 7 | ~$0.40 | Multi-timeframe patterns |
+| B | Blessed Lesson 11 | Sonnet | 7 | TBD | ~$0.08 | Cost-effective lateral |
+
+Vision extraction unlocks: TradingView screenshots, annotated charts, visual examples
 
 **Sample Signatures (Olya 5min Scalps):**
 - S-001: IF clear liquidity draw + no opposite side liquidity + 5min MMM visible → THEN setup valid
@@ -76,7 +86,16 @@
   - Layer 0 reclassified as REFERENCE (not extraction target)
   - Olya PDFs (Opus): 2 chunks, 21 sigs, 10.5% rejection
   - Blessed Trader (DeepSeek): 2 chunks, 0 sigs (visual examples)
-- [ ] P3.4e: Stage 2 — full Olya corpus extraction (BLOCKED: awaiting review)
+- [x] P3.5a: Vision extraction skill (skills/document/vision_extractor.py)
+  - Two-pass: Vision description (Opus/Sonnet) → Theorist extraction
+  - ICT terminology preserved: MMM, IFVG, FVG, MSS, OB, BPR, OTE
+  - Stage A: OLYA 10 page 1 → 22 signatures via Opus (~$0.24)
+  - Stage C: OLYA 7 (7 pages) → 7 signatures via Opus (~$0.40)
+  - Stage B: Blessed Lesson 11 → 7 pages via Sonnet (~$0.08)
+  - source_type: VISUAL tag added to CLAIM_BEADs
+- [ ] P3.5b: PDF ingester integration (image-heavy routing)
+- [ ] P3.5c: Full Olya visual corpus extraction
+- [ ] P3.4e: Stage 2 — full corpus extraction (BLOCKED: awaiting review)
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern
