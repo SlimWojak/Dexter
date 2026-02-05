@@ -1,0 +1,2 @@
+{"id": "N-005", "type": "NEGATIVE", "reason": "Missing provenance \u2014 no timestamp or source attribution", "source_signature": "S-INT-002", "source_bundle": "", "timestamp": "2026-02-03T15:15:31.383639+00:00", "metadata": {}}
+{"id": "N-006", "type": "NEGATIVE", "reason": "Unfalsifiable claim \u2014 contains absolute marker: 'always'", "source_signature": "S-INT-003", "source_bundle": "", "timestamp": "2026-02-03T15:15:31.383716+00:00", "metadata": {}}

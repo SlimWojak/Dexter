@@ -1,0 +1,2 @@
+{"id": "N-001", "type": "NEGATIVE", "reason": "Missing provenance", "source_signature": "S-001", "source_bundle": "B-TEST", "timestamp": "2026-02-03T15:00:00.000000+00:00", "metadata": {}}
+{"id": "N-002", "type": "NEGATIVE", "reason": "Unfalsifiable claim", "source_signature": "S-002", "source_bundle": "B-TEST", "timestamp": "2026-02-03T15:00:00.000000+00:00", "metadata": {}}

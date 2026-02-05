@@ -12,8 +12,9 @@ soak_complete: true
 signatures_validated: 504
 bundles_created: 32
 corpus_mapped: 790 videos
-tests: 208/208 PASS
+tests: 233/233 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
+chronicler: IMPLEMENTED (P1 COMPLETE)
 ```
 
 ---
@@ -30,21 +31,29 @@ phoenix_integration: BRIDGE_SPEC_COMPLETE
 | 5 | LLM Theorist + Cartographer + operational | ✅ COMPLETE | 2026-02-03 |
 | Integration | Phoenix CLAIM_BEAD bridge | ✅ SPEC_COMPLETE | 2026-02-03 |
 | Soak | Overnight extraction (20 videos) | ✅ COMPLETE | 2026-02-04 |
+| P1 | Chronicler (recursive summarization) | ✅ COMPLETE | 2026-02-05 |
 
 ---
 
 ## ACTIVE PRIORITIES (Post-Advisor Synthesis)
 
-### P1: CHRONICLER IMPLEMENTATION — URGENT
+### P1: CHRONICLER IMPLEMENTATION — COMPLETE
 ```yaml
-status: PENDING
-risk: HIGH (memory bloat — beads unbounded)
+status: COMPLETE
+risk: MITIGATED (memory bloat addressed)
 description: |
-  Implement recursive summarization every 20-30 beads.
-  Produce THEORY.md (summary) + index.
-  Archive raw beads to archive/.
-  Preserve negatives in dedicated section.
+  Implemented recursive summarization with clustering.
+  THEORY.md generated with 5-drawer organization + index.
+  Archive flow working (session beads → archive/).
+  NEGATIVE section preserved.
+  Redundancy detection: 75 pairs flagged (cosine >= 0.85).
 owner: Dexter COO
+completed: 2026-02-05
+evidence:
+  - core/chronicler.py (compress_beads, cluster_by_drawer, detect_redundant_pairs)
+  - tests/test_chronicler.py (25 tests)
+  - memory/THEORY.md (424 claims → 389 clusters)
+  - memory/archive/ (session archival working)
 ```
 
 ### P2: BACK-PROPAGATION SEAM — NEW

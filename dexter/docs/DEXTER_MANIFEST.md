@@ -17,11 +17,11 @@
 
 ### NEXT_ACTIONS (Post-Advisor Synthesis 2026-02-04)
 
-**P1 — CHRONICLER (URGENT):**
-- [ ] Implement recursive summarization every 20-30 beads
-- [ ] Produce THEORY.md summary + index
-- [ ] Archive raw beads to archive/
-- [ ] Preserve negatives in dedicated section
+**P1 — CHRONICLER (COMPLETE):**
+- [x] Implement recursive summarization every 20-30 beads
+- [x] Produce THEORY.md summary + index
+- [x] Archive raw beads to archive/
+- [x] Preserve negatives in dedicated section
 
 **P2 — BACK-PROPAGATION SEAM (NEW):**
 - [ ] Design Olya rejection → NEGATIVE_BEAD flow
@@ -104,6 +104,14 @@
 - [x] Soak results: 424 validated, 9 rejected (2.1% rejection rate), 20 CLAIM_BEAD files (408 beads)
 - [x] Drawer tagging verified: drawers 1-5 active, confidence + basis fields populated
 
+- [x] P1 Chronicler: core/chronicler.py — recursive summarization + clustering
+- [x] P1 Chronicler: memory/THEORY.md — generated from 424 CLAIM_BEADs
+- [x] P1 Chronicler: memory/archive/ — session bead archival working
+- [x] P1 Chronicler: NEGATIVE section preserved in THEORY.md
+- [x] P1 Chronicler: Redundancy detection (cosine > 0.85) — 75 pairs flagged
+- [x] P1 Chronicler: Drawer clustering (5-drawer system) — all drawers populated
+- [x] P1 Chronicler: tests — 25 new tests, 233/233 PASS total
+
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS
 - LLM Ep2: 13 unique signatures, canonical ICT terms (FVG, MSS, killzone, OTE): PASS
@@ -133,6 +141,18 @@
 - index.jsonl write + read round-trip: PASS
 - Queue processor: dry_run, limit, execute, failure handling: PASS
 - All 208 tests pass: PASS
+
+### P1 CHRONICLER EVIDENCE
+- core/chronicler.py created with compress_beads(), cluster_by_drawer(), detect_redundant_pairs(): PASS
+- THEORY.md generated with INDEX, CLUSTERS (5 drawers), REDUNDANT, NEGATIVE sections: PASS
+- Clustering: 424 claims → 389 clusters across 5 drawers: PASS
+- Redundancy: 75 pairs flagged (cosine >= 0.85): PASS
+- Archive: session_2026-02-03.jsonl → archive/archive_session_2026-02-03_*.jsonl: PASS
+- NEGATIVE beads preserved (4 negatives in THEORY.md): PASS
+- LLM summarization via chronicler role (google/gemini-2.0-flash-exp, temp=0.3): PASS
+- 25 new tests (similarity, clustering, redundancy, archive, integration): PASS
+- All 233 tests pass (208 prior + 25 new): PASS
+- Memory bloat risk mitigated: PASS
 
 ### PHASE 4A EVIDENCE
 - Supadata real API path: 200 response normalizes correctly (mocked HTTP): PASS
