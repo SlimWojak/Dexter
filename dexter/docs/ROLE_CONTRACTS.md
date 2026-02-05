@@ -88,7 +88,7 @@ INVARIANT: INV-NO-NARRATIVE enforced by check_narrative_bleed()
 model: google/gemini-2.0-flash-exp
 family: google (different family for fresh perspective)
 purpose: Recursive summarization → THEORY.md — prevent memory bloat
-STATUS: NOT IMPLEMENTED (P1 URGENT)
+STATUS: IMPLEMENTED (P1 COMPLETE)
 
 CAN:
   - Compress beads every 20-30 beads / 500-1000 tokens
@@ -183,6 +183,39 @@ current_mapping:
   google_family: [auditor, chronicler, cartographer]
   
 rationale: Prevents model-family-specific blind spots from passing through undetected
+```
+
+---
+
+## BACK-PROPAGATION SEAM (P2)
+
+The learning loop. Human rejections feed back to prevent future extraction of similar patterns.
+
+```yaml
+flow:
+  1_human_review: Olya reviews CLAIM_BEAD bundle
+  2_rejection: Runs scripts/record_rejection.py --claim-id X --reason "..."
+  3_negative_bead: Creates NEGATIVE_BEAD with full provenance
+  4_chronicler: Preserves in THEORY.md NEGATIVE PATTERNS section
+  5_theorist: Receives last 10 negatives in context
+  6_avoidance: Theorist prompt includes "AVOID PATTERNS SIMILAR TO..."
+
+NEGATIVE_BEAD schema:
+  id: N-XXX (sequential)
+  type: NEGATIVE
+  reason: Human feedback (even 2 words is signal)
+  source_signature: S-XXX (original signature ID)
+  source_bundle: B-YYYYMMDD-HHMMSS
+  source_claim_id: B-YYYYMMDD-HHMMSS:S-XXX (full provenance)
+  drawer: 1-5 (inherited from original claim)
+  rejected_by: "human" | "olya" | "auditor"
+  timestamp: ISO 8601
+
+CLI usage:
+  python scripts/record_rejection.py --claim-id B-20260203-150140:S-007 --reason "OTE doesn't apply"
+  python scripts/record_rejection.py --list-claims B-20260203-150140
+
+analogy: RLHF (Olya = Reward Model, Dexter = Policy, NEGATIVE_BEADs = gradient)
 ```
 
 ---

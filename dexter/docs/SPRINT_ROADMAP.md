@@ -12,9 +12,10 @@ soak_complete: true
 signatures_validated: 504
 bundles_created: 32
 corpus_mapped: 790 videos
-tests: 233/233 PASS
+tests: 255/255 PASS
 phoenix_integration: BRIDGE_SPEC_COMPLETE
 chronicler: IMPLEMENTED (P1 COMPLETE)
+backprop_seam: IMPLEMENTED (P2 COMPLETE)
 ```
 
 ---
@@ -32,6 +33,7 @@ chronicler: IMPLEMENTED (P1 COMPLETE)
 | Integration | Phoenix CLAIM_BEAD bridge | ✅ SPEC_COMPLETE | 2026-02-03 |
 | Soak | Overnight extraction (20 videos) | ✅ COMPLETE | 2026-02-04 |
 | P1 | Chronicler (recursive summarization) | ✅ COMPLETE | 2026-02-05 |
+| P2 | Back-propagation seam (learning loop) | ✅ COMPLETE | 2026-02-05 |
 
 ---
 
@@ -56,16 +58,23 @@ evidence:
   - memory/archive/ (session archival working)
 ```
 
-### P2: BACK-PROPAGATION SEAM — NEW
+### P2: BACK-PROPAGATION SEAM — COMPLETE
 ```yaml
-status: PENDING
-risk: HIGH (without this, Dexter mines fool's gold forever)
+status: COMPLETE
+risk: MITIGATED (learning loop now operational)
 description: |
   Olya rejection → NEGATIVE_BEAD → feeds back to Theorist context.
   RLHF analogy: Olya = Reward Model, Dexter = Policy.
   This is the seam that makes the refinery LEARN.
 source: OWL advisor
 owner: Dexter COO
+completed: 2026-02-05
+evidence:
+  - Enhanced NEGATIVE_BEAD schema (source_claim_id, drawer, rejected_by)
+  - scripts/record_rejection.py (CLI for human rejection)
+  - tests/test_backprop.py (22 tests)
+  - Theorist context injection verified
+  - Chronicler integration verified
 ```
 
 ### P3: SCOPE CONSTRAINT — AWAITING CSO CURRICULUM

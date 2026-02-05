@@ -28,17 +28,18 @@ CTO (Claude Web) maintains strategic oversight in parallel session.
 
 ```yaml
 phase: OPERATIONAL_MVP
-tests: 233/233 PASS
+tests: 255/255 PASS
 signatures_validated: 504
 bundles_created: 32
 corpus_mapped: 790 videos
 overnight_soak: 18/20 videos processed
 cost_per_video: ~$0.003
 chronicler: IMPLEMENTED (P1 COMPLETE)
+backprop_seam: IMPLEMENTED (P2 COMPLETE)
 
 active_priorities:
   P1: Chronicler — COMPLETE (2026-02-05)
-  P2: Back-propagation seam (Olya NO → Theorist learning)
+  P2: Back-propagation seam — COMPLETE (2026-02-05)
   P3: CSO curriculum scoping (awaiting Olya input)
   P4: Auditor hardening (2.1% rejection too low)
   P5: Queue atomicity (5-line fix)

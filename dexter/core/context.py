@@ -83,6 +83,7 @@ def needs_compression(max_beads: int = 25) -> bool:
 
 # ---------------------------------------------------------------------------
 # Negative bead support (Phase 2: failure feedback loop)
+# Phase P2: Enhanced with source_claim_id, drawer, rejected_by for back-propagation
 # ---------------------------------------------------------------------------
 
 _negative_counter = 0
@@ -93,9 +94,21 @@ def append_negative_bead(
     source_signature: str,
     *,
     source_bundle: str = "",
+    source_claim_id: str = "",
+    drawer: Optional[int] = None,
+    rejected_by: str = "auditor",
     metadata: Optional[Dict] = None,
 ) -> Dict:
-    """Append a NEGATIVE bead on Auditor REJECT.
+    """Append a NEGATIVE bead on rejection.
+
+    Args:
+        reason: Why the signature/claim was rejected
+        source_signature: Original signature ID (e.g., S-001)
+        source_bundle: Bundle ID where signature originated (e.g., B-20260203-150140)
+        source_claim_id: Full CLAIM_BEAD ID for provenance tracing (P2 enhancement)
+        drawer: Drawer number (1-5) inherited from original claim (P2 enhancement)
+        rejected_by: Who rejected ("auditor", "human", "olya") (P2 enhancement)
+        metadata: Additional metadata
 
     Returns the bead dict that was written.
     """
@@ -110,6 +123,9 @@ def append_negative_bead(
         "reason": reason,
         "source_signature": source_signature,
         "source_bundle": source_bundle,
+        "source_claim_id": source_claim_id,
+        "drawer": drawer,
+        "rejected_by": rejected_by,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "metadata": metadata or {},
     }

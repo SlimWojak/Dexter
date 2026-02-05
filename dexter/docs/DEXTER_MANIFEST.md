@@ -23,10 +23,10 @@
 - [x] Archive raw beads to archive/
 - [x] Preserve negatives in dedicated section
 
-**P2 — BACK-PROPAGATION SEAM (NEW):**
-- [ ] Design Olya rejection → NEGATIVE_BEAD flow
-- [ ] Feed NEGATIVE_BEADs back to Theorist context
-- [ ] Document seam in ROLE_CONTRACTS.md
+**P2 — BACK-PROPAGATION SEAM (COMPLETE):**
+- [x] Design Olya rejection → NEGATIVE_BEAD flow
+- [x] Feed NEGATIVE_BEADs back to Theorist context
+- [x] Document seam in ROLE_CONTRACTS.md
 
 **P3 — SCOPE CONSTRAINT:**
 - [ ] BLOCKED: Awaiting CSO curriculum (24-48h from 2026-02-04)
@@ -112,6 +112,13 @@
 - [x] P1 Chronicler: Drawer clustering (5-drawer system) — all drawers populated
 - [x] P1 Chronicler: tests — 25 new tests, 233/233 PASS total
 
+- [x] P2 Back-propagation: Enhanced NEGATIVE_BEAD schema (source_claim_id, drawer, rejected_by)
+- [x] P2 Back-propagation: scripts/record_rejection.py — CLI for human rejection
+- [x] P2 Back-propagation: Theorist context injection verified
+- [x] P2 Back-propagation: Chronicler integration verified (no regression)
+- [x] P2 Back-propagation: tests — 22 new tests, 255/255 PASS total
+- [x] P2 Back-propagation: ROLE_CONTRACTS.md updated with seam documentation
+
 ### PIPELINE EVIDENCE
 - Cartographer: 790 videos surveyed, 286 MENTORSHIP, 80 LECTURE, 64 LIVE, 53 REVIEW: PASS
 - LLM Ep2: 13 unique signatures, canonical ICT terms (FVG, MSS, killzone, OTE): PASS
@@ -141,6 +148,17 @@
 - index.jsonl write + read round-trip: PASS
 - Queue processor: dry_run, limit, execute, failure handling: PASS
 - All 208 tests pass: PASS
+
+### P2 BACK-PROPAGATION EVIDENCE
+- Enhanced NEGATIVE_BEAD schema: source_claim_id, drawer, rejected_by fields: PASS
+- scripts/record_rejection.py CLI works (--claim-id, --reason, --list-claims): PASS
+- Rejection round-trip: claim lookup → NEGATIVE_BEAD creation → provenance preserved: PASS
+- Theorist context injection: _prepend_negative_context() formats negatives: PASS
+- THEORIST_SYSTEM_PROMPT contains {negative_context} placeholder: PASS
+- Chronicler handles enhanced negatives (no regression): PASS
+- 22 new tests (schema, ingestion, injection, integration, edge cases): PASS
+- All 255 tests pass (233 prior + 22 new): PASS
+- Learning loop operational: Human → NEGATIVE_BEAD → Theorist avoidance: PASS
 
 ### P1 CHRONICLER EVIDENCE
 - core/chronicler.py created with compress_beads(), cluster_by_drawer(), detect_redundant_pairs(): PASS
