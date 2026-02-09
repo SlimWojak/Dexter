@@ -1,0 +1,1023 @@
+# Reference Taxonomy for ICT Trading Concepts
+# Version: 1.0
+# Created: 2026-02-09
+# Source: CONCEPT_TAXONOMY_DESIGN_v0.1.md + Perplexity Reports 1-4 + Olya feedback
+# Purpose: Master checklist for taxonomy-aware extraction
+
+version: "1.0"
+created: "2026-02-09"
+total_concepts: 66
+drawers: 5
+
+# ============================================================
+# DRAWER 1: HTF BIAS & LIQUIDITY
+# Olya Name: "Foundation + Context"
+# Report 3 Name: "HTF Bias & DoL"
+# ============================================================
+drawer_1_htf_bias:
+  name: "HTF Bias & Liquidity"
+  olya_name: "Foundation + Context"
+  concept_count: 12
+  dominant_evidence_grade: "STRONG_EVIDENCE"
+
+  concepts:
+    - id: "CON-D1-BIAS-01"
+      name: "HTF Bullish Bias"
+      category: "HTF_BIAS"
+      definition:
+        canonical: |
+          IF Weekly close > prior Weekly high
+          AND Daily closes form higher highs/higher lows
+          THEN HTF Bias = BULLISH
+        ict_terminology: [HTF, bias, swing high, swing low, HH, HL, Weekly, Daily]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "HTF trend structure is well-documented in academic literature."
+      testable_hypothesis: "Weekly HH/HL structure predicts next-week directional bias with >55% accuracy on ES/NQ/6E."
+
+    - id: "CON-D1-BIAS-02"
+      name: "HTF Bearish Bias"
+      category: "HTF_BIAS"
+      definition:
+        canonical: |
+          IF Weekly close < prior Weekly low
+          AND Daily closes form lower lows/lower highs
+          THEN HTF Bias = BEARISH
+        ict_terminology: [HTF, bias, swing high, swing low, LL, LH, Weekly, Daily]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "HTF trend structure is well-documented in academic literature."
+      testable_hypothesis: "Weekly LL/LH structure predicts next-week directional bias with >55% accuracy on ES/NQ/6E."
+
+    - id: "CON-D1-DOL-01"
+      name: "Draw on Liquidity - Buy-side"
+      category: "DOL"
+      definition:
+        canonical: |
+          IF HTF Bias = BULLISH
+          AND identifiable buy-side liquidity pool exists above price
+          THEN Draw on Liquidity = BUY_SIDE (objective is liquidity above)
+        ict_terminology: [DOL, draw on liquidity, buy-side liquidity, BSL, liquidity pool]
+      dependencies: ["CON-D1-BIAS-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Liquidity sweep concept maps to market microstructure theory."
+      testable_hypothesis: "Price reaches identified BSL pools within 3 sessions >60% of the time when HTF bullish."
+
+    - id: "CON-D1-DOL-02"
+      name: "Draw on Liquidity - Sell-side"
+      category: "DOL"
+      definition:
+        canonical: |
+          IF HTF Bias = BEARISH
+          AND identifiable sell-side liquidity pool exists below price
+          THEN Draw on Liquidity = SELL_SIDE (objective is liquidity below)
+        ict_terminology: [DOL, draw on liquidity, sell-side liquidity, SSL, liquidity pool]
+      dependencies: ["CON-D1-BIAS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Liquidity sweep concept maps to market microstructure theory."
+      testable_hypothesis: "Price reaches identified SSL pools within 3 sessions >60% of the time when HTF bearish."
+
+    - id: "CON-D1-INTLQ-01"
+      name: "Internal Liquidity Objective - Bullish"
+      category: "LIQUIDITY"
+      definition:
+        canonical: |
+          IF HTF Bias = BULLISH
+          AND internal swing high liquidity exists within current range
+          THEN Internal Liquidity Objective = nearest internal BSL
+        ict_terminology: [internal liquidity, internal range, swing high, BSL]
+      dependencies: ["CON-D1-DOL-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Internal vs external liquidity distinction is ICT-specific but grounded in range theory."
+      testable_hypothesis: null
+
+    - id: "CON-D1-INTLQ-02"
+      name: "Internal Liquidity Objective - Bearish"
+      category: "LIQUIDITY"
+      definition:
+        canonical: |
+          IF HTF Bias = BEARISH
+          AND internal swing low liquidity exists within current range
+          THEN Internal Liquidity Objective = nearest internal SSL
+        ict_terminology: [internal liquidity, internal range, swing low, SSL]
+      dependencies: ["CON-D1-DOL-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Internal vs external liquidity distinction is ICT-specific but grounded in range theory."
+      testable_hypothesis: null
+
+    - id: "CON-D1-EXTLQ-01"
+      name: "External Liquidity Objective - Bullish"
+      category: "LIQUIDITY"
+      definition:
+        canonical: |
+          IF HTF Bias = BULLISH
+          AND external liquidity (prior range high, daily/weekly high) exists
+          THEN External Liquidity Objective = next HTF resistance/liquidity
+        ict_terminology: [external liquidity, external range, prior high, daily high, weekly high]
+      dependencies: ["CON-D1-DOL-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "External levels align with classical support/resistance theory."
+      testable_hypothesis: null
+
+    - id: "CON-D1-EXTLQ-02"
+      name: "External Liquidity Objective - Bearish"
+      category: "LIQUIDITY"
+      definition:
+        canonical: |
+          IF HTF Bias = BEARISH
+          AND external liquidity (prior range low, daily/weekly low) exists
+          THEN External Liquidity Objective = next HTF support/liquidity
+        ict_terminology: [external liquidity, external range, prior low, daily low, weekly low]
+      dependencies: ["CON-D1-DOL-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "External levels align with classical support/resistance theory."
+      testable_hypothesis: null
+
+    - id: "CON-D1-DEAL-01"
+      name: "Dealing Range - Bullish Context"
+      category: "DEALING_RANGE"
+      definition:
+        canonical: |
+          IF HTF Bias = BULLISH
+          AND dealing range defined (most recent expansion leg high/low)
+          THEN Premium = upper 50% of range, Discount = lower 50%
+          AND seek entries in Discount zone
+        ict_terminology: [dealing range, premium, discount, equilibrium, 50%]
+      dependencies: ["CON-D1-BIAS-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Premium/discount zones map to mean-reversion and fibonacci theory."
+      testable_hypothesis: "Discount zone entries in bullish HTF bias outperform premium zone entries."
+
+    - id: "CON-D1-DEAL-02"
+      name: "Dealing Range - Bearish Context"
+      category: "DEALING_RANGE"
+      definition:
+        canonical: |
+          IF HTF Bias = BEARISH
+          AND dealing range defined (most recent expansion leg high/low)
+          THEN Premium = upper 50% of range, Discount = lower 50%
+          AND seek entries in Premium zone
+        ict_terminology: [dealing range, premium, discount, equilibrium, 50%]
+      dependencies: ["CON-D1-BIAS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Premium/discount zones map to mean-reversion and fibonacci theory."
+      testable_hypothesis: "Premium zone entries in bearish HTF bias outperform discount zone entries."
+
+    - id: "CON-D1-3Q-01"
+      name: "Three Questions Framework - Location"
+      category: "THREE_QUESTIONS"
+      definition:
+        canonical: |
+          IF analyzing current price position
+          THEN Answer Question 1: "Where is price relative to HTF structure?"
+          (Requires: HTF bias, dealing range position, PD zone)
+        ict_terminology: [three questions, location, where, HTF structure]
+      dependencies: ["CON-D1-DEAL-01", "CON-D1-DEAL-02"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's systematization of ICT concepts - unique codification."
+      testable_hypothesis: null
+
+    - id: "CON-D1-3Q-02"
+      name: "Three Questions Framework - Objective & Respect"
+      category: "THREE_QUESTIONS"
+      definition:
+        canonical: |
+          IF Location (Q1) answered
+          THEN Answer Question 2: "What is the Draw on Liquidity?" (objective)
+          AND Answer Question 3: "Will price respect this PDA?" (respect)
+        ict_terminology: [three questions, objective, respect, DOL, PDA]
+      dependencies: ["CON-D1-3Q-01", "CON-D1-DOL-01", "CON-D1-DOL-02"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's systematization of ICT concepts - unique codification."
+      testable_hypothesis: null
+
+# ============================================================
+# DRAWER 2: TIME & SESSION
+# Olya Name: "Entry (session/timing layer)"
+# Report 3 Name: "Time & Session"
+# ============================================================
+drawer_2_time_session:
+  name: "Time & Session"
+  olya_name: "Entry (session/timing layer)"
+  concept_count: 12
+  dominant_evidence_grade: "STRONG_EVIDENCE"
+
+  concepts:
+    - id: "CON-D2-TIME-01"
+      name: "Asia Session - Liquidity Build"
+      category: "SESSION"
+      definition:
+        canonical: |
+          IF current session = ASIA (approx 19:00-02:00 EST)
+          THEN expect range formation and liquidity accumulation
+          AND mark Asia High/Low as liquidity pools
+        ict_terminology: [Asia session, Asian range, liquidity build, Asia high, Asia low]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "FX session seasonality has broad academic backing."
+      testable_hypothesis: "Asia session range contains price >70% of the time."
+
+    - id: "CON-D2-TIME-02"
+      name: "Midnight Open Reference"
+      category: "REFERENCE_POINTS"
+      definition:
+        canonical: |
+          IF time = 00:00 EST (midnight)
+          THEN mark Midnight Open price as reference level
+          AND use for intraday bias determination
+        ict_terminology: [midnight open, 00:00, midnight, true day open]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "ICT-specific reference point; limited academic backing."
+      testable_hypothesis: "Price returns to midnight open level >50% of sessions."
+
+    - id: "CON-D2-TIME-03"
+      name: "Midnight Open as PD Reference"
+      category: "REFERENCE_POINTS"
+      definition:
+        canonical: |
+          IF price > Midnight Open
+          THEN intraday bias = BULLISH (price in premium to midnight)
+          IF price < Midnight Open
+          THEN intraday bias = BEARISH (price in discount to midnight)
+        ict_terminology: [midnight open, premium, discount, intraday bias]
+      dependencies: ["CON-D2-TIME-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "ICT-specific use of midnight reference."
+      testable_hypothesis: null
+
+    - id: "CON-D2-TIME-04"
+      name: "London Killzone - Session Highs/Lows"
+      category: "KILLZONE"
+      definition:
+        canonical: |
+          IF current time = London Killzone (02:00-05:00 EST)
+          THEN expect session high or low formation
+          AND mark London session extremes as key levels
+        ict_terminology: [London killzone, LKZ, London session, session high, session low]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "London session volatility is academically documented."
+      testable_hypothesis: "London Killzone forms session extreme >65% of trading days."
+
+    - id: "CON-D2-TIME-05"
+      name: "London Killzone - Sweep Condition"
+      category: "KILLZONE"
+      definition:
+        canonical: |
+          IF London Killzone active
+          AND price sweeps Asia High/Low
+          THEN potential reversal setup forming
+        ict_terminology: [London killzone, sweep, Asia range, reversal]
+      dependencies: ["CON-D2-TIME-01", "CON-D2-TIME-04"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Liquidity sweep during London is practitioner-observed."
+      testable_hypothesis: "Asia range sweep during London leads to reversal >55% of the time."
+
+    - id: "CON-D2-TIME-06"
+      name: "NY 08:30 Open Reference"
+      category: "REFERENCE_POINTS"
+      definition:
+        canonical: |
+          IF time = 08:30 EST
+          THEN mark NY Open price as key reference
+          AND expect increased volatility/directional move
+        ict_terminology: [NY open, 08:30, New York, cash session]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "US equity market open volatility is well-documented."
+      testable_hypothesis: null
+
+    - id: "CON-D2-TIME-07"
+      name: "Pre-08:30 Judas/Manipulation"
+      category: "MANIPULATION"
+      definition:
+        canonical: |
+          IF time = 07:00-08:30 EST (pre-NY)
+          THEN expect potential false move (Judas swing)
+          AND do NOT enter during this window
+        ict_terminology: [Judas swing, manipulation, pre-market, false move]
+      dependencies: []
+      evidence_grade: "PRACTITIONER_LORE"
+      evidence_note: "ICT narrative; limited empirical backing."
+      testable_hypothesis: "Pre-08:30 directional moves reverse after 08:30 >50% of the time."
+
+    - id: "CON-D2-TIME-08"
+      name: "08:30+ Delivery Window"
+      category: "KILLZONE"
+      definition:
+        canonical: |
+          IF time >= 08:30 EST
+          AND setup conditions met (MSS, FVG in PD zone)
+          THEN valid entry window begins
+        ict_terminology: [delivery, 08:30, entry window, NY session]
+      dependencies: ["CON-D2-TIME-06"]
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Post-open directional moves are empirically observable."
+      testable_hypothesis: null
+
+    - id: "CON-D2-TIME-09"
+      name: "NY AM Killzone"
+      category: "KILLZONE"
+      definition:
+        canonical: |
+          IF time = 08:30-11:00 EST
+          THEN primary entry window (NY AM Killzone)
+          AND highest probability setups occur here
+        ict_terminology: [NY AM killzone, morning session, 08:30-11:00]
+      dependencies: ["CON-D2-TIME-08"]
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "AM session volatility and trending behavior documented."
+      testable_hypothesis: "NY AM Killzone produces >60% of daily range."
+
+    - id: "CON-D2-TIME-10"
+      name: "Lunch Hours - Reduced Activity"
+      category: "SESSION"
+      definition:
+        canonical: |
+          IF time = 11:00-13:00 EST
+          THEN expect reduced volatility (lunch hours)
+          AND reduce position size or avoid new entries
+        ict_terminology: [lunch hours, dead zone, low volatility, consolidation]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Midday volatility reduction is well-documented."
+      testable_hypothesis: null
+
+    - id: "CON-D2-TIME-11"
+      name: "PM Session Disable"
+      category: "SESSION"
+      definition:
+        canonical: |
+          IF time >= 13:00 EST
+          THEN disable new entries (PM session)
+          AND only manage existing positions
+        ict_terminology: [PM session, afternoon, after lunch, no new trades]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Olya's specific rule; general PM behavior varies."
+      testable_hypothesis: null
+
+    - id: "CON-D2-TIME-12"
+      name: "London Setup via Asia Range Sweep"
+      category: "SETUP"
+      definition:
+        canonical: |
+          IF London Killzone active
+          AND Asia High/Low swept
+          AND MSS + Displacement confirmed
+          THEN London setup VALID
+        ict_terminology: [London setup, Asia sweep, MSS, displacement]
+      dependencies: ["CON-D2-TIME-04", "CON-D2-TIME-05", "CON-D3-MSS-01", "CON-D3-MSS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Combination of documented concepts; specific setup is ICT methodology."
+      testable_hypothesis: "London setup after Asia sweep achieves >1.5R average."
+
+# ============================================================
+# DRAWER 3: STRUCTURE & DISPLACEMENT
+# Olya Name: "Conditions (structure layer)"
+# Report 3 Name: "Structure & Displacement"
+# ============================================================
+drawer_3_structure:
+  name: "Structure & Displacement"
+  olya_name: "Conditions (structure layer)"
+  concept_count: 12
+  dominant_evidence_grade: "MODERATE_EVIDENCE"
+
+  concepts:
+    - id: "CON-D3-SWING-01"
+      name: "Swing High Definition"
+      category: "SWING"
+      definition:
+        canonical: |
+          IF candle high > N candles on each side (n-bar lookback)
+          THEN mark as Swing High
+          (Common: N=3 for intraday, N=5 for HTF)
+        ict_terminology: [swing high, pivot high, n-bar, lookback]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Swing point definition is standard technical analysis."
+      testable_hypothesis: null
+
+    - id: "CON-D3-SWING-02"
+      name: "Swing Low Definition"
+      category: "SWING"
+      definition:
+        canonical: |
+          IF candle low < N candles on each side (n-bar lookback)
+          THEN mark as Swing Low
+          (Common: N=3 for intraday, N=5 for HTF)
+        ict_terminology: [swing low, pivot low, n-bar, lookback]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Swing point definition is standard technical analysis."
+      testable_hypothesis: null
+
+    - id: "CON-D3-SWEEP-01"
+      name: "Liquidity Sweep - Bullish"
+      category: "SWEEP"
+      definition:
+        canonical: |
+          IF price trades above prior swing high (buy-side liquidity)
+          AND then reverses back below that high
+          THEN Bullish Liquidity Sweep = TRUE (stop hunt above)
+        ict_terminology: [sweep, liquidity sweep, stop hunt, buy-side, BSL]
+      dependencies: ["CON-D3-SWING-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Liquidity sweep maps to stop-run behavior in market microstructure."
+      testable_hypothesis: "Sweeps of swing highs lead to reversal >50% of the time."
+
+    - id: "CON-D3-SWEEP-02"
+      name: "Liquidity Sweep - Bearish"
+      category: "SWEEP"
+      definition:
+        canonical: |
+          IF price trades below prior swing low (sell-side liquidity)
+          AND then reverses back above that low
+          THEN Bearish Liquidity Sweep = TRUE (stop hunt below)
+        ict_terminology: [sweep, liquidity sweep, stop hunt, sell-side, SSL]
+      dependencies: ["CON-D3-SWING-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Liquidity sweep maps to stop-run behavior in market microstructure."
+      testable_hypothesis: "Sweeps of swing lows lead to reversal >50% of the time."
+
+    - id: "CON-D3-MSS-01"
+      name: "Market Structure Shift - Bearish"
+      category: "MSS"
+      definition:
+        canonical: |
+          IF prior structure = bullish (HH/HL)
+          AND price breaks below most recent swing low with displacement
+          AND body closes > 50% beyond swing low
+          THEN MSS = BEARISH (structure shift confirmed)
+        ict_terminology: [MSS, market structure shift, BOS, break of structure, bearish]
+      dependencies: ["CON-D3-SWING-02", "CON-D3-DISP-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Structure break is standard TA; displacement criteria is ICT-specific."
+      testable_hypothesis: "MSS with displacement predicts continuation >55% of the time."
+
+    - id: "CON-D3-MSS-02"
+      name: "Market Structure Shift - Bullish"
+      category: "MSS"
+      definition:
+        canonical: |
+          IF prior structure = bearish (LL/LH)
+          AND price breaks above most recent swing high with displacement
+          AND body closes > 50% beyond swing high
+          THEN MSS = BULLISH (structure shift confirmed)
+        ict_terminology: [MSS, market structure shift, BOS, break of structure, bullish]
+      dependencies: ["CON-D3-SWING-01", "CON-D3-DISP-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Structure break is standard TA; displacement criteria is ICT-specific."
+      testable_hypothesis: "MSS with displacement predicts continuation >55% of the time."
+
+    - id: "CON-D3-MSS-03"
+      name: "MSS Invalidation"
+      category: "MSS"
+      definition:
+        canonical: |
+          IF swing point broken (sweep) BUT no displacement follows
+          AND body closes < 50% beyond swing level
+          THEN MSS = INVALID (sweep only, no structure shift)
+        ict_terminology: [MSS invalidation, sweep only, no displacement, fake break]
+      dependencies: ["CON-D3-MSS-01", "CON-D3-MSS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Distinguishes between sweep and shift; ICT-specific criteria."
+      testable_hypothesis: null
+
+    - id: "CON-D3-FVG-01"
+      name: "Bullish FVG Definition"
+      category: "FVG"
+      definition:
+        canonical: |
+          IF 3 consecutive candles
+          AND candle_1.high < candle_3.low (gap exists)
+          THEN Bullish FVG = zone between candle_1.high and candle_3.low
+        ict_terminology: [FVG, fair value gap, imbalance, bullish FVG, 3-candle]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "FVG maps to auction theory 'single prints'; documented concept."
+      testable_hypothesis: "Price returns to fill bullish FVG >60% of the time."
+
+    - id: "CON-D3-FVG-02"
+      name: "Bearish FVG Definition"
+      category: "FVG"
+      definition:
+        canonical: |
+          IF 3 consecutive candles
+          AND candle_1.low > candle_3.high (gap exists)
+          THEN Bearish FVG = zone between candle_1.low and candle_3.high
+        ict_terminology: [FVG, fair value gap, imbalance, bearish FVG, 3-candle]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "FVG maps to auction theory 'single prints'; documented concept."
+      testable_hypothesis: "Price returns to fill bearish FVG >60% of the time."
+
+    - id: "CON-D3-DISP-01"
+      name: "Displacement - TRUE"
+      category: "DISPLACEMENT"
+      definition:
+        canonical: |
+          IF price move creates FVG
+          AND move has significant range (>average candle size)
+          AND bodies are full (close near extreme)
+          THEN Displacement = TRUE
+        ict_terminology: [displacement, impulsive move, full bodies, FVG]
+      dependencies: ["CON-D3-FVG-01", "CON-D3-FVG-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Displacement as confirmation of conviction; practitioner-backed."
+      testable_hypothesis: null
+
+    - id: "CON-D3-DISP-02"
+      name: "Displacement - FALSE"
+      category: "DISPLACEMENT"
+      definition:
+        canonical: |
+          IF price move has NO FVG
+          OR move has small range
+          OR bodies are wicks (close not near extreme)
+          THEN Displacement = FALSE
+        ict_terminology: [no displacement, weak move, wicks, grinding]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Absence of displacement signals weak conviction."
+      testable_hypothesis: null
+
+    - id: "CON-D3-ENGINE-01"
+      name: "Core 2022 Engine Event"
+      category: "SETUP"
+      definition:
+        canonical: |
+          IF Liquidity Sweep confirmed (SSL or BSL taken)
+          AND MSS confirmed (with displacement)
+          AND FVG created in the displacement
+          THEN 2022 Model Engine Event = TRUE
+          AND entry becomes valid on FVG retrace
+        ict_terminology: [2022 model, engine event, sweep, MSS, FVG, displacement]
+      dependencies: ["CON-D3-SWEEP-01", "CON-D3-SWEEP-02", "CON-D3-MSS-01", "CON-D3-MSS-02", "CON-D3-FVG-01", "CON-D3-FVG-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Core ICT 2022 model; combination of documented components."
+      testable_hypothesis: "Engine event with all conditions achieves >1.5R average."
+
+# ============================================================
+# DRAWER 4: EXECUTION
+# Olya Name: "Entry (execution layer)"
+# Report 3 Name: "Execution: FVG/OTE"
+# ============================================================
+drawer_4_execution:
+  name: "Execution"
+  olya_name: "Entry (execution layer)"
+  concept_count: 12
+  dominant_evidence_grade: "MODERATE_EVIDENCE"
+
+  concepts:
+    - id: "CON-D4-RANGE-01"
+      name: "Intraday Dealing Range Definition"
+      category: "DEALING_RANGE"
+      definition:
+        canonical: |
+          IF most recent expansion leg identified
+          THEN Intraday Dealing Range = leg_high to leg_low
+          AND use for Premium/Discount zone calculation
+        ict_terminology: [dealing range, expansion leg, range high, range low]
+      dependencies: []
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Range definition is standard; use as dealing range is ICT-specific."
+      testable_hypothesis: null
+
+    - id: "CON-D4-PD-01"
+      name: "Premium/Discount Zones - Bullish"
+      category: "PREMIUM_DISCOUNT"
+      definition:
+        canonical: |
+          IF Dealing Range defined
+          AND HTF Bias = BULLISH
+          THEN Premium Zone = 50%-100% of range (avoid for longs)
+          AND Discount Zone = 0%-50% of range (seek for longs)
+        ict_terminology: [premium, discount, PD zone, equilibrium, 50%]
+      dependencies: ["CON-D4-RANGE-01", "CON-D1-BIAS-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Mean-reversion within range; fibonacci-based."
+      testable_hypothesis: "Discount zone long entries outperform premium zone entries."
+
+    - id: "CON-D4-PD-02"
+      name: "Premium/Discount Zones - Bearish"
+      category: "PREMIUM_DISCOUNT"
+      definition:
+        canonical: |
+          IF Dealing Range defined
+          AND HTF Bias = BEARISH
+          THEN Premium Zone = 50%-100% of range (seek for shorts)
+          AND Discount Zone = 0%-50% of range (avoid for shorts)
+        ict_terminology: [premium, discount, PD zone, equilibrium, 50%]
+      dependencies: ["CON-D4-RANGE-01", "CON-D1-BIAS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Mean-reversion within range; fibonacci-based."
+      testable_hypothesis: "Premium zone short entries outperform discount zone entries."
+
+    - id: "CON-D4-OTE-01"
+      name: "OTE Buy Zone"
+      category: "OTE"
+      definition:
+        canonical: |
+          IF HTF Bias = BULLISH
+          AND dealing range defined
+          THEN OTE Buy Zone = 61.8% - 79% retracement of range
+          AND optimal long entry within this zone
+        ict_terminology: [OTE, optimal trade entry, 61.8, 79, fibonacci, retrace]
+      dependencies: ["CON-D4-RANGE-01", "CON-D1-BIAS-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Fibonacci retracement zones; widely used, mixed evidence."
+      testable_hypothesis: "OTE zone entries (61.8-79%) outperform 50% entries."
+
+    - id: "CON-D4-OTE-02"
+      name: "OTE Sell Zone"
+      category: "OTE"
+      definition:
+        canonical: |
+          IF HTF Bias = BEARISH
+          AND dealing range defined
+          THEN OTE Sell Zone = 61.8% - 79% retracement of range
+          AND optimal short entry within this zone
+        ict_terminology: [OTE, optimal trade entry, 61.8, 79, fibonacci, retrace]
+      dependencies: ["CON-D4-RANGE-01", "CON-D1-BIAS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Fibonacci retracement zones; widely used, mixed evidence."
+      testable_hypothesis: "OTE zone entries (61.8-79%) outperform 50% entries."
+
+    - id: "CON-D4-FVG-CONF-01"
+      name: "FVG Confirmation - Short"
+      category: "FVG_ENTRY"
+      definition:
+        canonical: |
+          IF Bearish FVG exists
+          AND FVG is in Premium Zone (or OTE Sell Zone)
+          THEN FVG Confirmed for Short entry
+        ict_terminology: [FVG, fair value gap, premium, OTE, short entry]
+      dependencies: ["CON-D3-FVG-02", "CON-D4-PD-02", "CON-D4-OTE-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Confluence of FVG + PD zone; ICT methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D4-FVG-CONF-02"
+      name: "FVG Confirmation - Long"
+      category: "FVG_ENTRY"
+      definition:
+        canonical: |
+          IF Bullish FVG exists
+          AND FVG is in Discount Zone (or OTE Buy Zone)
+          THEN FVG Confirmed for Long entry
+        ict_terminology: [FVG, fair value gap, discount, OTE, long entry]
+      dependencies: ["CON-D3-FVG-01", "CON-D4-PD-01", "CON-D4-OTE-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Confluence of FVG + PD zone; ICT methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D4-FVG-RET-01"
+      name: "FVG Retrace Entry - Short"
+      category: "FVG_ENTRY"
+      definition:
+        canonical: |
+          IF Bearish FVG Confirmed
+          AND price retraces into FVG zone
+          THEN Short Entry valid (at FVG boundary or 50% of FVG)
+        ict_terminology: [FVG retrace, entry, short, 50%, consequent encroachment]
+      dependencies: ["CON-D4-FVG-CONF-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Retrace entry into imbalance; practitioner methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D4-FVG-RET-02"
+      name: "FVG Retrace Entry - Long"
+      category: "FVG_ENTRY"
+      definition:
+        canonical: |
+          IF Bullish FVG Confirmed
+          AND price retraces into FVG zone
+          THEN Long Entry valid (at FVG boundary or 50% of FVG)
+        ict_terminology: [FVG retrace, entry, long, 50%, consequent encroachment]
+      dependencies: ["CON-D4-FVG-CONF-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Retrace entry into imbalance; practitioner methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D4-ENTRY-01"
+      name: "Limit Order - Short"
+      category: "ORDER_TYPE"
+      definition:
+        canonical: |
+          IF FVG Short Entry valid
+          THEN place Limit Order at FVG boundary or 50% of FVG
+          (Aggressive: FVG boundary, Conservative: CE/50%)
+        ict_terminology: [limit order, FVG, CE, consequent encroachment, 50%]
+      dependencies: ["CON-D4-FVG-RET-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Limit order placement methodology; ICT-specific."
+      testable_hypothesis: "Limit at 50% (CE) outperforms limit at boundary."
+
+    - id: "CON-D4-ENTRY-02"
+      name: "Limit Order - Long"
+      category: "ORDER_TYPE"
+      definition:
+        canonical: |
+          IF FVG Long Entry valid
+          THEN place Limit Order at FVG boundary or 50% of FVG
+          (Aggressive: FVG boundary, Conservative: CE/50%)
+        ict_terminology: [limit order, FVG, CE, consequent encroachment, 50%]
+      dependencies: ["CON-D4-FVG-RET-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Limit order placement methodology; ICT-specific."
+      testable_hypothesis: "Limit at 50% (CE) outperforms limit at boundary."
+
+    - id: "CON-D4-CONFL-01"
+      name: "2022 Model Setup VALID"
+      category: "SETUP"
+      definition:
+        canonical: |
+          IF Engine Event = TRUE (sweep + MSS + displacement + FVG)
+          AND FVG in correct PD Zone (discount for long, premium for short)
+          AND within valid Killzone (NY AM or London)
+          THEN 2022 Model Setup = VALID
+        ict_terminology: [2022 model, valid setup, confluence, engine, FVG, killzone]
+      dependencies: ["CON-D3-ENGINE-01", "CON-D4-FVG-CONF-01", "CON-D4-FVG-CONF-02", "CON-D2-TIME-04", "CON-D2-TIME-09"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Full confluence of ICT 2022 model components."
+      testable_hypothesis: "Full confluence setup achieves >55% win rate at 1.5R target."
+
+# ============================================================
+# DRAWER 5: PROTECTION & RISK
+# Olya Name: "Management"
+# Report 3 Name: "Protection & Risk"
+# ============================================================
+drawer_5_protection:
+  name: "Protection & Risk"
+  olya_name: "Management"
+  concept_count: 10
+  dominant_evidence_grade: "STRONG_EVIDENCE"
+
+  concepts:
+    - id: "CON-D5-RISK-01"
+      name: "Stop Loss - Short"
+      category: "STOP_LOSS"
+      definition:
+        canonical: |
+          IF Short position entered
+          THEN Stop Loss = above FVG high OR above swing high that was swept
+          (Whichever is invalidation level)
+        ict_terminology: [stop loss, SL, invalidation, above FVG, swing high]
+      dependencies: ["CON-D4-ENTRY-01"]
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Stop placement at invalidation is standard risk management."
+      testable_hypothesis: null
+
+    - id: "CON-D5-RISK-02"
+      name: "Stop Loss - Long"
+      category: "STOP_LOSS"
+      definition:
+        canonical: |
+          IF Long position entered
+          THEN Stop Loss = below FVG low OR below swing low that was swept
+          (Whichever is invalidation level)
+        ict_terminology: [stop loss, SL, invalidation, below FVG, swing low]
+      dependencies: ["CON-D4-ENTRY-02"]
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Stop placement at invalidation is standard risk management."
+      testable_hypothesis: null
+
+    - id: "CON-D5-RISK-03"
+      name: "Nested SL Anchor"
+      category: "STOP_LOSS"
+      definition:
+        canonical: |
+          IF HTF order block or dealing range boundary exists
+          THEN anchor stop beyond HTF level (not just intraday FVG)
+          AND accept wider stop for HTF protection
+        ict_terminology: [nested stop, HTF anchor, order block, dealing range]
+      dependencies: ["CON-D5-RISK-01", "CON-D5-RISK-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Multi-timeframe stop placement; ICT-specific."
+      testable_hypothesis: null
+
+    - id: "CON-D5-RISK-04"
+      name: "Max Risk Rejection"
+      category: "POSITION_SIZING"
+      definition:
+        canonical: |
+          IF calculated position size exceeds max risk threshold
+          THEN reject trade (do not enter)
+          AND never exceed 1% account risk per trade
+        ict_terminology: [max risk, position size, risk cap, 1%]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Fixed risk per trade is standard risk management wisdom."
+      testable_hypothesis: null
+
+    - id: "CON-D5-TP-01"
+      name: "TP1 - Short"
+      category: "TAKE_PROFIT"
+      definition:
+        canonical: |
+          IF Short position in profit
+          THEN TP1 = nearest internal sell-side liquidity
+          OR TP1 = 1:1 risk/reward level
+        ict_terminology: [take profit, TP1, internal liquidity, SSL, 1:1]
+      dependencies: ["CON-D1-INTLQ-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "TP at liquidity pools; standard ICT methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D5-TP-02"
+      name: "TP1 - Long"
+      category: "TAKE_PROFIT"
+      definition:
+        canonical: |
+          IF Long position in profit
+          THEN TP1 = nearest internal buy-side liquidity
+          OR TP1 = 1:1 risk/reward level
+        ict_terminology: [take profit, TP1, internal liquidity, BSL, 1:1]
+      dependencies: ["CON-D1-INTLQ-01"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "TP at liquidity pools; standard ICT methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D5-TP-03"
+      name: "Runner Target"
+      category: "TAKE_PROFIT"
+      definition:
+        canonical: |
+          IF partial at TP1 taken (optional)
+          THEN Runner Target = external liquidity (daily/weekly high/low)
+          AND let runner seek external liquidity objective
+        ict_terminology: [runner, external liquidity, daily high, weekly low]
+      dependencies: ["CON-D1-EXTLQ-01", "CON-D1-EXTLQ-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Runner management; practitioner methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D5-TP-04"
+      name: "Close on Structure Break Against"
+      category: "TAKE_PROFIT"
+      definition:
+        canonical: |
+          IF position open AND MSS occurs against trade direction
+          THEN close position immediately (structure broken)
+        ict_terminology: [structure break, MSS, close position, invalidation]
+      dependencies: ["CON-D3-MSS-01", "CON-D3-MSS-02"]
+      evidence_grade: "MODERATE_EVIDENCE"
+      evidence_note: "Exit on adverse structure shift; standard ICT methodology."
+      testable_hypothesis: null
+
+    - id: "CON-D5-MGMT-01"
+      name: "Breakeven at 1:1 RR"
+      category: "TRADE_MANAGEMENT"
+      definition:
+        canonical: |
+          IF trade reaches 1:1 Risk/Reward
+          THEN move stop loss to breakeven (entry price)
+          AND eliminate risk on position
+        ict_terminology: [breakeven, BE, 1:1, risk-free, stop to entry]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Breakeven management is standard risk practice."
+      testable_hypothesis: "BE at 1:1 vs BE at 1.5:1 performance comparison."
+
+    - id: "CON-D5-MGMT-02"
+      name: "Daily Loss Limit"
+      category: "RISK_MANAGEMENT"
+      definition:
+        canonical: |
+          IF daily losses reach 2R (or 2% of account)
+          THEN stop trading for the day
+          AND do not attempt recovery trades
+        ict_terminology: [daily loss limit, 2R, 2%, stop trading, no revenge]
+      dependencies: []
+      evidence_grade: "STRONG_EVIDENCE"
+      evidence_note: "Daily loss limits are standard professional risk management."
+      testable_hypothesis: null
+
+# ============================================================
+# OLYA EXTENSIONS
+# Concepts unique to Olya's methodology
+# ============================================================
+olya_extensions:
+  name: "Olya Extensions"
+  description: "Concepts from Olya's methodology that extend beyond generic ICT"
+  concept_count: 8
+  dominant_evidence_grade: "UNIQUE"
+
+  concepts:
+    - id: "CON-OX-PDA-REGISTRY"
+      name: "PDA Registry Pattern"
+      category: "SYSTEM_DESIGN"
+      definition:
+        canonical: |
+          IF new PDA (FVG/OB) detected
+          THEN register in immutable detection store
+          AND track mutable status (fresh/touched/invalidated) separately
+          AND never modify detection facts, only status
+        ict_terminology: [PDA, detection, registry, status, immutable]
+      dependencies: ["CON-D3-FVG-01", "CON-D3-FVG-02"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's systematization for Phoenix architecture."
+      testable_hypothesis: null
+
+    - id: "CON-OX-WARMUP"
+      name: "State Machine Warmup"
+      category: "SYSTEM_DESIGN"
+      definition:
+        canonical: |
+          IF system starting fresh
+          THEN progress through states: NOSTRUCTURE -> PARTIALSTRUCTURE -> FULLCONTEXT
+          AND do not trade until FULLCONTEXT achieved
+        ict_terminology: [warmup, state machine, context, no trade]
+      dependencies: []
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's Phoenix architecture pattern."
+      testable_hypothesis: null
+
+    - id: "CON-OX-BLUR-001"
+      name: "3Q Ownership Boundary"
+      category: "SYSTEM_DESIGN"
+      definition:
+        canonical: |
+          IF implementing 3Q framework
+          THEN Context drawer CALCULATES 3Q answers
+          AND Conditions drawer CONSUMES answers (read-only)
+          AND no drawer duplicates 3Q calculation
+        ict_terminology: [three questions, boundary, ownership, drawer]
+      dependencies: ["CON-D1-3Q-01", "CON-D1-3Q-02"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's drawer boundary specification."
+      testable_hypothesis: null
+
+    - id: "CON-OX-NO-PARTIALS"
+      name: "No Partial Exits"
+      category: "MANAGEMENT_DECISION"
+      definition:
+        canonical: |
+          IF position in profit
+          THEN do NOT take partial exits
+          AND full position exits at single TP or BE
+        ict_terminology: [no partials, full exit, single target]
+      dependencies: []
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's explicit management decision - diverges from common practice."
+      testable_hypothesis: "Full position exit vs partial strategy performance comparison."
+
+    - id: "CON-OX-NO-REENTRY"
+      name: "No Re-entry Same Narrative"
+      category: "MANAGEMENT_DECISION"
+      definition:
+        canonical: |
+          IF trade stopped out
+          THEN do NOT re-enter on same narrative/setup
+          AND wait for new engine event
+        ict_terminology: [no re-entry, stopped out, new setup, narrative]
+      dependencies: []
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's explicit management decision."
+      testable_hypothesis: null
+
+    - id: "CON-OX-NO-SCALING"
+      name: "No Position Scaling"
+      category: "MANAGEMENT_DECISION"
+      definition:
+        canonical: |
+          IF position entered
+          THEN do NOT add to position (no scaling in)
+          AND single entry, single exit pattern only
+        ict_terminology: [no scaling, no adding, single entry, single exit]
+      dependencies: []
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's explicit management decision."
+      testable_hypothesis: null
+
+    - id: "CON-OX-FIXED-RISK"
+      name: "Fixed 1% Risk"
+      category: "MANAGEMENT_DECISION"
+      definition:
+        canonical: |
+          IF entering any trade
+          THEN risk exactly 1% of account
+          AND no grading based on setup quality
+          AND no variance in position sizing
+        ict_terminology: [fixed risk, 1%, no grading, consistent sizing]
+      dependencies: ["CON-D5-RISK-04"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's explicit decision - no setup grading."
+      testable_hypothesis: "Fixed 1% vs graded sizing performance comparison."
+
+    - id: "CON-OX-BE-ONLY"
+      name: "Breakeven-Only Trailing"
+      category: "MANAGEMENT_DECISION"
+      definition:
+        canonical: |
+          IF trade reaches 1:1
+          THEN move stop to breakeven
+          AND do NOT trail stop further
+          AND let trade hit TP or BE only
+        ict_terminology: [breakeven only, no trailing, BE, TP or bust]
+      dependencies: ["CON-D5-MGMT-01"]
+      evidence_grade: "UNIQUE"
+      evidence_note: "Olya's explicit decision - no progressive trailing."
+      testable_hypothesis: "BE-only vs progressive trailing performance comparison."

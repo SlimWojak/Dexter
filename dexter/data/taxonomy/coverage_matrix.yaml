@@ -1,0 +1,1114 @@
+version: '1.0'
+created: '2026-02-09'
+last_updated: '2026-02-09T10:16:56.220130+00:00'
+sources:
+  ICT_2022:
+    tier: CANON
+    description: ICT 2022 Mentorship live transcripts
+    document_count: 24
+    status: ACTIVE
+  BLESSED_TRADER:
+    tier: LATERAL
+    description: Blessed Trader PDF methodology
+    document_count: 18
+    status: ACTIVE
+  OLYA_NOTES:
+    tier: OLYA_PRIMARY
+    description: Olya's notes and systematization
+    document_count: 22
+    status: ACTIVE
+coverage:
+  CON-D1-BIAS-01:
+    name: HTF Bullish Bias
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-BIAS-02:
+    name: HTF Bearish Bias
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-DOL-01:
+    name: Draw on Liquidity - Buy-side
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-DOL-02:
+    name: Draw on Liquidity - Sell-side
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-INTLQ-01:
+    name: Internal Liquidity Objective - Bullish
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-INTLQ-02:
+    name: Internal Liquidity Objective - Bearish
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-EXTLQ-01:
+    name: External Liquidity Objective - Bullish
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-EXTLQ-02:
+    name: External Liquidity Objective - Bearish
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-DEAL-01:
+    name: Dealing Range - Bullish Context
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-DEAL-02:
+    name: Dealing Range - Bearish Context
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-3Q-01:
+    name: Three Questions Framework - Location
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D1-3Q-02:
+    name: Three Questions Framework - Objective & Respect
+    drawer: 1
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-01:
+    name: Asia Session - Liquidity Build
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-02:
+    name: Midnight Open Reference
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-03:
+    name: Midnight Open as PD Reference
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-04:
+    name: London Killzone - Session Highs/Lows
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-05:
+    name: London Killzone - Sweep Condition
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-06:
+    name: NY 08:30 Open Reference
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-07:
+    name: Pre-08:30 Judas/Manipulation
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-08:
+    name: 08:30+ Delivery Window
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-09:
+    name: NY AM Killzone
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-10:
+    name: Lunch Hours - Reduced Activity
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-11:
+    name: PM Session Disable
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D2-TIME-12:
+    name: London Setup via Asia Range Sweep
+    drawer: 2
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-SWING-01:
+    name: Swing High Definition
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-SWING-02:
+    name: Swing Low Definition
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-SWEEP-01:
+    name: Liquidity Sweep - Bullish
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-SWEEP-02:
+    name: Liquidity Sweep - Bearish
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-MSS-01:
+    name: Market Structure Shift - Bearish
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-MSS-02:
+    name: Market Structure Shift - Bullish
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-MSS-03:
+    name: MSS Invalidation
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-FVG-01:
+    name: Bullish FVG Definition
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-FVG-02:
+    name: Bearish FVG Definition
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-DISP-01:
+    name: Displacement - TRUE
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-DISP-02:
+    name: Displacement - FALSE
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D3-ENGINE-01:
+    name: Core 2022 Engine Event
+    drawer: 3
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-RANGE-01:
+    name: Intraday Dealing Range Definition
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-PD-01:
+    name: Premium/Discount Zones - Bullish
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-PD-02:
+    name: Premium/Discount Zones - Bearish
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-OTE-01:
+    name: OTE Buy Zone
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-OTE-02:
+    name: OTE Sell Zone
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-FVG-CONF-01:
+    name: FVG Confirmation - Short
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-FVG-CONF-02:
+    name: FVG Confirmation - Long
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-FVG-RET-01:
+    name: FVG Retrace Entry - Short
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-FVG-RET-02:
+    name: FVG Retrace Entry - Long
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-ENTRY-01:
+    name: Limit Order - Short
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-ENTRY-02:
+    name: Limit Order - Long
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D4-CONFL-01:
+    name: 2022 Model Setup VALID
+    drawer: 4
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-RISK-01:
+    name: Stop Loss - Short
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-RISK-02:
+    name: Stop Loss - Long
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-RISK-03:
+    name: Nested SL Anchor
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-RISK-04:
+    name: Max Risk Rejection
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-TP-01:
+    name: TP1 - Short
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-TP-02:
+    name: TP1 - Long
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-TP-03:
+    name: Runner Target
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-TP-04:
+    name: Close on Structure Break Against
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-MGMT-01:
+    name: Breakeven at 1:1 RR
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-D5-MGMT-02:
+    name: Daily Loss Limit
+    drawer: 5
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-PDA-REGISTRY:
+    name: PDA Registry Pattern
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-WARMUP:
+    name: State Machine Warmup
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-BLUR-001:
+    name: 3Q Ownership Boundary
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-NO-PARTIALS:
+    name: No Partial Exits
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-NO-REENTRY:
+    name: No Re-entry Same Narrative
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-NO-SCALING:
+    name: No Position Scaling
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-FIXED-RISK:
+    name: Fixed 1% Risk
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+  CON-OX-BE-ONLY:
+    name: Breakeven-Only Trailing
+    drawer: OLYA
+    sources:
+      ICT_2022:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      BLESSED_TRADER:
+        status: PENDING
+        evidence: null
+        last_checked: null
+      OLYA_NOTES:
+        status: PENDING
+        evidence: null
+        last_checked: null
+summary:
+  total_concepts: 66
+  total_coverage_cells: 198
+  by_status:
+    FOUND: 0
+    ABSENT: 0
+    PARTIAL: 0
+    PENDING: 198
+    NOT_APPLICABLE: 0
+  by_drawer:
+    drawer_1:
+      found: 0
+      total: 36
+    drawer_2:
+      found: 0
+      total: 36
+    drawer_3:
+      found: 0
+      total: 36
+    drawer_4:
+      found: 0
+      total: 36
+    drawer_5:
+      found: 0
+      total: 30
+    olya:
+      found: 0
+      total: 24
+  by_source:
+    ICT_2022:
+      found: 0
+      total: 66
+    BLESSED_TRADER:
+      found: 0
+      total: 66
+    OLYA_NOTES:
+      found: 0
+      total: 66

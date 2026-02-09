@@ -1,0 +1,175 @@
+# Theorist Taxonomy Mode Prompt Template
+# Version: 1.0
+# Purpose: Taxonomy-aware extraction that checks EACH concept and documents absences
+
+role: theorist_taxonomy
+version: "1.0"
+model: deepseek/deepseek-chat
+family: deepseek
+purpose: "Taxonomy-targeted extraction with coverage verification"
+
+# System prompt for taxonomy-aware extraction
+system_prompt: |
+  You are an expert trading methodology analyst specializing in ICT (Inner Circle Trader) concepts.
+  Your task is to extract IF-THEN trading logic from the provided content, checking for SPECIFIC concepts.
+
+  IMPORTANT: This is taxonomy-targeted extraction. You must check for EACH concept listed and report:
+  - FOUND: If the concept is discussed with actionable IF-THEN logic
+  - PARTIAL: If the concept is mentioned but not as a complete rule
+  - ABSENT: If the concept is not present in this content
+
+  Use the EXACT terminology from the source material. Do NOT translate to standardized names.
+  Do NOT invent rules that aren't explicitly stated or clearly implied in the content.
+
+# Extraction prompt template (filled per-drawer)
+extraction_prompt_template: |
+  Analyze the following content and check for each listed concept.
+
+  SOURCE CONTENT:
+  {source_content}
+
+  CONCEPTS TO CHECK (Drawer {drawer_number} - {drawer_name}):
+  {concepts_list}
+
+  For EACH concept above, determine its status and output JSON:
+
+  {{
+    "concept_id": "CON-D1-BIAS-01",
+    "status": "FOUND" | "PARTIAL" | "ABSENT",
+
+    // If FOUND:
+    "signature": "IF [condition] THEN [action]",
+    "source_quote": "exact quote from source supporting this",
+    "timestamp_or_page": "timestamp or page reference",
+    "confidence": "HIGH" | "MEDIUM" | "LOW",
+
+    // If PARTIAL:
+    "partial_note": "why this is incomplete",
+    "source_quote": "what was mentioned",
+
+    // If ABSENT:
+    "absence_reason": "NOT_DISCUSSED" | "OUTSIDE_SCOPE" | "IMPLIED_NOT_EXPLICIT"
+  }}
+
+  Output one JSON object per line, one for EACH concept in the list.
+  Do NOT skip any concepts - every concept must have a status.
+
+# Drawer-specific concept lists (loaded from taxonomy)
+drawer_prompts:
+  drawer_1:
+    name: "HTF Bias & Liquidity"
+    concepts: |
+      1. HTF Bullish Bias - Weekly HH/HL structure indicating bullish direction
+      2. HTF Bearish Bias - Weekly LL/LH structure indicating bearish direction
+      3. Draw on Liquidity (Buy-side) - Directional objective toward BSL
+      4. Draw on Liquidity (Sell-side) - Directional objective toward SSL
+      5. Internal Liquidity Objective - Target within current range
+      6. External Liquidity Objective - Target outside current range
+      7. Dealing Range - Premium/Discount zone definition
+      8. Three Questions Framework - Location, Objective, Respect
+
+  drawer_2:
+    name: "Time & Session"
+    concepts: |
+      1. Asia Session - Liquidity build period, range formation
+      2. Midnight Open - Reference level for intraday bias
+      3. London Killzone - 02:00-05:00 EST, session extreme formation
+      4. London Sweep Condition - Asia range sweep during London
+      5. NY 08:30 Open - Key reference level
+      6. Pre-08:30 Judas - Manipulation/false move before cash open
+      7. 08:30+ Delivery Window - Valid entry window
+      8. NY AM Killzone - 08:30-11:00 EST, primary entry window
+      9. Lunch Hours - 11:00-13:00 reduced activity
+      10. PM Session - 13:00+ trading rules
+
+  drawer_3:
+    name: "Structure & Displacement"
+    concepts: |
+      1. Swing High Definition - N-bar lookback pivot
+      2. Swing Low Definition - N-bar lookback pivot
+      3. Liquidity Sweep (Bullish) - Price above swing high then reverses
+      4. Liquidity Sweep (Bearish) - Price below swing low then reverses
+      5. Market Structure Shift (Bullish) - Break above swing high with displacement
+      6. Market Structure Shift (Bearish) - Break below swing low with displacement
+      7. MSS Invalidation - Sweep without displacement
+      8. Bullish FVG - 3-candle gap, C1.high < C3.low
+      9. Bearish FVG - 3-candle gap, C1.low > C3.high
+      10. Displacement TRUE - Move with FVG and range
+      11. Displacement FALSE - Move without conviction
+      12. Core 2022 Engine Event - Sweep + MSS + Displacement + FVG
+
+  drawer_4:
+    name: "Execution"
+    concepts: |
+      1. Intraday Dealing Range - Most recent expansion leg
+      2. Premium/Discount Zones - 50% split of dealing range
+      3. OTE Buy Zone - 61.8-79% retrace for longs
+      4. OTE Sell Zone - 61.8-79% retrace for shorts
+      5. FVG Confirmation (Long) - FVG in discount/OTE
+      6. FVG Confirmation (Short) - FVG in premium/OTE
+      7. FVG Retrace Entry - Entry on FVG revisit
+      8. Limit Order Placement - At FVG boundary or 50%
+      9. 2022 Model Setup VALID - All confluence conditions met
+
+  drawer_5:
+    name: "Protection & Risk"
+    concepts: |
+      1. Stop Loss Placement (Long) - Below FVG/swing low
+      2. Stop Loss Placement (Short) - Above FVG/swing high
+      3. Nested SL Anchor - HTF level protection
+      4. Max Risk Rejection - Position size cap
+      5. TP1 Target - Internal liquidity or 1:1
+      6. Runner Target - External liquidity
+      7. Close on Structure Break - Exit on adverse MSS
+      8. Breakeven Management - Move SL to entry at 1:1
+      9. Daily Loss Limit - 2R/2% cap
+
+  olya_extensions:
+    name: "Olya-Specific Rules"
+    concepts: |
+      1. PDA Registry Pattern - Immutable detection, mutable status
+      2. State Machine Warmup - NOSTRUCTURE to FULLCONTEXT
+      3. 3Q Ownership Boundary - Context calculates, Conditions consumes
+      4. No Partial Exits - Full position single exit
+      5. No Re-entry Same Narrative - Wait for new engine event
+      6. No Position Scaling - Single entry only
+      7. Fixed 1% Risk - No grading
+      8. Breakeven-Only Trailing - No progressive trail
+
+# Output schema
+output_schema:
+  type: array
+  items:
+    type: object
+    required: [concept_id, status]
+    properties:
+      concept_id:
+        type: string
+        pattern: "^CON-"
+      status:
+        type: string
+        enum: [FOUND, PARTIAL, ABSENT]
+      signature:
+        type: string
+        description: "IF-THEN rule (required if FOUND)"
+      source_quote:
+        type: string
+        description: "Supporting quote from source"
+      timestamp_or_page:
+        type: string
+      confidence:
+        type: string
+        enum: [HIGH, MEDIUM, LOW]
+      partial_note:
+        type: string
+        description: "Why incomplete (if PARTIAL)"
+      absence_reason:
+        type: string
+        enum: [NOT_DISCUSSED, OUTSIDE_SCOPE, IMPLIED_NOT_EXPLICIT]
+
+# Validation rules
+validation:
+  require_all_concepts: true
+  min_found_for_rich_source: 3
+  flag_all_absent: true
+  cross_reference_taxonomy: true
