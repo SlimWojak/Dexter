@@ -1,0 +1,134 @@
+pdfs:
+- filename: EU_DXY_SMT_Divergence. (1).pdf
+  pages: 11
+  image_heavy_pages: 11
+  text_heavy_pages: 0
+  topic: SMT Divergence
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_10_PDF (2).pdf
+  pages: 40
+  image_heavy_pages: 37
+  text_heavy_pages: 3
+  topic: Lesson 10
+  processed_in_stage2: true
+  signatures_extracted: 3
+- filename: Lesson_11_PDF_-_M (6).pdf
+  pages: 24
+  image_heavy_pages: 18
+  text_heavy_pages: 6
+  topic: Lesson 11
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_12_PDF (1).pdf
+  pages: 29
+  image_heavy_pages: 20
+  text_heavy_pages: 9
+  topic: Lesson 12
+  processed_in_stage2: true
+  signatures_extracted: 7
+- filename: Lesson_15_PDF (3).pdf
+  pages: 26
+  image_heavy_pages: 19
+  text_heavy_pages: 7
+  topic: Lesson 15
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_16_PDF (3).pdf
+  pages: 25
+  image_heavy_pages: 19
+  text_heavy_pages: 6
+  topic: Lesson 16
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_17_PDF (2).pdf
+  pages: 36
+  image_heavy_pages: 31
+  text_heavy_pages: 5
+  topic: Lesson 17
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_18_PDF (4).pdf
+  pages: 20
+  image_heavy_pages: 14
+  text_heavy_pages: 6
+  topic: Lesson 18
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_19_PDF (4).pdf
+  pages: 16
+  image_heavy_pages: 6
+  text_heavy_pages: 10
+  topic: Lesson 19
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_20_PDF (4).pdf
+  pages: 42
+  image_heavy_pages: 39
+  text_heavy_pages: 3
+  topic: Lesson 20
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_21_PDF (3).pdf
+  pages: 22
+  image_heavy_pages: 17
+  text_heavy_pages: 5
+  topic: Lesson 21
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_5_PDF (2).pdf
+  pages: 20
+  image_heavy_pages: 12
+  text_heavy_pages: 8
+  topic: Lesson 5
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_6_PDF (3).pdf
+  pages: 21
+  image_heavy_pages: 14
+  text_heavy_pages: 7
+  topic: Lesson 6
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_7_PDF (3).pdf
+  pages: 53
+  image_heavy_pages: 47
+  text_heavy_pages: 6
+  topic: Lesson 7
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Lesson_8_PDF (3).pdf
+  pages: 27
+  image_heavy_pages: 23
+  text_heavy_pages: 4
+  topic: Lesson 8
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Liquidity_PDF_Blessed_TRD (4).pdf
+  pages: 25
+  image_heavy_pages: 14
+  text_heavy_pages: 11
+  topic: Liquidity concepts
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Orderblock_Propulsion_Block_Breaker (3).pdf
+  pages: 16
+  image_heavy_pages: 14
+  text_heavy_pages: 2
+  topic: Order Blocks, Propulsion, Breakers
+  processed_in_stage2: false
+  signatures_extracted: null
+- filename: Weekly__Daily_Structure___Price_Delivery (2).pdf
+  pages: 12
+  image_heavy_pages: 8
+  text_heavy_pages: 4
+  topic: Weekly/Daily Structure & Price Delivery
+  processed_in_stage2: false
+  signatures_extracted: null
+summary:
+  total_pdfs: 18
+  processed_in_stage2: 2
+  unprocessed: 16
+  total_pages: 465
+  total_signatures_stage2: 10
+  avg_pages_per_pdf: 25.8
