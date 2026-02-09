@@ -2,7 +2,7 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: BLESSED_AUDIT_COMPLETE (2026-02-09)
+- Phase: TAXONOMY_SYSTEM_COMPLETE (2026-02-09)
 - Tests: 363/363 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
@@ -10,10 +10,11 @@
 - Sources: 4 extraction targets + 1 reference
 - Vision Extraction: OPERATIONAL — two-pass architecture
 - Stage 3 Extraction: COMPLETE — 146 validated from live ICT transcripts
-- Blessed Audit: COMPLETE — 53 validated from 18 PDFs (+43 from Stage 2)
+- Blessed Audit: COMPLETE — 86 validated from 18 PDFs (53+33 post-fix)
 - Mirror Report: GENERATED — bundles/MIRROR_REPORT.md
-- Total Signatures: 1034 validated (981 + 53 new)
+- Total Signatures: 1067 validated (981 + 86 Blessed)
 - Auditor Rejection: 3.6% on Blessed (healthy)
+- **Taxonomy System: OPERATIONAL** — 66 concepts, 3-layer architecture
 
 ### STAGE 1 EXTRACTION SUMMARY (P3.4d Complete)
 
@@ -86,6 +87,54 @@ Vision extraction unlocks: TradingView screenshots, annotated charts, visual exa
 - Human gate: Mandatory (INV-DEXTER-ALWAYS-CLAIM)
 - Phoenix CTO: Reviewed and approved architecture
 - Data flow: DEXTER -> CLAIM_BEADs -> Human review -> Phoenix FACT_BEADs
+
+### TAXONOMY-AWARE EXTRACTION SYSTEM (2026-02-09)
+
+**Architecture:**
+- **Layer 1 - Reference Taxonomy:** 66 concepts across 5 drawers + Olya extensions
+- **Layer 2 - Coverage Matrix:** FOUND/ABSENT/PARTIAL tracking per concept per source
+- **Layer 3 - Evidence Grading:** STRONG_EVIDENCE, MODERATE_EVIDENCE, PRACTITIONER_LORE, UNIQUE
+
+**Files Created:**
+| File | Purpose |
+|------|---------|
+| data/taxonomy/reference_taxonomy.yaml | 66 concepts with definitions, dependencies, evidence grades |
+| data/taxonomy/coverage_matrix.yaml | 198 coverage cells (66 concepts x 3 sources) |
+| roles/theorist_taxonomy.yaml | Taxonomy-targeted extraction prompt template |
+| scripts/run_taxonomy_extraction.py | Taxonomy extraction runner (--mode=taxonomy) |
+| scripts/update_coverage_matrix.py | Updates matrix from extraction results |
+| scripts/generate_coverage_report.py | Generates bundles/COVERAGE_REPORT.md |
+
+**Concept Distribution:**
+| Drawer | Name | Concepts |
+|--------|------|----------|
+| 1 | HTF Bias & Liquidity | 12 |
+| 2 | Time & Session | 12 |
+| 3 | Structure & Displacement | 12 |
+| 4 | Execution | 12 |
+| 5 | Protection & Risk | 10 |
+| Olya | Olya Extensions | 8 |
+| **Total** | | **66** |
+
+**Evidence Grade Distribution:**
+- STRONG_EVIDENCE: 15 concepts (HTF bias, session timing, risk management)
+- MODERATE_EVIDENCE: 35 concepts (FVG, MSS, OTE, execution concepts)
+- PRACTITIONER_LORE: 8 concepts (Judas swing, specific manipulation patterns)
+- UNIQUE: 8 concepts (Olya's codified decisions)
+
+**Usage:**
+```bash
+# Run taxonomy-targeted extraction on a document
+python scripts/run_taxonomy_extraction.py --source /path/to/doc.pdf --source-tier BLESSED_TRADER
+
+# Update coverage matrix from existing bundles
+python scripts/update_coverage_matrix.py --scan-all
+
+# Generate coverage report
+python scripts/generate_coverage_report.py
+```
+
+**Status:** OPERATIONAL — Ready for taxonomy-targeted extraction runs
 
 ### NEXT_ACTIONS (Post-Advisor Synthesis 2026-02-04)
 
