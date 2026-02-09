@@ -1,6 +1,6 @@
 version: '1.0'
 created: '2026-02-09'
-last_updated: '2026-02-09T12:03:56.453640+00:00'
+last_updated: '2026-02-09T13:13:48.555229+00:00'
 sources:
   ICT_2022:
     tier: CANON
@@ -38,16 +38,12 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D1-BIAS-01-1
-          - OL-CON-D1-BIAS-01-2
-          - OL-CON-D1-BIAS-01-3
-          - OL-CON-D1-BIAS-01-4
+          - OLV-CON-D1-BIAS-01-1
+          - OLV-CON-D1-BIAS-01-2
+          - OLV-CON-D1-BIAS-01-3
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 8 TOP DOWN ANALYSIS FOR NEX TRADING SYSTEM.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-BIAS-02:
     name: HTF Bearish Bias
     drawer: 1
@@ -68,14 +64,12 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D1-BIAS-02-1
-          - OL-CON-D1-BIAS-02-2
-          - OL-CON-D1-BIAS-02-3
+          - OLV-CON-D1-BIAS-02-1
+          - OLV-CON-D1-BIAS-02-2
+          - OLV-CON-D1-BIAS-02-3
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-DOL-01:
     name: Draw on Liquidity - Buy-side
     drawer: 1
@@ -101,17 +95,9 @@ coverage:
           - Lesson_20_PDF (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-DOL-01-1
-          - OL-CON-D1-DOL-01-2
-          - OL-CON-D1-DOL-01-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-DOL-02:
     name: Draw on Liquidity - Sell-side
     drawer: 1
@@ -137,17 +123,9 @@ coverage:
           - Lesson_18_PDF (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-DOL-02-1
-          - OL-CON-D1-DOL-02-2
-          - OL-CON-D1-DOL-02-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-INTLQ-01:
     name: Internal Liquidity Objective - Bullish
     drawer: 1
@@ -161,17 +139,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-INTLQ-01-1
-          - OL-CON-D1-INTLQ-01-2
-          - OL-CON-D1-INTLQ-01-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-INTLQ-02:
     name: Internal Liquidity Objective - Bearish
     drawer: 1
@@ -185,17 +155,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-INTLQ-02-1
-          - OL-CON-D1-INTLQ-02-2
-          - OL-CON-D1-INTLQ-02-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-EXTLQ-01:
     name: External Liquidity Objective - Bullish
     drawer: 1
@@ -213,17 +175,9 @@ coverage:
           - Lesson_20_PDF (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-EXTLQ-01-1
-          - OL-CON-D1-EXTLQ-01-2
-          - OL-CON-D1-EXTLQ-01-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-EXTLQ-02:
     name: External Liquidity Objective - Bearish
     drawer: 1
@@ -237,17 +191,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-EXTLQ-02-1
-          - OL-CON-D1-EXTLQ-02-2
-          - OL-CON-D1-EXTLQ-02-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-DEAL-01:
     name: Dealing Range - Bullish Context
     drawer: 1
@@ -269,17 +215,9 @@ coverage:
           - Lesson_7_PDF (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-DEAL-01-1
-          - OL-CON-D1-DEAL-01-2
-          - OL-CON-D1-DEAL-01-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-DEAL-02:
     name: Dealing Range - Bearish Context
     drawer: 1
@@ -299,17 +237,9 @@ coverage:
           - Lesson_7_PDF (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-DEAL-02-1
-          - OL-CON-D1-DEAL-02-2
-          - OL-CON-D1-DEAL-02-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-3Q-01:
     name: Three Questions Framework - Location
     drawer: 1
@@ -327,17 +257,9 @@ coverage:
           - Weekly__Daily_Structure___Price_Delivery (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-3Q-01-1
-          - OL-CON-D1-3Q-01-2
-          - OL-CON-D1-3Q-01-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: PARTIAL
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D1-3Q-02:
     name: Three Questions Framework - Objective & Respect
     drawer: 1
@@ -355,17 +277,9 @@ coverage:
           - Weekly__Daily_Structure___Price_Delivery (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D1-3Q-02-1
-          - OL-CON-D1-3Q-02-2
-          - OL-CON-D1-3Q-02-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: PARTIAL
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-01:
     name: Asia Session - Liquidity Build
     drawer: 2
@@ -384,15 +298,9 @@ coverage:
           - Liquidity_PDF_Blessed_TRD (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-01-1
-          - OL-CON-D2-TIME-01-2
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-02:
     name: Midnight Open Reference
     drawer: 2
@@ -419,14 +327,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D2-TIME-02-1
-          - OL-CON-D2-TIME-02-2
-          - OL-CON-D2-TIME-02-3
+          - OLV-CON-D2-TIME-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
           - OLYA 15 CHART SETUP.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-03:
     name: Midnight Open as PD Reference
     drawer: 2
@@ -446,13 +350,9 @@ coverage:
           - Lesson_17_PDF (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-03-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-04:
     name: London Killzone - Session Highs/Lows
     drawer: 2
@@ -480,12 +380,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D2-TIME-04-1
-          - OL-CON-D2-TIME-04-2
+          - OLV-CON-D2-TIME-04-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-05:
     name: London Killzone - Sweep Condition
     drawer: 2
@@ -507,17 +405,9 @@ coverage:
           - Lesson_5_PDF (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-05-1
-          - OL-CON-D2-TIME-05-2
-          - OL-CON-D2-TIME-05-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 6 ASIA RANGE SWEEP STRATEGY EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-06:
     name: NY 08:30 Open Reference
     drawer: 2
@@ -535,13 +425,9 @@ coverage:
           - Liquidity_PDF_Blessed_TRD (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-06-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-07:
     name: Pre-08:30 Judas/Manipulation
     drawer: 2
@@ -559,13 +445,9 @@ coverage:
           - Lesson_5_PDF (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-07-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-08:
     name: 08:30+ Delivery Window
     drawer: 2
@@ -579,13 +461,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-08-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-09:
     name: NY AM Killzone
     drawer: 2
@@ -604,13 +482,9 @@ coverage:
           - Liquidity_PDF_Blessed_TRD (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-09-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-10:
     name: Lunch Hours - Reduced Activity
     drawer: 2
@@ -624,13 +498,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-10-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-11:
     name: PM Session Disable
     drawer: 2
@@ -644,13 +514,9 @@ coverage:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-11-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D2-TIME-12:
     name: London Setup via Asia Range Sweep
     drawer: 2
@@ -670,17 +536,9 @@ coverage:
           - Lesson_5_PDF (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-D2-TIME-12-1
-          - OL-CON-D2-TIME-12-2
-          - OL-CON-D2-TIME-12-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 6 ASIA RANGE SWEEP STRATEGY EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-SWING-01:
     name: Swing High Definition
     drawer: 3
@@ -703,14 +561,12 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-SWING-01-1
-          - OL-CON-D3-SWING-01-2
-          - OL-CON-D3-SWING-01-3
+          - OLV-CON-D3-SWING-01-1
+          - OLV-CON-D3-SWING-01-2
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 10 📍✅5min liquidity scalps.pdf
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-SWING-02:
     name: Swing Low Definition
     drawer: 3
@@ -733,14 +589,12 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-SWING-02-1
-          - OL-CON-D3-SWING-02-2
-          - OL-CON-D3-SWING-02-3
+          - OLV-CON-D3-SWING-02-1
+          - OLV-CON-D3-SWING-02-2
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 10 📍✅5min liquidity scalps.pdf
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-SWEEP-01:
     name: Liquidity Sweep - Bullish
     drawer: 3
@@ -774,18 +628,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-SWEEP-01-1
-          - OL-CON-D3-SWEEP-01-2
-          - OL-CON-D3-SWEEP-01-3
-          - OL-CON-D3-SWEEP-01-4
-          - OL-CON-D3-SWEEP-01-5
+          - OLV-CON-D3-SWEEP-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 5 - Daily 15 Momentum Breakout.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-SWEEP-02:
     name: Liquidity Sweep - Bearish
     drawer: 3
@@ -815,20 +661,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-SWEEP-02-1
-          - OL-CON-D3-SWEEP-02-2
-          - OL-CON-D3-SWEEP-02-3
-          - OL-CON-D3-SWEEP-02-4
-          - OL-CON-D3-SWEEP-02-5
-          - OL-CON-D3-SWEEP-02-6
+          - OLV-CON-D3-SWEEP-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 18 BREAKER.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 5 - Daily 15 Momentum Breakout.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-MSS-01:
     name: Market Structure Shift - Bearish
     drawer: 3
@@ -851,14 +687,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-MSS-01-1
-          - OL-CON-D3-MSS-01-2
-          - OL-CON-D3-MSS-01-3
+          - OLV-CON-D3-MSS-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-MSS-02:
     name: Market Structure Shift - Bullish
     drawer: 3
@@ -883,14 +715,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-MSS-02-1
-          - OL-CON-D3-MSS-02-2
-          - OL-CON-D3-MSS-02-3
+          - OLV-CON-D3-MSS-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-MSS-03:
     name: MSS Invalidation
     drawer: 3
@@ -915,14 +743,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-MSS-03-1
-          - OL-CON-D3-MSS-03-2
-          - OL-CON-D3-MSS-03-3
+          - OLV-CON-D3-MSS-03-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-FVG-01:
     name: Bullish FVG Definition
     drawer: 3
@@ -959,16 +783,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-FVG-01-1
-          - OL-CON-D3-FVG-01-2
-          - OL-CON-D3-FVG-01-3
-          - OL-CON-D3-FVG-01-4
+          - OLV-CON-D3-FVG-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-FVG-02:
     name: Bearish FVG Definition
     drawer: 3
@@ -997,16 +815,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-FVG-02-1
-          - OL-CON-D3-FVG-02-2
-          - OL-CON-D3-FVG-02-3
-          - OL-CON-D3-FVG-02-4
+          - OLV-CON-D3-FVG-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-DISP-01:
     name: Displacement - TRUE
     drawer: 3
@@ -1031,14 +843,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-DISP-01-1
-          - OL-CON-D3-DISP-01-2
-          - OL-CON-D3-DISP-01-3
+          - OLV-CON-D3-DISP-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-DISP-02:
     name: Displacement - FALSE
     drawer: 3
@@ -1063,14 +871,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-DISP-02-1
-          - OL-CON-D3-DISP-02-2
-          - OL-CON-D3-DISP-02-3
+          - OLV-CON-D3-DISP-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D3-ENGINE-01:
     name: Core 2022 Engine Event
     drawer: 3
@@ -1095,14 +899,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D3-ENGINE-01-1
-          - OL-CON-D3-ENGINE-01-2
-          - OL-CON-D3-ENGINE-01-3
+          - OLV-CON-D3-ENGINE-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-RANGE-01:
     name: Intraday Dealing Range Definition
     drawer: 4
@@ -1125,12 +925,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-RANGE-01-1
-          - OL-CON-D4-RANGE-01-2
+          - OLV-CON-D4-RANGE-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-PD-01:
     name: Premium/Discount Zones - Bullish
     drawer: 4
@@ -1153,12 +951,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-PD-01-1
-          - OL-CON-D4-PD-01-2
+          - OLV-CON-D4-PD-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-PD-02:
     name: Premium/Discount Zones - Bearish
     drawer: 4
@@ -1181,12 +977,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-PD-02-1
-          - OL-CON-D4-PD-02-2
+          - OLV-CON-D4-PD-02-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-OTE-01:
     name: OTE Buy Zone
     drawer: 4
@@ -1207,16 +1001,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-OTE-01-1
-          - OL-CON-D4-OTE-01-2
-          - OL-CON-D4-OTE-01-3
-          - OL-CON-D4-OTE-01-4
+          - OLV-CON-D4-OTE-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 10 📍✅5min liquidity scalps.pdf
-          - OLYA 16 ✅15MIN OTE SETUPS.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-OTE-02:
     name: OTE Sell Zone
     drawer: 4
@@ -1233,12 +1021,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-OTE-02-1
-          - OL-CON-D4-OTE-02-2
+          - OLV-CON-D4-OTE-02-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-FVG-CONF-01:
     name: FVG Confirmation - Short
     drawer: 4
@@ -1261,12 +1047,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-FVG-CONF-01-1
-          - OL-CON-D4-FVG-CONF-01-2
+          - OLV-CON-D4-FVG-CONF-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-FVG-CONF-02:
     name: FVG Confirmation - Long
     drawer: 4
@@ -1289,12 +1073,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-FVG-CONF-02-1
-          - OL-CON-D4-FVG-CONF-02-2
+          - OLV-CON-D4-FVG-CONF-02-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-FVG-RET-01:
     name: FVG Retrace Entry - Short
     drawer: 4
@@ -1315,12 +1097,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-FVG-RET-01-1
-          - OL-CON-D4-FVG-RET-01-2
+          - OLV-CON-D4-FVG-RET-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-FVG-RET-02:
     name: FVG Retrace Entry - Long
     drawer: 4
@@ -1341,12 +1121,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-FVG-RET-02-1
-          - OL-CON-D4-FVG-RET-02-2
+          - OLV-CON-D4-FVG-RET-02-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-ENTRY-01:
     name: Limit Order - Short
     drawer: 4
@@ -1363,12 +1141,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-ENTRY-01-1
-          - OL-CON-D4-ENTRY-01-2
+          - OLV-CON-D4-ENTRY-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-ENTRY-02:
     name: Limit Order - Long
     drawer: 4
@@ -1389,12 +1165,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D4-ENTRY-02-1
-          - OL-CON-D4-ENTRY-02-2
+          - OLV-CON-D4-ENTRY-02-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D4-CONFL-01:
     name: 2022 Model Setup VALID
     drawer: 4
@@ -1414,7 +1188,7 @@ coverage:
       OLYA_NOTES:
         status: PARTIAL
         evidence: null
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-RISK-01:
     name: Stop Loss - Short
     drawer: 5
@@ -1431,16 +1205,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-RISK-01-1
-          - OL-CON-D5-RISK-01-2
-          - OL-CON-D5-RISK-01-3
-          - OL-CON-D5-RISK-01-4
+          - OLV-CON-D5-RISK-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-RISK-02:
     name: Stop Loss - Long
     drawer: 5
@@ -1457,16 +1225,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-RISK-02-1
-          - OL-CON-D5-RISK-02-2
-          - OL-CON-D5-RISK-02-3
-          - OL-CON-D5-RISK-02-4
+          - OLV-CON-D5-RISK-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-RISK-03:
     name: Nested SL Anchor
     drawer: 5
@@ -1483,14 +1245,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-RISK-03-1
-          - OL-CON-D5-RISK-03-2
-          - OL-CON-D5-RISK-03-3
+          - OLV-CON-D5-RISK-03-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-RISK-04:
     name: Max Risk Rejection
     drawer: 5
@@ -1507,16 +1265,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-RISK-04-1
-          - OL-CON-D5-RISK-04-2
-          - OL-CON-D5-RISK-04-3
-          - OL-CON-D5-RISK-04-4
+          - OLV-CON-D5-RISK-04-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-TP-01:
     name: TP1 - Short
     drawer: 5
@@ -1533,16 +1285,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-TP-01-1
-          - OL-CON-D5-TP-01-2
-          - OL-CON-D5-TP-01-3
-          - OL-CON-D5-TP-01-4
+          - OLV-CON-D5-TP-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-TP-02:
     name: TP1 - Long
     drawer: 5
@@ -1559,16 +1305,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-TP-02-1
-          - OL-CON-D5-TP-02-2
-          - OL-CON-D5-TP-02-3
-          - OL-CON-D5-TP-02-4
+          - OLV-CON-D5-TP-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-TP-03:
     name: Runner Target
     drawer: 5
@@ -1585,14 +1325,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-TP-03-1
-          - OL-CON-D5-TP-03-2
-          - OL-CON-D5-TP-03-3
+          - OLV-CON-D5-TP-03-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-TP-04:
     name: Close on Structure Break Against
     drawer: 5
@@ -1609,14 +1345,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-TP-04-1
-          - OL-CON-D5-TP-04-2
-          - OL-CON-D5-TP-04-3
+          - OLV-CON-D5-TP-04-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-MGMT-01:
     name: Breakeven at 1:1 RR
     drawer: 5
@@ -1633,16 +1365,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-MGMT-01-1
-          - OL-CON-D5-MGMT-01-2
-          - OL-CON-D5-MGMT-01-3
-          - OL-CON-D5-MGMT-01-4
+          - OLV-CON-D5-MGMT-01-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 5 - Daily 15 Momentum Breakout.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-MGMT-02:
     name: Daily Loss Limit
     drawer: 5
@@ -1659,14 +1385,10 @@ coverage:
         status: FOUND
         evidence:
           signature_ids:
-          - OL-CON-D5-MGMT-02-1
-          - OL-CON-D5-MGMT-02-2
-          - OL-CON-D5-MGMT-02-3
+          - OLV-CON-D5-MGMT-02-1
           documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 21 ICT MMM’S 2023.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+          - OLYA 15 CHART SETUP.pdf
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-PDA-REGISTRY:
     name: PDA Registry Pattern
     drawer: OLYA
@@ -1680,15 +1402,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-PDA-REGISTRY-1
-          - OL-CON-OX-PDA-REGISTRY-2
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-WARMUP:
     name: State Machine Warmup
     drawer: OLYA
@@ -1702,15 +1418,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-WARMUP-1
-          - OL-CON-OX-WARMUP-2
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-BLUR-001:
     name: 3Q Ownership Boundary
     drawer: OLYA
@@ -1724,15 +1434,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-BLUR-001-1
-          - OL-CON-OX-BLUR-001-2
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-NO-PARTIALS:
     name: No Partial Exits
     drawer: OLYA
@@ -1746,17 +1450,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-NO-PARTIALS-1
-          - OL-CON-OX-NO-PARTIALS-2
-          - OL-CON-OX-NO-PARTIALS-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-NO-REENTRY:
     name: No Re-entry Same Narrative
     drawer: OLYA
@@ -1770,17 +1466,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-NO-REENTRY-1
-          - OL-CON-OX-NO-REENTRY-2
-          - OL-CON-OX-NO-REENTRY-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-NO-SCALING:
     name: No Position Scaling
     drawer: OLYA
@@ -1794,17 +1482,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-NO-SCALING-1
-          - OL-CON-OX-NO-SCALING-2
-          - OL-CON-OX-NO-SCALING-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-FIXED-RISK:
     name: Fixed 1% Risk
     drawer: OLYA
@@ -1818,19 +1498,9 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-FIXED-RISK-1
-          - OL-CON-OX-FIXED-RISK-2
-          - OL-CON-OX-FIXED-RISK-3
-          - OL-CON-OX-FIXED-RISK-4
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-          - OLYA 9 **Asia Range Scalp Strategy.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-OX-BE-ONLY:
     name: Breakeven-Only Trailing
     drawer: OLYA
@@ -1844,24 +1514,16 @@ coverage:
         evidence: null
         last_checked: null
       OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OL-CON-OX-BE-ONLY-1
-          - OL-CON-OX-BE-ONLY-2
-          - OL-CON-OX-BE-ONLY-3
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-          - OLYA 4 📌EURUSD 5MIN ENTRIES EXAMPLES.pdf
-        last_checked: '2026-02-09T12:03:56.453640+00:00'
+        status: ABSENT
+        evidence: null
+        last_checked: '2026-02-09T13:13:48.555229+00:00'
 summary:
   total_concepts: 66
   total_coverage_cells: 198
   by_status:
-    FOUND: 105
-    ABSENT: 17
-    PARTIAL: 2
+    FOUND: 77
+    ABSENT: 43
+    PARTIAL: 4
     PENDING: 74
     NOT_APPLICABLE: 0
   by_drawer:
@@ -1891,5 +1553,5 @@ summary:
       found: 40
       total: 66
     OLYA_NOTES:
-      found: 65
+      found: 37
       total: 66

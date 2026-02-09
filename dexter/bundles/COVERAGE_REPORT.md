@@ -1,6 +1,6 @@
 # Dexter Coverage Report
 
-*Generated: 2026-02-09T12:03:56.643943+00:00*
+*Generated: 2026-02-09T13:14:16.661103+00:00*
 
 > "Show me you looked, not just what you found." - Olya
 
@@ -15,12 +15,12 @@
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| FOUND | 105 | 53.0% |
-| PARTIAL | 2 | 1.0% |
-| ABSENT | 17 | 8.6% |
+| FOUND | 77 | 38.9% |
+| PARTIAL | 4 | 2.0% |
+| ABSENT | 43 | 21.7% |
 | PENDING | 74 | 37.4% |
 
-**Effective Coverage:** 54.0% (FOUND + PARTIAL)
+**Effective Coverage:** 40.9% (FOUND + PARTIAL)
 
 ---
 
@@ -30,7 +30,7 @@
 |--------|-------|-------|----------|
 | ICT_2022 | 0 | 66 | 0.0% |
 | BLESSED_TRADER | 40 | 66 | 60.6% |
-| OLYA_NOTES | 65 | 66 | 98.5% |
+| OLYA_NOTES | 37 | 66 | 56.1% |
 
 ---
 
@@ -57,34 +57,34 @@ Legend: FOUND = extracted with evidence, PART = mentioned but incomplete, --- = 
 |---------|----------|---------|------------|
 | HTF Bullish Bias | ... | FOUND | FOUND |
 | HTF Bearish Bias | ... | FOUND | FOUND |
-| Draw on Liquidity - Buy-side | ... | FOUND | FOUND |
-| Draw on Liquidity - Sell-side | ... | FOUND | FOUND |
-| Internal Liquidity Objective - Bull | ... | --- | FOUND |
-| Internal Liquidity Objective - Bear | ... | --- | FOUND |
-| External Liquidity Objective - Bull | ... | FOUND | FOUND |
-| External Liquidity Objective - Bear | ... | --- | FOUND |
-| Dealing Range - Bullish Context | ... | FOUND | FOUND |
-| Dealing Range - Bearish Context | ... | FOUND | FOUND |
-| Three Questions Framework - Locatio | ... | FOUND | FOUND |
-| Three Questions Framework - Objecti | ... | FOUND | FOUND |
+| Draw on Liquidity - Buy-side | ... | FOUND | --- |
+| Draw on Liquidity - Sell-side | ... | FOUND | --- |
+| Internal Liquidity Objective - Bull | ... | --- | --- |
+| Internal Liquidity Objective - Bear | ... | --- | --- |
+| External Liquidity Objective - Bull | ... | FOUND | --- |
+| External Liquidity Objective - Bear | ... | --- | --- |
+| Dealing Range - Bullish Context | ... | FOUND | --- |
+| Dealing Range - Bearish Context | ... | FOUND | --- |
+| Three Questions Framework - Locatio | ... | FOUND | PART |
+| Three Questions Framework - Objecti | ... | FOUND | PART |
 
 
 ### Time & Session
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| Asia Session - Liquidity Build | ... | FOUND | FOUND |
+| Asia Session - Liquidity Build | ... | FOUND | --- |
 | Midnight Open Reference | ... | FOUND | FOUND |
-| Midnight Open as PD Reference | ... | FOUND | FOUND |
+| Midnight Open as PD Reference | ... | FOUND | --- |
 | London Killzone - Session Highs/Low | ... | FOUND | FOUND |
-| London Killzone - Sweep Condition | ... | FOUND | FOUND |
-| NY 08:30 Open Reference | ... | FOUND | FOUND |
-| Pre-08:30 Judas/Manipulation | ... | FOUND | FOUND |
-| 08:30+ Delivery Window | ... | --- | FOUND |
-| NY AM Killzone | ... | FOUND | FOUND |
-| Lunch Hours - Reduced Activity | ... | --- | FOUND |
-| PM Session Disable | ... | --- | FOUND |
-| London Setup via Asia Range Sweep | ... | FOUND | FOUND |
+| London Killzone - Sweep Condition | ... | FOUND | --- |
+| NY 08:30 Open Reference | ... | FOUND | --- |
+| Pre-08:30 Judas/Manipulation | ... | FOUND | --- |
+| 08:30+ Delivery Window | ... | --- | --- |
+| NY AM Killzone | ... | FOUND | --- |
+| Lunch Hours - Reduced Activity | ... | --- | --- |
+| PM Session Disable | ... | --- | --- |
+| London Setup via Asia Range Sweep | ... | FOUND | --- |
 
 
 ### Structure & Displacement
@@ -143,14 +143,14 @@ Legend: FOUND = extracted with evidence, PART = mentioned but incomplete, --- = 
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| PDA Registry Pattern | ... | ... | FOUND |
-| State Machine Warmup | ... | ... | FOUND |
-| 3Q Ownership Boundary | ... | ... | FOUND |
-| No Partial Exits | ... | ... | FOUND |
-| No Re-entry Same Narrative | ... | ... | FOUND |
-| No Position Scaling | ... | ... | FOUND |
-| Fixed 1% Risk | ... | ... | FOUND |
-| Breakeven-Only Trailing | ... | ... | FOUND |
+| PDA Registry Pattern | ... | ... | --- |
+| State Machine Warmup | ... | ... | --- |
+| 3Q Ownership Boundary | ... | ... | --- |
+| No Partial Exits | ... | ... | --- |
+| No Re-entry Same Narrative | ... | ... | --- |
+| No Position Scaling | ... | ... | --- |
+| Fixed 1% Risk | ... | ... | --- |
+| Breakeven-Only Trailing | ... | ... | --- |
 
 
 ---
@@ -159,7 +159,20 @@ Legend: FOUND = extracted with evidence, PART = mentioned but incomplete, --- = 
 
 ### Concepts with No Evidence (All Sources ABSENT/PENDING)
 
-*No gaps found - all concepts have at least one source with evidence.*
+- **CON-D1-INTLQ-01**: Internal Liquidity Objective - Bullish
+- **CON-D1-INTLQ-02**: Internal Liquidity Objective - Bearish
+- **CON-D1-EXTLQ-02**: External Liquidity Objective - Bearish
+- **CON-D2-TIME-08**: 08:30+ Delivery Window
+- **CON-D2-TIME-10**: Lunch Hours - Reduced Activity
+- **CON-D2-TIME-11**: PM Session Disable
+- **CON-OX-PDA-REGISTRY**: PDA Registry Pattern
+- **CON-OX-WARMUP**: State Machine Warmup
+- **CON-OX-BLUR-001**: 3Q Ownership Boundary
+- **CON-OX-NO-PARTIALS**: No Partial Exits
+- **CON-OX-NO-REENTRY**: No Re-entry Same Narrative
+- **CON-OX-NO-SCALING**: No Position Scaling
+- **CON-OX-FIXED-RISK**: Fixed 1% Risk
+- **CON-OX-BE-ONLY**: Breakeven-Only Trailing
 
 
 ### Concepts with Partial Evidence Only
@@ -185,15 +198,16 @@ Based on reference taxonomy evidence grades:
 
 - **ICT_2022**: Only 0.0% coverage. Run taxonomy-targeted extraction on remaining documents.
 - **High Pending Rate**: 112% of cells still pending. Run `--scan-all` to process existing bundles.
+- **Coverage Gaps**: 14 concepts have no evidence from any source. Review source selection or extraction quality.
 
 ---
 
 ## Report Metadata
 
-- **Generated:** 2026-02-09T12:03:56.643943+00:00
+- **Generated:** 2026-02-09T13:14:16.661103+00:00
 - **Taxonomy Version:** 1.0
 - **Coverage Matrix Version:** 1.0
-- **Last Matrix Update:** 2026-02-09T12:03:56.453640+00:00
+- **Last Matrix Update:** 2026-02-09T13:13:48.555229+00:00
 
 ---
 

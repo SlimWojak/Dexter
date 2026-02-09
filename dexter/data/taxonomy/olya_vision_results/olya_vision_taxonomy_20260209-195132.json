@@ -1,0 +1,1669 @@
+{
+  "timestamp": "2026-02-09T12:51:32.287624+00:00",
+  "pdfs_processed": 4,
+  "total_vision_pages": 17,
+  "total_found": 1,
+  "total_partial": 25,
+  "total_absent": 238,
+  "files": [
+    {
+      "file": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf",
+      "pages": 8,
+      "vision_pages": 7,
+      "text_pages": 1,
+      "content_chars": 28972,
+      "total_concepts_checked": 66,
+      "found": 1,
+      "partial": 8,
+      "absent": 57,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "PARTIAL",
+          "absence_reason": "Asia session mentioned but no explicit IF-THEN logic",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "PARTIAL",
+          "absence_reason": "London Killzone mentioned but no explicit IF-THEN logic",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "PARTIAL",
+          "absence_reason": "Lunch session mentioned but no explicit IF-THEN logic",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "PARTIAL",
+          "signature": "IF prior structure = bullish (HH/HL) AND price breaks below most recent swing low with displacement AND body closes > 50% beyond swing low THEN MSS = ...",
+          "source_quote": "Clear Midpoint break with FVG",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "PARTIAL",
+          "signature": "IF prior structure = bearish (LL/LH) AND price breaks above most recent swing high with displacement AND body closes > 50% beyond swing high THEN MSS ...",
+          "source_quote": "Clear Midpoint break with FVG",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "PARTIAL",
+          "signature": "IF 3 consecutive candles AND candle_1.high < candle_3.low (gap exists) THEN Bullish FVG = zone between candle_1.high and candle_3.low",
+          "source_quote": "Clear Liquidity run in this MMM ( ++ Liquidity taken with nice IFVG , watch those IFVG developments )",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "PARTIAL",
+          "signature": "IF 3 consecutive candles AND candle_1.low > candle_3.high (gap exists) THEN Bearish FVG = zone between candle_1.low and candle_3.high",
+          "source_quote": "Clear Liquidity run in this MMM ( ++ Liquidity taken with nice IFVG , watch those IFVG developments )",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "PARTIAL",
+          "signature": "IF price move creates FVG AND move has significant range (>average candle size) AND bodies are full (close near extreme) THEN Displacement = TRUE",
+          "source_quote": "Clear Liquidity run in this MMM ( ++ Liquidity taken with nice IFVG , watch those IFVG developments )",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "FOUND",
+          "signature": "IF HTF Bias = BULLISH AND dealing range defined THEN OTE Buy Zone = 61.8% - 79% retracement of range AND optimal long entry within this zone",
+          "source_quote": "ENTRY - Limit order OTE just under 0.62Fib extension",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-PDA-REGISTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-WARMUP",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BLUR-001",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-PARTIALS",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-REENTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-SCALING",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-FIXED-RISK",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BE-ONLY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 10 \ud83d\udccd\u27055min liquidity scalps.pdf"
+        }
+      ]
+    },
+    {
+      "file": "OLYA 16 \u270515MIN OTE SETUPS.pdf",
+      "pages": 5,
+      "vision_pages": 4,
+      "text_pages": 1,
+      "content_chars": 13118,
+      "total_concepts_checked": 66,
+      "found": 0,
+      "partial": 6,
+      "absent": 60,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "PARTIAL",
+          "signature": "IF PRICE NEAR NY OPEN/DAILY OPEN THEN CHECK WEEKLY OPENING PRICE",
+          "source_quote": "PRICE NEAR NY OPEN/DAILY OPEN\nCHECK WEEKLY OPENING PRICE",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "PARTIAL",
+          "signature": "IF 4HR takes out previous high/low into PDA's THEN liquidity grab",
+          "source_quote": "LIQUIDITY GRAB - 4HR TAKES OUT PREVIOUS HIGH/LOW INTO PDA\u2019S",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "PARTIAL",
+          "signature": "IF 4HR takes out previous high/low into PDA's THEN liquidity grab",
+          "source_quote": "LIQUIDITY GRAB - 4HR TAKES OUT PREVIOUS HIGH/LOW INTO PDA\u2019S",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "PARTIAL",
+          "signature": "IF FVG formed on liquidity run THEN consider setup",
+          "source_quote": "5MIN/2MIN FORMED BPR/FVG/IFVG ON THE LIQUIDITY RUN",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "PARTIAL",
+          "signature": "IF FVG formed on liquidity run THEN consider setup",
+          "source_quote": "5MIN/2MIN FORMED BPR/FVG/IFVG ON THE LIQUIDITY RUN",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "PARTIAL",
+          "signature": "IF Bearish FVG exists AND FVG is in Premium Zone THEN FVG Confirmed for Short entry",
+          "source_quote": "FVG ( OR SMT FORMED IF N HIGH IS TAKEN )",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-PDA-REGISTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-WARMUP",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BLUR-001",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-PARTIALS",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-REENTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-SCALING",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-FIXED-RISK",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BE-ONLY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 16 \u270515MIN OTE SETUPS.pdf"
+        }
+      ]
+    },
+    {
+      "file": "OLYA 19 15MIN E1 EXAMPLES.pdf",
+      "pages": 5,
+      "vision_pages": 5,
+      "text_pages": 0,
+      "content_chars": 18964,
+      "total_concepts_checked": 66,
+      "found": 0,
+      "partial": 11,
+      "absent": 55,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "PARTIAL",
+          "partial_reason": "Mention of 'bullish momentum on the daily' but no explicit IF-THEN logic",
+          "source_quote": "BULLISH MOMENTUM ON TH DAILY",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "PARTIAL",
+          "partial_reason": "Mention of 'took out pre LOKZ liquidity' but no explicit IF-THEN logic",
+          "source_quote": "TOOK OUT PRE LOKZ LIQUIDITY",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "PARTIAL",
+          "partial_reason": "Mention of 'price very close to the target' but no explicit IF-THEN logic",
+          "source_quote": "PRICE VERY CLOSE TO THE TARGET",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "PARTIAL",
+          "partial_reason": "Mention of 'price just went 50% into Asia range' but no explicit IF-THEN logic",
+          "source_quote": "PRICE JUST WENT 50% INTO ASIA RANGE",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "PARTIAL",
+          "partial_reason": "Asia range mentioned but no explicit IF-THEN logic",
+          "source_quote": "Price moved 50% into Asia range took out pre LOKZ liquidity and shot up",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "PARTIAL",
+          "partial_reason": "Pre-LOKZ liquidity mentioned but no explicit IF-THEN logic",
+          "source_quote": "Price moved 50% into Asia range took out pre LOKZ liquidity and shot up",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "PARTIAL",
+          "partial_reason": "Asia range sweep mentioned but no explicit IF-THEN logic",
+          "source_quote": "Price moved 50% into Asia range took out pre LOKZ liquidity and shot up",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "PARTIAL",
+          "partial_reason": "Asia sweep mentioned but no explicit IF-THEN logic",
+          "source_quote": "Price moved 50% into Asia range took out pre LOKZ liquidity and shot up",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "PARTIAL",
+          "signature": "IF price took out pre-London killzone liquidity THEN price shot up",
+          "source_quote": "PRICE VERY CLOSE TO THE TARGET, BULLISH MOMENTUM ON TH DAILY, PRICE JUST WENT 50% INTO ASIA RANGE TOOK OUT PRE LOKZ LIQUIDITY AND SHOT UP",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "PARTIAL",
+          "signature": "IF blue shaded zone THEN likely bullish FVG",
+          "source_quote": "Blue shaded zones - likely representing: Fair Value Gaps (FVG)",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "PARTIAL",
+          "signature": "IF purple/pink shaded zone THEN likely bearish FVG",
+          "source_quote": "Purple/pink shaded zones - likely representing: Secondary FVGs",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-PDA-REGISTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-WARMUP",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BLUR-001",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-PARTIALS",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-REENTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-SCALING",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-FIXED-RISK",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BE-ONLY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 19 15MIN E1 EXAMPLES.pdf"
+        }
+      ]
+    },
+    {
+      "file": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf",
+      "pages": 1,
+      "vision_pages": 1,
+      "text_pages": 0,
+      "content_chars": 2771,
+      "total_concepts_checked": 66,
+      "found": 0,
+      "partial": 0,
+      "absent": 66,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-PDA-REGISTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-WARMUP",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BLUR-001",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-PARTIALS",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-REENTRY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-NO-SCALING",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-FIXED-RISK",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        },
+        {
+          "concept_id": "CON-OX-BE-ONLY",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "OLYA 4 \ud83d\udcccEURUSD 5MIN ENTRIES EXAMPLES.pdf"
+        }
+      ]
+    }
+  ]
+}
