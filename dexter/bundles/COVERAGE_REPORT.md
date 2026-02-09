@@ -1,6 +1,6 @@
 # Dexter Coverage Report
 
-*Generated: 2026-02-09T11:28:05.792135+00:00*
+*Generated: 2026-02-09T12:03:56.643943+00:00*
 
 > "Show me you looked, not just what you found." - Olya
 
@@ -15,12 +15,12 @@
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| FOUND | 40 | 20.2% |
-| PARTIAL | 1 | 0.5% |
+| FOUND | 105 | 53.0% |
+| PARTIAL | 2 | 1.0% |
 | ABSENT | 17 | 8.6% |
-| PENDING | 140 | 70.7% |
+| PENDING | 74 | 37.4% |
 
-**Effective Coverage:** 20.7% (FOUND + PARTIAL)
+**Effective Coverage:** 54.0% (FOUND + PARTIAL)
 
 ---
 
@@ -30,7 +30,7 @@
 |--------|-------|-------|----------|
 | ICT_2022 | 0 | 66 | 0.0% |
 | BLESSED_TRADER | 40 | 66 | 60.6% |
-| OLYA_NOTES | 0 | 66 | 0.0% |
+| OLYA_NOTES | 65 | 66 | 98.5% |
 
 ---
 
@@ -55,102 +55,102 @@ Legend: FOUND = extracted with evidence, PART = mentioned but incomplete, --- = 
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| HTF Bullish Bias | ... | FOUND | ... |
-| HTF Bearish Bias | ... | FOUND | ... |
-| Draw on Liquidity - Buy-side | ... | FOUND | ... |
-| Draw on Liquidity - Sell-side | ... | FOUND | ... |
-| Internal Liquidity Objective - Bull | ... | --- | ... |
-| Internal Liquidity Objective - Bear | ... | --- | ... |
-| External Liquidity Objective - Bull | ... | FOUND | ... |
-| External Liquidity Objective - Bear | ... | --- | ... |
-| Dealing Range - Bullish Context | ... | FOUND | ... |
-| Dealing Range - Bearish Context | ... | FOUND | ... |
-| Three Questions Framework - Locatio | ... | FOUND | ... |
-| Three Questions Framework - Objecti | ... | FOUND | ... |
+| HTF Bullish Bias | ... | FOUND | FOUND |
+| HTF Bearish Bias | ... | FOUND | FOUND |
+| Draw on Liquidity - Buy-side | ... | FOUND | FOUND |
+| Draw on Liquidity - Sell-side | ... | FOUND | FOUND |
+| Internal Liquidity Objective - Bull | ... | --- | FOUND |
+| Internal Liquidity Objective - Bear | ... | --- | FOUND |
+| External Liquidity Objective - Bull | ... | FOUND | FOUND |
+| External Liquidity Objective - Bear | ... | --- | FOUND |
+| Dealing Range - Bullish Context | ... | FOUND | FOUND |
+| Dealing Range - Bearish Context | ... | FOUND | FOUND |
+| Three Questions Framework - Locatio | ... | FOUND | FOUND |
+| Three Questions Framework - Objecti | ... | FOUND | FOUND |
 
 
 ### Time & Session
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| Asia Session - Liquidity Build | ... | FOUND | ... |
-| Midnight Open Reference | ... | FOUND | ... |
-| Midnight Open as PD Reference | ... | FOUND | ... |
-| London Killzone - Session Highs/Low | ... | FOUND | ... |
-| London Killzone - Sweep Condition | ... | FOUND | ... |
-| NY 08:30 Open Reference | ... | FOUND | ... |
-| Pre-08:30 Judas/Manipulation | ... | FOUND | ... |
-| 08:30+ Delivery Window | ... | --- | ... |
-| NY AM Killzone | ... | FOUND | ... |
-| Lunch Hours - Reduced Activity | ... | --- | ... |
-| PM Session Disable | ... | --- | ... |
-| London Setup via Asia Range Sweep | ... | FOUND | ... |
+| Asia Session - Liquidity Build | ... | FOUND | FOUND |
+| Midnight Open Reference | ... | FOUND | FOUND |
+| Midnight Open as PD Reference | ... | FOUND | FOUND |
+| London Killzone - Session Highs/Low | ... | FOUND | FOUND |
+| London Killzone - Sweep Condition | ... | FOUND | FOUND |
+| NY 08:30 Open Reference | ... | FOUND | FOUND |
+| Pre-08:30 Judas/Manipulation | ... | FOUND | FOUND |
+| 08:30+ Delivery Window | ... | --- | FOUND |
+| NY AM Killzone | ... | FOUND | FOUND |
+| Lunch Hours - Reduced Activity | ... | --- | FOUND |
+| PM Session Disable | ... | --- | FOUND |
+| London Setup via Asia Range Sweep | ... | FOUND | FOUND |
 
 
 ### Structure & Displacement
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| Swing High Definition | ... | FOUND | ... |
-| Swing Low Definition | ... | FOUND | ... |
-| Liquidity Sweep - Bullish | ... | FOUND | ... |
-| Liquidity Sweep - Bearish | ... | FOUND | ... |
-| Market Structure Shift - Bearish | ... | FOUND | ... |
-| Market Structure Shift - Bullish | ... | FOUND | ... |
-| MSS Invalidation | ... | FOUND | ... |
-| Bullish FVG Definition | ... | FOUND | ... |
-| Bearish FVG Definition | ... | FOUND | ... |
-| Displacement - TRUE | ... | FOUND | ... |
-| Displacement - FALSE | ... | FOUND | ... |
-| Core 2022 Engine Event | ... | FOUND | ... |
+| Swing High Definition | ... | FOUND | FOUND |
+| Swing Low Definition | ... | FOUND | FOUND |
+| Liquidity Sweep - Bullish | ... | FOUND | FOUND |
+| Liquidity Sweep - Bearish | ... | FOUND | FOUND |
+| Market Structure Shift - Bearish | ... | FOUND | FOUND |
+| Market Structure Shift - Bullish | ... | FOUND | FOUND |
+| MSS Invalidation | ... | FOUND | FOUND |
+| Bullish FVG Definition | ... | FOUND | FOUND |
+| Bearish FVG Definition | ... | FOUND | FOUND |
+| Displacement - TRUE | ... | FOUND | FOUND |
+| Displacement - FALSE | ... | FOUND | FOUND |
+| Core 2022 Engine Event | ... | FOUND | FOUND |
 
 
 ### Execution
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| Intraday Dealing Range Definition | ... | FOUND | ... |
-| Premium/Discount Zones - Bullish | ... | FOUND | ... |
-| Premium/Discount Zones - Bearish | ... | FOUND | ... |
-| OTE Buy Zone | ... | FOUND | ... |
-| OTE Sell Zone | ... | PART | ... |
-| FVG Confirmation - Short | ... | FOUND | ... |
-| FVG Confirmation - Long | ... | FOUND | ... |
-| FVG Retrace Entry - Short | ... | FOUND | ... |
-| FVG Retrace Entry - Long | ... | FOUND | ... |
-| Limit Order - Short | ... | --- | ... |
-| Limit Order - Long | ... | FOUND | ... |
-| 2022 Model Setup VALID | ... | FOUND | ... |
+| Intraday Dealing Range Definition | ... | FOUND | FOUND |
+| Premium/Discount Zones - Bullish | ... | FOUND | FOUND |
+| Premium/Discount Zones - Bearish | ... | FOUND | FOUND |
+| OTE Buy Zone | ... | FOUND | FOUND |
+| OTE Sell Zone | ... | PART | FOUND |
+| FVG Confirmation - Short | ... | FOUND | FOUND |
+| FVG Confirmation - Long | ... | FOUND | FOUND |
+| FVG Retrace Entry - Short | ... | FOUND | FOUND |
+| FVG Retrace Entry - Long | ... | FOUND | FOUND |
+| Limit Order - Short | ... | --- | FOUND |
+| Limit Order - Long | ... | FOUND | FOUND |
+| 2022 Model Setup VALID | ... | FOUND | PART |
 
 
 ### Protection & Risk
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| Stop Loss - Short | ... | --- | ... |
-| Stop Loss - Long | ... | --- | ... |
-| Nested SL Anchor | ... | --- | ... |
-| Max Risk Rejection | ... | --- | ... |
-| TP1 - Short | ... | --- | ... |
-| TP1 - Long | ... | --- | ... |
-| Runner Target | ... | --- | ... |
-| Close on Structure Break Against | ... | --- | ... |
-| Breakeven at 1:1 RR | ... | --- | ... |
-| Daily Loss Limit | ... | --- | ... |
+| Stop Loss - Short | ... | --- | FOUND |
+| Stop Loss - Long | ... | --- | FOUND |
+| Nested SL Anchor | ... | --- | FOUND |
+| Max Risk Rejection | ... | --- | FOUND |
+| TP1 - Short | ... | --- | FOUND |
+| TP1 - Long | ... | --- | FOUND |
+| Runner Target | ... | --- | FOUND |
+| Close on Structure Break Against | ... | --- | FOUND |
+| Breakeven at 1:1 RR | ... | --- | FOUND |
+| Daily Loss Limit | ... | --- | FOUND |
 
 
 ### Olya Extensions
 
 | Concept | ICT 2022 | Blessed | Olya Notes |
 |---------|----------|---------|------------|
-| PDA Registry Pattern | ... | ... | ... |
-| State Machine Warmup | ... | ... | ... |
-| 3Q Ownership Boundary | ... | ... | ... |
-| No Partial Exits | ... | ... | ... |
-| No Re-entry Same Narrative | ... | ... | ... |
-| No Position Scaling | ... | ... | ... |
-| Fixed 1% Risk | ... | ... | ... |
-| Breakeven-Only Trailing | ... | ... | ... |
+| PDA Registry Pattern | ... | ... | FOUND |
+| State Machine Warmup | ... | ... | FOUND |
+| 3Q Ownership Boundary | ... | ... | FOUND |
+| No Partial Exits | ... | ... | FOUND |
+| No Re-entry Same Narrative | ... | ... | FOUND |
+| No Position Scaling | ... | ... | FOUND |
+| Fixed 1% Risk | ... | ... | FOUND |
+| Breakeven-Only Trailing | ... | ... | FOUND |
 
 
 ---
@@ -159,36 +159,12 @@ Legend: FOUND = extracted with evidence, PART = mentioned but incomplete, --- = 
 
 ### Concepts with No Evidence (All Sources ABSENT/PENDING)
 
-- **CON-D1-INTLQ-01**: Internal Liquidity Objective - Bullish
-- **CON-D1-INTLQ-02**: Internal Liquidity Objective - Bearish
-- **CON-D1-EXTLQ-02**: External Liquidity Objective - Bearish
-- **CON-D2-TIME-08**: 08:30+ Delivery Window
-- **CON-D2-TIME-10**: Lunch Hours - Reduced Activity
-- **CON-D2-TIME-11**: PM Session Disable
-- **CON-D4-ENTRY-01**: Limit Order - Short
-- **CON-D5-RISK-01**: Stop Loss - Short
-- **CON-D5-RISK-02**: Stop Loss - Long
-- **CON-D5-RISK-03**: Nested SL Anchor
-- **CON-D5-RISK-04**: Max Risk Rejection
-- **CON-D5-TP-01**: TP1 - Short
-- **CON-D5-TP-02**: TP1 - Long
-- **CON-D5-TP-03**: Runner Target
-- **CON-D5-TP-04**: Close on Structure Break Against
-- **CON-D5-MGMT-01**: Breakeven at 1:1 RR
-- **CON-D5-MGMT-02**: Daily Loss Limit
-- **CON-OX-PDA-REGISTRY**: PDA Registry Pattern
-- **CON-OX-WARMUP**: State Machine Warmup
-- **CON-OX-BLUR-001**: 3Q Ownership Boundary
-- **CON-OX-NO-PARTIALS**: No Partial Exits
-- **CON-OX-NO-REENTRY**: No Re-entry Same Narrative
-- **CON-OX-NO-SCALING**: No Position Scaling
-- **CON-OX-FIXED-RISK**: Fixed 1% Risk
-- **CON-OX-BE-ONLY**: Breakeven-Only Trailing
+*No gaps found - all concepts have at least one source with evidence.*
 
 
 ### Concepts with Partial Evidence Only
 
-- **CON-D4-OTE-02**: OTE Sell Zone
+*No concepts with only partial evidence.*
 
 ---
 
@@ -208,18 +184,16 @@ Based on reference taxonomy evidence grades:
 ## Recommendations
 
 - **ICT_2022**: Only 0.0% coverage. Run taxonomy-targeted extraction on remaining documents.
-- **OLYA_NOTES**: Only 0.0% coverage. Run taxonomy-targeted extraction on remaining documents.
-- **High Pending Rate**: 212% of cells still pending. Run `--scan-all` to process existing bundles.
-- **Coverage Gaps**: 25 concepts have no evidence from any source. Review source selection or extraction quality.
+- **High Pending Rate**: 112% of cells still pending. Run `--scan-all` to process existing bundles.
 
 ---
 
 ## Report Metadata
 
-- **Generated:** 2026-02-09T11:28:05.792135+00:00
+- **Generated:** 2026-02-09T12:03:56.643943+00:00
 - **Taxonomy Version:** 1.0
 - **Coverage Matrix Version:** 1.0
-- **Last Matrix Update:** 2026-02-09T11:28:05.630916+00:00
+- **Last Matrix Update:** 2026-02-09T12:03:56.453640+00:00
 
 ---
 
