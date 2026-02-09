@@ -1,0 +1,1701 @@
+2026-02-09T14:34:16 [extractor] INFO ============================================================
+2026-02-09T14:34:16 [extractor] INFO Processing source: blessed_trader (Blessed Trader PDF course materials)
+2026-02-09T14:34:16 [extractor] INFO Type: pdf, Tier: LATERAL, Items: 18 pending
+2026-02-09T14:34:16 [extractor] INFO ============================================================
+2026-02-09T14:34:16 [extractor] INFO Processing 18 PDFs from blessed_training (tier=LATERAL)
+2026-02-09T14:34:16 [extractor] INFO Extracting from: EU_DXY_SMT_Divergence. (1).pdf (tier=LATERAL)
+2026-02-09T14:34:16 [extractor] INFO === PROCESS DOCUMENT: EU_DXY_SMT_Divergence. (1).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:34:16 [extractor] INFO Extracting text from PDF: EU_DXY_SMT_Divergence. (1).pdf (tier=LATERAL)
+2026-02-09T14:34:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:34:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T14:34:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T14:34:23 [extractor] INFO [VISION P3.5] Page 1: extracted 592 chars via trading vision
+2026-02-09T14:34:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:34:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0089 (in=1802 out=236)
+2026-02-09T14:34:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=818
+2026-02-09T14:34:32 [extractor] INFO [VISION P3.5] Page 3: extracted 818 chars via trading vision
+2026-02-09T14:34:45 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:34:45 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0120 (in=1802 out=439)
+2026-02-09T14:34:45 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1198
+2026-02-09T14:34:45 [extractor] INFO [VISION P3.5] Page 4: extracted 1198 chars via trading vision
+2026-02-09T14:34:56 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:34:56 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=299)
+2026-02-09T14:34:56 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1008
+2026-02-09T14:34:56 [extractor] INFO [VISION P3.5] Page 5: extracted 1008 chars via trading vision
+2026-02-09T14:35:11 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:35:11 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=420)
+2026-02-09T14:35:11 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1345
+2026-02-09T14:35:11 [extractor] INFO [VISION P3.5] Page 6: extracted 1345 chars via trading vision
+2026-02-09T14:35:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:35:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0154 (in=1802 out=669)
+2026-02-09T14:35:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1597
+2026-02-09T14:35:25 [extractor] INFO [VISION P3.5] Page 7: extracted 1597 chars via trading vision
+2026-02-09T14:35:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:35:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0167 (in=1802 out=755)
+2026-02-09T14:35:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=2023
+2026-02-09T14:35:42 [extractor] INFO [VISION P3.5] Page 8: extracted 2023 chars via trading vision
+2026-02-09T14:36:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:36:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0174 (in=1802 out=799)
+2026-02-09T14:36:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=2294
+2026-02-09T14:36:05 [extractor] INFO [VISION P3.5] Page 9: extracted 2294 chars via trading vision
+2026-02-09T14:36:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:36:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0194 (in=1802 out=933)
+2026-02-09T14:36:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=2558
+2026-02-09T14:36:28 [extractor] INFO [VISION P3.5] Page 10: extracted 2558 chars via trading vision
+2026-02-09T14:36:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:36:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:36:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T14:36:36 [extractor] INFO [VISION P3.5] Page 11: extracted 588 chars via trading vision
+2026-02-09T14:36:36 [extractor] INFO Extracted 11 pages (1 text, 10 image-heavy, 10 via vision) from EU_DXY_SMT_Divergence. (1).pdf
+2026-02-09T14:36:36 [extractor] INFO Chunked 11 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:36:36 [extractor] INFO Ingested PDF: EU_DXY_SMT_Divergence. (1).pdf | tier=LATERAL | 1 chunks | 1 text pages | 10 image-heavy pages
+2026-02-09T14:36:36 [extractor] INFO Ingested document: EU_DXY_SMT_Divergence. (1).pdf (1 chunks)
+2026-02-09T14:36:36 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:36:36 [extractor] INFO Theorist extracting from 'EU_DXY_SMT_Divergence. (1).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:36:36 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T14:36:36 [extractor] INFO [DRAWER] Loaded reference context: 1359 chars
+2026-02-09T14:36:37 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:36:41 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5676 tokens_out=2
+2026-02-09T14:36:41 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000795 (in=5676 out=2)
+2026-02-09T14:36:41 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:36:41 [extractor] INFO [LLM] Chunk 1/1: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:36:41 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T14:36:41 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T14:36:41 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T14:36:41 [extractor] INFO Extracted EU_DXY_SMT_Divergence. (1).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T14:36:41 [extractor] INFO Extracting from: Lesson_10_PDF (2).pdf (tier=LATERAL)
+2026-02-09T14:36:41 [extractor] INFO === PROCESS DOCUMENT: Lesson_10_PDF (2).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:36:41 [extractor] INFO Extracting text from PDF: Lesson_10_PDF (2).pdf (tier=LATERAL)
+2026-02-09T14:36:47 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:36:47 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=149)
+2026-02-09T14:36:47 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=606
+2026-02-09T14:36:47 [extractor] INFO [VISION P3.5] Page 1: extracted 606 chars via trading vision
+2026-02-09T14:36:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:36:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0067 (in=1802 out=86)
+2026-02-09T14:36:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=320
+2026-02-09T14:36:52 [extractor] INFO [VISION P3.5] Page 3: extracted 320 chars via trading vision
+2026-02-09T14:37:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:37:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=342)
+2026-02-09T14:37:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1214
+2026-02-09T14:37:05 [extractor] INFO [VISION P3.5] Page 8: extracted 1214 chars via trading vision
+2026-02-09T14:37:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:37:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=383)
+2026-02-09T14:37:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1377
+2026-02-09T14:37:19 [extractor] INFO [VISION P3.5] Page 9: extracted 1377 chars via trading vision
+2026-02-09T14:37:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:37:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=358)
+2026-02-09T14:37:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1266
+2026-02-09T14:37:32 [extractor] INFO [VISION P3.5] Page 10: extracted 1266 chars via trading vision
+2026-02-09T14:37:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:37:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=380)
+2026-02-09T14:37:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1329
+2026-02-09T14:37:46 [extractor] INFO [VISION P3.5] Page 11: extracted 1329 chars via trading vision
+2026-02-09T14:37:53 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:37:53 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0075 (in=1802 out=138)
+2026-02-09T14:37:53 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=544
+2026-02-09T14:37:53 [extractor] INFO [VISION P3.5] Page 12: extracted 544 chars via trading vision
+2026-02-09T14:38:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:38:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0093 (in=1802 out=259)
+2026-02-09T14:38:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1021
+2026-02-09T14:38:03 [extractor] INFO [VISION P3.5] Page 13: extracted 1021 chars via trading vision
+2026-02-09T14:38:16 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:38:16 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0103 (in=1802 out=324)
+2026-02-09T14:38:16 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1425
+2026-02-09T14:38:16 [extractor] INFO [VISION P3.5] Page 14: extracted 1425 chars via trading vision
+2026-02-09T14:38:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:38:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=338)
+2026-02-09T14:38:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1380
+2026-02-09T14:38:28 [extractor] INFO [VISION P3.5] Page 15: extracted 1380 chars via trading vision
+2026-02-09T14:38:41 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:38:41 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0115 (in=1802 out=407)
+2026-02-09T14:38:41 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1404
+2026-02-09T14:38:41 [extractor] INFO [VISION P3.5] Page 16: extracted 1404 chars via trading vision
+2026-02-09T14:38:53 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:38:53 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=310)
+2026-02-09T14:38:53 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1185
+2026-02-09T14:38:53 [extractor] INFO [VISION P3.5] Page 18: extracted 1185 chars via trading vision
+2026-02-09T14:39:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:39:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0098 (in=1802 out=292)
+2026-02-09T14:39:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1105
+2026-02-09T14:39:05 [extractor] INFO [VISION P3.5] Page 19: extracted 1105 chars via trading vision
+2026-02-09T14:39:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:39:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=354)
+2026-02-09T14:39:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1363
+2026-02-09T14:39:18 [extractor] INFO [VISION P3.5] Page 20: extracted 1363 chars via trading vision
+2026-02-09T14:39:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:39:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=348)
+2026-02-09T14:39:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1320
+2026-02-09T14:39:31 [extractor] INFO [VISION P3.5] Page 23: extracted 1320 chars via trading vision
+2026-02-09T14:39:43 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:39:43 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0098 (in=1802 out=292)
+2026-02-09T14:39:43 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1107
+2026-02-09T14:39:43 [extractor] INFO [VISION P3.5] Page 24: extracted 1107 chars via trading vision
+2026-02-09T14:39:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:39:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0093 (in=1802 out=257)
+2026-02-09T14:39:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=928
+2026-02-09T14:39:52 [extractor] INFO [VISION P3.5] Page 25: extracted 928 chars via trading vision
+2026-02-09T14:40:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:40:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0097 (in=1802 out=289)
+2026-02-09T14:40:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1074
+2026-02-09T14:40:03 [extractor] INFO [VISION P3.5] Page 27: extracted 1074 chars via trading vision
+2026-02-09T14:40:16 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:40:16 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=316)
+2026-02-09T14:40:16 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1102
+2026-02-09T14:40:16 [extractor] INFO [VISION P3.5] Page 29: extracted 1102 chars via trading vision
+2026-02-09T14:40:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:40:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=337)
+2026-02-09T14:40:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1334
+2026-02-09T14:40:28 [extractor] INFO [VISION P3.5] Page 30: extracted 1334 chars via trading vision
+2026-02-09T14:40:40 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:40:40 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=340)
+2026-02-09T14:40:40 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1299
+2026-02-09T14:40:40 [extractor] INFO [VISION P3.5] Page 31: extracted 1299 chars via trading vision
+2026-02-09T14:40:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:40:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0103 (in=1802 out=323)
+2026-02-09T14:40:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1154
+2026-02-09T14:40:52 [extractor] INFO [VISION P3.5] Page 32: extracted 1154 chars via trading vision
+2026-02-09T14:41:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:41:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=336)
+2026-02-09T14:41:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1210
+2026-02-09T14:41:05 [extractor] INFO [VISION P3.5] Page 34: extracted 1210 chars via trading vision
+2026-02-09T14:41:16 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:41:16 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0098 (in=1802 out=295)
+2026-02-09T14:41:16 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1052
+2026-02-09T14:41:16 [extractor] INFO [VISION P3.5] Page 36: extracted 1052 chars via trading vision
+2026-02-09T14:41:30 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:41:30 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=384)
+2026-02-09T14:41:30 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1478
+2026-02-09T14:41:30 [extractor] INFO [VISION P3.5] Page 39: extracted 1478 chars via trading vision
+2026-02-09T14:41:37 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:41:37 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:41:37 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:41:37 [extractor] INFO [VISION P3.5] Page 40: extracted 581 chars via trading vision
+2026-02-09T14:41:37 [extractor] INFO Extracted 40 pages (14 text, 26 image-heavy, 26 via vision) from Lesson_10_PDF (2).pdf
+2026-02-09T14:41:37 [extractor] INFO Chunked 40 pages into 3 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:41:37 [extractor] INFO Ingested PDF: Lesson_10_PDF (2).pdf | tier=LATERAL | 3 chunks | 14 text pages | 26 image-heavy pages
+2026-02-09T14:41:37 [extractor] INFO Ingested document: Lesson_10_PDF (2).pdf (3 chunks)
+2026-02-09T14:41:37 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:41:37 [extractor] INFO Theorist extracting from 'Lesson_10_PDF (2).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:41:37 [extractor] INFO Using LLM extraction on 3 chunks (tier=LATERAL)
+2026-02-09T14:41:39 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:41:58 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4715 tokens_out=822
+2026-02-09T14:41:58 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000890 (in=4715 out=822)
+2026-02-09T14:41:58 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:41:58 [extractor] INFO [LLM] Chunk 1/3: 6 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:41:59 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:41:59 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4822 tokens_out=2
+2026-02-09T14:41:59 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000676 (in=4822 out=2)
+2026-02-09T14:41:59 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:41:59 [extractor] INFO [LLM] Chunk 2/3: 0 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:42:00 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:42:15 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=1992 tokens_out=564
+2026-02-09T14:42:15 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000437 (in=1992 out=564)
+2026-02-09T14:42:15 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:42:15 [extractor] INFO [LLM] Chunk 3/3: 4 signatures (total unique: 10) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:42:15 [extractor] INFO Theorist extracted 10 signatures (model=deepseek-v3.2)
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-001
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-002
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-003
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-004
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-005
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-006
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-007
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-008
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-009 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-009
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-010 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO PASSED S-010
+2026-02-09T14:42:15 [extractor] INFO Audit: 10 validated, 0 rejected
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-009 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] INFO Auditing signature S-010 | model=gemini-3-flash family=google
+2026-02-09T14:42:15 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 10. Auditor may have failed. Manual review required.
+2026-02-09T14:42:15 [extractor] INFO [AUDITOR] Batch complete: 10 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T14:42:15 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-074215.md
+2026-02-09T14:42:15 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T14:42:15 [extractor] WARNING Matrix alert failed: no running event loop
+/Users/tradingclawd/dexter/core/bundler.py:256: RuntimeWarning: coroutine 'send_bundle_alert' was never awaited
+  logger.warning("Matrix alert failed: %s", e)
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+2026-02-09T14:42:15 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-074215.md
+2026-02-09T14:42:15 [extractor] INFO [BUNDLER] Exported 10 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-074215_claims.jsonl
+2026-02-09T14:42:15 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-074215_claims.jsonl
+2026-02-09T14:42:15 [extractor] INFO === COMPLETE: 10 extracted, 10 validated, 0 rejected, bundle=B-20260209-074215 ===
+2026-02-09T14:42:15 [extractor] INFO Extracted Lesson_10_PDF (2).pdf: 10 signatures (10 validated) model=deepseek-v3.2
+2026-02-09T14:42:15 [extractor] INFO Extracting from: Lesson_11_PDF_-_M (6).pdf (tier=LATERAL)
+2026-02-09T14:42:15 [extractor] INFO === PROCESS DOCUMENT: Lesson_11_PDF_-_M (6).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:42:15 [extractor] INFO Extracting text from PDF: Lesson_11_PDF_-_M (6).pdf (tier=LATERAL)
+2026-02-09T14:42:21 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:42:21 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=148)
+2026-02-09T14:42:21 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T14:42:21 [extractor] INFO [VISION P3.5] Page 1: extracted 592 chars via trading vision
+2026-02-09T14:42:27 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:42:27 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0067 (in=1802 out=89)
+2026-02-09T14:42:27 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=354
+2026-02-09T14:42:27 [extractor] INFO [VISION P3.5] Page 3: extracted 354 chars via trading vision
+2026-02-09T14:42:37 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:42:37 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=298)
+2026-02-09T14:42:37 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1200
+2026-02-09T14:42:37 [extractor] INFO [VISION P3.5] Page 6: extracted 1200 chars via trading vision
+2026-02-09T14:42:49 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:42:49 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=335)
+2026-02-09T14:42:49 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1327
+2026-02-09T14:42:49 [extractor] INFO [VISION P3.5] Page 9: extracted 1327 chars via trading vision
+2026-02-09T14:43:00 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:00 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=336)
+2026-02-09T14:43:00 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1309
+2026-02-09T14:43:00 [extractor] INFO [VISION P3.5] Page 19: extracted 1309 chars via trading vision
+2026-02-09T14:43:11 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:11 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0100 (in=1802 out=305)
+2026-02-09T14:43:11 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1278
+2026-02-09T14:43:11 [extractor] INFO [VISION P3.5] Page 21: extracted 1278 chars via trading vision
+2026-02-09T14:43:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:43:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:43:18 [extractor] INFO [VISION P3.5] Page 24: extracted 581 chars via trading vision
+2026-02-09T14:43:18 [extractor] INFO Extracted 24 pages (17 text, 7 image-heavy, 7 via vision) from Lesson_11_PDF_-_M (6).pdf
+2026-02-09T14:43:18 [extractor] INFO Chunked 24 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:43:18 [extractor] INFO Ingested PDF: Lesson_11_PDF_-_M (6).pdf | tier=LATERAL | 1 chunks | 17 text pages | 7 image-heavy pages
+2026-02-09T14:43:18 [extractor] INFO Ingested document: Lesson_11_PDF_-_M (6).pdf (1 chunks)
+2026-02-09T14:43:18 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:43:18 [extractor] INFO Theorist extracting from 'Lesson_11_PDF_-_M (6).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:43:18 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T14:43:19 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:43:19 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4825 tokens_out=2
+2026-02-09T14:43:19 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000676 (in=4825 out=2)
+2026-02-09T14:43:19 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:43:19 [extractor] INFO [LLM] Chunk 1/1: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:43:19 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T14:43:19 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T14:43:19 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T14:43:19 [extractor] INFO Extracted Lesson_11_PDF_-_M (6).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T14:43:19 [extractor] INFO Extracting from: Lesson_12_PDF (1).pdf (tier=LATERAL)
+2026-02-09T14:43:19 [extractor] INFO === PROCESS DOCUMENT: Lesson_12_PDF (1).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:43:19 [extractor] INFO Extracting text from PDF: Lesson_12_PDF (1).pdf (tier=LATERAL)
+2026-02-09T14:43:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:43:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:43:25 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T14:43:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0070 (in=1802 out=109)
+2026-02-09T14:43:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=410
+2026-02-09T14:43:31 [extractor] INFO [VISION P3.5] Page 3: extracted 410 chars via trading vision
+2026-02-09T14:43:40 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:40 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0077 (in=1802 out=156)
+2026-02-09T14:43:40 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=625
+2026-02-09T14:43:40 [extractor] INFO [VISION P3.5] Page 4: extracted 625 chars via trading vision
+2026-02-09T14:43:55 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:43:55 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0119 (in=1802 out=434)
+2026-02-09T14:43:55 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1465
+2026-02-09T14:43:55 [extractor] INFO [VISION P3.5] Page 13: extracted 1465 chars via trading vision
+2026-02-09T14:44:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:44:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=298)
+2026-02-09T14:44:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1083
+2026-02-09T14:44:07 [extractor] INFO [VISION P3.5] Page 14: extracted 1083 chars via trading vision
+2026-02-09T14:44:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:44:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=314)
+2026-02-09T14:44:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1184
+2026-02-09T14:44:18 [extractor] INFO [VISION P3.5] Page 15: extracted 1184 chars via trading vision
+2026-02-09T14:44:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:44:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T14:44:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=585
+2026-02-09T14:44:25 [extractor] INFO [VISION P3.5] Page 29: extracted 585 chars via trading vision
+2026-02-09T14:44:25 [extractor] INFO Extracted 29 pages (22 text, 7 image-heavy, 7 via vision) from Lesson_12_PDF (1).pdf
+2026-02-09T14:44:25 [extractor] INFO Chunked 29 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:44:25 [extractor] INFO Ingested PDF: Lesson_12_PDF (1).pdf | tier=LATERAL | 2 chunks | 22 text pages | 7 image-heavy pages
+2026-02-09T14:44:25 [extractor] INFO Ingested document: Lesson_12_PDF (1).pdf (2 chunks)
+2026-02-09T14:44:25 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:44:25 [extractor] INFO Theorist extracting from 'Lesson_12_PDF (1).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:44:25 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T14:44:28 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:44:58 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5357 tokens_out=891
+2026-02-09T14:44:58 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000999 (in=5357 out=891)
+2026-02-09T14:44:58 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:44:58 [extractor] INFO [LLM] Chunk 1/2: 6 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:45:00 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:45:00 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=1556 tokens_out=1
+2026-02-09T14:45:00 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000218 (in=1556 out=1)
+2026-02-09T14:45:00 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:45:00 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:45:00 [extractor] INFO Theorist extracted 6 signatures (model=deepseek-v3.2)
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO PASSED S-001
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO REJECT S-002: Logical contradiction — action contains both buy and sell without alternative (logical_consistency)
+2026-02-09T14:45:00 [extractor] INFO REJECTED S-002: Logical contradiction — action contains both buy and sell without alternative
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO PASSED S-003
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO PASSED S-004
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO PASSED S-005
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO PASSED S-006
+2026-02-09T14:45:00 [extractor] INFO Audit: 5 validated, 1 rejected
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO REJECT S-002: Logical contradiction — action contains both buy and sell without alternative (logical_consistency)
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:45:00 [extractor] INFO [AUDITOR] Batch complete: 6 total, 1 rejected (16.7%), status=OK
+2026-02-09T14:45:00 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-074500.md
+2026-02-09T14:45:00 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T14:45:00 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T14:45:00 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-074500.md
+2026-02-09T14:45:00 [extractor] INFO [BUNDLER] Exported 5 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-074500_claims.jsonl
+2026-02-09T14:45:00 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-074500_claims.jsonl
+2026-02-09T14:45:00 [extractor] INFO === COMPLETE: 6 extracted, 5 validated, 1 rejected, bundle=B-20260209-074500 ===
+2026-02-09T14:45:00 [extractor] INFO Extracted Lesson_12_PDF (1).pdf: 6 signatures (5 validated) model=deepseek-v3.2
+2026-02-09T14:45:00 [extractor] INFO Extracting from: Lesson_15_PDF (3).pdf (tier=LATERAL)
+2026-02-09T14:45:00 [extractor] INFO === PROCESS DOCUMENT: Lesson_15_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:45:00 [extractor] INFO Extracting text from PDF: Lesson_15_PDF (3).pdf (tier=LATERAL)
+2026-02-09T14:45:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:45:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:45:07 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T14:45:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0064 (in=1802 out=69)
+2026-02-09T14:45:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=246
+2026-02-09T14:45:12 [extractor] INFO [VISION P3.5] Page 3: extracted 246 chars via trading vision
+2026-02-09T14:45:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0071 (in=1802 out=116)
+2026-02-09T14:45:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=431
+2026-02-09T14:45:18 [extractor] INFO [VISION P3.5] Page 4: extracted 431 chars via trading vision
+2026-02-09T14:45:30 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:30 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0100 (in=1802 out=303)
+2026-02-09T14:45:30 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1104
+2026-02-09T14:45:30 [extractor] INFO [VISION P3.5] Page 7: extracted 1104 chars via trading vision
+2026-02-09T14:45:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0121 (in=1802 out=447)
+2026-02-09T14:45:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1655
+2026-02-09T14:45:46 [extractor] INFO [VISION P3.5] Page 11: extracted 1655 chars via trading vision
+2026-02-09T14:45:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:45:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0072 (in=1802 out=120)
+2026-02-09T14:45:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=488
+2026-02-09T14:45:52 [extractor] INFO [VISION P3.5] Page 12: extracted 488 chars via trading vision
+2026-02-09T14:46:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:46:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=310)
+2026-02-09T14:46:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1229
+2026-02-09T14:46:03 [extractor] INFO [VISION P3.5] Page 14: extracted 1229 chars via trading vision
+2026-02-09T14:46:16 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:46:16 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=373)
+2026-02-09T14:46:16 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1366
+2026-02-09T14:46:16 [extractor] INFO [VISION P3.5] Page 15: extracted 1366 chars via trading vision
+2026-02-09T14:46:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:46:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=365)
+2026-02-09T14:46:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1377
+2026-02-09T14:46:28 [extractor] INFO [VISION P3.5] Page 16: extracted 1377 chars via trading vision
+2026-02-09T14:46:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:46:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0098 (in=1802 out=296)
+2026-02-09T14:46:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1092
+2026-02-09T14:46:39 [extractor] INFO [VISION P3.5] Page 19: extracted 1092 chars via trading vision
+2026-02-09T14:46:51 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:46:51 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=314)
+2026-02-09T14:46:51 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1220
+2026-02-09T14:46:51 [extractor] INFO [VISION P3.5] Page 21: extracted 1220 chars via trading vision
+2026-02-09T14:47:08 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:08 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0142 (in=1802 out=589)
+2026-02-09T14:47:08 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1537
+2026-02-09T14:47:08 [extractor] INFO [VISION P3.5] Page 25: extracted 1537 chars via trading vision
+2026-02-09T14:47:14 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:14 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:47:14 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:47:14 [extractor] INFO [VISION P3.5] Page 26: extracted 581 chars via trading vision
+2026-02-09T14:47:14 [extractor] INFO Extracted 26 pages (13 text, 13 image-heavy, 13 via vision) from Lesson_15_PDF (3).pdf
+2026-02-09T14:47:14 [extractor] INFO Chunked 26 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:47:14 [extractor] INFO Ingested PDF: Lesson_15_PDF (3).pdf | tier=LATERAL | 2 chunks | 13 text pages | 13 image-heavy pages
+2026-02-09T14:47:14 [extractor] INFO Ingested document: Lesson_15_PDF (3).pdf (2 chunks)
+2026-02-09T14:47:14 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:47:14 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T14:47:14 [extractor] INFO Theorist extracting from 'Lesson_15_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:47:14 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T14:47:15 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:47:17 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4871 tokens_out=2
+2026-02-09T14:47:17 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000683 (in=4871 out=2)
+2026-02-09T14:47:17 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:47:17 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:47:18 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:47:19 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=3062 tokens_out=2
+2026-02-09T14:47:19 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000429 (in=3062 out=2)
+2026-02-09T14:47:19 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:47:19 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:47:19 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T14:47:19 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T14:47:19 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T14:47:19 [extractor] INFO Extracted Lesson_15_PDF (3).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T14:47:19 [extractor] INFO Extracting from: Lesson_16_PDF (3).pdf (tier=LATERAL)
+2026-02-09T14:47:19 [extractor] INFO === PROCESS DOCUMENT: Lesson_16_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:47:19 [extractor] INFO Extracting text from PDF: Lesson_16_PDF (3).pdf (tier=LATERAL)
+2026-02-09T14:47:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:47:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=590
+2026-02-09T14:47:25 [extractor] INFO [VISION P3.5] Page 1: extracted 590 chars via trading vision
+2026-02-09T14:47:30 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:30 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0068 (in=1802 out=90)
+2026-02-09T14:47:30 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=350
+2026-02-09T14:47:30 [extractor] INFO [VISION P3.5] Page 3: extracted 350 chars via trading vision
+2026-02-09T14:47:38 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:38 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0074 (in=1802 out=134)
+2026-02-09T14:47:38 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=556
+2026-02-09T14:47:38 [extractor] INFO [VISION P3.5] Page 4: extracted 556 chars via trading vision
+2026-02-09T14:47:45 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:47:45 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:47:45 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=615
+2026-02-09T14:47:45 [extractor] INFO [VISION P3.5] Page 7: extracted 615 chars via trading vision
+2026-02-09T14:48:00 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:00 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0124 (in=1802 out=464)
+2026-02-09T14:48:00 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1880
+2026-02-09T14:48:00 [extractor] INFO [VISION P3.5] Page 10: extracted 1880 chars via trading vision
+2026-02-09T14:48:13 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:13 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=372)
+2026-02-09T14:48:13 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1492
+2026-02-09T14:48:13 [extractor] INFO [VISION P3.5] Page 11: extracted 1492 chars via trading vision
+2026-02-09T14:48:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0102 (in=1802 out=322)
+2026-02-09T14:48:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1262
+2026-02-09T14:48:25 [extractor] INFO [VISION P3.5] Page 12: extracted 1262 chars via trading vision
+2026-02-09T14:48:38 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:38 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=359)
+2026-02-09T14:48:38 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1372
+2026-02-09T14:48:38 [extractor] INFO [VISION P3.5] Page 13: extracted 1372 chars via trading vision
+2026-02-09T14:48:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0079 (in=1802 out=166)
+2026-02-09T14:48:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=685
+2026-02-09T14:48:46 [extractor] INFO [VISION P3.5] Page 14: extracted 685 chars via trading vision
+2026-02-09T14:48:59 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:48:59 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0113 (in=1802 out=396)
+2026-02-09T14:48:59 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1567
+2026-02-09T14:48:59 [extractor] INFO [VISION P3.5] Page 15: extracted 1567 chars via trading vision
+2026-02-09T14:49:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:49:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0119 (in=1802 out=435)
+2026-02-09T14:49:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1733
+2026-02-09T14:49:12 [extractor] INFO [VISION P3.5] Page 16: extracted 1733 chars via trading vision
+2026-02-09T14:49:24 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:49:24 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0103 (in=1802 out=324)
+2026-02-09T14:49:24 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1273
+2026-02-09T14:49:24 [extractor] INFO [VISION P3.5] Page 17: extracted 1273 chars via trading vision
+2026-02-09T14:49:35 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:49:35 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=350)
+2026-02-09T14:49:35 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1370
+2026-02-09T14:49:35 [extractor] INFO [VISION P3.5] Page 18: extracted 1370 chars via trading vision
+2026-02-09T14:49:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:49:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=298)
+2026-02-09T14:49:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1173
+2026-02-09T14:49:46 [extractor] INFO [VISION P3.5] Page 19: extracted 1173 chars via trading vision
+2026-02-09T14:49:53 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:49:53 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0079 (in=1802 out=163)
+2026-02-09T14:49:53 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=679
+2026-02-09T14:49:53 [extractor] INFO [VISION P3.5] Page 20: extracted 679 chars via trading vision
+2026-02-09T14:50:00 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:00 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T14:50:00 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T14:50:00 [extractor] INFO [VISION P3.5] Page 25: extracted 592 chars via trading vision
+2026-02-09T14:50:00 [extractor] INFO Extracted 25 pages (9 text, 16 image-heavy, 16 via vision) from Lesson_16_PDF (3).pdf
+2026-02-09T14:50:00 [extractor] INFO Chunked 25 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:50:00 [extractor] INFO Ingested PDF: Lesson_16_PDF (3).pdf | tier=LATERAL | 2 chunks | 9 text pages | 16 image-heavy pages
+2026-02-09T14:50:00 [extractor] INFO Ingested document: Lesson_16_PDF (3).pdf (2 chunks)
+2026-02-09T14:50:00 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:50:00 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T14:50:00 [extractor] INFO Theorist extracting from 'Lesson_16_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:50:00 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T14:50:01 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:50:03 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4790 tokens_out=2
+2026-02-09T14:50:03 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000671 (in=4790 out=2)
+2026-02-09T14:50:03 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:50:03 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:50:06 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:50:06 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=3278 tokens_out=1
+2026-02-09T14:50:06 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000459 (in=3278 out=1)
+2026-02-09T14:50:06 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:50:06 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:50:06 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T14:50:06 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T14:50:06 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T14:50:06 [extractor] INFO Extracted Lesson_16_PDF (3).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T14:50:06 [extractor] INFO Extracting from: Lesson_17_PDF (2).pdf (tier=LATERAL)
+2026-02-09T14:50:06 [extractor] INFO === PROCESS DOCUMENT: Lesson_17_PDF (2).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:50:06 [extractor] INFO Extracting text from PDF: Lesson_17_PDF (2).pdf (tier=LATERAL)
+2026-02-09T14:50:13 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:13 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T14:50:13 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T14:50:13 [extractor] INFO [VISION P3.5] Page 1: extracted 592 chars via trading vision
+2026-02-09T14:50:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0065 (in=1802 out=70)
+2026-02-09T14:50:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=257
+2026-02-09T14:50:18 [extractor] INFO [VISION P3.5] Page 3: extracted 257 chars via trading vision
+2026-02-09T14:50:27 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:27 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0087 (in=1802 out=222)
+2026-02-09T14:50:27 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=924
+2026-02-09T14:50:27 [extractor] INFO [VISION P3.5] Page 4: extracted 924 chars via trading vision
+2026-02-09T14:50:35 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:35 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0085 (in=1802 out=204)
+2026-02-09T14:50:35 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=769
+2026-02-09T14:50:35 [extractor] INFO [VISION P3.5] Page 12: extracted 769 chars via trading vision
+2026-02-09T14:50:47 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:50:47 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0115 (in=1802 out=405)
+2026-02-09T14:50:47 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1130
+2026-02-09T14:50:47 [extractor] INFO [VISION P3.5] Page 13: extracted 1130 chars via trading vision
+2026-02-09T14:51:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0131 (in=1802 out=512)
+2026-02-09T14:51:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1588
+2026-02-09T14:51:02 [extractor] INFO [VISION P3.5] Page 14: extracted 1588 chars via trading vision
+2026-02-09T14:51:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0139 (in=1802 out=567)
+2026-02-09T14:51:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1897
+2026-02-09T14:51:18 [extractor] INFO [VISION P3.5] Page 15: extracted 1897 chars via trading vision
+2026-02-09T14:51:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0078 (in=1802 out=162)
+2026-02-09T14:51:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=651
+2026-02-09T14:51:26 [extractor] INFO [VISION P3.5] Page 17: extracted 651 chars via trading vision
+2026-02-09T14:51:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=359)
+2026-02-09T14:51:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1495
+2026-02-09T14:51:39 [extractor] INFO [VISION P3.5] Page 18: extracted 1495 chars via trading vision
+2026-02-09T14:51:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0116 (in=1802 out=414)
+2026-02-09T14:51:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1652
+2026-02-09T14:51:52 [extractor] INFO [VISION P3.5] Page 19: extracted 1652 chars via trading vision
+2026-02-09T14:51:58 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:51:58 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0073 (in=1802 out=123)
+2026-02-09T14:51:58 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=473
+2026-02-09T14:51:58 [extractor] INFO [VISION P3.5] Page 20: extracted 473 chars via trading vision
+2026-02-09T14:52:09 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:52:09 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0100 (in=1802 out=309)
+2026-02-09T14:52:09 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1458
+2026-02-09T14:52:09 [extractor] INFO [VISION P3.5] Page 21: extracted 1458 chars via trading vision
+2026-02-09T14:52:22 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:52:22 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=417)
+2026-02-09T14:52:22 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1598
+2026-02-09T14:52:22 [extractor] INFO [VISION P3.5] Page 22: extracted 1598 chars via trading vision
+2026-02-09T14:52:29 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:52:29 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0072 (in=1802 out=119)
+2026-02-09T14:52:29 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=464
+2026-02-09T14:52:29 [extractor] INFO [VISION P3.5] Page 23: extracted 464 chars via trading vision
+2026-02-09T14:52:43 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:52:43 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0116 (in=1802 out=411)
+2026-02-09T14:52:43 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1813
+2026-02-09T14:52:43 [extractor] INFO [VISION P3.5] Page 24: extracted 1813 chars via trading vision
+2026-02-09T14:52:56 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:52:56 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=367)
+2026-02-09T14:52:56 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1513
+2026-02-09T14:52:56 [extractor] INFO [VISION P3.5] Page 25: extracted 1513 chars via trading vision
+2026-02-09T14:53:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0074 (in=1802 out=132)
+2026-02-09T14:53:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=516
+2026-02-09T14:53:02 [extractor] INFO [VISION P3.5] Page 26: extracted 516 chars via trading vision
+2026-02-09T14:53:14 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:14 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=334)
+2026-02-09T14:53:14 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1499
+2026-02-09T14:53:14 [extractor] INFO [VISION P3.5] Page 27: extracted 1499 chars via trading vision
+2026-02-09T14:53:25 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:25 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0100 (in=1802 out=303)
+2026-02-09T14:53:25 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1258
+2026-02-09T14:53:25 [extractor] INFO [VISION P3.5] Page 28: extracted 1258 chars via trading vision
+2026-02-09T14:53:33 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:33 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0078 (in=1802 out=159)
+2026-02-09T14:53:33 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=645
+2026-02-09T14:53:33 [extractor] INFO [VISION P3.5] Page 29: extracted 645 chars via trading vision
+2026-02-09T14:53:44 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:44 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=352)
+2026-02-09T14:53:44 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1453
+2026-02-09T14:53:44 [extractor] INFO [VISION P3.5] Page 30: extracted 1453 chars via trading vision
+2026-02-09T14:53:58 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:53:58 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=419)
+2026-02-09T14:53:58 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1660
+2026-02-09T14:53:58 [extractor] INFO [VISION P3.5] Page 31: extracted 1660 chars via trading vision
+2026-02-09T14:54:06 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:06 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0080 (in=1802 out=171)
+2026-02-09T14:54:06 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=657
+2026-02-09T14:54:06 [extractor] INFO [VISION P3.5] Page 32: extracted 657 chars via trading vision
+2026-02-09T14:54:21 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:21 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=378)
+2026-02-09T14:54:21 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1549
+2026-02-09T14:54:21 [extractor] INFO [VISION P3.5] Page 33: extracted 1549 chars via trading vision
+2026-02-09T14:54:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0097 (in=1802 out=288)
+2026-02-09T14:54:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1120
+2026-02-09T14:54:32 [extractor] INFO [VISION P3.5] Page 34: extracted 1120 chars via trading vision
+2026-02-09T14:54:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T14:54:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T14:54:39 [extractor] INFO [VISION P3.5] Page 36: extracted 592 chars via trading vision
+2026-02-09T14:54:39 [extractor] INFO Extracted 36 pages (10 text, 26 image-heavy, 26 via vision) from Lesson_17_PDF (2).pdf
+2026-02-09T14:54:39 [extractor] INFO Chunked 36 pages into 3 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:54:39 [extractor] INFO Ingested PDF: Lesson_17_PDF (2).pdf | tier=LATERAL | 3 chunks | 10 text pages | 26 image-heavy pages
+2026-02-09T14:54:39 [extractor] INFO Ingested document: Lesson_17_PDF (2).pdf (3 chunks)
+2026-02-09T14:54:39 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:54:39 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T14:54:39 [extractor] INFO Theorist extracting from 'Lesson_17_PDF (2).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:54:39 [extractor] INFO Using LLM extraction on 3 chunks (tier=LATERAL)
+2026-02-09T14:54:41 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:54:41 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4844 tokens_out=1
+2026-02-09T14:54:41 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000678 (in=4844 out=1)
+2026-02-09T14:54:41 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:54:41 [extractor] INFO [LLM] Chunk 1/3: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:54:43 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:54:43 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4311 tokens_out=1
+2026-02-09T14:54:43 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000604 (in=4311 out=1)
+2026-02-09T14:54:43 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:54:43 [extractor] INFO [LLM] Chunk 2/3: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:54:44 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:54:44 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2794 tokens_out=2
+2026-02-09T14:54:44 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000392 (in=2794 out=2)
+2026-02-09T14:54:44 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:54:44 [extractor] INFO [LLM] Chunk 3/3: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:54:44 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T14:54:44 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T14:54:44 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T14:54:44 [extractor] INFO Extracted Lesson_17_PDF (2).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T14:54:44 [extractor] INFO Extracting from: Lesson_18_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:54:44 [extractor] INFO === PROCESS DOCUMENT: Lesson_18_PDF (4).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:54:44 [extractor] INFO Extracting text from PDF: Lesson_18_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:54:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:54:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T14:54:52 [extractor] INFO [VISION P3.5] Page 1: extracted 588 chars via trading vision
+2026-02-09T14:54:57 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:54:57 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0065 (in=1802 out=73)
+2026-02-09T14:54:57 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=268
+2026-02-09T14:54:57 [extractor] INFO [VISION P3.5] Page 3: extracted 268 chars via trading vision
+2026-02-09T14:55:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:55:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0070 (in=1802 out=103)
+2026-02-09T14:55:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=412
+2026-02-09T14:55:03 [extractor] INFO [VISION P3.5] Page 4: extracted 412 chars via trading vision
+2026-02-09T14:55:10 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:55:10 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0073 (in=1802 out=128)
+2026-02-09T14:55:10 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=520
+2026-02-09T14:55:10 [extractor] INFO [VISION P3.5] Page 11: extracted 520 chars via trading vision
+2026-02-09T14:55:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:55:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0103 (in=1802 out=325)
+2026-02-09T14:55:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1201
+2026-02-09T14:55:23 [extractor] INFO [VISION P3.5] Page 12: extracted 1201 chars via trading vision
+2026-02-09T14:55:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:55:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=387)
+2026-02-09T14:55:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1348
+2026-02-09T14:55:36 [extractor] INFO [VISION P3.5] Page 13: extracted 1348 chars via trading vision
+2026-02-09T14:55:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:55:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=353)
+2026-02-09T14:55:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1369
+2026-02-09T14:55:52 [extractor] INFO [VISION P3.5] Page 14: extracted 1369 chars via trading vision
+2026-02-09T14:56:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:56:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=356)
+2026-02-09T14:56:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1221
+2026-02-09T14:56:05 [extractor] INFO [VISION P3.5] Page 15: extracted 1221 chars via trading vision
+2026-02-09T14:56:22 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:56:22 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0120 (in=1802 out=440)
+2026-02-09T14:56:22 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1482
+2026-02-09T14:56:22 [extractor] INFO [VISION P3.5] Page 16: extracted 1482 chars via trading vision
+2026-02-09T14:56:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:56:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0115 (in=1802 out=407)
+2026-02-09T14:56:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1258
+2026-02-09T14:56:36 [extractor] INFO [VISION P3.5] Page 17: extracted 1258 chars via trading vision
+2026-02-09T14:56:50 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:56:50 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=378)
+2026-02-09T14:56:50 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1359
+2026-02-09T14:56:50 [extractor] INFO [VISION P3.5] Page 18: extracted 1359 chars via trading vision
+2026-02-09T14:57:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:57:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=338)
+2026-02-09T14:57:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1221
+2026-02-09T14:57:03 [extractor] INFO [VISION P3.5] Page 19: extracted 1221 chars via trading vision
+2026-02-09T14:57:09 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:57:09 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:57:09 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:57:09 [extractor] INFO [VISION P3.5] Page 20: extracted 581 chars via trading vision
+2026-02-09T14:57:09 [extractor] INFO Extracted 20 pages (7 text, 13 image-heavy, 13 via vision) from Lesson_18_PDF (4).pdf
+2026-02-09T14:57:09 [extractor] INFO Chunked 20 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:57:09 [extractor] INFO Ingested PDF: Lesson_18_PDF (4).pdf | tier=LATERAL | 2 chunks | 7 text pages | 13 image-heavy pages
+2026-02-09T14:57:09 [extractor] INFO Ingested document: Lesson_18_PDF (4).pdf (2 chunks)
+2026-02-09T14:57:09 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:57:09 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T14:57:09 [extractor] INFO Theorist extracting from 'Lesson_18_PDF (4).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:57:09 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T14:57:11 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:58:11 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4690 tokens_out=1376
+2026-02-09T14:58:11 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.001042 (in=4690 out=1376)
+2026-02-09T14:58:11 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:58:11 [extractor] INFO [LLM] Chunk 1/2: 8 signatures (total unique: 8) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:58:11 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:58:14 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2936 tokens_out=2
+2026-02-09T14:58:14 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000412 (in=2936 out=2)
+2026-02-09T14:58:14 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:58:14 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 8) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:58:14 [extractor] INFO Theorist extracted 8 signatures (model=deepseek-v3.2)
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-001
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-002
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-003
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-004
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-005
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-006
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-007
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO PASSED S-008
+2026-02-09T14:58:14 [extractor] INFO Audit: 8 validated, 0 rejected
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:58:14 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 8. Auditor may have failed. Manual review required.
+2026-02-09T14:58:14 [extractor] INFO [AUDITOR] Batch complete: 8 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T14:58:14 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-075814.md
+2026-02-09T14:58:14 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T14:58:14 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T14:58:14 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-075814.md
+2026-02-09T14:58:14 [extractor] INFO [BUNDLER] Exported 8 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-075814_claims.jsonl
+2026-02-09T14:58:14 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-075814_claims.jsonl
+2026-02-09T14:58:14 [extractor] INFO === COMPLETE: 8 extracted, 8 validated, 0 rejected, bundle=B-20260209-075814 ===
+2026-02-09T14:58:14 [extractor] INFO Extracted Lesson_18_PDF (4).pdf: 8 signatures (8 validated) model=deepseek-v3.2
+2026-02-09T14:58:14 [extractor] INFO Extracting from: Lesson_19_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:58:14 [extractor] INFO === PROCESS DOCUMENT: Lesson_19_PDF (4).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:58:14 [extractor] INFO Extracting text from PDF: Lesson_19_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:58:21 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:58:21 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:58:21 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T14:58:21 [extractor] INFO [VISION P3.5] Page 1: extracted 588 chars via trading vision
+2026-02-09T14:58:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:58:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0065 (in=1802 out=75)
+2026-02-09T14:58:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=278
+2026-02-09T14:58:26 [extractor] INFO [VISION P3.5] Page 3: extracted 278 chars via trading vision
+2026-02-09T14:58:35 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:58:35 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0084 (in=1802 out=198)
+2026-02-09T14:58:35 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=719
+2026-02-09T14:58:35 [extractor] INFO [VISION P3.5] Page 4: extracted 719 chars via trading vision
+2026-02-09T14:58:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:58:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:58:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:58:42 [extractor] INFO [VISION P3.5] Page 16: extracted 581 chars via trading vision
+2026-02-09T14:58:42 [extractor] INFO Extracted 16 pages (12 text, 4 image-heavy, 4 via vision) from Lesson_19_PDF (4).pdf
+2026-02-09T14:58:42 [extractor] INFO Chunked 16 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T14:58:42 [extractor] INFO Ingested PDF: Lesson_19_PDF (4).pdf | tier=LATERAL | 1 chunks | 12 text pages | 4 image-heavy pages
+2026-02-09T14:58:42 [extractor] INFO Ingested document: Lesson_19_PDF (4).pdf (1 chunks)
+2026-02-09T14:58:42 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T14:58:42 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T14:58:42 [extractor] INFO Theorist extracting from 'Lesson_19_PDF (4).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T14:58:42 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T14:58:44 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T14:59:19 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5103 tokens_out=1287
+2026-02-09T14:59:19 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.001075 (in=5103 out=1287)
+2026-02-09T14:59:19 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T14:59:19 [extractor] INFO [LLM] Chunk 1/1: 10 signatures (total unique: 10) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T14:59:19 [extractor] INFO Theorist extracted 10 signatures (model=deepseek-v3.2)
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-001
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-002
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-003
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-004
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-005
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-006
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-007
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-008
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-009 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-009
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-010 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO PASSED S-010
+2026-02-09T14:59:19 [extractor] INFO Audit: 10 validated, 0 rejected
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-007 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-008 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-009 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] INFO Auditing signature S-010 | model=gemini-3-flash family=google
+2026-02-09T14:59:19 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 10. Auditor may have failed. Manual review required.
+2026-02-09T14:59:19 [extractor] INFO [AUDITOR] Batch complete: 10 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T14:59:19 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-075919.md
+2026-02-09T14:59:19 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T14:59:19 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T14:59:19 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-075919.md
+2026-02-09T14:59:19 [extractor] INFO [BUNDLER] Exported 10 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-075919_claims.jsonl
+2026-02-09T14:59:19 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-075919_claims.jsonl
+2026-02-09T14:59:19 [extractor] INFO === COMPLETE: 10 extracted, 10 validated, 0 rejected, bundle=B-20260209-075919 ===
+2026-02-09T14:59:19 [extractor] INFO Extracted Lesson_19_PDF (4).pdf: 10 signatures (10 validated) model=deepseek-v3.2
+2026-02-09T14:59:19 [extractor] INFO Extracting from: Lesson_20_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:59:19 [extractor] INFO === PROCESS DOCUMENT: Lesson_20_PDF (4).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T14:59:19 [extractor] INFO Extracting text from PDF: Lesson_20_PDF (4).pdf (tier=LATERAL)
+2026-02-09T14:59:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:59:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T14:59:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T14:59:26 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T14:59:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:59:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0064 (in=1802 out=69)
+2026-02-09T14:59:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=247
+2026-02-09T14:59:31 [extractor] INFO [VISION P3.5] Page 3: extracted 247 chars via trading vision
+2026-02-09T14:59:38 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:59:38 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0077 (in=1802 out=151)
+2026-02-09T14:59:38 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=616
+2026-02-09T14:59:38 [extractor] INFO [VISION P3.5] Page 4: extracted 616 chars via trading vision
+2026-02-09T14:59:44 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:59:44 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0071 (in=1802 out=113)
+2026-02-09T14:59:44 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=439
+2026-02-09T14:59:44 [extractor] INFO [VISION P3.5] Page 5: extracted 439 chars via trading vision
+2026-02-09T14:59:56 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T14:59:56 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=373)
+2026-02-09T14:59:56 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1328
+2026-02-09T14:59:56 [extractor] INFO [VISION P3.5] Page 8: extracted 1328 chars via trading vision
+2026-02-09T15:00:08 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:00:08 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=367)
+2026-02-09T15:00:08 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1321
+2026-02-09T15:00:08 [extractor] INFO [VISION P3.5] Page 9: extracted 1321 chars via trading vision
+2026-02-09T15:00:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:00:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=300)
+2026-02-09T15:00:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1074
+2026-02-09T15:00:19 [extractor] INFO [VISION P3.5] Page 10: extracted 1074 chars via trading vision
+2026-02-09T15:00:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:00:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0095 (in=1802 out=272)
+2026-02-09T15:00:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1130
+2026-02-09T15:00:28 [extractor] INFO [VISION P3.5] Page 13: extracted 1130 chars via trading vision
+2026-02-09T15:00:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:00:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0120 (in=1802 out=442)
+2026-02-09T15:00:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1678
+2026-02-09T15:00:42 [extractor] INFO [VISION P3.5] Page 38: extracted 1678 chars via trading vision
+2026-02-09T15:00:55 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:00:55 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=422)
+2026-02-09T15:00:55 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1546
+2026-02-09T15:00:55 [extractor] INFO [VISION P3.5] Page 41: extracted 1546 chars via trading vision
+2026-02-09T15:01:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:01:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T15:01:02 [extractor] INFO [VISION P3.5] Page 42: extracted 592 chars via trading vision
+2026-02-09T15:01:02 [extractor] INFO Extracted 42 pages (31 text, 11 image-heavy, 11 via vision) from Lesson_20_PDF (4).pdf
+2026-02-09T15:01:02 [extractor] INFO Chunked 42 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:01:02 [extractor] INFO Ingested PDF: Lesson_20_PDF (4).pdf | tier=LATERAL | 2 chunks | 31 text pages | 11 image-heavy pages
+2026-02-09T15:01:02 [extractor] INFO Ingested document: Lesson_20_PDF (4).pdf (2 chunks)
+2026-02-09T15:01:02 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:01:02 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T15:01:02 [extractor] INFO Theorist extracting from 'Lesson_20_PDF (4).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:01:02 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T15:01:05 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:01:05 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4851 tokens_out=1
+2026-02-09T15:01:05 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000679 (in=4851 out=1)
+2026-02-09T15:01:05 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:01:05 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:01:06 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:01:06 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2114 tokens_out=2
+2026-02-09T15:01:06 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000297 (in=2114 out=2)
+2026-02-09T15:01:06 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:01:06 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:01:06 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T15:01:06 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T15:01:06 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T15:01:06 [extractor] INFO Extracted Lesson_20_PDF (4).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T15:01:06 [extractor] INFO Extracting from: Lesson_21_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:01:06 [extractor] INFO === PROCESS DOCUMENT: Lesson_21_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:01:06 [extractor] INFO Extracting text from PDF: Lesson_21_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:01:14 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:14 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:01:14 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T15:01:14 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T15:01:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0065 (in=1802 out=70)
+2026-02-09T15:01:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=257
+2026-02-09T15:01:19 [extractor] INFO [VISION P3.5] Page 3: extracted 257 chars via trading vision
+2026-02-09T15:01:27 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:27 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0078 (in=1802 out=157)
+2026-02-09T15:01:27 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=631
+2026-02-09T15:01:27 [extractor] INFO [VISION P3.5] Page 4: extracted 631 chars via trading vision
+2026-02-09T15:01:35 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:35 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0080 (in=1802 out=174)
+2026-02-09T15:01:35 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=692
+2026-02-09T15:01:35 [extractor] INFO [VISION P3.5] Page 8: extracted 692 chars via trading vision
+2026-02-09T15:01:48 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:01:48 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0135 (in=1802 out=538)
+2026-02-09T15:01:48 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1874
+2026-02-09T15:01:48 [extractor] INFO [VISION P3.5] Page 9: extracted 1874 chars via trading vision
+2026-02-09T15:02:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:02:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0123 (in=1802 out=462)
+2026-02-09T15:02:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1425
+2026-02-09T15:02:02 [extractor] INFO [VISION P3.5] Page 10: extracted 1425 chars via trading vision
+2026-02-09T15:02:11 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:02:11 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0073 (in=1802 out=124)
+2026-02-09T15:02:11 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=499
+2026-02-09T15:02:11 [extractor] INFO [VISION P3.5] Page 11: extracted 499 chars via trading vision
+2026-02-09T15:02:24 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:02:24 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=383)
+2026-02-09T15:02:24 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1376
+2026-02-09T15:02:24 [extractor] INFO [VISION P3.5] Page 12: extracted 1376 chars via trading vision
+2026-02-09T15:02:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:02:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=297)
+2026-02-09T15:02:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=975
+2026-02-09T15:02:36 [extractor] INFO [VISION P3.5] Page 13: extracted 975 chars via trading vision
+2026-02-09T15:02:49 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:02:49 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0102 (in=1802 out=319)
+2026-02-09T15:02:49 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1137
+2026-02-09T15:02:49 [extractor] INFO [VISION P3.5] Page 14: extracted 1137 chars via trading vision
+2026-02-09T15:03:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0114 (in=1802 out=399)
+2026-02-09T15:03:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1449
+2026-02-09T15:03:02 [extractor] INFO [VISION P3.5] Page 15: extracted 1449 chars via trading vision
+2026-02-09T15:03:09 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:09 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0075 (in=1802 out=142)
+2026-02-09T15:03:09 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=556
+2026-02-09T15:03:09 [extractor] INFO [VISION P3.5] Page 18: extracted 556 chars via trading vision
+2026-02-09T15:03:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0113 (in=1802 out=391)
+2026-02-09T15:03:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1346
+2026-02-09T15:03:23 [extractor] INFO [VISION P3.5] Page 19: extracted 1346 chars via trading vision
+2026-02-09T15:03:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0084 (in=1802 out=198)
+2026-02-09T15:03:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=804
+2026-02-09T15:03:32 [extractor] INFO [VISION P3.5] Page 20: extracted 804 chars via trading vision
+2026-02-09T15:03:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0118 (in=1802 out=425)
+2026-02-09T15:03:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1510
+2026-02-09T15:03:46 [extractor] INFO [VISION P3.5] Page 21: extracted 1510 chars via trading vision
+2026-02-09T15:03:53 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:03:53 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:03:53 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=599
+2026-02-09T15:03:53 [extractor] INFO [VISION P3.5] Page 22: extracted 599 chars via trading vision
+2026-02-09T15:03:53 [extractor] INFO Extracted 22 pages (6 text, 16 image-heavy, 16 via vision) from Lesson_21_PDF (3).pdf
+2026-02-09T15:03:53 [extractor] INFO Chunked 22 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:03:53 [extractor] INFO Ingested PDF: Lesson_21_PDF (3).pdf | tier=LATERAL | 2 chunks | 6 text pages | 16 image-heavy pages
+2026-02-09T15:03:53 [extractor] INFO Ingested document: Lesson_21_PDF (3).pdf (2 chunks)
+2026-02-09T15:03:53 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:03:53 [extractor] INFO Prepended 1 negative beads to Theorist context
+2026-02-09T15:03:53 [extractor] INFO Theorist extracting from 'Lesson_21_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:03:53 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T15:03:56 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:03:56 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4975 tokens_out=1
+2026-02-09T15:03:56 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000697 (in=4975 out=1)
+2026-02-09T15:03:56 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:03:56 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:03:58 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:04:19 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2983 tokens_out=775
+2026-02-09T15:04:19 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000635 (in=2983 out=775)
+2026-02-09T15:04:19 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:04:19 [extractor] INFO [LLM] Chunk 2/2: 5 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:04:19 [extractor] INFO Theorist extracted 5 signatures (model=deepseek-v3.2)
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO PASSED S-001
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO REJECT S-002: Ambiguity — condition contains subjective marker: 'appears' (ambiguity)
+2026-02-09T15:04:19 [extractor] INFO REJECTED S-002: Ambiguity — condition contains subjective marker: 'appears'
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO PASSED S-003
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO PASSED S-004
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO PASSED S-005
+2026-02-09T15:04:19 [extractor] INFO Audit: 4 validated, 1 rejected
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO REJECT S-002: Ambiguity — condition contains subjective marker: 'appears' (ambiguity)
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:04:19 [extractor] INFO [AUDITOR] Batch complete: 5 total, 1 rejected (20.0%), status=OK
+2026-02-09T15:04:19 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-080419.md
+2026-02-09T15:04:19 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T15:04:19 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T15:04:19 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-080419.md
+2026-02-09T15:04:19 [extractor] INFO [BUNDLER] Exported 4 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-080419_claims.jsonl
+2026-02-09T15:04:19 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-080419_claims.jsonl
+2026-02-09T15:04:19 [extractor] INFO === COMPLETE: 5 extracted, 4 validated, 1 rejected, bundle=B-20260209-080419 ===
+2026-02-09T15:04:19 [extractor] INFO Extracted Lesson_21_PDF (3).pdf: 5 signatures (4 validated) model=deepseek-v3.2
+2026-02-09T15:04:19 [extractor] INFO Extracting from: Lesson_5_PDF (2).pdf (tier=LATERAL)
+2026-02-09T15:04:19 [extractor] INFO === PROCESS DOCUMENT: Lesson_5_PDF (2).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:04:19 [extractor] INFO Extracting text from PDF: Lesson_5_PDF (2).pdf (tier=LATERAL)
+2026-02-09T15:04:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:04:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:04:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=600
+2026-02-09T15:04:26 [extractor] INFO [VISION P3.5] Page 1: extracted 600 chars via trading vision
+2026-02-09T15:04:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:04:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0070 (in=1802 out=109)
+2026-02-09T15:04:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=410
+2026-02-09T15:04:32 [extractor] INFO [VISION P3.5] Page 3: extracted 410 chars via trading vision
+2026-02-09T15:04:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:04:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0119 (in=1802 out=432)
+2026-02-09T15:04:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1080
+2026-02-09T15:04:46 [extractor] INFO [VISION P3.5] Page 7: extracted 1080 chars via trading vision
+2026-02-09T15:04:57 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:04:57 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0097 (in=1802 out=289)
+2026-02-09T15:04:57 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1050
+2026-02-09T15:04:57 [extractor] INFO [VISION P3.5] Page 8: extracted 1050 chars via trading vision
+2026-02-09T15:05:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:05:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0092 (in=1802 out=256)
+2026-02-09T15:05:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=906
+2026-02-09T15:05:07 [extractor] INFO [VISION P3.5] Page 9: extracted 906 chars via trading vision
+2026-02-09T15:05:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:05:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=360)
+2026-02-09T15:05:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1260
+2026-02-09T15:05:19 [extractor] INFO [VISION P3.5] Page 10: extracted 1260 chars via trading vision
+2026-02-09T15:05:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:05:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=297)
+2026-02-09T15:05:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1029
+2026-02-09T15:05:31 [extractor] INFO [VISION P3.5] Page 11: extracted 1029 chars via trading vision
+2026-02-09T15:05:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:05:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=332)
+2026-02-09T15:05:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1104
+2026-02-09T15:05:42 [extractor] INFO [VISION P3.5] Page 14: extracted 1104 chars via trading vision
+2026-02-09T15:05:54 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:05:54 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0102 (in=1802 out=317)
+2026-02-09T15:05:54 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1101
+2026-02-09T15:05:54 [extractor] INFO [VISION P3.5] Page 16: extracted 1101 chars via trading vision
+2026-02-09T15:06:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=388)
+2026-02-09T15:06:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1364
+2026-02-09T15:06:07 [extractor] INFO [VISION P3.5] Page 17: extracted 1364 chars via trading vision
+2026-02-09T15:06:14 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:14 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:06:14 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T15:06:14 [extractor] INFO [VISION P3.5] Page 20: extracted 581 chars via trading vision
+2026-02-09T15:06:14 [extractor] INFO Extracted 20 pages (9 text, 11 image-heavy, 11 via vision) from Lesson_5_PDF (2).pdf
+2026-02-09T15:06:14 [extractor] INFO Chunked 20 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:06:14 [extractor] INFO Ingested PDF: Lesson_5_PDF (2).pdf | tier=LATERAL | 2 chunks | 9 text pages | 11 image-heavy pages
+2026-02-09T15:06:14 [extractor] INFO Ingested document: Lesson_5_PDF (2).pdf (2 chunks)
+2026-02-09T15:06:14 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:06:14 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:06:14 [extractor] INFO Theorist extracting from 'Lesson_5_PDF (2).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:06:14 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T15:06:16 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:06:16 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5006 tokens_out=2
+2026-02-09T15:06:16 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000701 (in=5006 out=2)
+2026-02-09T15:06:16 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:06:16 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:06:17 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:06:20 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=1979 tokens_out=2
+2026-02-09T15:06:20 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000278 (in=1979 out=2)
+2026-02-09T15:06:20 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:06:20 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:06:20 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T15:06:20 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T15:06:20 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T15:06:20 [extractor] INFO Extracted Lesson_5_PDF (2).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T15:06:20 [extractor] INFO Extracting from: Lesson_6_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:06:20 [extractor] INFO === PROCESS DOCUMENT: Lesson_6_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:06:20 [extractor] INFO Extracting text from PDF: Lesson_6_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:06:27 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:27 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:06:27 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T15:06:27 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T15:06:33 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:33 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0067 (in=1802 out=87)
+2026-02-09T15:06:33 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=323
+2026-02-09T15:06:33 [extractor] INFO [VISION P3.5] Page 3: extracted 323 chars via trading vision
+2026-02-09T15:06:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=336)
+2026-02-09T15:06:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1265
+2026-02-09T15:06:46 [extractor] INFO [VISION P3.5] Page 6: extracted 1265 chars via trading vision
+2026-02-09T15:06:58 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:06:58 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=347)
+2026-02-09T15:06:58 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1354
+2026-02-09T15:06:58 [extractor] INFO [VISION P3.5] Page 7: extracted 1354 chars via trading vision
+2026-02-09T15:07:10 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:07:10 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=368)
+2026-02-09T15:07:10 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1341
+2026-02-09T15:07:10 [extractor] INFO [VISION P3.5] Page 12: extracted 1341 chars via trading vision
+2026-02-09T15:07:17 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:07:17 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=149)
+2026-02-09T15:07:17 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=606
+2026-02-09T15:07:17 [extractor] INFO [VISION P3.5] Page 14: extracted 606 chars via trading vision
+2026-02-09T15:07:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:07:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0124 (in=1802 out=465)
+2026-02-09T15:07:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1755
+2026-02-09T15:07:31 [extractor] INFO [VISION P3.5] Page 15: extracted 1755 chars via trading vision
+2026-02-09T15:07:44 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:07:44 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=374)
+2026-02-09T15:07:44 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1344
+2026-02-09T15:07:44 [extractor] INFO [VISION P3.5] Page 16: extracted 1344 chars via trading vision
+2026-02-09T15:07:56 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:07:56 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=385)
+2026-02-09T15:07:56 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1447
+2026-02-09T15:07:56 [extractor] INFO [VISION P3.5] Page 17: extracted 1447 chars via trading vision
+2026-02-09T15:08:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:08:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0102 (in=1802 out=319)
+2026-02-09T15:08:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1210
+2026-02-09T15:08:07 [extractor] INFO [VISION P3.5] Page 18: extracted 1210 chars via trading vision
+2026-02-09T15:08:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:08:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=334)
+2026-02-09T15:08:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1145
+2026-02-09T15:08:18 [extractor] INFO [VISION P3.5] Page 19: extracted 1145 chars via trading vision
+2026-02-09T15:08:29 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:08:29 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=389)
+2026-02-09T15:08:29 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1342
+2026-02-09T15:08:29 [extractor] INFO [VISION P3.5] Page 20: extracted 1342 chars via trading vision
+2026-02-09T15:08:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:08:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:08:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T15:08:36 [extractor] INFO [VISION P3.5] Page 21: extracted 592 chars via trading vision
+2026-02-09T15:08:36 [extractor] INFO Extracted 21 pages (8 text, 13 image-heavy, 13 via vision) from Lesson_6_PDF (3).pdf
+2026-02-09T15:08:36 [extractor] INFO Chunked 21 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:08:36 [extractor] INFO Ingested PDF: Lesson_6_PDF (3).pdf | tier=LATERAL | 2 chunks | 8 text pages | 13 image-heavy pages
+2026-02-09T15:08:36 [extractor] INFO Ingested document: Lesson_6_PDF (3).pdf (2 chunks)
+2026-02-09T15:08:36 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:08:36 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:08:36 [extractor] INFO Theorist extracting from 'Lesson_6_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:08:36 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T15:08:38 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:09:00 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4949 tokens_out=857
+2026-02-09T15:09:00 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000933 (in=4949 out=857)
+2026-02-09T15:09:00 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:09:00 [extractor] INFO [LLM] Chunk 1/2: 6 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:09:01 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:09:01 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2201 tokens_out=2
+2026-02-09T15:09:01 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000309 (in=2201 out=2)
+2026-02-09T15:09:01 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:09:01 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 6) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:09:01 [extractor] INFO Theorist extracted 6 signatures (model=deepseek-v3.2)
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-001
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-002
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-003
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-004
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-005
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO PASSED S-006
+2026-02-09T15:09:01 [extractor] INFO Audit: 6 validated, 0 rejected
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] INFO Auditing signature S-006 | model=gemini-3-flash family=google
+2026-02-09T15:09:01 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 6. Auditor may have failed. Manual review required.
+2026-02-09T15:09:01 [extractor] INFO [AUDITOR] Batch complete: 6 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T15:09:01 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-080901.md
+2026-02-09T15:09:01 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T15:09:01 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T15:09:01 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-080901.md
+2026-02-09T15:09:01 [extractor] INFO [BUNDLER] Exported 6 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-080901_claims.jsonl
+2026-02-09T15:09:01 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-080901_claims.jsonl
+2026-02-09T15:09:01 [extractor] INFO === COMPLETE: 6 extracted, 6 validated, 0 rejected, bundle=B-20260209-080901 ===
+2026-02-09T15:09:01 [extractor] INFO Extracted Lesson_6_PDF (3).pdf: 6 signatures (6 validated) model=deepseek-v3.2
+2026-02-09T15:09:01 [extractor] INFO Extracting from: Lesson_7_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:09:01 [extractor] INFO === PROCESS DOCUMENT: Lesson_7_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:09:01 [extractor] INFO Extracting text from PDF: Lesson_7_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:09:08 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:09:08 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:09:08 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T15:09:08 [extractor] INFO [VISION P3.5] Page 1: extracted 588 chars via trading vision
+2026-02-09T15:09:18 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:09:18 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0067 (in=1802 out=89)
+2026-02-09T15:09:18 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=352
+2026-02-09T15:09:18 [extractor] INFO [VISION P3.5] Page 3: extracted 352 chars via trading vision
+2026-02-09T15:09:29 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:09:29 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=316)
+2026-02-09T15:09:29 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1348
+2026-02-09T15:09:29 [extractor] INFO [VISION P3.5] Page 7: extracted 1348 chars via trading vision
+2026-02-09T15:09:41 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:09:41 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0102 (in=1802 out=319)
+2026-02-09T15:09:41 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1293
+2026-02-09T15:09:41 [extractor] INFO [VISION P3.5] Page 8: extracted 1293 chars via trading vision
+2026-02-09T15:09:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:09:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=340)
+2026-02-09T15:09:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1431
+2026-02-09T15:09:52 [extractor] INFO [VISION P3.5] Page 9: extracted 1431 chars via trading vision
+2026-02-09T15:10:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:10:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0095 (in=1802 out=274)
+2026-02-09T15:10:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1068
+2026-02-09T15:10:03 [extractor] INFO [VISION P3.5] Page 10: extracted 1068 chars via trading vision
+2026-02-09T15:10:15 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:10:15 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=381)
+2026-02-09T15:10:15 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1345
+2026-02-09T15:10:15 [extractor] INFO [VISION P3.5] Page 11: extracted 1345 chars via trading vision
+2026-02-09T15:10:29 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:10:29 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0113 (in=1802 out=396)
+2026-02-09T15:10:29 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1385
+2026-02-09T15:10:29 [extractor] INFO [VISION P3.5] Page 12: extracted 1385 chars via trading vision
+2026-02-09T15:10:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:10:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0124 (in=1802 out=463)
+2026-02-09T15:10:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1683
+2026-02-09T15:10:42 [extractor] INFO [VISION P3.5] Page 13: extracted 1683 chars via trading vision
+2026-02-09T15:10:53 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:10:53 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=357)
+2026-02-09T15:10:53 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1338
+2026-02-09T15:10:53 [extractor] INFO [VISION P3.5] Page 14: extracted 1338 chars via trading vision
+2026-02-09T15:11:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:11:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0115 (in=1802 out=409)
+2026-02-09T15:11:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1548
+2026-02-09T15:11:07 [extractor] INFO [VISION P3.5] Page 15: extracted 1548 chars via trading vision
+2026-02-09T15:11:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:11:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0108 (in=1802 out=358)
+2026-02-09T15:11:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1319
+2026-02-09T15:11:19 [extractor] INFO [VISION P3.5] Page 16: extracted 1319 chars via trading vision
+2026-02-09T15:11:24 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:11:24 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0066 (in=1802 out=78)
+2026-02-09T15:11:24 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=314
+2026-02-09T15:11:24 [extractor] INFO [VISION P3.5] Page 18: extracted 314 chars via trading vision
+2026-02-09T15:11:37 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:11:37 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=365)
+2026-02-09T15:11:37 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1459
+2026-02-09T15:11:37 [extractor] INFO [VISION P3.5] Page 19: extracted 1459 chars via trading vision
+2026-02-09T15:11:50 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:11:50 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=418)
+2026-02-09T15:11:50 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1522
+2026-02-09T15:11:50 [extractor] INFO [VISION P3.5] Page 20: extracted 1522 chars via trading vision
+2026-02-09T15:12:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=345)
+2026-02-09T15:12:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1247
+2026-02-09T15:12:02 [extractor] INFO [VISION P3.5] Page 21: extracted 1247 chars via trading vision
+2026-02-09T15:12:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0101 (in=1802 out=313)
+2026-02-09T15:12:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1133
+2026-02-09T15:12:12 [extractor] INFO [VISION P3.5] Page 22: extracted 1133 chars via trading vision
+2026-02-09T15:12:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0098 (in=1802 out=295)
+2026-02-09T15:12:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1095
+2026-02-09T15:12:23 [extractor] INFO [VISION P3.5] Page 23: extracted 1095 chars via trading vision
+2026-02-09T15:12:35 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:35 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=353)
+2026-02-09T15:12:35 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1258
+2026-02-09T15:12:35 [extractor] INFO [VISION P3.5] Page 24: extracted 1258 chars via trading vision
+2026-02-09T15:12:47 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:47 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=366)
+2026-02-09T15:12:47 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1212
+2026-02-09T15:12:47 [extractor] INFO [VISION P3.5] Page 25: extracted 1212 chars via trading vision
+2026-02-09T15:12:57 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:12:57 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=363)
+2026-02-09T15:12:57 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1215
+2026-02-09T15:12:57 [extractor] INFO [VISION P3.5] Page 26: extracted 1215 chars via trading vision
+2026-02-09T15:13:04 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:04 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0071 (in=1802 out=115)
+2026-02-09T15:13:04 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=489
+2026-02-09T15:13:04 [extractor] INFO [VISION P3.5] Page 27: extracted 489 chars via trading vision
+2026-02-09T15:13:15 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:15 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=337)
+2026-02-09T15:13:15 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1348
+2026-02-09T15:13:15 [extractor] INFO [VISION P3.5] Page 28: extracted 1348 chars via trading vision
+2026-02-09T15:13:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=349)
+2026-02-09T15:13:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1181
+2026-02-09T15:13:26 [extractor] INFO [VISION P3.5] Page 29: extracted 1181 chars via trading vision
+2026-02-09T15:13:31 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:31 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0070 (in=1802 out=103)
+2026-02-09T15:13:31 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=395
+2026-02-09T15:13:31 [extractor] INFO [VISION P3.5] Page 30: extracted 395 chars via trading vision
+2026-02-09T15:13:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0130 (in=1802 out=507)
+2026-02-09T15:13:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=2024
+2026-02-09T15:13:46 [extractor] INFO [VISION P3.5] Page 31: extracted 2024 chars via trading vision
+2026-02-09T15:13:58 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:13:58 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=381)
+2026-02-09T15:13:58 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1437
+2026-02-09T15:13:58 [extractor] INFO [VISION P3.5] Page 32: extracted 1437 chars via trading vision
+2026-02-09T15:14:09 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:14:09 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=385)
+2026-02-09T15:14:09 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1478
+2026-02-09T15:14:09 [extractor] INFO [VISION P3.5] Page 33: extracted 1478 chars via trading vision
+2026-02-09T15:14:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:14:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0123 (in=1802 out=458)
+2026-02-09T15:14:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1698
+2026-02-09T15:14:23 [extractor] INFO [VISION P3.5] Page 34: extracted 1698 chars via trading vision
+2026-02-09T15:14:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:14:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=380)
+2026-02-09T15:14:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1291
+2026-02-09T15:14:36 [extractor] INFO [VISION P3.5] Page 35: extracted 1291 chars via trading vision
+2026-02-09T15:14:49 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:14:49 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0115 (in=1802 out=407)
+2026-02-09T15:14:49 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1526
+2026-02-09T15:14:49 [extractor] INFO [VISION P3.5] Page 36: extracted 1526 chars via trading vision
+2026-02-09T15:15:01 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:15:01 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=375)
+2026-02-09T15:15:01 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1310
+2026-02-09T15:15:01 [extractor] INFO [VISION P3.5] Page 37: extracted 1310 chars via trading vision
+2026-02-09T15:15:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:15:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0099 (in=1802 out=300)
+2026-02-09T15:15:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1252
+2026-02-09T15:15:12 [extractor] INFO [VISION P3.5] Page 38: extracted 1252 chars via trading vision
+2026-02-09T15:15:32 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:15:32 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0168 (in=1802 out=761)
+2026-02-09T15:15:32 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1666
+2026-02-09T15:15:32 [extractor] INFO [VISION P3.5] Page 39: extracted 1666 chars via trading vision
+2026-02-09T15:15:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:15:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0083 (in=1802 out=191)
+2026-02-09T15:15:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=828
+2026-02-09T15:15:39 [extractor] INFO [VISION P3.5] Page 41: extracted 828 chars via trading vision
+2026-02-09T15:15:51 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:15:51 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0095 (in=1802 out=276)
+2026-02-09T15:15:51 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1153
+2026-02-09T15:15:51 [extractor] INFO [VISION P3.5] Page 42: extracted 1153 chars via trading vision
+2026-02-09T15:16:01 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:01 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0105 (in=1802 out=342)
+2026-02-09T15:16:01 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1231
+2026-02-09T15:16:01 [extractor] INFO [VISION P3.5] Page 43: extracted 1231 chars via trading vision
+2026-02-09T15:16:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0097 (in=1802 out=286)
+2026-02-09T15:16:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1112
+2026-02-09T15:16:12 [extractor] INFO [VISION P3.5] Page 44: extracted 1112 chars via trading vision
+2026-02-09T15:16:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=345)
+2026-02-09T15:16:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1212
+2026-02-09T15:16:23 [extractor] INFO [VISION P3.5] Page 45: extracted 1212 chars via trading vision
+2026-02-09T15:16:34 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:34 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0096 (in=1802 out=282)
+2026-02-09T15:16:34 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1060
+2026-02-09T15:16:34 [extractor] INFO [VISION P3.5] Page 46: extracted 1060 chars via trading vision
+2026-02-09T15:16:46 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:46 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0114 (in=1802 out=398)
+2026-02-09T15:16:46 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1501
+2026-02-09T15:16:46 [extractor] INFO [VISION P3.5] Page 47: extracted 1501 chars via trading vision
+2026-02-09T15:16:55 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:16:55 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0091 (in=1802 out=249)
+2026-02-09T15:16:55 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1025
+2026-02-09T15:16:55 [extractor] INFO [VISION P3.5] Page 48: extracted 1025 chars via trading vision
+2026-02-09T15:17:08 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:17:08 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0120 (in=1802 out=438)
+2026-02-09T15:17:08 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1505
+2026-02-09T15:17:08 [extractor] INFO [VISION P3.5] Page 49: extracted 1505 chars via trading vision
+2026-02-09T15:17:15 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:17:15 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:17:15 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T15:17:15 [extractor] INFO [VISION P3.5] Page 53: extracted 588 chars via trading vision
+2026-02-09T15:17:15 [extractor] INFO Extracted 53 pages (9 text, 44 image-heavy, 44 via vision) from Lesson_7_PDF (3).pdf
+2026-02-09T15:17:15 [extractor] INFO Chunked 53 pages into 4 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:17:15 [extractor] INFO Ingested PDF: Lesson_7_PDF (3).pdf | tier=LATERAL | 4 chunks | 9 text pages | 44 image-heavy pages
+2026-02-09T15:17:15 [extractor] INFO Ingested document: Lesson_7_PDF (3).pdf (4 chunks)
+2026-02-09T15:17:15 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:17:15 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:17:15 [extractor] INFO Theorist extracting from 'Lesson_7_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:17:15 [extractor] INFO Using LLM extraction on 4 chunks (tier=LATERAL)
+2026-02-09T15:17:17 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:17:35 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4720 tokens_out=639
+2026-02-09T15:17:35 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000840 (in=4720 out=639)
+2026-02-09T15:17:35 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:17:35 [extractor] INFO [LLM] Chunk 1/4: 5 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:17:37 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:17:37 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4833 tokens_out=1
+2026-02-09T15:17:37 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000677 (in=4833 out=1)
+2026-02-09T15:17:37 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:17:37 [extractor] INFO [LLM] Chunk 2/4: 0 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:17:38 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:17:39 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4787 tokens_out=2
+2026-02-09T15:17:39 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000671 (in=4787 out=2)
+2026-02-09T15:17:39 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:17:39 [extractor] INFO [LLM] Chunk 3/4: 0 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:17:40 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:17:42 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5091 tokens_out=2
+2026-02-09T15:17:42 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000713 (in=5091 out=2)
+2026-02-09T15:17:42 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:17:42 [extractor] INFO [LLM] Chunk 4/4: 0 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:17:42 [extractor] INFO Theorist extracted 5 signatures (model=deepseek-v3.2)
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO PASSED S-001
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO PASSED S-002
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO PASSED S-003
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO PASSED S-004
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO PASSED S-005
+2026-02-09T15:17:42 [extractor] INFO Audit: 5 validated, 0 rejected
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:17:42 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 5. Auditor may have failed. Manual review required.
+2026-02-09T15:17:42 [extractor] INFO [AUDITOR] Batch complete: 5 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T15:17:42 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-081742.md
+2026-02-09T15:17:42 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T15:17:42 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T15:17:42 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-081742.md
+2026-02-09T15:17:42 [extractor] INFO [BUNDLER] Exported 5 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-081742_claims.jsonl
+2026-02-09T15:17:42 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-081742_claims.jsonl
+2026-02-09T15:17:42 [extractor] INFO === COMPLETE: 5 extracted, 5 validated, 0 rejected, bundle=B-20260209-081742 ===
+2026-02-09T15:17:42 [extractor] INFO Extracted Lesson_7_PDF (3).pdf: 5 signatures (5 validated) model=deepseek-v3.2
+2026-02-09T15:17:42 [extractor] INFO Extracting from: Lesson_8_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:17:42 [extractor] INFO === PROCESS DOCUMENT: Lesson_8_PDF (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:17:42 [extractor] INFO Extracting text from PDF: Lesson_8_PDF (3).pdf (tier=LATERAL)
+2026-02-09T15:17:49 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:17:49 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:17:49 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T15:17:49 [extractor] INFO [VISION P3.5] Page 1: extracted 581 chars via trading vision
+2026-02-09T15:17:55 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:17:55 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0072 (in=1802 out=122)
+2026-02-09T15:17:55 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=468
+2026-02-09T15:17:55 [extractor] INFO [VISION P3.5] Page 3: extracted 468 chars via trading vision
+2026-02-09T15:18:01 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:18:01 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0071 (in=1802 out=114)
+2026-02-09T15:18:01 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=472
+2026-02-09T15:18:01 [extractor] INFO [VISION P3.5] Page 7: extracted 472 chars via trading vision
+2026-02-09T15:18:13 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:18:13 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=369)
+2026-02-09T15:18:13 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1391
+2026-02-09T15:18:13 [extractor] INFO [VISION P3.5] Page 8: extracted 1391 chars via trading vision
+2026-02-09T15:18:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:18:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0110 (in=1802 out=371)
+2026-02-09T15:18:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1457
+2026-02-09T15:18:26 [extractor] INFO [VISION P3.5] Page 9: extracted 1457 chars via trading vision
+2026-02-09T15:18:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:18:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=353)
+2026-02-09T15:18:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1352
+2026-02-09T15:18:39 [extractor] INFO [VISION P3.5] Page 10: extracted 1352 chars via trading vision
+2026-02-09T15:18:52 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:18:52 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0104 (in=1802 out=331)
+2026-02-09T15:18:52 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1360
+2026-02-09T15:18:52 [extractor] INFO [VISION P3.5] Page 11: extracted 1360 chars via trading vision
+2026-02-09T15:19:00 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:19:00 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0081 (in=1802 out=178)
+2026-02-09T15:19:00 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=745
+2026-02-09T15:19:00 [extractor] INFO [VISION P3.5] Page 17: extracted 745 chars via trading vision
+2026-02-09T15:19:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:19:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0128 (in=1802 out=490)
+2026-02-09T15:19:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1246
+2026-02-09T15:19:12 [extractor] INFO [VISION P3.5] Page 19: extracted 1246 chars via trading vision
+2026-02-09T15:19:19 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:19:19 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:19:19 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=581
+2026-02-09T15:19:19 [extractor] INFO [VISION P3.5] Page 27: extracted 581 chars via trading vision
+2026-02-09T15:19:19 [extractor] INFO Extracted 27 pages (17 text, 10 image-heavy, 10 via vision) from Lesson_8_PDF (3).pdf
+2026-02-09T15:19:19 [extractor] INFO Chunked 27 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:19:19 [extractor] INFO Ingested PDF: Lesson_8_PDF (3).pdf | tier=LATERAL | 1 chunks | 17 text pages | 10 image-heavy pages
+2026-02-09T15:19:19 [extractor] INFO Ingested document: Lesson_8_PDF (3).pdf (1 chunks)
+2026-02-09T15:19:19 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:19:19 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:19:19 [extractor] INFO Theorist extracting from 'Lesson_8_PDF (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:19:19 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T15:19:20 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:19:56 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=5019 tokens_out=803
+2026-02-09T15:19:56 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000928 (in=5019 out=803)
+2026-02-09T15:19:56 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:19:56 [extractor] INFO [LLM] Chunk 1/1: 5 signatures (total unique: 5) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:19:56 [extractor] INFO Theorist extracted 5 signatures (model=deepseek-v3.2)
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO PASSED S-001
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO PASSED S-002
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO PASSED S-003
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO PASSED S-004
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO PASSED S-005
+2026-02-09T15:19:56 [extractor] INFO Audit: 5 validated, 0 rejected
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-001 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-002 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-003 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-004 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] INFO Auditing signature S-005 | model=gemini-3-flash family=google
+2026-02-09T15:19:56 [extractor] ERROR [AUDITOR] RUBBER STAMP ALERT: 0% rejection on batch of 5. Auditor may have failed. Manual review required.
+2026-02-09T15:19:56 [extractor] INFO [AUDITOR] Batch complete: 5 total, 0 rejected (0.0%), status=RUBBER_STAMP
+2026-02-09T15:19:56 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-081956.md
+2026-02-09T15:19:56 [extractor] INFO Index updated: /Users/tradingclawd/dexter/bundles/index.jsonl
+2026-02-09T15:19:56 [extractor] WARNING Matrix alert failed: no running event loop
+2026-02-09T15:19:56 [extractor] INFO Bundle saved: /Users/tradingclawd/dexter/bundles/B-20260209-081956.md
+2026-02-09T15:19:56 [extractor] INFO [BUNDLER] Exported 5 CLAIM_BEADs to /Users/tradingclawd/dexter/bundles/B-20260209-081956_claims.jsonl
+2026-02-09T15:19:56 [extractor] INFO CLAIM_BEADs exported: /Users/tradingclawd/dexter/bundles/B-20260209-081956_claims.jsonl
+2026-02-09T15:19:56 [extractor] INFO === COMPLETE: 5 extracted, 5 validated, 0 rejected, bundle=B-20260209-081956 ===
+2026-02-09T15:19:56 [extractor] INFO Extracted Lesson_8_PDF (3).pdf: 5 signatures (5 validated) model=deepseek-v3.2
+2026-02-09T15:19:56 [extractor] INFO Extracting from: Liquidity_PDF_Blessed_TRD (4).pdf (tier=LATERAL)
+2026-02-09T15:19:56 [extractor] INFO === PROCESS DOCUMENT: Liquidity_PDF_Blessed_TRD (4).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:19:56 [extractor] INFO Extracting text from PDF: Liquidity_PDF_Blessed_TRD (4).pdf (tier=LATERAL)
+2026-02-09T15:20:03 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:03 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:20:03 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=599
+2026-02-09T15:20:03 [extractor] INFO [VISION P3.5] Page 1: extracted 599 chars via trading vision
+2026-02-09T15:20:11 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:11 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0084 (in=1802 out=201)
+2026-02-09T15:20:11 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=820
+2026-02-09T15:20:11 [extractor] INFO [VISION P3.5] Page 3: extracted 820 chars via trading vision
+2026-02-09T15:20:23 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:23 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0109 (in=1802 out=367)
+2026-02-09T15:20:23 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1256
+2026-02-09T15:20:23 [extractor] INFO [VISION P3.5] Page 9: extracted 1256 chars via trading vision
+2026-02-09T15:20:36 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:36 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=346)
+2026-02-09T15:20:36 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1271
+2026-02-09T15:20:36 [extractor] INFO [VISION P3.5] Page 11: extracted 1271 chars via trading vision
+2026-02-09T15:20:47 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:47 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0106 (in=1802 out=346)
+2026-02-09T15:20:47 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1301
+2026-02-09T15:20:47 [extractor] INFO [VISION P3.5] Page 12: extracted 1301 chars via trading vision
+2026-02-09T15:20:59 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:20:59 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0119 (in=1802 out=433)
+2026-02-09T15:20:59 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1315
+2026-02-09T15:20:59 [extractor] INFO [VISION P3.5] Page 16: extracted 1315 chars via trading vision
+2026-02-09T15:21:15 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:21:15 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0124 (in=1802 out=467)
+2026-02-09T15:21:15 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1719
+2026-02-09T15:21:15 [extractor] INFO [VISION P3.5] Page 19: extracted 1719 chars via trading vision
+2026-02-09T15:21:27 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:21:27 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0119 (in=1802 out=433)
+2026-02-09T15:21:27 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1330
+2026-02-09T15:21:27 [extractor] INFO [VISION P3.5] Page 20: extracted 1330 chars via trading vision
+2026-02-09T15:21:39 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:21:39 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0103 (in=1802 out=323)
+2026-02-09T15:21:39 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1111
+2026-02-09T15:21:39 [extractor] INFO [VISION P3.5] Page 21: extracted 1111 chars via trading vision
+2026-02-09T15:21:45 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:21:45 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0074 (in=1802 out=132)
+2026-02-09T15:21:45 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=529
+2026-02-09T15:21:45 [extractor] INFO [VISION P3.5] Page 25: extracted 529 chars via trading vision
+2026-02-09T15:21:45 [extractor] INFO Extracted 25 pages (15 text, 10 image-heavy, 10 via vision) from Liquidity_PDF_Blessed_TRD (4).pdf
+2026-02-09T15:21:45 [extractor] INFO Chunked 25 pages into 2 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:21:45 [extractor] INFO Ingested PDF: Liquidity_PDF_Blessed_TRD (4).pdf | tier=LATERAL | 2 chunks | 15 text pages | 10 image-heavy pages
+2026-02-09T15:21:45 [extractor] INFO Ingested document: Liquidity_PDF_Blessed_TRD (4).pdf (2 chunks)
+2026-02-09T15:21:45 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:21:45 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:21:45 [extractor] INFO Theorist extracting from 'Liquidity_PDF_Blessed_TRD (4).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:21:45 [extractor] INFO Using LLM extraction on 2 chunks (tier=LATERAL)
+2026-02-09T15:21:46 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:21:47 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4698 tokens_out=2
+2026-02-09T15:21:47 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000658 (in=4698 out=2)
+2026-02-09T15:21:47 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:21:47 [extractor] INFO [LLM] Chunk 1/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:21:48 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:21:48 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=2974 tokens_out=2
+2026-02-09T15:21:48 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000417 (in=2974 out=2)
+2026-02-09T15:21:48 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:21:48 [extractor] INFO [LLM] Chunk 2/2: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:21:48 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T15:21:48 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T15:21:48 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T15:21:48 [extractor] INFO Extracted Liquidity_PDF_Blessed_TRD (4).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T15:21:48 [extractor] INFO Extracting from: Orderblock_Propulsion_Block_Breaker (3).pdf (tier=LATERAL)
+2026-02-09T15:21:48 [extractor] INFO === PROCESS DOCUMENT: Orderblock_Propulsion_Block_Breaker (3).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:21:48 [extractor] INFO Extracting text from PDF: Orderblock_Propulsion_Block_Breaker (3).pdf (tier=LATERAL)
+2026-02-09T15:21:55 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:21:55 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:21:55 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=592
+2026-02-09T15:21:55 [extractor] INFO [VISION P3.5] Page 1: extracted 592 chars via trading vision
+2026-02-09T15:22:02 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:22:02 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=145)
+2026-02-09T15:22:02 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=557
+2026-02-09T15:22:02 [extractor] INFO [VISION P3.5] Page 3: extracted 557 chars via trading vision
+2026-02-09T15:22:14 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:22:14 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0112 (in=1802 out=384)
+2026-02-09T15:22:14 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1435
+2026-02-09T15:22:14 [extractor] INFO [VISION P3.5] Page 5: extracted 1435 chars via trading vision
+2026-02-09T15:22:28 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:22:28 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0126 (in=1802 out=479)
+2026-02-09T15:22:28 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1768
+2026-02-09T15:22:28 [extractor] INFO [VISION P3.5] Page 7: extracted 1768 chars via trading vision
+2026-02-09T15:22:37 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:22:37 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0088 (in=1802 out=227)
+2026-02-09T15:22:37 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=575
+2026-02-09T15:22:37 [extractor] INFO [VISION P3.5] Page 8: extracted 575 chars via trading vision
+2026-02-09T15:22:51 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:22:51 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0113 (in=1802 out=392)
+2026-02-09T15:22:51 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1529
+2026-02-09T15:22:51 [extractor] INFO [VISION P3.5] Page 9: extracted 1529 chars via trading vision
+2026-02-09T15:23:05 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:05 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=382)
+2026-02-09T15:23:05 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1256
+2026-02-09T15:23:05 [extractor] INFO [VISION P3.5] Page 10: extracted 1256 chars via trading vision
+2026-02-09T15:23:16 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:16 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0100 (in=1802 out=303)
+2026-02-09T15:23:16 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1032
+2026-02-09T15:23:16 [extractor] INFO [VISION P3.5] Page 12: extracted 1032 chars via trading vision
+2026-02-09T15:23:29 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:29 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0107 (in=1802 out=354)
+2026-02-09T15:23:29 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1442
+2026-02-09T15:23:29 [extractor] INFO [VISION P3.5] Page 14: extracted 1442 chars via trading vision
+2026-02-09T15:23:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0111 (in=1802 out=382)
+2026-02-09T15:23:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1387
+2026-02-09T15:23:42 [extractor] INFO [VISION P3.5] Page 15: extracted 1387 chars via trading vision
+2026-02-09T15:23:50 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:50 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=147)
+2026-02-09T15:23:50 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=599
+2026-02-09T15:23:50 [extractor] INFO [VISION P3.5] Page 16: extracted 599 chars via trading vision
+2026-02-09T15:23:50 [extractor] INFO Extracted 16 pages (5 text, 11 image-heavy, 11 via vision) from Orderblock_Propulsion_Block_Breaker (3).pdf
+2026-02-09T15:23:50 [extractor] INFO Chunked 16 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:23:50 [extractor] INFO Ingested PDF: Orderblock_Propulsion_Block_Breaker (3).pdf | tier=LATERAL | 1 chunks | 5 text pages | 11 image-heavy pages
+2026-02-09T15:23:50 [extractor] INFO Ingested document: Orderblock_Propulsion_Block_Breaker (3).pdf (1 chunks)
+2026-02-09T15:23:50 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:23:50 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:23:50 [extractor] INFO Theorist extracting from 'Orderblock_Propulsion_Block_Breaker (3).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:23:50 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T15:23:50 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:23:51 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4802 tokens_out=2
+2026-02-09T15:23:51 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000673 (in=4802 out=2)
+2026-02-09T15:23:51 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:23:51 [extractor] INFO [LLM] Chunk 1/1: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:23:51 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T15:23:51 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T15:23:51 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T15:23:51 [extractor] INFO Extracted Orderblock_Propulsion_Block_Breaker (3).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+2026-02-09T15:23:51 [extractor] INFO Extracting from: Weekly__Daily_Structure___Price_Delivery (2).pdf (tier=LATERAL)
+2026-02-09T15:23:51 [extractor] INFO === PROCESS DOCUMENT: Weekly__Daily_Structure___Price_Delivery (2).pdf (type=pdf, tier=LATERAL) ===
+2026-02-09T15:23:51 [extractor] INFO Extracting text from PDF: Weekly__Daily_Structure___Price_Delivery (2).pdf (tier=LATERAL)
+2026-02-09T15:23:58 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:23:58 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0076 (in=1802 out=146)
+2026-02-09T15:23:58 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=588
+2026-02-09T15:23:58 [extractor] INFO [VISION P3.5] Page 1: extracted 588 chars via trading vision
+2026-02-09T15:24:12 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:24:12 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0117 (in=1802 out=421)
+2026-02-09T15:24:12 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1376
+2026-02-09T15:24:12 [extractor] INFO [VISION P3.5] Page 5: extracted 1376 chars via trading vision
+2026-02-09T15:24:26 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:24:26 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0138 (in=1802 out=560)
+2026-02-09T15:24:26 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1963
+2026-02-09T15:24:26 [extractor] INFO [VISION P3.5] Page 6: extracted 1963 chars via trading vision
+2026-02-09T15:24:42 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:24:42 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0129 (in=1802 out=497)
+2026-02-09T15:24:42 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1628
+2026-02-09T15:24:42 [extractor] INFO [VISION P3.5] Page 8: extracted 1628 chars via trading vision
+2026-02-09T15:25:01 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:25:01 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0125 (in=1802 out=472)
+2026-02-09T15:25:01 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=1532
+2026-02-09T15:25:01 [extractor] INFO [VISION P3.5] Page 10: extracted 1532 chars via trading vision
+2026-02-09T15:25:07 [extractor] INFO HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-02-09T15:25:07 [extractor] INFO [VISION COST] model=claude-sonnet-4-5-20250929 cost=$0.0074 (in=1802 out=132)
+2026-02-09T15:25:07 [extractor] INFO [VISION] Notes description extracted: model=claude-sonnet-4-5-20250929, chars=529
+2026-02-09T15:25:07 [extractor] INFO [VISION P3.5] Page 12: extracted 529 chars via trading vision
+2026-02-09T15:25:07 [extractor] INFO Extracted 12 pages (6 text, 6 image-heavy, 6 via vision) from Weekly__Daily_Structure___Price_Delivery (2).pdf
+2026-02-09T15:25:07 [extractor] INFO Chunked 12 pages into 1 chunks (page-based, 8000-16000 char targets)
+2026-02-09T15:25:07 [extractor] INFO Ingested PDF: Weekly__Daily_Structure___Price_Delivery (2).pdf | tier=LATERAL | 1 chunks | 6 text pages | 6 image-heavy pages
+2026-02-09T15:25:07 [extractor] INFO Ingested document: Weekly__Daily_Structure___Price_Delivery (2).pdf (1 chunks)
+2026-02-09T15:25:07 [extractor] INFO Dispatch to [theorist]: extract_signatures | model=deepseek-v3.2 family=deepseek | mock=True llm=True
+2026-02-09T15:25:07 [extractor] INFO Prepended 2 negative beads to Theorist context
+2026-02-09T15:25:07 [extractor] INFO Theorist extracting from 'Weekly__Daily_Structure___Price_Delivery (2).pdf' | model=deepseek-v3.2 family=deepseek | llm_mode=True | tier=LATERAL
+2026-02-09T15:25:07 [extractor] INFO Using LLM extraction on 1 chunks (tier=LATERAL)
+2026-02-09T15:25:09 [extractor] INFO HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2026-02-09T15:25:09 [extractor] INFO [LLM] provider=openrouter model=deepseek/deepseek-chat tokens_in=4077 tokens_out=1
+2026-02-09T15:25:09 [extractor] INFO [COST] model=deepseek/deepseek-chat cost=$0.000571 (in=4077 out=1)
+2026-02-09T15:25:09 [extractor] INFO [ROUTING] role=theorist tier=LATERAL model=deepseek/deepseek-chat family=deepseek provider=openrouter
+2026-02-09T15:25:09 [extractor] INFO [LLM] Chunk 1/1: 0 signatures (total unique: 0) tier=LATERAL model=deepseek/deepseek-chat
+2026-02-09T15:25:09 [extractor] INFO Theorist extracted 0 signatures (model=deepseek-v3.2)
+2026-02-09T15:25:09 [extractor] INFO Audit: 0 validated, 0 rejected
+2026-02-09T15:25:09 [extractor] INFO === COMPLETE: 0 extracted, 0 validated, 0 rejected, bundle=None ===
+2026-02-09T15:25:09 [extractor] INFO Extracted Weekly__Daily_Structure___Price_Delivery (2).pdf: 0 signatures (0 validated) model=deepseek-v3.2
+
+======================================================================
+EXTRACTION SUMMARY
+======================================================================
+
+blessed_trader:
+  Processed: 18
+  Failed: 0
+======================================================================
