@@ -148,3 +148,7 @@
 {"bundle_id": "B-20260209-081956", "timestamp": "2026-02-09T08:19:56.616995+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-081956.md", "source_url": "", "validated": 5, "rejected": 0}
 {"bundle_id": "B-20260209-082903", "timestamp": "2026-02-09T08:29:03.149133+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-082903.md", "source_url": "mock://ict_2022_mentorship_01", "validated": 7, "rejected": 2}
 {"bundle_id": "B-20260209-082952", "timestamp": "2026-02-09T08:29:52.317581+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-082952.md", "source_url": "mock://ict_second_run", "validated": 7, "rejected": 2}
+{"bundle_id": "B-20260209-091001", "timestamp": "2026-02-09T09:10:01.875090+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-091001.md", "source_url": "", "validated": 15, "rejected": 0}
+{"bundle_id": "B-20260209-091501", "timestamp": "2026-02-09T09:15:01.643664+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-091501.md", "source_url": "", "validated": 8, "rejected": 0}
+{"bundle_id": "B-20260209-092453", "timestamp": "2026-02-09T09:24:53.822415+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-092453.md", "source_url": "", "validated": 5, "rejected": 0}
+{"bundle_id": "B-20260209-092902", "timestamp": "2026-02-09T09:29:02.598243+00:00", "path": "/Users/tradingclawd/dexter/bundles/B-20260209-092902.md", "source_url": "", "validated": 5, "rejected": 0}

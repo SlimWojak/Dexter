@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-02-09T08:57:11.980036",
+  "stage": "A_page_05_text",
+  "source": "Liquidity_PDF_Blessed_TRD (4).pdf",
+  "content_chars": 532,
+  "content_preview": "Simple example of price running the Buy-Side Liquidity \nbefore heading lower.\nPrice expanded to the higher to take out buy stops, why? Because they (the \nInformed Money), will want to sell at a higher price, take the Liquidity and cover \ntheir long positions that they opened to run the price higher.\nSo, they aim at the Liquidity Pool (in this example BSLQ), they open long \npositions to push the price higher into the BS Liquidity Pool, then use that \nLiquidity to cover Long positions, and open Short positions at a higher price.",
+  "content_full": "Simple example of price running the Buy-Side Liquidity \nbefore heading lower.\nPrice expanded to the higher to take out buy stops, why? Because they (the \nInformed Money), will want to sell at a higher price, take the Liquidity and cover \ntheir long positions that they opened to run the price higher.\nSo, they aim at the Liquidity Pool (in this example BSLQ), they open long \npositions to push the price higher into the BS Liquidity Pool, then use that \nLiquidity to cover Long positions, and open Short positions at a higher price.",
+  "metadata": {
+    "page_num": 5,
+    "method": "text",
+    "chars": 532
+  }
+}

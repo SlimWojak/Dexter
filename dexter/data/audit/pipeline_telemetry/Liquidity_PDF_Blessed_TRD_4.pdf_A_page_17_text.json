@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-02-09T08:57:11.983653",
+  "stage": "A_page_17_text",
+  "source": "Liquidity_PDF_Blessed_TRD (4).pdf",
+  "content_chars": 737,
+  "content_preview": "LIQUIDITY MATRIX\nTo find price exits firstly we must understand the Liquidity Matrix (define the price \nrange before the setup forms).\nWhat\u2019s the dealing range high & the dealing range low? \u2013 this is how we define a \nPREMIUM Side of the range and the DISCOUNT side of the range.\nIf the Market is in the Premium \u2013 we expect a Sell Program to occur, we want to \nfind the counter levels, opposing Premium/Discount Array\u2019s (PDA\u2019s) to cover our \nposition, and vice versa when the market is in the Discount \u2013 we expect a Buy \nProgram to occur, we want to find counter levels, opposing PDA\u2019s to cover our \nposition.\nMain levels we use as exits: Liquidity, FVG, Equilibrium of the range, BISI/SIBI \nmidpoint (CE), opposing breakers, orderblocks.",
+  "content_full": "LIQUIDITY MATRIX\nTo find price exits firstly we must understand the Liquidity Matrix (define the price \nrange before the setup forms).\nWhat\u2019s the dealing range high & the dealing range low? \u2013 this is how we define a \nPREMIUM Side of the range and the DISCOUNT side of the range.\nIf the Market is in the Premium \u2013 we expect a Sell Program to occur, we want to \nfind the counter levels, opposing Premium/Discount Array\u2019s (PDA\u2019s) to cover our \nposition, and vice versa when the market is in the Discount \u2013 we expect a Buy \nProgram to occur, we want to find counter levels, opposing PDA\u2019s to cover our \nposition.\nMain levels we use as exits: Liquidity, FVG, Equilibrium of the range, BISI/SIBI \nmidpoint (CE), opposing breakers, orderblocks.",
+  "metadata": {
+    "page_num": 17,
+    "method": "text",
+    "chars": 737
+  }
+}

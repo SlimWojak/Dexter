@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-02-09T08:57:11.988772",
+  "stage": "A_page_20_vision",
+  "source": "Liquidity_PDF_Blessed_TRD (4).pdf",
+  "content_chars": 1207,
+  "content_preview": "# EXTERNAL LIQUIDITY\n\n## Header/Branding\n**BLESSED TRADER.**\n\"Your guide to consistency in the industry of trade.\"\n\n## Chart Annotations and Labels\n\n### Top Section (Purple/Mauve Zone)\n- **External Buy-Side Liquidity (Old High)**\n- **EXTERNAL LIQUIDITY**\n- Text box: \"Price broke out of the dealing range, at this point your longs from the Discount area should be completely closed or with a small portion running.\"\n\n### Key Horizontal Levels\n- **Dealing Range High**\n- **Dealing Range Low**\n\n### Vertical Zones\n- **INTERNAL LIQUIDITY** (gray zone in middle section)\n- **FVG (external liquidity)** (labeled in left portion)\n\n### Right Side Labels\n- **Premium** (upper right)\n- **Discount** (lower right)\n- Scale markers: **1**, **0.5**, **0**\n\n## Chart Structure\nThe image shows a candlestick price chart divided into two main liquidity zones:\n1. Upper zone (purple/mauve background) = External Liquidity area\n2. Middle zone (gray background) = Internal Liquidity area\n\nThe dealing range is bounded b",
+  "content_full": "# EXTERNAL LIQUIDITY\n\n## Header/Branding\n**BLESSED TRADER.**\n\"Your guide to consistency in the industry of trade.\"\n\n## Chart Annotations and Labels\n\n### Top Section (Purple/Mauve Zone)\n- **External Buy-Side Liquidity (Old High)**\n- **EXTERNAL LIQUIDITY**\n- Text box: \"Price broke out of the dealing range, at this point your longs from the Discount area should be completely closed or with a small portion running.\"\n\n### Key Horizontal Levels\n- **Dealing Range High**\n- **Dealing Range Low**\n\n### Vertical Zones\n- **INTERNAL LIQUIDITY** (gray zone in middle section)\n- **FVG (external liquidity)** (labeled in left portion)\n\n### Right Side Labels\n- **Premium** (upper right)\n- **Discount** (lower right)\n- Scale markers: **1**, **0.5**, **0**\n\n## Chart Structure\nThe image shows a candlestick price chart divided into two main liquidity zones:\n1. Upper zone (purple/mauve background) = External Liquidity area\n2. Middle zone (gray background) = Internal Liquidity area\n\nThe dealing range is bounded by horizontal lines marking the high and low, with price action showing movement between these zones across multiple time periods (timestamps visible at bottom: 06:00, 09:00, 12:00, 15:00, 18:00, 21:00, etc.)",
+  "metadata": {
+    "page_num": 20,
+    "method": "vision",
+    "chars": 1207
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-02-09T09:31:15.714506",
+  "pdfs_processed": 10,
+  "pdfs_with_signatures": 4,
+  "total_extracted": 33,
+  "total_validated": 33,
+  "results": [
+    {
+      "file": "Liquidity_PDF_Blessed_TRD (4).pdf",
+      "status": "DONE",
+      "extracted": 15,
+      "validated": 15,
+      "rejected": 0,
+      "bundle_id": "B-20260209-091001"
+    },
+    {
+      "file": "Orderblock_Propulsion_Block_Breaker (3).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    },
+    {
+      "file": "Weekly__Daily_Structure___Price_Delivery (2).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    },
+    {
+      "file": "Lesson_11_PDF_-_M (6).pdf",
+      "status": "DONE",
+      "extracted": 8,
+      "validated": 8,
+      "rejected": 0,
+      "bundle_id": "B-20260209-091501"
+    },
+    {
+      "file": "Lesson_15_PDF (3).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    },
+    {
+      "file": "Lesson_16_PDF (3).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    },
+    {
+      "file": "Lesson_17_PDF (2).pdf",
+      "status": "DONE",
+      "extracted": 5,
+      "validated": 5,
+      "rejected": 0,
+      "bundle_id": "B-20260209-092453"
+    },
+    {
+      "file": "Lesson_20_PDF (4).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    },
+    {
+      "file": "Lesson_5_PDF (2).pdf",
+      "status": "DONE",
+      "extracted": 5,
+      "validated": 5,
+      "rejected": 0,
+      "bundle_id": "B-20260209-092902"
+    },
+    {
+      "file": "EU_DXY_SMT_Divergence. (1).pdf",
+      "status": "DONE",
+      "extracted": 0,
+      "validated": 0,
+      "rejected": 0,
+      "bundle_id": null
+    }
+  ]
+}

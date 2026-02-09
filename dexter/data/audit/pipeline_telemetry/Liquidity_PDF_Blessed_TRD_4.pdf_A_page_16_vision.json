@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-02-09T08:57:11.983488",
+  "stage": "A_page_16_vision",
+  "source": "Liquidity_PDF_Blessed_TRD (4).pdf",
+  "content_chars": 1365,
+  "content_preview": "# TRADING CHART CONTENT EXTRACTION\n\n## Header/Branding\n**BLESSED TRADER.**\n\"Your guide to consistency in the industry of loss.\"\n\n## Chart Annotations\n\n### Annotation 1 (Upper Right Area):\n**RUN ON BSLQ / STOPS**\nRun on the Buyside Liquidity (BSLQ)\nbefore expanding lower.\n\n### Annotation 2 (Middle Left Area):\n**RUN ON SSLQ / STOPS**\nRun on the Sellside Liquidity (SSLQ)\nbefore expanding higher.\n\n## Visual Elements on Chart\n\n### Marked Areas:\n- **Pink/Purple shaded rectangular zones** (3 visible):\n  1. Upper left area (near initial high)\n  2. Middle area (near the SSLQ annotation)\n  3. Upper right area (near the BSLQ annotation)\n  4. Middle right area (smaller zone)\n  5. Far right area (near another high)\n\n### Directional Markers:\n- **Black downward-pointing triangles** (\u25bc) - marking potential sell/resistance areas (3 visible on right side of chart)\n- **Black upward-pointing triangles** (\u25b2) - marking potential buy/support areas (2 visible in middle section)\n\n## Price Action Pattern\nThe ch",
+  "content_full": "# TRADING CHART CONTENT EXTRACTION\n\n## Header/Branding\n**BLESSED TRADER.**\n\"Your guide to consistency in the industry of loss.\"\n\n## Chart Annotations\n\n### Annotation 1 (Upper Right Area):\n**RUN ON BSLQ / STOPS**\nRun on the Buyside Liquidity (BSLQ)\nbefore expanding lower.\n\n### Annotation 2 (Middle Left Area):\n**RUN ON SSLQ / STOPS**\nRun on the Sellside Liquidity (SSLQ)\nbefore expanding higher.\n\n## Visual Elements on Chart\n\n### Marked Areas:\n- **Pink/Purple shaded rectangular zones** (3 visible):\n  1. Upper left area (near initial high)\n  2. Middle area (near the SSLQ annotation)\n  3. Upper right area (near the BSLQ annotation)\n  4. Middle right area (smaller zone)\n  5. Far right area (near another high)\n\n### Directional Markers:\n- **Black downward-pointing triangles** (\u25bc) - marking potential sell/resistance areas (3 visible on right side of chart)\n- **Black upward-pointing triangles** (\u25b2) - marking potential buy/support areas (2 visible in middle section)\n\n## Price Action Pattern\nThe chart shows a candlestick pattern with:\n- Green/teal candles (bullish)\n- Black/red candles (bearish)\n- Horizontal reference line across the upper portion of the chart\n- Multiple swing highs and lows\n- Clear liquidity runs marked at key turning points\n\n## Time Axis\nDates visible: 14, 12:00, 15, 09:00, 17, 18, 19:00, 19, 12:00, 20, 12:00, 21, 13:00, 22, 09:00, 24, 25",
+  "metadata": {
+    "page_num": 16,
+    "method": "vision",
+    "chars": 1365
+  }
+}
