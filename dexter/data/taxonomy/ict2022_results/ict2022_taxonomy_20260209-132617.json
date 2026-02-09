@@ -1,0 +1,465 @@
+[
+  {
+    "video_id": "7WM8qdkanIY",
+    "title": "ICT Forex - What New Traders Should Focus On",
+    "drawers": {
+      "1": {
+        "name": "HTF Bias & Liquidity",
+        "results": [
+          {
+            "concept_id": "CON-D1-BIAS-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-BIAS-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-DOL-01",
+            "status": "PARTIAL",
+            "evidence": "Institutional traders look for counterparties, where orders are resting.",
+            "timestamp": "08:48"
+          },
+          {
+            "concept_id": "CON-D1-DOL-02",
+            "status": "PARTIAL",
+            "evidence": "Institutional traders look for counterparties, where orders are resting.",
+            "timestamp": "08:48"
+          },
+          {
+            "concept_id": "CON-D1-INTLQ-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-INTLQ-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-EXTLQ-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-EXTLQ-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-DEAL-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-DEAL-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-3Q-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D1-3Q-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 2,
+          "absent": 10
+        }
+      },
+      "2": {
+        "name": "Time & Session",
+        "results": [
+          {
+            "concept_id": "CON-D2-TIME-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-03",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-04",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-05",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-06",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-07",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-08",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-09",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-10",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-11",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D2-TIME-12",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 0,
+          "absent": 12
+        }
+      },
+      "3": {
+        "name": "Structure & Displacement",
+        "results": [
+          {
+            "concept_id": "CON-D3-SWING-01",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions swing highs and lows but does not provide explicit IF-THEN rules.",
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-SWING-02",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions swing highs and lows but does not provide explicit IF-THEN rules.",
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-SWEEP-01",
+            "status": "PARTIAL",
+            "evidence": "ICT discusses liquidity sweeps and stop hunts but does not provide explicit IF-THEN rules.",
+            "timestamp": "10:32"
+          },
+          {
+            "concept_id": "CON-D3-SWEEP-02",
+            "status": "PARTIAL",
+            "evidence": "ICT discusses liquidity sweeps and stop hunts but does not provide explicit IF-THEN rules.",
+            "timestamp": "10:32"
+          },
+          {
+            "concept_id": "CON-D3-MSS-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-MSS-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-MSS-03",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-FVG-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-FVG-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-DISP-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-DISP-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D3-ENGINE-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 4,
+          "absent": 8
+        }
+      },
+      "4": {
+        "name": "Execution",
+        "results": [
+          {
+            "concept_id": "CON-D4-RANGE-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-PD-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-PD-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-OTE-01",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions the optimal trade entry using Fibonacci levels (62% to 79%) but does not provide explicit IF-THEN rules.",
+            "timestamp": "14:30"
+          },
+          {
+            "concept_id": "CON-D4-OTE-02",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions the optimal trade entry using Fibonacci levels (62% to 79%) but does not provide explicit IF-THEN rules.",
+            "timestamp": "14:30"
+          },
+          {
+            "concept_id": "CON-D4-FVG-CONF-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-FVG-CONF-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-FVG-RET-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-FVG-RET-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-ENTRY-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-ENTRY-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D4-CONFL-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 2,
+          "absent": 10
+        }
+      },
+      "5": {
+        "name": "Protection & Risk",
+        "results": [
+          {
+            "concept_id": "CON-D5-RISK-01",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions 'stop losses' and 'above an old high' but doesn't provide explicit IF-THEN rules for short stop loss placement.",
+            "timestamp": "07:14"
+          },
+          {
+            "concept_id": "CON-D5-RISK-02",
+            "status": "PARTIAL",
+            "evidence": "ICT discusses 'below equal lows' and 'sell stops' but doesn't provide explicit IF-THEN rules for long stop loss placement.",
+            "timestamp": "08:39"
+          },
+          {
+            "concept_id": "CON-D5-RISK-03",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-RISK-04",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-TP-01",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions targeting '10 to 20 pips beyond double bottoms' and 'old lows' but doesn't provide explicit IF-THEN rules for TP1 on shorts.",
+            "timestamp": "11:14"
+          },
+          {
+            "concept_id": "CON-D5-TP-02",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-TP-03",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-TP-04",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-MGMT-01",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-D5-MGMT-02",
+            "status": "PARTIAL",
+            "evidence": "ICT suggests limiting trading to '20 to 30 pips per week' but doesn't provide explicit IF-THEN rules for daily loss limits.",
+            "timestamp": "12:20"
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 4,
+          "absent": 6
+        }
+      },
+      "olya": {
+        "name": "Olya Extensions",
+        "results": [
+          {
+            "concept_id": "CON-OX-PDA-REGISTRY",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-OX-WARMUP",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-OX-BLUR-001",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-OX-NO-PARTIALS",
+            "status": "PARTIAL",
+            "evidence": "ICT mentions targeting specific levels and scaling profits, but doesn't explicitly state 'no partial exits' as a rule.",
+            "timestamp": "02:14"
+          },
+          {
+            "concept_id": "CON-OX-NO-REENTRY",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-OX-NO-SCALING",
+            "status": "PARTIAL",
+            "evidence": "ICT discusses the benefits of scaling profits but doesn't explicitly prohibit position scaling.",
+            "timestamp": "02:21"
+          },
+          {
+            "concept_id": "CON-OX-FIXED-RISK",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          },
+          {
+            "concept_id": "CON-OX-BE-ONLY",
+            "status": "ABSENT",
+            "evidence": null,
+            "timestamp": null
+          }
+        ],
+        "summary": {
+          "found": 0,
+          "partial": 2,
+          "absent": 6
+        }
+      }
+    },
+    "content_length": 27158
+  }
+]

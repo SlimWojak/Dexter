@@ -1,763 +1,771 @@
-version: '1.0'
-created: '2026-02-09'
-last_updated: '2026-02-09T13:13:48.555229+00:00'
-sources:
-  ICT_2022:
-    tier: CANON
-    description: ICT 2022 Mentorship live transcripts
-    document_count: 24
-    status: ACTIVE
-  BLESSED_TRADER:
-    tier: LATERAL
-    description: Blessed Trader PDF methodology
-    document_count: 18
-    status: ACTIVE
-  OLYA_NOTES:
-    tier: OLYA_PRIMARY
-    description: Olya's notes and systematization
-    document_count: 22
-    status: ACTIVE
 coverage:
-  CON-D1-BIAS-01:
-    name: HTF Bullish Bias
+  CON-D1-3Q-01:
     drawer: 1
+    name: Three Questions Framework - Location
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
+          documents:
+          - Weekly__Daily_Structure___Price_Delivery (2).pdf
           signature_ids:
-          - BT-CON-D1-BIAS-01-1
+          - BT-CON-D1-3Q-01-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D1-3Q-01-1
+          timestamps:
+          - 04:16-05:40
+        last_checked: '2026-02-09T13:32:09.074250+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: PARTIAL
+  CON-D1-3Q-02:
+    drawer: 1
+    name: Three Questions Framework - Objective & Respect
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Weekly__Daily_Structure___Price_Delivery (2).pdf
+          signature_ids:
+          - BT-CON-D1-3Q-02-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D1-3Q-02-1
+          timestamps:
+          - 08:51-09:31
+        last_checked: '2026-02-09T13:32:09.074263+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: PARTIAL
+  CON-D1-BIAS-01:
+    drawer: 1
+    name: HTF Bullish Bias
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Lesson_20_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D1-BIAS-01-1
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          - ICT Forex - Time & Price Theory
+          signature_ids:
+          - ICT-CON-D1-BIAS-01-1
+          - ICT-CON-D1-BIAS-01-2
+          timestamps:
+          - 02:59
+        last_checked: '2026-02-09T13:43:58.692230+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
           signature_ids:
           - OLV-CON-D1-BIAS-01-1
           - OLV-CON-D1-BIAS-01-2
           - OLV-CON-D1-BIAS-01-3
-          documents:
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-BIAS-02:
-    name: HTF Bearish Bias
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D1-BIAS-02:
+    drawer: 1
+    name: HTF Bearish Bias
+    sources:
+      BLESSED_TRADER:
         evidence:
-          signature_ids:
-          - BT-CON-D1-BIAS-02-1
           documents:
           - Lesson_12_PDF (1).pdf
+          signature_ids:
+          - BT-CON-D1-BIAS-02-1
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          - ICT Forex - Time & Price Theory
+          signature_ids:
+          - ICT-CON-D1-BIAS-02-1
+          - ICT-CON-D1-BIAS-02-2
+          timestamps:
+          - 03:11
+        last_checked: '2026-02-09T13:43:58.692282+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
           signature_ids:
           - OLV-CON-D1-BIAS-02-1
           - OLV-CON-D1-BIAS-02-2
           - OLV-CON-D1-BIAS-02-3
-          documents:
-          - OLYA 12 MINI LESSON 1:3 PRICE DELIVERY ON A DAY.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-DOL-01:
-    name: Draw on Liquidity - Buy-side
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D1-DEAL-01:
+    drawer: 1
+    name: Dealing Range - Bullish Context
+    sources:
+      BLESSED_TRADER:
         evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_7_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D1-DEAL-01-1
+          - BT-CON-D1-DEAL-01-2
+          - BT-CON-D1-DEAL-01-3
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352379+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-DEAL-02:
+    drawer: 1
+    name: Dealing Range - Bearish Context
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D1-DEAL-02-1
+          - BT-CON-D1-DEAL-02-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352391+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-DOL-01:
+    drawer: 1
+    name: Draw on Liquidity - Buy-side
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
           signature_ids:
           - BT-CON-D1-DOL-01-1
           - BT-CON-D1-DOL-01-2
           - BT-CON-D1-DOL-01-3
           - BT-CON-D1-DOL-01-4
           - BT-CON-D1-DOL-01-5
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          signature_ids:
+          - ICT-CON-D1-DOL-01-1
+          timestamps:
+          - 08:51
+        last_checked: '2026-02-09T13:28:13.352267+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-DOL-02:
+    drawer: 1
+    name: Draw on Liquidity - Sell-side
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_10_PDF (2).pdf
           - Lesson_12_PDF (1).pdf
           - Lesson_15_PDF (3).pdf
           - Lesson_18_PDF (4).pdf
-          - Lesson_20_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-DOL-02:
-    name: Draw on Liquidity - Sell-side
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
           - BT-CON-D1-DOL-02-1
           - BT-CON-D1-DOL-02-2
           - BT-CON-D1-DOL-02-3
           - BT-CON-D1-DOL-02-4
           - BT-CON-D1-DOL-02-5
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_10_PDF (2).pdf
-          - Lesson_12_PDF (1).pdf
-          - Lesson_15_PDF (3).pdf
-          - Lesson_18_PDF (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-INTLQ-01:
-    name: Internal Liquidity Objective - Bullish
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-INTLQ-02:
-    name: Internal Liquidity Objective - Bearish
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-EXTLQ-01:
-    name: External Liquidity Objective - Bullish
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          signature_ids:
+          - ICT-CON-D1-DOL-02-1
+          timestamps:
+          - 08:51
+        last_checked: '2026-02-09T13:28:13.352293+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-EXTLQ-01:
+    drawer: 1
+    name: External Liquidity Objective - Bullish
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Lesson_20_PDF (4).pdf
           signature_ids:
           - BT-CON-D1-EXTLQ-01-1
-          documents:
-          - Lesson_20_PDF (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D1-EXTLQ-01-1
+          timestamps:
+          - 09:01-09:12
+        last_checked: '2026-02-09T13:32:09.074214+00:00'
+        status: PARTIAL
       OLYA_NOTES:
-        status: ABSENT
         evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
   CON-D1-EXTLQ-02:
+    drawer: 1
     name: External Liquidity Objective - Bearish
-    drawer: 1
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-DEAL-01:
-    name: Dealing Range - Bullish Context
-    drawer: 1
-    sources:
       ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D1-DEAL-01-1
-          - BT-CON-D1-DEAL-01-2
-          - BT-CON-D1-DEAL-01-3
           documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_20_PDF (4).pdf
-          - Lesson_7_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-DEAL-02:
-    name: Dealing Range - Bearish Context
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
+          - Essentials To ICT Market Structure
           signature_ids:
-          - BT-CON-D1-DEAL-02-1
-          - BT-CON-D1-DEAL-02-2
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_7_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-3Q-01:
-    name: Three Questions Framework - Location
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D1-3Q-01-1
-          documents:
-          - Weekly__Daily_Structure___Price_Delivery (2).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
+          - ICT-CON-D1-EXTLQ-02-1
+          timestamps:
+          - 09:41-09:44
+        last_checked: '2026-02-09T13:32:09.074228+00:00'
         status: PARTIAL
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D1-3Q-02:
-    name: Three Questions Framework - Objective & Respect
-    drawer: 1
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D1-3Q-02-1
-          documents:
-          - Weekly__Daily_Structure___Price_Delivery (2).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: PARTIAL
         evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-INTLQ-01:
+    drawer: 1
+    name: Internal Liquidity Objective - Bullish
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352314+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D1-INTLQ-02:
+    drawer: 1
+    name: Internal Liquidity Objective - Bearish
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352331+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
   CON-D2-TIME-01:
-    name: Asia Session - Liquidity Build
     drawer: 2
+    name: Asia Session - Liquidity Build
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
           signature_ids:
           - BT-CON-D2-TIME-01-1
           - BT-CON-D2-TIME-01-2
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-02:
-    name: Midnight Open Reference
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - The ICT Asian Killzone
+          - ICT Forex - Implementing The Asian Range
           signature_ids:
-          - BT-CON-D2-TIME-02-1
-          - BT-CON-D2-TIME-02-2
-          - BT-CON-D2-TIME-02-3
-          - BT-CON-D2-TIME-02-4
+          - ICT-CON-D2-TIME-01-1
+          - ICT-CON-D2-TIME-01-2
+          timestamps:
+          - 04:22
+        last_checked: '2026-02-09T13:47:29.936147+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-02:
+    drawer: 2
+    name: Midnight Open Reference
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Lesson_11_PDF_-_M (6).pdf
           - Lesson_12_PDF (1).pdf
           - Lesson_17_PDF (2).pdf
           - Lesson_5_PDF (2).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D2-TIME-02-1
+          - BT-CON-D2-TIME-02-1
+          - BT-CON-D2-TIME-02-2
+          - BT-CON-D2-TIME-02-3
+          - BT-CON-D2-TIME-02-4
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT Asian Killzone
+          - ICT Forex - Implementing The Asian Range
+          signature_ids:
+          - ICT-CON-D2-TIME-02-1
+          - ICT-CON-D2-TIME-02-2
+          timestamps:
+          - 04:53
+        last_checked: '2026-02-09T13:47:29.936189+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-03:
-    name: Midnight Open as PD Reference
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
-          - BT-CON-D2-TIME-03-1
-          - BT-CON-D2-TIME-03-2
+          - OLV-CON-D2-TIME-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D2-TIME-03:
+    drawer: 2
+    name: Midnight Open as PD Reference
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Lesson_11_PDF_-_M (6).pdf
           - Lesson_17_PDF (2).pdf
+          signature_ids:
+          - BT-CON-D2-TIME-03-1
+          - BT-CON-D2-TIME-03-2
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-04:
-    name: London Killzone - Session Highs/Lows
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - Implementing The Asian Range
+          signature_ids:
+          - ICT-CON-D2-TIME-03-1
+          timestamps:
+          - 07:56
+        last_checked: '2026-02-09T13:47:29.936201+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-04:
+    drawer: 2
+    name: London Killzone - Session Highs/Lows
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_11_PDF_-_M (6).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_5_PDF (2).pdf
           signature_ids:
           - BT-CON-D2-TIME-04-1
           - BT-CON-D2-TIME-04-2
           - BT-CON-D2-TIME-04-3
           - BT-CON-D2-TIME-04-4
           - BT-CON-D2-TIME-04-5
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
           documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - ICT Forex - The ICT London Killzone
+          signature_ids:
+          - ICT-CON-D2-TIME-04-1
+          timestamps:
+          - 04:11
+        last_checked: '2026-02-09T13:36:10.869761+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D2-TIME-04-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D2-TIME-05:
+    drawer: 2
+    name: London Killzone - Sweep Condition
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
           - Lesson_11_PDF_-_M (6).pdf
           - Lesson_12_PDF (1).pdf
           - Lesson_5_PDF (2).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D2-TIME-04-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-05:
-    name: London Killzone - Sweep Condition
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
           - BT-CON-D2-TIME-05-1
           - BT-CON-D2-TIME-05-2
           - BT-CON-D2-TIME-05-3
-          documents:
-          - Lesson_11_PDF_-_M (6).pdf
-          - Lesson_12_PDF (1).pdf
-          - Lesson_5_PDF (2).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-06:
-    name: NY 08:30 Open Reference
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          - ICT Forex - Implementing The Asian Range
           signature_ids:
-          - BT-CON-D2-TIME-06-1
+          - ICT-CON-D2-TIME-05-1
+          - ICT-CON-D2-TIME-05-2
+          timestamps:
+          - 04:47
+        last_checked: '2026-02-09T13:49:26.091655+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-06:
+    drawer: 2
+    name: NY 08:30 Open Reference
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Liquidity_PDF_Blessed_TRD (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-07:
-    name: Pre-08:30 Judas/Manipulation
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
-          - BT-CON-D2-TIME-07-1
+          - BT-CON-D2-TIME-06-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT New York Killzone
+          signature_ids:
+          - ICT-CON-D2-TIME-06-1
+          timestamps:
+          - 01:05
+        last_checked: '2026-02-09T13:38:23.862509+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-07:
+    drawer: 2
+    name: Pre-08:30 Judas/Manipulation
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Lesson_5_PDF (2).pdf
+          signature_ids:
+          - BT-CON-D2-TIME-07-1
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-08:
-    name: 08:30+ Delivery Window
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-09:
-    name: NY AM Killzone
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          - ICT Forex - The Weekly Bias - Excellence In Short Term Trading
+          signature_ids:
+          - ICT-CON-D2-TIME-07-1
+          - ICT-CON-D2-TIME-07-2
+          timestamps:
+          - 02:59
+        last_checked: '2026-02-09T13:49:26.091691+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-08:
+    drawer: 2
+    name: 08:30+ Delivery Window
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT New York Killzone
+          signature_ids:
+          - ICT-CON-D2-TIME-08-1
+          timestamps:
+          - 01:05
+        last_checked: '2026-02-09T13:38:23.862563+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-09:
+    drawer: 2
+    name: NY AM Killzone
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
           signature_ids:
           - BT-CON-D2-TIME-09-1
           - BT-CON-D2-TIME-09-2
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-10:
-    name: Lunch Hours - Reduced Activity
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-11:
-    name: PM Session Disable
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D2-TIME-12:
-    name: London Setup via Asia Range Sweep
-    drawer: 2
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
         status: FOUND
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - The ICT New York Killzone
           signature_ids:
-          - BT-CON-D2-TIME-12-1
-          - BT-CON-D2-TIME-12-2
+          - ICT-CON-D2-TIME-09-1
+          timestamps:
+          - 01:05
+        last_checked: '2026-02-09T13:38:23.862578+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-10:
+    drawer: 2
+    name: Lunch Hours - Reduced Activity
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT London Killzone
+          signature_ids:
+          - ICT-CON-D2-TIME-10-1
+          timestamps:
+          - 09:52
+        last_checked: '2026-02-09T13:36:10.869796+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-11:
+    drawer: 2
+    name: PM Session Disable
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352596+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-D2-TIME-12:
+    drawer: 2
+    name: London Setup via Asia Range Sweep
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
           - Lesson_12_PDF (1).pdf
           - Lesson_5_PDF (2).pdf
+          signature_ids:
+          - BT-CON-D2-TIME-12-1
+          - BT-CON-D2-TIME-12-2
         last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          - ICT Forex - Implementing The Asian Range
+          signature_ids:
+          - ICT-CON-D2-TIME-12-1
+          - ICT-CON-D2-TIME-12-2
+          timestamps:
+          - 04:47
+        last_checked: '2026-02-09T13:49:26.091711+00:00'
+        status: FOUND
       OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-SWING-01:
-    name: Swing High Definition
+  CON-D3-DISP-01:
     drawer: 3
+    name: Displacement - TRUE
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D3-SWING-01-1
-          - BT-CON-D3-SWING-01-2
           documents:
           - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_20_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D3-SWING-01-1
-          - OLV-CON-D3-SWING-01-2
-          documents:
-          - OLYA 10 📍✅5min liquidity scalps.pdf
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-SWING-02:
-    name: Swing Low Definition
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D3-SWING-02-1
-          - BT-CON-D3-SWING-02-2
-          documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_20_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D3-SWING-02-1
-          - OLV-CON-D3-SWING-02-2
-          documents:
-          - OLYA 10 📍✅5min liquidity scalps.pdf
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-SWEEP-01:
-    name: Liquidity Sweep - Bullish
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D3-SWEEP-01-1
-          - BT-CON-D3-SWEEP-01-2
-          - BT-CON-D3-SWEEP-01-3
-          - BT-CON-D3-SWEEP-01-4
-          - BT-CON-D3-SWEEP-01-5
-          - BT-CON-D3-SWEEP-01-6
-          - BT-CON-D3-SWEEP-01-7
-          - BT-CON-D3-SWEEP-01-8
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_10_PDF (2).pdf
           - Lesson_15_PDF (3).pdf
           - Lesson_18_PDF (4).pdf
-          - Lesson_20_PDF (4).pdf
-          - Lesson_21_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D3-SWEEP-01-1
+          - BT-CON-D3-DISP-01-1
+          - BT-CON-D3-DISP-01-2
+          - BT-CON-D3-DISP-01-3
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT London Killzone
+          signature_ids:
+          - ICT-CON-D3-DISP-01-1
+          timestamps:
+          - '10:18'
+        last_checked: '2026-02-09T13:36:10.869822+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-SWEEP-02:
-    name: Liquidity Sweep - Bearish
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
-          - BT-CON-D3-SWEEP-02-1
-          - BT-CON-D3-SWEEP-02-2
-          - BT-CON-D3-SWEEP-02-3
-          - BT-CON-D3-SWEEP-02-4
-          - BT-CON-D3-SWEEP-02-5
-          - BT-CON-D3-SWEEP-02-6
+          - OLV-CON-D3-DISP-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-DISP-02:
+    drawer: 3
+    name: Displacement - FALSE
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
           - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_10_PDF (2).pdf
           - Lesson_15_PDF (3).pdf
           - Lesson_18_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D3-SWEEP-02-1
+          - BT-CON-D3-DISP-02-1
+          - BT-CON-D3-DISP-02-2
+          - BT-CON-D3-DISP-02-3
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          signature_ids:
+          - ICT-CON-D3-DISP-02-1
+          timestamps:
+          - 03:12
+        last_checked: '2026-02-09T13:49:26.091775+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-MSS-01:
-    name: Market Structure Shift - Bearish
+          signature_ids:
+          - OLV-CON-D3-DISP-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-ENGINE-01:
     drawer: 3
+    name: Core 2022 Engine Event
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D3-MSS-01-1
-          - BT-CON-D3-MSS-01-2
-          documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_18_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D3-MSS-01-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-MSS-02:
-    name: Market Structure Shift - Bullish
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D3-MSS-02-1
-          - BT-CON-D3-MSS-02-2
-          - BT-CON-D3-MSS-02-3
           documents:
           - EU_DXY_SMT_Divergence. (1).pdf
           - Lesson_18_PDF (4).pdf
           - Lesson_21_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D3-MSS-02-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-MSS-03:
-    name: MSS Invalidation
-    drawer: 3
-    sources:
+          - BT-CON-D3-ENGINE-01-1
+          - BT-CON-D3-ENGINE-01-2
+          - BT-CON-D3-ENGINE-01-3
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
       ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D3-MSS-03-1
-          - BT-CON-D3-MSS-03-2
-          - BT-CON-D3-MSS-03-3
           documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_15_PDF (3).pdf
-          - Lesson_18_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
+          - ICT Forex - Trading The Key Swing Points
           signature_ids:
-          - OLV-CON-D3-MSS-03-1
+          - ICT-CON-D3-ENGINE-01-1
+          timestamps:
+          - 00:40
+        last_checked: '2026-02-09T13:53:16.521677+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+          signature_ids:
+          - OLV-CON-D3-ENGINE-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
   CON-D3-FVG-01:
-    name: Bullish FVG Definition
     drawer: 3
+    name: Bullish FVG Definition
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+          - Lesson_6_PDF (3).pdf
+          - Orderblock_Propulsion_Block_Breaker (3).pdf
           signature_ids:
           - BT-CON-D3-FVG-01-1
           - BT-CON-D3-FVG-01-2
@@ -768,764 +776,1089 @@ coverage:
           - BT-CON-D3-FVG-01-7
           - BT-CON-D3-FVG-01-8
           - BT-CON-D3-FVG-01-9
-          documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_10_PDF (2).pdf
-          - Lesson_12_PDF (1).pdf
-          - Lesson_15_PDF (3).pdf
-          - Lesson_18_PDF (4).pdf
-          - Lesson_20_PDF (4).pdf
-          - Lesson_21_PDF (3).pdf
-          - Lesson_6_PDF (3).pdf
-          - Orderblock_Propulsion_Block_Breaker (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352704+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
-          signature_ids:
-          - OLV-CON-D3-FVG-01-1
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-FVG-02:
-    name: Bearish FVG Definition
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+          signature_ids:
+          - OLV-CON-D3-FVG-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D3-FVG-02:
+    drawer: 3
+    name: Bearish FVG Definition
+    sources:
+      BLESSED_TRADER:
         evidence:
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_6_PDF (3).pdf
+          - Orderblock_Propulsion_Block_Breaker (3).pdf
           signature_ids:
           - BT-CON-D3-FVG-02-1
           - BT-CON-D3-FVG-02-2
           - BT-CON-D3-FVG-02-3
           - BT-CON-D3-FVG-02-4
           - BT-CON-D3-FVG-02-5
-          documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_12_PDF (1).pdf
-          - Lesson_18_PDF (4).pdf
-          - Lesson_6_PDF (3).pdf
-          - Orderblock_Propulsion_Block_Breaker (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352716+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
           signature_ids:
           - OLV-CON-D3-FVG-02-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-DISP-01:
-    name: Displacement - TRUE
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D3-MSS-01:
+    drawer: 3
+    name: Market Structure Shift - Bearish
+    sources:
+      BLESSED_TRADER:
         evidence:
-          signature_ids:
-          - BT-CON-D3-DISP-01-1
-          - BT-CON-D3-DISP-01-2
-          - BT-CON-D3-DISP-01-3
           documents:
           - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_15_PDF (3).pdf
           - Lesson_18_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D3-DISP-01-1
+          - BT-CON-D3-MSS-01-1
+          - BT-CON-D3-MSS-01-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D3-MSS-01-1
+          timestamps:
+          - '12:01'
+        last_checked: '2026-02-09T13:32:09.074340+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-DISP-02:
-    name: Displacement - FALSE
+          signature_ids:
+          - OLV-CON-D3-MSS-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-MSS-02:
     drawer: 3
+    name: Market Structure Shift - Bullish
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D3-DISP-02-1
-          - BT-CON-D3-DISP-02-2
-          - BT-CON-D3-DISP-02-3
-          documents:
-          - EU_DXY_SMT_Divergence. (1).pdf
-          - Lesson_15_PDF (3).pdf
-          - Lesson_18_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D3-DISP-02-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D3-ENGINE-01:
-    name: Core 2022 Engine Event
-    drawer: 3
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D3-ENGINE-01-1
-          - BT-CON-D3-ENGINE-01-2
-          - BT-CON-D3-ENGINE-01-3
           documents:
           - EU_DXY_SMT_Divergence. (1).pdf
           - Lesson_18_PDF (4).pdf
           - Lesson_21_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
           signature_ids:
-          - OLV-CON-D3-ENGINE-01-1
+          - BT-CON-D3-MSS-02-1
+          - BT-CON-D3-MSS-02-2
+          - BT-CON-D3-MSS-02-3
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D3-MSS-02-1
+          timestamps:
+          - '12:01'
+        last_checked: '2026-02-09T13:32:09.074352+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-RANGE-01:
-    name: Intraday Dealing Range Definition
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
           signature_ids:
-          - BT-CON-D4-RANGE-01-1
-          - BT-CON-D4-RANGE-01-2
+          - OLV-CON-D3-MSS-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-MSS-03:
+    drawer: 3
+    name: MSS Invalidation
+    sources:
+      BLESSED_TRADER:
+        evidence:
           documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_7_PDF (3).pdf
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D3-MSS-03-1
+          - BT-CON-D3-MSS-03-2
+          - BT-CON-D3-MSS-03-3
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D4-RANGE-01-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-PD-01:
-    name: Premium/Discount Zones - Bullish
-    drawer: 4
-    sources:
       ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
         evidence:
-          signature_ids:
-          - BT-CON-D4-PD-01-1
-          - BT-CON-D4-PD-01-2
           documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_7_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
+          - ICT Forex - Time & Price Theory
           signature_ids:
-          - OLV-CON-D4-PD-01-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-PD-02:
-    name: Premium/Discount Zones - Bearish
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D4-PD-02-1
-          - BT-CON-D4-PD-02-2
-          documents:
-          - Liquidity_PDF_Blessed_TRD (4).pdf
-          - Lesson_7_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D4-PD-02-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-OTE-01:
-    name: OTE Buy Zone
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D4-OTE-01-1
-          documents:
-          - Lesson_19_PDF (4).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D4-OTE-01-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-OTE-02:
-    name: OTE Sell Zone
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+          - ICT-CON-D3-MSS-03-1
+          timestamps:
+          - 06:35
+        last_checked: '2026-02-09T13:43:58.692453+00:00'
         status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D3-MSS-03-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-SWEEP-01:
+    drawer: 3
+    name: Liquidity Sweep - Bullish
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D3-SWEEP-01-1
+          - BT-CON-D3-SWEEP-01-2
+          - BT-CON-D3-SWEEP-01-3
+          - BT-CON-D3-SWEEP-01-4
+          - BT-CON-D3-SWEEP-01-5
+          - BT-CON-D3-SWEEP-01-6
+          - BT-CON-D3-SWEEP-01-7
+          - BT-CON-D3-SWEEP-01-8
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          - ICT Forex - What New Traders Should Focus On
+          signature_ids:
+          - ICT-CON-D3-SWEEP-01-1
+          - ICT-CON-D3-SWEEP-01-2
+          timestamps:
+          - 04:56
+        last_checked: '2026-02-09T13:49:26.091739+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D3-SWEEP-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-SWEEP-02:
+    drawer: 3
+    name: Liquidity Sweep - Bearish
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D3-SWEEP-02-1
+          - BT-CON-D3-SWEEP-02-2
+          - BT-CON-D3-SWEEP-02-3
+          - BT-CON-D3-SWEEP-02-4
+          - BT-CON-D3-SWEEP-02-5
+          - BT-CON-D3-SWEEP-02-6
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Understanding The ICT Judas Swing
+          - ICT Forex - What New Traders Should Focus On
+          signature_ids:
+          - ICT-CON-D3-SWEEP-02-1
+          - ICT-CON-D3-SWEEP-02-2
+          timestamps:
+          - 09:42
+        last_checked: '2026-02-09T13:49:26.091750+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D3-SWEEP-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-SWING-01:
+    drawer: 3
+    name: Swing High Definition
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_20_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D3-SWING-01-1
+          - BT-CON-D3-SWING-01-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - ICT Forex - Time & Price Theory
+          signature_ids:
+          - ICT-CON-D3-SWING-01-1
+          - ICT-CON-D3-SWING-01-2
+          timestamps:
+          - 05:15
+        last_checked: '2026-02-09T13:43:58.692410+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 10 📍✅5min liquidity scalps.pdf
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D3-SWING-01-1
+          - OLV-CON-D3-SWING-01-2
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D3-SWING-02:
+    drawer: 3
+    name: Swing Low Definition
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_20_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D3-SWING-02-1
+          - BT-CON-D3-SWING-02-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - ICT Forex - Time & Price Theory
+          signature_ids:
+          - ICT-CON-D3-SWING-02-1
+          - ICT-CON-D3-SWING-02-2
+          timestamps:
+          - 05:15
+        last_checked: '2026-02-09T13:43:58.692423+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 10 📍✅5min liquidity scalps.pdf
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D3-SWING-02-1
+          - OLV-CON-D3-SWING-02-2
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-CONFL-01:
+    drawer: 4
+    name: 2022 Model Setup VALID
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Lesson_21_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-CONFL-01-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Target Selection & Profit Objectives
+          signature_ids:
+          - ICT-CON-D4-CONFL-01-1
+          timestamps:
+          - 04:20
+        last_checked: '2026-02-09T14:02:18.359301+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: PARTIAL
+  CON-D4-ENTRY-01:
+    drawer: 4
+    name: Limit Order - Short
+    sources:
+      BLESSED_TRADER:
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
+        status: ABSENT
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - The ICT ATM Method
           signature_ids:
-          - OLV-CON-D4-OTE-02-1
+          - ICT-CON-D4-ENTRY-01-1
+          timestamps:
+          - 08:45
+        last_checked: '2026-02-09T13:58:17.347674+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-FVG-CONF-01:
-    name: FVG Confirmation - Short
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+          signature_ids:
+          - OLV-CON-D4-ENTRY-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D4-ENTRY-02:
+    drawer: 4
+    name: Limit Order - Long
+    sources:
+      BLESSED_TRADER:
         evidence:
+          documents:
+          - Lesson_21_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-ENTRY-02-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The Weekly Bias - Excellence In Short Term Trading
+          signature_ids:
+          - ICT-CON-D4-ENTRY-02-1
+          timestamps:
+          - '10:10'
+        last_checked: '2026-02-09T13:42:15.116237+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
+          signature_ids:
+          - OLV-CON-D4-ENTRY-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-FVG-CONF-01:
+    drawer: 4
+    name: FVG Confirmation - Short
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
           signature_ids:
           - BT-CON-D4-FVG-CONF-01-1
           - BT-CON-D4-FVG-CONF-01-2
-          documents:
-          - Lesson_12_PDF (1).pdf
-          - Lesson_15_PDF (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352856+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
-          signature_ids:
-          - OLV-CON-D4-FVG-CONF-01-1
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-FVG-CONF-02:
-    name: FVG Confirmation - Long
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+          signature_ids:
+          - OLV-CON-D4-FVG-CONF-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D4-FVG-CONF-02:
+    drawer: 4
+    name: FVG Confirmation - Long
+    sources:
+      BLESSED_TRADER:
         evidence:
+          documents:
+          - Lesson_12_PDF (1).pdf
+          - Lesson_21_PDF (3).pdf
           signature_ids:
           - BT-CON-D4-FVG-CONF-02-1
           - BT-CON-D4-FVG-CONF-02-2
-          documents:
-          - Lesson_12_PDF (1).pdf
-          - Lesson_21_PDF (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352874+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
           signature_ids:
           - OLV-CON-D4-FVG-CONF-02-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-FVG-RET-01:
-    name: FVG Retrace Entry - Short
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D4-FVG-RET-01:
+    drawer: 4
+    name: FVG Retrace Entry - Short
+    sources:
+      BLESSED_TRADER:
         evidence:
-          signature_ids:
-          - BT-CON-D4-FVG-RET-01-1
           documents:
           - Lesson_15_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-FVG-RET-01-1
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352891+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
           signature_ids:
           - OLV-CON-D4-FVG-RET-01-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-FVG-RET-02:
-    name: FVG Retrace Entry - Long
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
+  CON-D4-FVG-RET-02:
+    drawer: 4
+    name: FVG Retrace Entry - Long
+    sources:
+      BLESSED_TRADER:
         evidence:
+          documents:
+          - Lesson_21_PDF (3).pdf
           signature_ids:
           - BT-CON-D4-FVG-RET-02-1
-          documents:
-          - Lesson_21_PDF (3).pdf
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: FOUND
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.352911+00:00'
+        status: ABSENT
+      OLYA_NOTES:
         evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
           signature_ids:
           - OLV-CON-D4-FVG-RET-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-OTE-01:
+    drawer: 4
+    name: OTE Buy Zone
+    sources:
+      BLESSED_TRADER:
+        evidence:
+          documents:
+          - Lesson_19_PDF (4).pdf
+          signature_ids:
+          - BT-CON-D4-OTE-01-1
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - OTE Primer - Intro To ICT Optimal Trade Entry
+          signature_ids:
+          - ICT-CON-D4-OTE-01-1
+          - ICT-CON-D4-OTE-01-2
+          timestamps:
+          - '11:13'
+        last_checked: '2026-02-09T14:00:09.570984+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-ENTRY-01:
-    name: Limit Order - Short
+          signature_ids:
+          - OLV-CON-D4-OTE-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-OTE-02:
     drawer: 4
+    name: OTE Sell Zone
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D4-ENTRY-01-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-ENTRY-02:
-    name: Limit Order - Long
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D4-ENTRY-02-1
-          documents:
-          - Lesson_21_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D4-ENTRY-02-1
-          documents:
-          - OLYA 1 - @ MARKET DIRECTION.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D4-CONFL-01:
-    name: 2022 Model Setup VALID
-    drawer: 4
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: FOUND
-        evidence:
-          signature_ids:
-          - BT-CON-D4-CONFL-01-1
-          documents:
-          - Lesson_21_PDF (3).pdf
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
         status: PARTIAL
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-RISK-01:
-    name: Stop Loss - Short
-    drawer: 5
-    sources:
       ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-RISK-01-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-RISK-02:
-    name: Stop Loss - Long
-    drawer: 5
+          - ICT Forex - What New Traders Should Focus On
+          - OTE Primer - Intro To ICT Optimal Trade Entry
+          signature_ids:
+          - ICT-CON-D4-OTE-02-1
+          - ICT-CON-D4-OTE-02-2
+          timestamps:
+          - 09:59
+        last_checked: '2026-02-09T14:00:09.570996+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
+          signature_ids:
+          - OLV-CON-D4-OTE-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-PD-01:
+    drawer: 4
+    name: Premium/Discount Zones - Bullish
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-RISK-02-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-RISK-03:
-    name: Nested SL Anchor
-    drawer: 5
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-PD-01-1
+          - BT-CON-D4-PD-01-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - OTE Primer - Intro To ICT Optimal Trade Entry
+          signature_ids:
+          - ICT-CON-D4-PD-01-1
+          timestamps:
+          - 09:18
+        last_checked: '2026-02-09T14:00:09.570930+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
+          signature_ids:
+          - OLV-CON-D4-PD-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-PD-02:
+    drawer: 4
+    name: Premium/Discount Zones - Bearish
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-RISK-03-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-RISK-04:
-    name: Max Risk Rejection
-    drawer: 5
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-PD-02-1
+          - BT-CON-D4-PD-02-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
+      ICT_2022:
+        evidence:
+          documents:
+          - OTE Primer - Intro To ICT Optimal Trade Entry
+          signature_ids:
+          - ICT-CON-D4-PD-02-1
+          timestamps:
+          - 09:59
+        last_checked: '2026-02-09T14:00:09.570970+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
+          signature_ids:
+          - OLV-CON-D4-PD-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D4-RANGE-01:
+    drawer: 4
+    name: Intraday Dealing Range Definition
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-RISK-04-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-TP-01:
-    name: TP1 - Short
-    drawer: 5
-    sources:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+          signature_ids:
+          - BT-CON-D4-RANGE-01-1
+          - BT-CON-D4-RANGE-01-2
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: FOUND
       ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-TP-01-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-TP-02:
-    name: TP1 - Long
-    drawer: 5
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
+          - ICT Forex - The ICT Asian Killzone
+          - ICT Forex - Implementing The Asian Range
+          signature_ids:
+          - ICT-CON-D4-RANGE-01-1
+          - ICT-CON-D4-RANGE-01-2
+          timestamps:
+          - 04:22
+        last_checked: '2026-02-09T13:47:29.936292+00:00'
         status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D5-TP-02-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-TP-03:
-    name: Runner Target
-    drawer: 5
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
-        status: FOUND
         evidence:
-          signature_ids:
-          - OLV-CON-D5-TP-03-1
           documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-D5-TP-04:
-    name: Close on Structure Break Against
-    drawer: 5
-    sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
-      BLESSED_TRADER:
-        status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
+          - OLYA 1 - @ MARKET DIRECTION.pdf
+          signature_ids:
+          - OLV-CON-D4-RANGE-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
         status: FOUND
-        evidence:
-          signature_ids:
-          - OLV-CON-D5-TP-04-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
   CON-D5-MGMT-01:
-    name: Breakeven at 1:1 RR
     drawer: 5
+    name: Breakeven at 1:1 RR
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.353049+00:00'
+        status: ABSENT
       OLYA_NOTES:
-        status: FOUND
         evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
           signature_ids:
           - OLV-CON-D5-MGMT-01-1
-          documents:
-          - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
   CON-D5-MGMT-02:
-    name: Daily Loss Limit
     drawer: 5
+    name: Daily Loss Limit
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: ABSENT
         evidence: null
         last_checked: '2026-02-09T11:28:05.630916+00:00'
-      OLYA_NOTES:
-        status: FOUND
+        status: ABSENT
+      ICT_2022:
         evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
           signature_ids:
-          - OLV-CON-D5-MGMT-02-1
+          - ICT-CON-D5-MGMT-02-1
+          timestamps:
+          - '12:26'
+        last_checked: '2026-02-09T13:28:13.353060+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
           documents:
           - OLYA 15 CHART SETUP.pdf
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-PDA-REGISTRY:
-    name: PDA Registry Pattern
-    drawer: OLYA
+          signature_ids:
+          - OLV-CON-D5-MGMT-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-RISK-01:
+    drawer: 5
+    name: Stop Loss - Short
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-WARMUP:
-    name: State Machine Warmup
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - ICT Forex - The ICT ATM Method
+          signature_ids:
+          - ICT-CON-D5-RISK-01-1
+          - ICT-CON-D5-RISK-01-2
+          timestamps:
+          - 07:45
+        last_checked: '2026-02-09T13:58:17.347726+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-RISK-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-RISK-02:
+    drawer: 5
+    name: Stop Loss - Long
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-BLUR-001:
-    name: 3Q Ownership Boundary
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - ICT Forex - The ICT ATM Method
+          signature_ids:
+          - ICT-CON-D5-RISK-02-1
+          - ICT-CON-D5-RISK-02-2
+          timestamps:
+          - '11:02'
+        last_checked: '2026-02-09T13:58:17.347740+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-RISK-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-RISK-03:
+    drawer: 5
+    name: Nested SL Anchor
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-NO-PARTIALS:
-    name: No Partial Exits
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT ATM Method
+          signature_ids:
+          - ICT-CON-D5-RISK-03-1
+          timestamps:
+          - '12:50'
+        last_checked: '2026-02-09T13:58:17.347749+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-RISK-03-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-RISK-04:
+    drawer: 5
+    name: Max Risk Rejection
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-NO-REENTRY:
-    name: No Re-entry Same Narrative
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Considerations In Risk Management
+          signature_ids:
+          - ICT-CON-D5-RISK-04-1
+          timestamps:
+          - '11:57'
+        last_checked: '2026-02-09T13:30:11.053829+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-RISK-04-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-TP-01:
+    drawer: 5
+    name: TP1 - Short
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-NO-SCALING:
-    name: No Position Scaling
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - What New Traders Should Focus On
+          - ICT Forex - The ICT ATM Method
+          signature_ids:
+          - ICT-CON-D5-TP-01-1
+          - ICT-CON-D5-TP-01-2
+          timestamps:
+          - 07:37
+        last_checked: '2026-02-09T13:58:17.347759+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-TP-01-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-TP-02:
+    drawer: 5
+    name: TP1 - Long
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
-        evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
-  CON-OX-FIXED-RISK:
-    name: Fixed 1% Risk
-    drawer: OLYA
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT New York Killzone
+          - ICT Forex - The ICT ATM Method
+          signature_ids:
+          - ICT-CON-D5-TP-02-1
+          - ICT-CON-D5-TP-02-2
+          timestamps:
+          - '11:08'
+        last_checked: '2026-02-09T13:58:17.347770+00:00'
+        status: FOUND
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-TP-02-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-TP-03:
+    drawer: 5
+    name: Runner Target
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
-        last_checked: null
-      OLYA_NOTES:
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
         status: ABSENT
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT London Killzone
+          signature_ids:
+          - ICT-CON-D5-TP-03-1
+          timestamps:
+          - 04:11
+        last_checked: '2026-02-09T13:36:10.869865+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-TP-03-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
+  CON-D5-TP-04:
+    drawer: 5
+    name: Close on Structure Break Against
+    sources:
+      BLESSED_TRADER:
         evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
+        status: ABSENT
+      ICT_2022:
+        evidence:
+          documents:
+          - Essentials To ICT Market Structure
+          signature_ids:
+          - ICT-CON-D5-TP-04-1
+          timestamps:
+          - 09:12
+        last_checked: '2026-02-09T13:32:09.074474+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence:
+          documents:
+          - OLYA 15 CHART SETUP.pdf
+          signature_ids:
+          - OLV-CON-D5-TP-04-1
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: FOUND
   CON-OX-BE-ONLY:
-    name: Breakeven-Only Trailing
     drawer: OLYA
+    name: Breakeven-Only Trailing
     sources:
-      ICT_2022:
-        status: PENDING
-        evidence: null
-        last_checked: null
       BLESSED_TRADER:
-        status: PENDING
         evidence: null
         last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Secrets To Swing Trading
+          signature_ids:
+          - ICT-CON-OX-BE-ONLY-1
+          timestamps:
+          - '12:59'
+        last_checked: '2026-02-09T14:11:53.617593+00:00'
+        status: PARTIAL
       OLYA_NOTES:
-        status: ABSENT
         evidence: null
-        last_checked: '2026-02-09T13:13:48.555229+00:00'
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-BLUR-001:
+    drawer: OLYA
+    name: 3Q Ownership Boundary
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.353101+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-FIXED-RISK:
+    drawer: OLYA
+    name: Fixed 1% Risk
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - Considerations In Risk Management
+          signature_ids:
+          - ICT-CON-OX-FIXED-RISK-1
+          timestamps:
+          - '10:02'
+        last_checked: '2026-02-09T13:30:11.053939+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-NO-PARTIALS:
+    drawer: OLYA
+    name: No Partial Exits
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence:
+          documents:
+          - OTE Primer - Intro To ICT Optimal Trade Entry
+          signature_ids:
+          - ICT-CON-OX-NO-PARTIALS-1
+          timestamps:
+          - '13:41'
+        last_checked: '2026-02-09T14:00:09.571088+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-NO-REENTRY:
+    drawer: OLYA
+    name: No Re-entry Same Narrative
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The Weekly Bias - Excellence In Short Term Trading
+          signature_ids:
+          - ICT-CON-OX-NO-REENTRY-1
+          timestamps:
+          - '13:40'
+        last_checked: '2026-02-09T13:42:15.116320+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-NO-SCALING:
+    drawer: OLYA
+    name: No Position Scaling
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence:
+          documents:
+          - ICT Forex - The ICT New York Killzone
+          signature_ids:
+          - ICT-CON-OX-NO-SCALING-1
+          timestamps:
+          - 01:33
+        last_checked: '2026-02-09T13:38:23.862787+00:00'
+        status: PARTIAL
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-PDA-REGISTRY:
+    drawer: OLYA
+    name: PDA Registry Pattern
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.353076+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+  CON-OX-WARMUP:
+    drawer: OLYA
+    name: State Machine Warmup
+    sources:
+      BLESSED_TRADER:
+        evidence: null
+        last_checked: null
+        status: PENDING
+      ICT_2022:
+        evidence: null
+        last_checked: '2026-02-09T13:28:13.353089+00:00'
+        status: ABSENT
+      OLYA_NOTES:
+        evidence: null
+        last_checked: '2026-02-09T13:23:09.339306+00:00'
+        status: ABSENT
+created: '2026-02-09'
+last_updated: '2026-02-09T14:11:55.640947+00:00'
+sources:
+  BLESSED_TRADER:
+    description: Blessed Trader PDF methodology
+    document_count: 18
+    status: ACTIVE
+    tier: LATERAL
+  ICT_2022:
+    description: ICT 2022 Mentorship live transcripts
+    document_count: 24
+    status: ACTIVE
+    tier: CANON
+  OLYA_NOTES:
+    description: Olya's notes and systematization
+    document_count: 22
+    status: ACTIVE
+    tier: OLYA_PRIMARY
 summary:
-  total_concepts: 66
-  total_coverage_cells: 198
-  by_status:
-    FOUND: 77
-    ABSENT: 43
-    PARTIAL: 4
-    PENDING: 74
-    NOT_APPLICABLE: 0
   by_drawer:
     drawer_1:
       found: 0
@@ -1546,12 +1879,21 @@ summary:
       found: 0
       total: 24
   by_source:
-    ICT_2022:
-      found: 0
-      total: 66
     BLESSED_TRADER:
       found: 40
+      total: 66
+    ICT_2022:
+      found: 0
       total: 66
     OLYA_NOTES:
       found: 37
       total: 66
+  by_status:
+    ABSENT: 43
+    FOUND: 77
+    NOT_APPLICABLE: 0
+    PARTIAL: 4
+    PENDING: 74
+  total_concepts: 66
+  total_coverage_cells: 198
+version: '1.0'
