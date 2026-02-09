@@ -2,7 +2,7 @@
 ## Sovereign Evidence Refinery
 
 ### STATUS
-- Phase: STAGE_3_COMPLETE (Mirror Report generated)
+- Phase: BLESSED_AUDIT_COMPLETE (2026-02-09)
 - Tests: 363/363 PASS
 - Build Agent: Claude Code CLI (COO)
 - Oversight: Claude Web (CTO) + Human (G)
@@ -10,8 +10,10 @@
 - Sources: 4 extraction targets + 1 reference
 - Vision Extraction: OPERATIONAL — two-pass architecture
 - Stage 3 Extraction: COMPLETE — 146 validated from live ICT transcripts
+- Blessed Audit: COMPLETE — 53 validated from 18 PDFs (+43 from Stage 2)
 - Mirror Report: GENERATED — bundles/MIRROR_REPORT.md
-- Auditor Rejection: 14.6% on live (above 10% target floor)
+- Total Signatures: 1034 validated (981 + 53 new)
+- Auditor Rejection: 3.6% on Blessed (healthy)
 
 ### STAGE 1 EXTRACTION SUMMARY (P3.4d Complete)
 
@@ -47,26 +49,33 @@ Vision extraction unlocks: TradingView screenshots, annotated charts, visual exa
 
 **Stage 1 Gate Status:** COMPLETE
 
-### STAGE 2 EXTRACTION SUMMARY (Complete 2026-02-05)
+### STAGE 2 EXTRACTION SUMMARY (Updated 2026-02-09)
 
 **Per-Tier Results:**
 | Tier | Source Type | Model | Sources | Validated | Rejected | Rate |
 |------|-------------|-------|---------|-----------|----------|------|
 | OLYA_PRIMARY | PDF (vision) | Opus | 22 | 153 | 6 | 3.8% |
 | CANON | YouTube | DeepSeek | 24 | 168 | 0 | 0% (mock) |
-| LATERAL | PDF (vision) | Sonnet | 5 | 10 | 0 | 0% |
-| **TOTAL** | — | — | **51** | **331** | **6** | **1.8%** |
+| LATERAL | PDF (vision) | Sonnet | **18** | **53** | **2** | **3.6%** |
+| **TOTAL** | — | — | **64** | **374** | **8** | **2.1%** |
 
 **Key Findings:**
 1. **Vision extraction operational** — Two-pass architecture (Vision → Theorist) working
 2. **OLYA_PRIMARY highest quality** — 153 signatures from personal trading notes
 3. **ICT 2022 pipeline ready** — 168 validated from mock transcripts (live integration pending)
-4. **Blessed Trader supplementary** — 10 signatures, confirms ICT concepts
-5. **Rejection rate below target** — 1.8% vs 10% floor (Auditor hardening needed)
+4. **Blessed Trader full audit complete** — 53 validated from 18 PDFs (up from 10)
+5. **Rejection rate improved** — 3.6% on Blessed (up from 0%)
+
+**Blessed Trader Audit (2026-02-09):**
+- Full rerun of all 18 PDFs with vision + LLM mode enabled
+- 8 PDFs produced signatures, 10 PDFs returned 0 (investigation needed)
+- Concept coverage: HTF_BIAS (32%), DRAW_ON_LIQUIDITY (21%), PREMIUM_DISCOUNT (11%)
+- Gap: 3 concept-dense PDFs (Orderblock, Liquidity, W_D_Structure) returned 0 — Theorist issue
+- Report: data/audit/blessed_full_extraction_report.md
 
 **Full Report:** docs/STAGE_2_EXTRACTION_REPORT.md
 
-**Stage 2 Gate Status:** COMPLETE — awaiting human review
+**Stage 2 Gate Status:** COMPLETE — Blessed audit done, awaiting human review
 
 ### PHOENIX INTEGRATION
 - Status: BRIDGE ESTABLISHED
@@ -106,7 +115,7 @@ Vision extraction unlocks: TradingView screenshots, annotated charts, visual exa
 - [x] P3.5c: Full Olya visual corpus extraction
 - [x] Stage 2a: Olya PDFs (22) → 153 validated, 6 rejected (3.8%)
 - [x] Stage 2b: ICT 2022 videos (24) → 168 validated (mock transcripts)
-- [x] Stage 2c: Blessed Trader PDFs (5) → 10 validated
+- [x] Stage 2c: Blessed Trader PDFs (18) → 53 validated, 2 rejected (full rerun 2026-02-09)
 
 **P4 — AUDITOR HARDENING (COMPLETE):**
 - [x] Harden Auditor prompt with v0.3 Bounty Hunter pattern
