@@ -1,0 +1,399 @@
+{
+  "timestamp": "2026-02-09T10:55:59.534561+00:00",
+  "pdfs_processed": 1,
+  "total_found": 12,
+  "total_partial": 21,
+  "total_absent": 25,
+  "files": [
+    {
+      "file": "Liquidity_PDF_Blessed_TRD (4).pdf",
+      "total_concepts_checked": 58,
+      "found": 12,
+      "partial": 21,
+      "absent": 25,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "PARTIAL",
+          "signature": "IF higher time-frame orderflow is bullish THEN expect price to sweep liquidity but continue bullish",
+          "source_quote": "Very important rule to remember is that higher time-frames are like a 'parent' figure to the lower ones, meaning that if the 1H orderflow is bullish but there's a 5min consolidation that is building buy-side liquidity above and sell-side liquidity below there's a big chance that both sides will get swept, however, the overall direction will stay bullish.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "FOUND",
+          "signature": "IF higher time-frame orderflow is bullish AND buy-side liquidity exists above THEN price will target buy-side liquidity",
+          "source_quote": "Price expanded to the higher to take out buy stops, why? Because they (the Informed Money), will want to sell at a higher price, take the Liquidity and cover their long positions that they opened to run the price higher.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "FOUND",
+          "signature": "IF higher time-frame orderflow is bearish AND sell-side liquidity exists below THEN price will target sell-side liquidity",
+          "source_quote": "What retail sees as a 'double bottom' area as strong support, what we see is all the sell stops resting below (retail stop losses) \u2013 that's our target and a magnet where the price will be drawn to.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "PARTIAL",
+          "signature": "IF dealing range is defined THEN internal liquidity exists within the range",
+          "source_quote": "everything that's happening inside the current dealing range is 'Internal Liquidity'",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "PARTIAL",
+          "signature": "IF dealing range is defined THEN internal liquidity exists within the range",
+          "source_quote": "everything that's happening inside the current dealing range is 'Internal Liquidity'",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "PARTIAL",
+          "signature": "IF price breaks above dealing range THEN external liquidity is targeted",
+          "source_quote": "you see price completely breakout above the main (highest) premium level \u2013 that's where price enters the External Liquidity area",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "PARTIAL",
+          "signature": "IF price breaks below dealing range THEN external liquidity is targeted",
+          "source_quote": "everything that's happening outside the current dealing range is 'External Liquidity'",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "FOUND",
+          "signature": "IF dealing range is defined THEN Premium = upper 50%, Discount = lower 50%",
+          "source_quote": "What's the dealing range high & the dealing range low? \u2013 this is how we define a PREMIUM Side of the range and the DISCOUNT side of the range.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "FOUND",
+          "signature": "IF dealing range is defined THEN Premium = upper 50%, Discount = lower 50%",
+          "source_quote": "What's the dealing range high & the dealing range low? \u2013 this is how we define a PREMIUM Side of the range and the DISCOUNT side of the range.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "PARTIAL",
+          "signature": "IF analyzing price THEN consider higher time-frame orderflow",
+          "source_quote": "Very important rule to remember is that higher time-frames are like a 'parent' figure to the lower ones",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "PARTIAL",
+          "signature": "IF liquidity exists THEN price will target it",
+          "source_quote": "Price needs to sweep Liquidity before every strong move that's directional & momentum driven.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "FOUND",
+          "signature": "IF current session = ASIA (approx 19:00-02:00 EST) THEN mark Asia High/Low as liquidity pools",
+          "source_quote": "Highs & Lows of Asia Session: 08:00 PM to 00:00 AM NY time",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "FOUND",
+          "signature": "IF current time = London Killzone (02:00-05:00 EST) THEN mark London session extremes as key levels",
+          "source_quote": "Highs & Lows of London Session: 02:00 AM to 05:00 AM NY time",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "PARTIAL",
+          "signature": "IF London Killzone active AND price sweeps Asia High/Low THEN potential reversal setup forming",
+          "source_quote": "Price needs to sweep Liquidity before every strong move that\u2019s directional & momentum driven.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "FOUND",
+          "signature": "IF time = 08:30-11:00 EST THEN primary entry window (NY AM Killzone)",
+          "source_quote": "Highs & Lows of NY Session: 07:00 AM to 10:00 AM NY time",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "PARTIAL",
+          "signature": "IF London Killzone active AND Asia High/Low swept AND MSS + Displacement confirmed THEN London setup VALID",
+          "source_quote": "Price needs to sweep Liquidity before every strong move that\u2019s directional & momentum driven.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "FOUND",
+          "signature": "IF price trades above prior swing high (buy-side liquidity) AND then reverses back below that high THEN Bullish Liquidity Sweep = TRUE",
+          "source_quote": "Price expanded to the higher to take out buy stops, why? Because they (the Informed Money), will want to sell at a higher price, take the Liquidity and cover their long positions that they opened to run the price higher.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "FOUND",
+          "signature": "IF price trades below prior swing low (sell-side liquidity) AND then reverses back above that low THEN Bearish Liquidity Sweep = TRUE",
+          "source_quote": "What retail sees as a 'double bottom' area as strong support, what we see is all the sell stops resting below (retail stop losses) \u2013 that\u2019s our target and a magnet where the price will be drawn to.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "PARTIAL",
+          "signature": "IF prior structure = bullish (HH/HL) AND price breaks below most recent swing low with displacement THEN MSS = Bearish",
+          "source_quote": "When we see market making higher highs & higher lows after already running the sell-side liquidity, we can\u2019t reasonably expect for price to drop all the way down below the main low to take those stops out.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "PARTIAL",
+          "signature": "IF prior structure = bearish (LL/LH) AND price breaks above most recent swing high with displacement THEN MSS = Bullish",
+          "source_quote": "When we know what the Higher TF orderflow is we wait for retracements to ride the direction towards the Higher TF draw on Liquidity.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "PARTIAL",
+          "signature": "IF swing point broken (sweep) BUT no displacement follows THEN MSS = INVALID",
+          "source_quote": "IMPORTANT: when price runs a liquidity pool we want to see a strong expansion to the opposite direction right away, if price is not in a rush to leave the liquidity pool that\u2019s the first sign that price is NOT ready to go.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "PARTIAL",
+          "signature": "IF price move creates FVG AND move has significant range THEN Displacement = TRUE",
+          "source_quote": "Notice how aggressively price moves away from that area, that\u2019s the clearest & most obvious sign that the 'Smart Money' is involved \u2013 price has to run the stops and quickly move away from that area.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "PARTIAL",
+          "signature": "IF price move has NO FVG OR move has small range THEN Displacement = FALSE",
+          "source_quote": "if price is not in a rush to leave the liquidity pool that\u2019s the first sign that price is NOT ready to go.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "PARTIAL",
+          "signature": "IF Liquidity Sweep confirmed AND MSS confirmed AND FVG created THEN 2022 Model Engine Event",
+          "source_quote": "Before every one-sided, strong move the 'Informed Money' will grab the liquidity that\u2019s resting above the highs or below the lows (where retail traders place their stop losses) to be able to open large positions.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "FOUND",
+          "signature": "IF most recent expansion leg identified THEN Intraday Dealing Range = leg_high to leg_low AND use for Premium/Discount zone calculation",
+          "source_quote": "What\u2019s the dealing range high & the dealing range low? \u2013 this is how we define a PREMIUM Side of the range and the DISCOUNT side of the range.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "FOUND",
+          "signature": "IF Dealing Range defined AND HTF Bias = BULLISH THEN Premium Zone = 50%-100% of range (avoid for longs) AND Discount Zone = 0%-50% of range (seek for...",
+          "source_quote": "If the Market is in the Premium \u2013 we expect a Sell Program to occur, we want to find the counter levels, opposing Premium/Discount Array\u2019s (PDA\u2019s) to cover our position, and vice versa when the market is in the Discount \u2013 we expect a Buy Program to occur, we want to find counter levels, opposing PDA\u2019s to cover our position.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "FOUND",
+          "signature": "IF Dealing Range defined AND HTF Bias = BEARISH THEN Premium Zone = 50%-100% of range (seek for shorts) AND Discount Zone = 0%-50% of range (avoid for...",
+          "source_quote": "If the Market is in the Premium \u2013 we expect a Sell Program to occur, we want to find the counter levels, opposing Premium/Discount Array\u2019s (PDA\u2019s) to cover our position, and vice versa when the market is in the Discount \u2013 we expect a Buy Program to occur, we want to find counter levels, opposing PDA\u2019s to cover our position.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "PARTIAL",
+          "signature": "IF Bearish FVG exists AND FVG is in Premium Zone (or OTE Sell Zone) THEN FVG Confirmed for Short entry",
+          "source_quote": "Main levels we use as exits: Liquidity, FVG, Equilibrium of the range, BISI/SIBI midpoint (CE), opposing breakers, orderblocks.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "PARTIAL",
+          "signature": "IF Bullish FVG exists AND FVG is in Discount Zone (or OTE Buy Zone) THEN FVG Confirmed for Long entry",
+          "source_quote": "Main levels we use as exits: Liquidity, FVG, Equilibrium of the range, BISI/SIBI midpoint (CE), opposing breakers, orderblocks.",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "PARTIAL",
+          "signature": "IF HTF orderflow is bullish but there's a 5min consolidation building liquidity on both sides THEN expect both sides to get swept but overall direction stays bullish",
+          "source_quote": "Very important rule to remember is that higher time-frames are like a 'parent' figure to the lower ones...",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "PARTIAL",
+          "signature": "IF price reaches Premium side of dealing range THEN take partials when price trades into Premium FVG",
+          "source_quote": "you take partials when price trades into a Premium FVG",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "PARTIAL",
+          "signature": "IF price reaches Discount side of dealing range THEN look for opposing PDA's to cover position",
+          "source_quote": "when the market is in the Discount \u2013 we expect a Buy Program to occur, we want to find counter levels, opposing PDA's to cover our position",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "PARTIAL",
+          "signature": "IF price breaks out above highest premium level THEN enters External Liquidity area",
+          "source_quote": "then you see price completely breakout above the main (highest) premium level \u2013 that's where price enters the External Liquidity area",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "Liquidity_PDF_Blessed_TRD (4).pdf"
+        }
+      ]
+    }
+  ]
+}

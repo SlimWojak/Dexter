@@ -1,0 +1,367 @@
+{
+  "timestamp": "2026-02-09T10:53:59.683078+00:00",
+  "pdfs_processed": 1,
+  "total_found": 0,
+  "total_partial": 1,
+  "total_absent": 57,
+  "files": [
+    {
+      "file": "EU_DXY_SMT_Divergence. (1).pdf",
+      "total_concepts_checked": 58,
+      "found": 0,
+      "partial": 1,
+      "absent": 57,
+      "results": [
+        {
+          "concept_id": "CON-D1-BIAS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-BIAS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DOL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-INTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-EXTLQ-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-DEAL-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D1-3Q-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-05",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-06",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-07",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-08",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-09",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-10",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-11",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D2-TIME-12",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWING-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-SWEEP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-MSS-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-FVG-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-DISP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D3-ENGINE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-RANGE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-PD-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-OTE-02",
+          "status": "PARTIAL",
+          "signature": "IF OTE Short opportunity identified THEN consider short entry",
+          "source_quote": "SMT Divergence lesson on EURUSD, 3 AUG 2022 NYOKZ, OTE Short opportunity.",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-CONF-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-FVG-RET-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-ENTRY-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D4-CONFL-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-RISK-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-03",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-TP-04",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-01",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        },
+        {
+          "concept_id": "CON-D5-MGMT-02",
+          "status": "ABSENT",
+          "absence_reason": "NOT_DISCUSSED",
+          "source_document": "EU_DXY_SMT_Divergence. (1).pdf"
+        }
+      ]
+    }
+  ]
+}

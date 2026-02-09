@@ -1,6 +1,6 @@
 version: '1.0'
 created: '2026-02-09'
-last_updated: '2026-02-09T10:16:56.220130+00:00'
+last_updated: '2026-02-09T11:28:05.630916+00:00'
 sources:
   ICT_2022:
     tier: CANON
@@ -27,9 +27,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-BIAS-01-1
+          documents:
+          - Lesson_20_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -43,9 +47,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-BIAS-02-1
+          documents:
+          - Lesson_12_PDF (1).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -59,9 +67,21 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-DOL-01-1
+          - BT-CON-D1-DOL-01-2
+          - BT-CON-D1-DOL-01-3
+          - BT-CON-D1-DOL-01-4
+          - BT-CON-D1-DOL-01-5
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -75,9 +95,21 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-DOL-02-1
+          - BT-CON-D1-DOL-02-2
+          - BT-CON-D1-DOL-02-3
+          - BT-CON-D1-DOL-02-4
+          - BT-CON-D1-DOL-02-5
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -91,9 +123,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -107,9 +139,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -123,9 +155,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-EXTLQ-01-1
+          documents:
+          - Lesson_20_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -139,9 +175,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -155,9 +191,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-DEAL-01-1
+          - BT-CON-D1-DEAL-01-2
+          - BT-CON-D1-DEAL-01-3
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_7_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -171,9 +215,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-DEAL-02-1
+          - BT-CON-D1-DEAL-02-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -187,9 +237,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-3Q-01-1
+          documents:
+          - Weekly__Daily_Structure___Price_Delivery (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -203,9 +257,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D1-3Q-02-1
+          documents:
+          - Weekly__Daily_Structure___Price_Delivery (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -219,9 +277,14 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-01-1
+          - BT-CON-D2-TIME-01-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -235,9 +298,19 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-02-1
+          - BT-CON-D2-TIME-02-2
+          - BT-CON-D2-TIME-02-3
+          - BT-CON-D2-TIME-02-4
+          documents:
+          - Lesson_11_PDF_-_M (6).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_17_PDF (2).pdf
+          - Lesson_5_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -251,9 +324,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-03-1
+          - BT-CON-D2-TIME-03-2
+          documents:
+          - Lesson_11_PDF_-_M (6).pdf
+          - Lesson_17_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -267,9 +346,20 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-04-1
+          - BT-CON-D2-TIME-04-2
+          - BT-CON-D2-TIME-04-3
+          - BT-CON-D2-TIME-04-4
+          - BT-CON-D2-TIME-04-5
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_11_PDF_-_M (6).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_5_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -283,9 +373,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-05-1
+          - BT-CON-D2-TIME-05-2
+          - BT-CON-D2-TIME-05-3
+          documents:
+          - Lesson_11_PDF_-_M (6).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_5_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -299,9 +397,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-06-1
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -315,9 +417,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-07-1
+          documents:
+          - Lesson_5_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -331,9 +437,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -347,9 +453,14 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-09-1
+          - BT-CON-D2-TIME-09-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -363,9 +474,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -379,9 +490,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -395,9 +506,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D2-TIME-12-1
+          - BT-CON-D2-TIME-12-2
+          documents:
+          - Lesson_12_PDF (1).pdf
+          - Lesson_5_PDF (2).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -411,9 +528,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-SWING-01-1
+          - BT-CON-D3-SWING-01-2
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_20_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -427,9 +550,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-SWING-02-1
+          - BT-CON-D3-SWING-02-2
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_20_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -443,9 +572,26 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-SWEEP-01-1
+          - BT-CON-D3-SWEEP-01-2
+          - BT-CON-D3-SWEEP-01-3
+          - BT-CON-D3-SWEEP-01-4
+          - BT-CON-D3-SWEEP-01-5
+          - BT-CON-D3-SWEEP-01-6
+          - BT-CON-D3-SWEEP-01-7
+          - BT-CON-D3-SWEEP-01-8
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -459,9 +605,22 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-SWEEP-02-1
+          - BT-CON-D3-SWEEP-02-2
+          - BT-CON-D3-SWEEP-02-3
+          - BT-CON-D3-SWEEP-02-4
+          - BT-CON-D3-SWEEP-02-5
+          - BT-CON-D3-SWEEP-02-6
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -475,9 +634,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-MSS-01-1
+          - BT-CON-D3-MSS-01-2
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -491,9 +656,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-MSS-02-1
+          - BT-CON-D3-MSS-02-2
+          - BT-CON-D3-MSS-02-3
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -507,9 +680,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-MSS-03-1
+          - BT-CON-D3-MSS-03-2
+          - BT-CON-D3-MSS-03-3
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -523,9 +704,29 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-FVG-01-1
+          - BT-CON-D3-FVG-01-2
+          - BT-CON-D3-FVG-01-3
+          - BT-CON-D3-FVG-01-4
+          - BT-CON-D3-FVG-01-5
+          - BT-CON-D3-FVG-01-6
+          - BT-CON-D3-FVG-01-7
+          - BT-CON-D3-FVG-01-8
+          - BT-CON-D3-FVG-01-9
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_10_PDF (2).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_20_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+          - Lesson_6_PDF (3).pdf
+          - Orderblock_Propulsion_Block_Breaker (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -539,9 +740,21 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-FVG-02-1
+          - BT-CON-D3-FVG-02-2
+          - BT-CON-D3-FVG-02-3
+          - BT-CON-D3-FVG-02-4
+          - BT-CON-D3-FVG-02-5
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_12_PDF (1).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_6_PDF (3).pdf
+          - Orderblock_Propulsion_Block_Breaker (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -555,9 +768,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-DISP-01-1
+          - BT-CON-D3-DISP-01-2
+          - BT-CON-D3-DISP-01-3
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -571,9 +792,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-DISP-02-1
+          - BT-CON-D3-DISP-02-2
+          - BT-CON-D3-DISP-02-3
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_15_PDF (3).pdf
+          - Lesson_18_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -587,9 +816,17 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D3-ENGINE-01-1
+          - BT-CON-D3-ENGINE-01-2
+          - BT-CON-D3-ENGINE-01-3
+          documents:
+          - EU_DXY_SMT_Divergence. (1).pdf
+          - Lesson_18_PDF (4).pdf
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -603,9 +840,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-RANGE-01-1
+          - BT-CON-D4-RANGE-01-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -619,9 +862,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-PD-01-1
+          - BT-CON-D4-PD-01-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -635,9 +884,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-PD-02-1
+          - BT-CON-D4-PD-02-2
+          documents:
+          - Liquidity_PDF_Blessed_TRD (4).pdf
+          - Lesson_7_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -651,9 +906,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-OTE-01-1
+          documents:
+          - Lesson_19_PDF (4).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -667,9 +926,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: PARTIAL
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -683,9 +942,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-FVG-CONF-01-1
+          - BT-CON-D4-FVG-CONF-01-2
+          documents:
+          - Lesson_12_PDF (1).pdf
+          - Lesson_15_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -699,9 +964,15 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-FVG-CONF-02-1
+          - BT-CON-D4-FVG-CONF-02-2
+          documents:
+          - Lesson_12_PDF (1).pdf
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -715,9 +986,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-FVG-RET-01-1
+          documents:
+          - Lesson_15_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -731,9 +1006,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-FVG-RET-02-1
+          documents:
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -747,9 +1026,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -763,9 +1042,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-ENTRY-02-1
+          documents:
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -779,9 +1062,13 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
-        evidence: null
-        last_checked: null
+        status: FOUND
+        evidence:
+          signature_ids:
+          - BT-CON-D4-CONFL-01-1
+          documents:
+          - Lesson_21_PDF (3).pdf
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -795,9 +1082,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -811,9 +1098,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -827,9 +1114,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -843,9 +1130,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -859,9 +1146,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -875,9 +1162,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -891,9 +1178,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -907,9 +1194,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -923,9 +1210,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -939,9 +1226,9 @@ coverage:
         evidence: null
         last_checked: null
       BLESSED_TRADER:
-        status: PENDING
+        status: ABSENT
         evidence: null
-        last_checked: null
+        last_checked: '2026-02-09T11:28:05.630916+00:00'
       OLYA_NOTES:
         status: PENDING
         evidence: null
@@ -1078,10 +1365,10 @@ summary:
   total_concepts: 66
   total_coverage_cells: 198
   by_status:
-    FOUND: 0
-    ABSENT: 0
-    PARTIAL: 0
-    PENDING: 198
+    FOUND: 40
+    ABSENT: 17
+    PARTIAL: 1
+    PENDING: 140
     NOT_APPLICABLE: 0
   by_drawer:
     drawer_1:
@@ -1107,7 +1394,7 @@ summary:
       found: 0
       total: 66
     BLESSED_TRADER:
-      found: 0
+      found: 40
       total: 66
     OLYA_NOTES:
       found: 0
