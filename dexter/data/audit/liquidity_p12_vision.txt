@@ -1,0 +1,66 @@
+# Trading Chart Analysis
+
+## 1. DRAWN ZONES & RECTANGLES
+
+**Left Diagram (Schematic):**
+- Red/pink shaded rectangle at upper peak labeled "BUY-SIDE LIQUIDITY"
+- Red/pink shaded rectangle at lower trough labeled "SELL SIDE LIQUIDITY"
+
+**Right Diagram (Actual Chart):**
+- Light blue/gray horizontal rectangle in upper portion of consolidation range labeled "BUY-SIDE LIQUIDITY"
+- Light blue/gray horizontal rectangle in lower portion of consolidation range labeled "SELL-SIDE LIQUIDITY"
+- Red/pink shaded vertical rectangle at top right (above consolidation)
+- Red/pink shaded vertical rectangle at bottom right (below consolidation)
+
+## 2. LABELED PRICE LEVELS
+
+No specific price level numbers are visible on the chart.
+
+## 3. TEXT ANNOTATIONS & NOTES
+
+**Main Title:**
+"LIQUIDITY ABOVE/BELOW CONSOLIDATION"
+
+**Explanatory Text:**
+"WHEN THE PRICE IS GOING SIDEWAYS (CONSOLIDATING) THE LIQUIDITY (RETAIL STOPS) ARE BUILDING ABOVE & BELOW IT, AND IN MOST CASES PRICE WILL WANT TO SWEEP BOTH SIDES BEFORE PICKING A DIRECTION."
+
+**Left Diagram Labels:**
+- "BUY-SIDE LIQUIDITY" (upper zone)
+- "SELL SIDE LIQUIDITY" (lower zone)
+
+**Right Diagram Labels:**
+- "BUY-SIDE LIQUIDITY" (upper zone)
+- "SELL-SIDE LIQUIDITY" (lower zone)
+
+## 4. ICT CONCEPT MARKERS
+
+**Liquidity Markers:**
+- BUY-SIDE LIQUIDITY zones marked above consolidation ranges
+- SELL-SIDE LIQUIDITY zones marked below consolidation ranges
+
+The chart demonstrates liquidity sweep concept where price targets both sides of a consolidation range before directional movement.
+
+## 5. FIBONACCI LEVELS
+
+None visible.
+
+## 6. ARROWS & DIRECTIONAL INDICATORS
+
+**Left Diagram:**
+- Upward arrow showing price movement from consolidation into buy-side liquidity zone
+- Downward arrow showing price movement from consolidation into sell-side liquidity zone
+
+## 7. TIME/SESSION MARKERS
+
+None visible.
+
+## 8. STRUCTURAL ELEMENTS
+
+**Left Diagram:**
+- Simplified line chart showing swing structure with peaks and troughs
+- Horizontal consolidation zone indicated in middle section
+
+**Right Diagram:**
+- Candlestick chart showing actual price action
+- Clear consolidation range with horizontal boundaries
+- Price wicks extending into both liquidity zones above and below the range

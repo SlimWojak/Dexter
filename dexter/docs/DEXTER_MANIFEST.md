@@ -68,10 +68,12 @@ Vision extraction unlocks: TradingView screenshots, annotated charts, visual exa
 
 **Blessed Trader Audit (2026-02-09):**
 - Full rerun of all 18 PDFs with vision + LLM mode enabled
-- 8 PDFs produced signatures, 10 PDFs returned 0 (investigation needed)
+- 8 PDFs produced signatures, 10 PDFs returned 0 (investigated)
 - Concept coverage: HTF_BIAS (32%), DRAW_ON_LIQUIDITY (21%), PREMIUM_DISCOUNT (11%)
-- Gap: 3 concept-dense PDFs (Orderblock, Liquidity, W_D_Structure) returned 0 — Theorist issue
-- Report: data/audit/blessed_full_extraction_report.md
+- Gap: Concept-dense PDFs returned 0 — **PIPELINE_INTEGRATION issue** (not model)
+- Diagnostic: Direct API test showed DeepSeek(1) + Sonnet(2) extract successfully
+- Root cause: Content lost between vision extraction and Theorist invocation
+- Reports: data/audit/blessed_full_extraction_report.md, data/audit/theorist_diagnostic.md
 
 **Full Report:** docs/STAGE_2_EXTRACTION_REPORT.md
 

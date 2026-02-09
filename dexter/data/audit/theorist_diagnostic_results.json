@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-02-09T08:42:23.313191+00:00",
+  "source": "Liquidity_PDF_Blessed_TRD page 12",
+  "vision_chars": 2218,
+  "deepseek": {
+    "model": "deepseek/deepseek-chat",
+    "response_chars": 416,
+    "signatures": 1,
+    "raw_response": "[\n  {\n    \"id\": \"S-001\",\n    \"if\": \"price is going sideways (consolidating)\",\n    \"then\": \"price will sweep both buy-side and sell-side liquidity zones before picking a direction\",\n    \"source_quote\": \"WHEN THE PRICE IS GOING SIDEWAYS (CONSOLIDATING) THE LIQUIDITY (RETAIL STOPS) ARE BUILDING ABOVE & BELOW IT, AND IN MOST CASES PRICE WILL WANT TO SWEEP BOTH SIDES BEFORE PICKING A DIRECTION.\",\n    \"drawer\": 2\n  }\n]"
+  },
+  "sonnet": {
+    "model": "claude-sonnet-4-5-20250929",
+    "response_chars": 601,
+    "signatures": 2,
+    "raw_response": "```json\n[\n  {\n    \"id\": \"S-001\",\n    \"if\": \"price is going sideways (consolidating)\",\n    \"then\": \"liquidity (retail stops) are building above & below it\",\n    \"source_quote\": \"WHEN THE PRICE IS GOING SIDEWAYS (CONSOLIDATING) THE LIQUIDITY (RETAIL STOPS) ARE BUILDING ABOVE & BELOW IT\",\n    \"drawer\": 2\n  },\n  {\n    \"id\": \"S-002\",\n    \"if\": \"price is consolidating with liquidity above and below\",\n    \"then\": \"price will want to sweep both sides before picking a direction\",\n    \"source_quote\": \"IN MOST CASES PRICE WILL WANT TO SWEEP BOTH SIDES BEFORE PICKING A DIRECTION\",\n    \"drawer\": 1\n  }\n]\n```",
+    "parsed_signatures": [
+      {
+        "id": "S-001",
+        "if": "price is going sideways (consolidating)",
+        "then": "liquidity (retail stops) are building above & below it",
+        "source_quote": "WHEN THE PRICE IS GOING SIDEWAYS (CONSOLIDATING) THE LIQUIDITY (RETAIL STOPS) ARE BUILDING ABOVE & BELOW IT",
+        "drawer": 2
+      },
+      {
+        "id": "S-002",
+        "if": "price is consolidating with liquidity above and below",
+        "then": "price will want to sweep both sides before picking a direction",
+        "source_quote": "IN MOST CASES PRICE WILL WANT TO SWEEP BOTH SIDES BEFORE PICKING A DIRECTION",
+        "drawer": 1
+      }
+    ]
+  },
+  "diagnosis": "MODEL_ROUTING"
+}
