@@ -299,8 +299,9 @@ blockers: —
 ```yaml
 description: Manual tamper detection + structural integrity — prove the system catches corruption and stands without LLM
 source: Owl (Advisory Panel, 2026-02-22) + CTO (LLM Removal Test, 2026-02-22)
-status: PENDING
+status: COMPLETE
 target_tests: 8+
+actual_tests: 20 (2 content tamper + 2 KT tamper + 2 chain + 2 Merkle + 2 signing + 9 LLM removal + 1 compound)
 procedure:
   1: Manually edit a single byte in SQLite content blob of a FACT bead
   2: Manually change a knowledge_time stamp in the DB
@@ -355,9 +356,11 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase H COMPLETE — Genesis signed, ready for Phase I (Forensic Integrity)
-tests_passing: 254
+phase: GATE 1 PASS — all phases complete, all exit criteria met
+tests_passing: 274
 genesis_status: SIGNED (789 beads, Merkle root 5c4d...963c)
+invariants_proven: 12 (INV-BEAD-IMMUTABLE, INV-BEAD-SIGNED, INV-BEAD-TEMPORAL, INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, INV-ANCHOR-AT-DECISIONS, INV-COMMITMENT-THRESHOLD, INV-ANCESTRAL-PRESERVED, INV-REFINERY-LATENCY-TRACKED, INV-NO-GRADES, INV-LLM-REMOVAL-TEST, INV-CROSS-FAMILY-ready)
+blockers: NONE
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
