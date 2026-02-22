@@ -355,8 +355,9 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase H IN PROGRESS — HALT 1 (curation report awaiting G review)
+phase: Phase H COMPLETE — Genesis signed, ready for Phase I (Forensic Integrity)
 tests_passing: 254
+genesis_status: SIGNED (789 beads, Merkle root 5c4d...963c)
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED

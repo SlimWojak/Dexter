@@ -2,7 +2,8 @@
 
 ```yaml
 date: 2026-02-22
-status: AWAITING_SOVEREIGN_SIGNATURE
+status: SIGNED_BY_G
+sovereign_signature_bead: 019c839f-266d-7793-ad66-b3e8e433c877
 merkle_root: 5c4d63f29f667d0b80348e3dfc87204aea6488d034c70dd6ae354a57036e963c
 bead_count: 789
 anchor_bead_id: 019c839b-564e-7059-876e-64f754c778bf
@@ -78,4 +79,18 @@ Every future bead traces lineage back to this root.
 
 ---
 
-**HALT 2: G must sign the Merkle root with sovereign key.**
+## Sovereign Signature
+
+```yaml
+ceremony_date: 2026-02-22
+signed_by: G
+bead_id: 019c839f-266d-7793-ad66-b3e8e433c877
+bead_type: POLICY (GENESIS_SOVEREIGN_SIGNATURE)
+lineage: [019c839b-564e-7059-876e-64f754c778bf]  # traces to GENESIS_ANCHOR
+note: |
+  INV-BEAD-IMMUTABLE correctly prevented mutation of the GENESIS_ANCHOR content.
+  G's signature recorded as a new POLICY bead with lineage to the anchor.
+  The substrate defended its own integrity during the signing ceremony.
+```
+
+**Bead Zero is signed. The a8ra Bead Field has an origin.**
