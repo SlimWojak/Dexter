@@ -164,13 +164,14 @@ blockers: —
 ```yaml
 description: Deterministic SHA-256 hashing and per-stream chain
 source: BEAD_FIELD_SPEC_v0.3 Section 5.1
-status: PENDING
+status: COMPLETE
 target_tests: 15+
+actual_tests: 31 (14 hashing + 17 chain)
 deliverables:
   - bead_field/integrity/hashing.py, chain.py
   - bead_field/tests/test_hashing.py, test_chain.py
-sign_off: —
-blockers: —
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase C: HLC
@@ -308,7 +309,7 @@ blockers: —
 | ID | Risk | Severity | Mitigation | Status |
 |----|------|----------|------------|--------|
 | R1 | PQC (Dilithium) unavailable on ARM Mac Mini | HIGH | ~~Fallback chain needed~~ RESOLVED: pqcrypto 0.4.0 with native ARM wheel. ML-DSA-65 (Dilithium3). No stub. | RESOLVED (Phase 0) |
-| R2 | Canonical JSON non-determinism | MEDIUM | Explicit `json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False)`. Test round-trip determinism. | PENDING (Phase B) |
+| R2 | Canonical JSON non-determinism | MEDIUM | Explicit `json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False)`. Round-trip determinism tested. | RESOLVED (Phase B) |
 | R3 | Genesis curation misclassification | HIGH | Halt-and-review protocol. G approves before snapshot. Curation report preserved. | PENDING (Phase H) |
 | R4 | SQLite datetime precision edge cases | LOW | ISO 8601 with microsecond precision. Test boundary cases explicitly. | PENDING (Phase E) |
 | R5 | UUID v7 ordering under rapid insertion | LOW | uuid6 library handles monotonicity. Test 1000 rapid creates. | PENDING (Phase A) |
@@ -337,8 +338,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase A COMPLETE — ready for Phase B (Hashing + Hash Chain)
-tests_passing: 79
+phase: Phase B COMPLETE — ready for Phase C (HLC)
+tests_passing: 110
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
