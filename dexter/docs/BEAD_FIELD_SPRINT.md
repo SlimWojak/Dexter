@@ -259,15 +259,19 @@ blockers: NONE
 ```yaml
 description: End-to-end pipeline — raw data → validated, signed, stored bead
 source: BEAD_FIELD_SPEC_v0.3 Sections 2.2, 3, 5
-status: PENDING
+status: COMPLETE
 target_tests: 15+
+actual_tests: 24 (8 happy path + 7 integrity + 3 rejection + 2 Merkle + 4 counters)
 deliverables:
   - bead_field/ingestion/pipeline.py
   - bead_field/tests/test_ingestion.py
 notes:
-  - Basic observability counters (beads ingested by type, rejections by reason)
-sign_off: —
-blockers: —
+  - All 8 bead types through full pipeline end-to-end
+  - Observability counters: attempts, ingested, rejected (by type)
+  - Hash exclusion refined: attestation sigs excluded (circular dependency resolved)
+  - +2 hashing tests for attestation sig exclusion and metadata inclusion
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase H: Genesis Curation + Snapshot
@@ -351,8 +355,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase F COMPLETE — ready for Phase G (Ingestion Pipeline)
-tests_passing: 200 (GATE 1 TEST TARGET MET)
+phase: Phase G COMPLETE — ready for Phase H (Genesis Curation + Snapshot)
+tests_passing: 226
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED

@@ -6,7 +6,7 @@ import pytest
 from bead_field.schema.enums import BeadType, TemporalClass
 from bead_field.schema.fact import FactBead
 from bead_field.schema.claim import ClaimBead
-from bead_field.integrity.hashing import compute_hash, canonical_json, EXCLUDED_FROM_HASH
+from bead_field.integrity.hashing import compute_hash, canonical_json, EXCLUDED_FROM_HASH, EXCLUDED_ATTESTATION_FIELDS
 
 from bead_field.tests.conftest import (
     make_core_fields, make_fact_content, make_claim_content,
@@ -86,6 +86,30 @@ class TestExclusionRules:
 
     def test_excluded_set_is_correct(self):
         assert EXCLUDED_FROM_HASH == {"hash_self", "merkle_batch_id"}
+
+    def test_attestation_sigs_excluded(self):
+        """Signatures are computed FROM the hash — including them would be circular."""
+        bead = _make_fact_bead()
+        h1 = compute_hash(bead)
+        modified = bead.model_copy(
+            update={"attestation": bead.attestation.model_copy(
+                update={"ecdsa_sig": "different_sig", "pqc_sig": "another_sig"}
+            )}
+        )
+        h2 = compute_hash(modified)
+        assert h1 == h2
+
+    def test_attestation_metadata_included(self):
+        """Node ID, code hash ARE in the hash (non-circular attestation metadata)."""
+        bead = _make_fact_bead()
+        h1 = compute_hash(bead)
+        modified = bead.model_copy(
+            update={"attestation": bead.attestation.model_copy(
+                update={"air_node_id": "different-node"}
+            )}
+        )
+        h2 = compute_hash(modified)
+        assert h1 != h2
 
 
 class TestCanonicalJson:
