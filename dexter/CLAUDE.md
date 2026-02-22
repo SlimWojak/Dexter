@@ -1,448 +1,444 @@
-# CLAUDE.md — Dexter Build Agent Orientation
-## Read this FIRST. Then SPRINT_ROADMAP.md → DEXTER_MANIFEST.md
+# CLAUDE.md — a8ra Bead Field Build Agent Orientation
+## Read this FIRST. Then docs/BEAD_FIELD_SPRINT.md → BEAD_FIELD_SPEC_v0.3
 
 ---
 
-## IDENTITY
+## 0. IDENTITY
 
 ```yaml
-project: DEXTER
-type: Sovereign Evidence Refinery
-purpose: Extract IF-THEN trading logic from ICT content → CLAIM_BEADs → Phoenix
-location: Mac Mini MVP (→ M3 Ultra on graduation)
+project: a8ra (pronounced "a-eight-ra")
+type: Sovereign Intelligence Refinery
+function: Systematize discretionary trading expertise into mineable, reproducible knowledge
+active_track: BEAD_FIELD_GATE_1 (Substrate Ready)
+location: Mac Mini (build) → M3 Ultra (deploy)
 sibling: Phoenix (constitutional trading system, separate repo)
-mascot: 🔬🧪 (Forensic Lab)
-motto: "Mine the ore. Refine the gold. Human decides."
+motto: "Human frames. Machine computes. Human promotes."
 ```
 
----
-
-## ROLE
-
-COO-level build agent. Full YOLO permissions inside Docker Sandbox.
-CTO (Claude Web) maintains strategic oversight in parallel session.
-
----
-
-## QUICK STATUS (Update this section on major changes)
+### Two-Economy Model
 
 ```yaml
-phase: STAGE_3_COMPLETE
-tests: 363/363 PASS
-signatures_validated: 981 (504 soak + 331 stage2 + 146 stage3)
-bundles_created: 73
-corpus_mapped: 790 videos (full) + 24 videos (ICT 2022 Mentorship)
-overnight_soak: 18/20 videos processed
-cost_per_video: ~$0.003
-document_pipeline: OPERATIONAL
-vision_extraction: OPERATIONAL (two-pass architecture)
-mirror_report: GENERATED (bundles/MIRROR_REPORT.md)
+ECONOMY_1 — GOVERNANCE (The Law):
+  owner: Phoenix
+  properties: Deterministic, binary, state-machine, permanent
+  examples: Lease activation, halt, state lock, T2 approval, ceremony
+  rule: "Once signed, it's law."
 
-stage_3_extraction:
-  ict_2022_live: 21 processed → 146 validated, 25 rejected (14.6%)
-  mirror_report: Generated with Opus synthesis ($0.42)
+ECONOMY_2 — ANALYTICAL (The Science):
+  owner: Bead Field + Dream Cycle
+  properties: Rich, bi-temporal, provenance-linked, mineable, experimental
+  substrate: Hard (beads are signed, immutable, bi-temporal)
+  analysis: Fluid (Dream Cycle computes over beads, disposable)
+  examples: FACT, CLAIM, SIGNAL, PROPOSAL, PROPOSAL_REJECTED, SKILL
+  rule: "Every bead is a sensor reading. Mine everything."
 
-stage_2_extraction:
-  olya_pdfs: 22 processed → 153 validated, 6 rejected (3.8%)
-  ict_2022_mock: 24 processed → 168 validated, 0 rejected (mock)
-  blessed_trader: 5 processed → 10 validated, 0 rejected
+BRIDGE:
+  direction: Economy 2 → Economy 1 (one-way valve)
+  mechanism: SKILL beads validated through stress testing
+  invariant: INV-BRIDGE-PROMOTION-GATE
+  reverse: Economy 1 projects INTO Economy 2 as FACT beads (observation, not authority)
+```
 
-sources_registered:
-  ict_2022_mentorship: 24 videos (CANON tier)
-  blessed_trader: 18 PDFs (LATERAL tier)
-  olya_notes: 22 PDFs (OLYA_PRIMARY tier)
-  layer_0: 1 MD file (REFERENCE tier)
-  full_channel: 790 videos (ICT_LEARNING tier)
+### The Moat
 
-active_priorities:
-  P1: Chronicler — COMPLETE (2026-02-05)
-  P2: Back-propagation seam — COMPLETE (2026-02-05)
-  P3: Source ingestion — COMPLETE (P3.1-P3.5 COMPLETE)
-  P3.5: Vision extraction — COMPLETE (2026-02-05)
-  P4: Auditor hardening — COMPLETE (2026-02-05)
-  P5: Queue atomicity — COMPLETE (2026-02-05)
-  P6: Runaway guards — COMPLETE (2026-02-05)
+```yaml
+DESIGN_PRINCIPLE: |
+  The Bead Field is not a log. It is a high-resolution physics experiment.
+  The moat is the quality of the record. If beads are weak,
+  everything downstream is noise. If beads are strong,
+  the DGX becomes an amplifier.
+
+  Particles don't know their energy. The field equations compute it.
+  The Bead Field carries no opinions. The Dream Cycle computes all opinions.
+  The human decides which opinions become law.
 ```
 
 ---
 
-## INVARIANTS (NON-NEGOTIABLE)
-
-### Execution
-- ALL code execution inside Docker Sandbox (`./docker-sandbox.sh`)
-- `--dangerously-skip-permissions` allowed ONLY inside sandbox
-- Never execute untrusted input outside sandbox
-
-### Git Hygiene
-- After every phase/sub-task completion:
-  ```bash
-  git add .
-  git commit -m "[Phase X.Y] Brief description"
-  git push origin main
-  ```
-- Update `docs/DEXTER_MANIFEST.md` NEXT_ACTIONS after each commit
-
-### Output Constitutional
-- Evidence-only bundles; no narrative (INV-NO-NARRATIVE)
-- No grades/scores (INV-NO-GRADES)
-- No recommendations (INV-NO-UNSOLICITED)
-- All if-then signatures trace to transcript timestamp (INV-SOURCE-PROVENANCE)
-- Auditor breaks, never validates (INV-AUDITOR-ADVERSARIAL)
-- Output reconstructable without LLM (INV-LLM-REMOVAL-TEST)
-
-### Context Management
-- If context > 50k tokens: spawn fresh session, preserve beads/THEORY.md
-- Bead compression every 20-30 beads via Chronicler (IMPLEMENTED — P1 COMPLETE)
-
-### Phoenix Integration Invariants
+## 1. QUICK STATUS (Update on major changes)
 
 ```yaml
-INV-DEXTER-ALWAYS-CLAIM: |
-  All Dexter output enters Phoenix as CLAIM_BEAD, never FACT_BEAD.
-  Refinement makes review faster, not unnecessary.
-  Only human (Olya) promotes CLAIM -> FACT.
+as_of: 2026-02-22
+phase: GATE_1_PLANNING
 
-INV-DEXTER-NO-PROMOTE: |
-  No auto-promotion to Phoenix. Human gate mandatory.
-  Bundles accumulate. Human pulls when ready.
+gate_1_build:
+  status: NOT_STARTED (governance docs created, code pending)
+  tests: 0/200+ target
+  bead_types: 0/8
+  genesis: NOT_STARTED
+  detail: See docs/BEAD_FIELD_SPRINT.md
 
-INV-DEXTER-SOURCE-LINK: |
-  Every signature links to video URL + timestamp.
-  Provenance is non-negotiable.
+extraction_phase: COMPLETE (preserved in src/, not active)
+  signatures: 981 validated
+  bundles: 73
+  tests: 363/363 PASS
 
-INV-DEXTER-CROSS-FAMILY: |
-  Auditor must be different model family from Theorist.
-  Currently: Theorist=deepseek, Auditor=google.
-```
-
-### Advisor Synthesis Invariants (2026-02-04)
-
-```yaml
-INV-DEXTER-ICT-NATIVE: |
-  Theorist uses raw ICT terminology.
-  Translation to Phoenix drawer names happens at Bundler only.
-  Prevents feedback loop where Dexter mirrors Phoenix jargon.
-
-INV-FACT-ENCAPSULATES-CLAIM: |
-  Every FACT bead references source CLAIM_ID for forensic trace.
-  Enables "search and destroy" if extraction logic found flawed.
-
-INV-CALIBRATION-FOILS: |
-  Validation batches MAY include foils. Operator-configurable.
-  Foil approval flags session. Default-reject is primary guard.
-
-INV-RUNAWAY-CAP: |
-  Agent loops hard-capped at N turns (10-20).
-  No-output > X minutes → halt.
-  Daily cost ceiling enforced.
-
-INV-BEAD-AUDIT-TRAIL: |
-  All beads auditable end-to-end with full provenance chain.
+hardware:
+  dgx_spark: ARRIVED (2026-02-21, standing by for Gate 5+)
+  m3_ultra: INCOMING (deployment target)
+  mac_mini: OPERATIONAL (Gate 1 build hardware)
+  m4_max: OPERATIONAL (Phoenix, separate track)
 ```
 
 ---
 
-## MODEL ROUTING
+## 2. INVARIANTS (NON-NEGOTIABLE)
+
+### Sovereignty
 
 ```yaml
-roles:
-  theorist:
-    model: deepseek/deepseek-chat
-    family: deepseek
-    purpose: Extraction (strong at structured JSON output)
-    
-  auditor:
-    model: google/gemini-2.0-flash-exp
-    family: google
-    purpose: Adversarial veto (DIFFERENT family for cross-family check)
-    
-  bundler:
-    model: deepseek/deepseek-chat
-    family: deepseek
-    purpose: Template filling (low creativity needed)
-    
-  chronicler:
-    model: google/gemini-2.0-flash-exp
-    family: google
-    purpose: Summarization (different family for fresh perspective)
-    
-  cartographer:
-    model: google/gemini-2.0-flash-exp
-    family: google
-    purpose: Corpus survey and categorization
-    
-  heartbeat:
-    model: thudm/glm-4.5-air
-    family: thudm
-    purpose: Free tier health checks
-
-cost_discipline:
-  deepseek: $0.14/$0.28 per 1M tokens (in/out)
-  gemini: $0.10/$0.40 per 1M tokens
-  target: ~$0.003/video
+INV-HUMAN-FRAMES: "Human frames. Machine computes. Human promotes."
+INV-SOVEREIGN-VETO: "G can halt any task via BROADCAST."
+INV-OLYA-ABSOLUTE: "Olya's NO on methodology is absolute."
+INV-CAPITAL-GATE: "No live execution without human T2 approval."
 ```
 
----
-
-## ARCHITECTURE
+### Bridge
 
 ```yaml
-roles: [theorist, auditor, bundler, chronicler, cartographer]
-  # researcher role: SCOPED_NOT_BUILT (Perplexity, defer until curriculum defined)
-
-memory:
-  beads: Append-only JSONL per calendar day
-  theory_md: Recursive summarization (Chronicler — IMPLEMENTED)
-  archive: Compressed old beads (IMPLEMENTED)
-
-bridge:
-  format: CLAIM_BEAD JSONL with drawer tags + provenance
-  export: bundles/{id}_claims.jsonl
-  invariant: INV-DEXTER-ALWAYS-CLAIM (never auto-promote)
-
-document_ingestion:
-  pdf_ingester: skills/document/pdf_ingester.py (PyMuPDF + chunking)
-  md_ingester: skills/document/md_ingester.py (section preservation + chunking)
-  unified_runner: scripts/run_source_extraction.py (multi-source orchestrator)
-  source_tiers: [CANON, OLYA_PRIMARY, LATERAL, ICT_LEARNING]
-
-5_drawer_system:
-  drawer_1: HTF_BIAS (Higher timeframe directional context)
-  drawer_2: MARKET_STRUCTURE (Structural breaks and formations)
-  drawer_3: PREMIUM_DISCOUNT (Price relative to range)
-  drawer_4: ENTRY_MODEL (Specific entry patterns)
-  drawer_5: CONFIRMATION (Additional validation signals)
+INV-BRIDGE-PROMOTION-GATE: "Economy 2→1 only via validated SKILL beads."
+INV-DEXTER-ALWAYS-CLAIM: "All Dexter output enters Phoenix as CLAIM, never FACT."
 ```
 
----
-
-## SECURITY STACK
+### Data Integrity
 
 ```yaml
-L1_containment:
-  docker: "--network none" (network isolation)
-  sandbox: docker-sandbox.sh wrapper
-
-L2_input_sanitization:
-  injection_guard: 4-layer (preprocess → regex → TF-IDF semantic → halt)
-  attack_db: data/attack_vectors.jsonl (auditable, extensible)
-  threshold: cosine similarity > 0.85 = flag
-
-L3_runaway_prevention:  # IMPLEMENTED (P6 COMPLETE)
-  turn_cap: 20 turns per loop (configurable via config/guards.yaml)
-  cost_ceiling: $1.00/day, $0.50/session (configurable)
-  guard_manager: core/guards.py (unified orchestration)
-
-L4_stall_detection:  # IMPLEMENTED (P6 COMPLETE)
-  watchdog: 5 minutes no-output → halt (configurable)
-  heartbeat: Updated on each output
-
-L5_credentials:  # FUTURE
-  composio: Auth management (not implemented)
+INV-BEAD-IMMUTABLE: "Structural beads append-only. No mutation, only supersession or retraction."
+INV-BEAD-SIGNED: "Every structural bead carries dual PQC+ECDSA signatures."
+INV-BEAD-TEMPORAL: "Every structural bead has KT. OBSERVATION requires WT."
+INV-SHADOW-RICH: "PROPOSAL_REJECTED structurally identical to PROPOSAL + rejection context."
+INV-TEMPORAL-BOUNDING: "DERIVED WT = intersection of OBSERVATION input spans only."
+INV-COMMITMENT-THRESHOLD: "Only Formal Handoffs become beads. commit() is the bright line."
+INV-NO-ORPHAN-INSIGHTS: "All rejected proposals captured and routed to Dream Cycle."
+INV-REJECTION-POLICY-REF: "RISK_BREACH rejections MUST reference active POLICY version."
+INV-ANCESTRAL-PRESERVED: "981 CLAIMs form Genesis Snapshot, G-signed Merkle root."
+INV-SOVEREIGN-ANCHOR: "Daily ledger root signed with offline HSM."
+INV-ANCHOR-AT-DECISIONS: "Merkle triggers on SIGNAL/PROPOSAL or fallback caps (500/1hr)."
 ```
 
----
-
-## CSO INPUTS (Accepted 2026-02-04)
+### Quality
 
 ```yaml
-1_curated_curriculum:
-  request: Bound extraction to CSO-provided video list
-  status: ACCEPTED — awaiting curriculum (24-48h from 2026-02-04)
-  
-2_depth_over_breadth:
-  request: Phase 1 = 1-3 core setups at exhaustive depth
-  status: ACCEPTED — routes to extraction scope
-  
-3_foils_configurable:
-  request: Foil injection optional, not mandatory
-  status: ACCEPTED — default-reject is primary guard
-  
-4_lateral_sources:
-  request: Accommodate sources beyond ICT YouTube
-  status: NOTED — curriculum spec will define
-  
-5_integration_requirements:
-  request: Shared file access, session persistence, Perplexity access
-  status: NOTED — future, not blocking
+INV-NO-GRADES: "No grades, no scores, no rankings. PASS/FAIL boolean only."
+INV-NO-NARRATIVE: "Evidence bundles template-locked. No interpretation."
+INV-CROSS-FAMILY: "Theorist and Auditor must be different model families."
+INV-ATTR-CAUSAL-BAN: "No causal attribution without controlled experiment."
+INV-CLAIM-FACT-SEPARATION: "Claims and facts are distinct types. Binary, no gray."
+INV-REFINERY-LATENCY-TRACKED: "WT-KT delta is first-class metric. Near-zero = anomaly."
+INV-EXECUTION-FIDELITY: "Intent vs fill delta tracked. >50bps = alert."
 ```
-
----
-
-## SEED IDEAS (Vision, Not Sprint Scope)
-
-```yaml
-HIGHEST_ALPHA — OLYA_MANIFEST:
-  concept: |
-    Dexter extracts from Olya's OWN content (journals, notes, trade logs).
-    She validates: "That's my past self" vs "No, nuance."
-    Three ore sources converge:
-      - ICT content (tradition — what's taught)
-      - Lateral educators (context — Blessed Trader PDFs, etc.)
-      - Olya's cognitive exhaust (practice — what she actually does)
-    The delta between teaching and practice IS the edge.
-  prerequisite: CSO curriculum + Notion API or export
-  phase: 6+ ("Oracle's Archive")
-
-PARALLEL_SYNTHETIC_PHOENIX:
-  concept: |
-    Dexter agents test hypotheses on Phoenix sim with 5yr backdata.
-    Evidence bundles from TESTING, not just extraction.
-    Dexter becomes the hypothesis lab.
-  prerequisite: Phoenix sim environment must exist
-  phase: 8+ (Carpark until extraction stable)
-
-FLYWHEEL_AMP:
-  concept: |
-    Continuous mining + journal ingestion + rejection tuning + dynasty memory.
-    Chronicler → THEORY.md → recursive compression.
-    The bead-chain becomes a growing knowledge palace.
-  prerequisite: P1 Chronicler must ship first
-  phase: 6-7
-
-SELF_UPGRADING_META:
-  concept: Agent observes workflows, crystallizes skills, self-refines.
-  classification: CARPARK (constitutional muzzle must stay TIGHT)
-  risk: Highest authority drift risk — park until trust earned over months
-```
-
----
-
-## KNOWN GAPS
-
-```yaml
-critical:
-  - ALL MITIGATED (P1-P6 + P3.5 COMPLETE)
-
-operational:
-  - 2 injection false positives (ICT speech patterns: Ep13, Ep19)
-  - Matrix alerts cosmetic warning (non-blocking)
-  - Sync pipeline won't scale past 100+ videos
-  - Daemon mode not configured (manual TMUX + Amphetamine)
-  - Auditor rejection rate 1.8% (below 10% target floor)
-
-pending_implementation:
-  - Live transcript integration (mock transcripts for ICT 2022)
-  - Researcher role (Perplexity — defer until curriculum)
-  - Developer role (backtest code generation — far horizon)
-```
-
----
-
-## WATCH_OUTS
 
 ### Security
-- Run `injection_guard.py` on ALL external inputs
-- Flag to Auditor if similarity > 0.85 to attack vectors
-- No pip installs beyond requirements.txt without audit
-
-### Persistence
-- Docker volumes for `/memory`, `/bundles`
-- `--restart unless-stopped` on sandbox container
-
-### Deps
-- Audit new skills via security review before integration
-- Prefer stdlib over new dependencies
-
----
-
-## FRONTIER PATTERNS
-
-### Inverse Loop
-- Feed Auditor rejects back to Theorist via NEGATIVE_BEADs
-- Recent negatives (last 10) prefix Theorist context
-
-### Async Delegates
-- `perplexity.py`: poll every 60s, non-blocking (SCOPED, not built)
-- Fallback to `exa.py` if latency > 3min
-
-### Self-Evolution (Human-Gated)
-- After 5 bundles: Auditor MAY propose 1-2 prompt tweaks
-- Proposals logged to channel; NO hot-reload without human approval
-
----
-
-## PHASE EXECUTION
-
-Current: STAGE_3_COMPLETE (2026-02-05)
-
-Completed Priorities:
-- P1: Chronicler — COMPLETE (recursive summarization + archival)
-- P2: Back-propagation seam — COMPLETE (learning loop operational)
-- P3: Source ingestion — COMPLETE (P3.1-P3.5 all complete)
-- P3.5: Vision extraction — COMPLETE (two-pass architecture)
-- P4: Auditor hardening — COMPLETE (14.6% rejection on live data)
-- P5: Queue atomicity — COMPLETE (atomic write pattern)
-- P6: Runaway guards — COMPLETE (turn cap, cost ceiling, watchdog)
-
-Stage 3 Complete:
-- ICT 2022 live transcripts: 146 validated, 25 rejected (14.6%)
-- Mirror Report generated: bundles/MIRROR_REPORT.md
-- Auditor rejection rate healthy (above 10% floor with real content)
-
-Next Actions:
-- Olya reviews MIRROR_REPORT.md
-- CSO curriculum for depth-over-breadth extraction
-
-On task complete:
-1. Run tests
-2. Git commit + push
-3. Update DEXTER_MANIFEST.md NEXT_ACTIONS
-4. Report to channel
-5. Await CTO/Human gate before next priority
-
----
-
-## COMMS
-
-- CTO (Claude Web): Strategic oversight, lateral checks
-- Human (G): Final authority, capital decisions, promotion gates
-- Channel: Status updates, bundle alerts, drift warnings
-
----
-
-## ADVISOR RULINGS (2026-02-04)
 
 ```yaml
-promotion_states:
-  ruling: Binary CLAIM/FACT (GPT wins)
-  rejected: OWL's PROVISIONAL_FACT (gray authority risk)
-  adopted: OWL's provenance chain (FACT encapsulates source CLAIM_ID)
+INV-NO-SECRETS-IN-REPO: "Git hooks block credential patterns."
+INV-DEPLOYMENT-AUDIT: "Security invariants cover deployment config, not just code."
+INV-RUNAWAY-CAP: "Agent loops hard-capped. No-output timeout. Daily cost ceiling."
+INV-CHECKPOINT-BEFORE-DEATH: "Checkpoint at 70% context, forced at 90%."
+```
 
-calibration_protocol:
-  - Default state = REJECT (approval requires explicit action)
-  - Delta input ≥1 parameter per 5 signatures (proves engagement)
-  - View separation (Dexter vs Perplexity shown separately)
-  - Foils optional (operator-configurable)
+### Operational
 
-auditor_sequence:
-  1: Prompt harden first
-  2: Monitor rejection rate
-  3: Third family (Llama/Qwen) if still <5%
+```yaml
+INV-HALT-1: "halt_local < 50ms."
+INV-HALT-2: "halt_cascade < 500ms."
+INV-HALT-OVERRIDES-LEASE: "Halt wins. Always."
+INV-PERISH-BY-DEFAULT: "No auto-renew. Ceremony or expire."
+INV-NO-CORE-REWRITES-POST-S44: "Phoenix foundation validated. No rewrites."
+```
 
-atom_budget:
-  recommendation: 32-48 features across 5 drawers
-  breakdown:
-    HTF_bias: 8-12
-    structure: 12-18
-    timing_session: 4-6
-    volatility_regime: 4-6
-    risk_context: 4-6
+### Advisory Panel Additions (2026-02-22)
+
+```yaml
+INV-DREAM-ISOLATION: |
+  Dream Cycle processes may NOT write to bead store directly.
+  May only emit SKILL_CANDIDATE via ingestion pipeline.
+  Must pass full schema validation + signing like any other bead.
 ```
 
 ---
 
-## CRITICAL REFERENCES
+## 3. CANON DOCUMENTS
+
+```yaml
+READING_ORDER:
+  1: CLAUDE.md (this file — identity and rules)
+  2: docs/BEAD_FIELD_SPRINT.md (phase progress and blockers)
+  3: docs/beadfields_plan/BEAD_FIELD_SPEC_v0.3.md (the data constitution)
+  4: docs/beadfields_plan/COO_BRIEF_GATE_1.md (build sequence)
+  5: docs/beadfields_plan/a8ra_MASTER_PLAN_v0_1.md (world view)
+  6: docs/beadfields_plan/a8ra_SYSTEM_MANIFEST_v1_0.md (cross-system orientation)
+
+AWARE_OF_BUT_DO_NOT_BUILD:
+  docs/beadfields_plan/DREAM_CYCLE_DESIGN_INTENT_v0_1.md: |
+    How the Dream Cycle (Gate 5+) will analyze the Bead Field.
+    Key decision: DEC-ENERGY-NOT-STORED — energy/coherence is COMPUTED over beads,
+    never STORED on them. No energy fields, no scalar scores, no coherence attributes
+    on bead schema. INV-NO-GRADES applies. Aligns with LeCun/JEPA: substrate = hard
+    physics, Dream Cycle = fluid analysis. Build the hard substrate. Mining comes later.
+
+STATUS: LOCKED (Three-office approved. Do not relitigate. Build from them.)
+```
+
+---
+
+## 4. ARCHITECTURE
+
+### Bead Field Directory (Gate 1 Build Surface)
+
+```
+bead_field/
+├── __init__.py
+├── schema/
+│   ├── __init__.py
+│   ├── core.py              # BeadCore base model (Spec Section 3.1)
+│   ├── fact.py               # FACT content schema
+│   ├── claim.py              # CLAIM content schema
+│   ├── signal.py             # SIGNAL content schema
+│   ├── proposal.py           # PROPOSAL content schema
+│   ├── proposal_rejected.py  # PROPOSAL_REJECTED (INV-SHADOW-RICH)
+│   ├── skill.py              # SKILL content schema
+│   ├── model_version.py      # MODEL_VERSION content schema
+│   ├── policy.py             # POLICY content schema
+│   └── enums.py              # All shared enums
+├── store/
+│   ├── __init__.py
+│   ├── bitemporal.py         # SQLite bi-temporal store
+│   ├── migrations.py         # Version-tracked schema migrations
+│   └── queries.py            # Bi-temporal query helpers (WT/KT predicates)
+├── integrity/
+│   ├── __init__.py
+│   ├── hashing.py            # SHA-256 canonical JSON hashing
+│   ├── chain.py              # Per-stream hash chain
+│   ├── merkle.py             # Merkle tree + batch anchoring
+│   └── signing.py            # Dual PQC (Dilithium) + ECDSA signing
+├── clock/
+│   ├── __init__.py
+│   └── hlc.py                # Hybrid Logical Clock
+├── ingestion/
+│   ├── __init__.py
+│   └── pipeline.py           # Raw data → validated, signed, stored bead
+├── genesis/
+│   ├── __init__.py
+│   ├── curator.py            # Map 981 CLAIMs against v0.3 taxonomy
+│   ├── snapshot.py           # Genesis Merkle tree + signing ceremony
+│   └── delta.py              # METHODOLOGY_DELTA bead builder
+└── tests/
+    ├── __init__.py
+    ├── conftest.py            # Shared fixtures (temp DB, test beads, test keys)
+    ├── test_schema.py         # All 8 bead types validate correctly
+    ├── test_enums.py          # Enum completeness
+    ├── test_store.py          # Bi-temporal CRUD + range queries
+    ├── test_hashing.py        # Deterministic hash, canonical JSON
+    ├── test_chain.py          # Hash chain walk + tamper detection
+    ├── test_merkle.py         # Merkle tree build, proof, verify
+    ├── test_signing.py        # PQC + ECDSA sign/verify round-trip
+    ├── test_hlc.py            # HLC monotonicity, tick, merge
+    ├── test_ingestion.py      # Pipeline: raw data → stored bead
+    ├── test_genesis.py        # Curation, snapshot, delta bead
+    ├── test_queries.py        # Bi-temporal query correctness
+    └── test_invariants.py     # Invariant enforcement + tamper detection
+```
+
+### Existing Codebase (Do Not Modify)
+
+```yaml
+src/: Extraction pipeline (COMPLETE — 363 tests, 981 signatures)
+bundles/: 73 extraction bundles + 981 CLAIMs (Genesis source material)
+config/: Extraction configuration
+roles/: Agent role definitions (extraction phase)
+```
+
+### Eight Analytical Bead Types
+
+```yaml
+FACT: Market data, events (from providers or OPEN_SOURCE intelligence)
+CLAIM: Agent inference with reasoning trace
+SIGNAL: Tradeable thesis with derivation and risk profile
+PROPOSAL: Trade intent that passed all gates
+PROPOSAL_REJECTED: Declined trade — FULL context (Shadow Field fuel)
+SKILL: Distilled lesson from Dream Cycle
+MODEL_VERSION: Model metadata and deployment status
+POLICY: Risk rules, position limits, regime definitions
+```
+
+### Three Temporal Classes
+
+```yaml
+OBSERVATION: Tied to specific market time (has WT span)
+PATTERN: Timeless methodology (WT null, valid across all time)
+DERIVED: Computed from other beads (WT = intersection of OBSERVATION inputs)
+```
+
+### Integrity Model
+
+```yaml
+hash_chain: Per-stream SHA-256 linking
+merkle: Hybrid trigger (Decision Boundary + 500 bead / 1hr fallback)
+signing: Dual PQC (Dilithium) + ECDSA (secp256r1)
+sovereign_anchor: Daily ledger root signed with offline HSM
+```
+
+---
+
+## 5. KEY DECISIONS
+
+```yaml
+# System Architecture
+DEC-TWO-ECONOMIES: "Governance and analytical beads are separate systems with one-way bridge."
+DEC-PROJECTION: "Phoenix projects into Bead Field. Bead Field doesn't modify Phoenix internals."
+DEC-COE: "Olya validates (recognition), not extracts (recall)."
+DEC-PHYSICS-EXPERIMENT: "Bead Field is a physics experiment, not a log."
+
+# Data Architecture
+DEC-BINARY-CLAIM-FACT: "No intermediate PROVISIONAL_FACT. Binary only."
+DEC-TEMPORAL-BOUNDING: "DERIVED WT = intersection of OBSERVATION spans."
+DEC-MERKLE-HYBRID: "Decision Boundary + fallback caps (500 beads / 1hr)."
+DEC-GENESIS-SNAPSHOT: "981 CLAIMs bundled as single Merkle root. Bead Zero."
+DEC-FORMAL-HANDOFF: "commit() is the bright line. Observation ≠ Incorporation."
+DEC-PQC-FOUNDATIONAL: "Software-first PQC+ECDSA from Day 1. TEE is additional."
+
+# Gate 1 Specific
+DEC-NEW-CODEBASE-SAME-REPO: "Gate 1 builds clean in bead_field/. Extraction preserved in src/."
+DEC-BUILD-NOW-DEPLOY-LATER: "Build on Mini now. Deploy to M3 Ultra in hours."
+DEC-ENERGY-NOT-STORED: "Energy/coherence COMPUTED by Dream Cycle. NEVER stored on beads."
+DEC-JEPA-ALIGNMENT: "Dream Cycle predicts bead configurations, not price ticks."
+DEC-DIAGNOSTICS-EPHEMERAL: "Dream Cycle analytics are ephemeral. Only SKILL candidates become structural."
+
+# Advisory Panel (2026-02-22)
+DEC-SUBSTRATE-FREEZE: "30-day no-schema-change window after Gate 1 PASS."
+DEC-SIMULATION-REPRODUCIBILITY: "Dream Cycle sessions log seed, snapshot hash, model, params. Gate 5+."
+```
+
+---
+
+## 6. HARDWARE
+
+```yaml
+NODE_DGX — NVIDIA DGX Spark (Grace-Blackwell):
+  status: ARRIVED (2026-02-21)
+  role: Dream Cycle compute (Gate 5+)
+  gate_1_role: NONE (standing by)
+
+NODE_M3 — Mac Studio M3 Ultra (512GB):
+  status: INCOMING
+  role: Knowledge Substrate + Control Plane
+  gate_1_role: Deployment target (tested code from Mini)
+
+NODE_M4 — Mac Studio M4 Max (64GB):
+  status: OPERATIONAL
+  role: Phoenix Execution (separate track)
+  gate_1_role: NONE
+
+NODE_MINI — Mac Mini:
+  status: OPERATIONAL
+  role: Gate 1 build hardware (COO runs here)
+```
+
+---
+
+## 7. RELATIONSHIPS
+
+```yaml
+G:
+  role: Sovereign Operator
+  authority: SUPREME
+  function: Strategic direction, sprint approval, Genesis signing, capital allocation
+  veto: BROADCAST.md → all offices halt
+
+OLYA:
+  role: CSO / Oracle
+  authority: DOMAIN — sovereign over trading methodology
+  function: CLAIM→FACT promotion, gate calibration, curriculum curation
+  veto: Absolute and final. Rejection → NEGATIVE_BEAD → Dream Cycle.
+  principle: "Recognition over recall. Forensic surgeon, not morgue consumer."
+
+PHOENIX_CTO:
+  role: Sibling instance (separate repo, hardware, team)
+  status: S49→S50→v0.1 (2 sprints from first release)
+  rule: Do NOT touch Phoenix repo. Integration via BRIDGE_SPEC (after both sides stable).
+
+COO:
+  role: Builder/implementer (Cursor Agent, Mac Mini)
+  function: Receives briefs, executes phases, commits code, reports blockers
+  current: Gate 1 build
+
+ADVISORS:
+  owl: Structure, coherence, pressure tests
+  architect: Spec tightening, lint, guardrails
+  boar: Frontier scout, chaos audit, energy
+```
+
+---
+
+## 8. PHASE EXECUTION
+
+```yaml
+current: GATE_1 — BEAD_FIELD_SUBSTRATE
+detail: See docs/BEAD_FIELD_SPRINT.md for phase-by-phase progress
+
+GATE_SEQUENCE:
+  Gate_1: Substrate Ready (NOW — schema, store, integrity, Genesis)
+  Gate_2: Bead Field Semantics + Graph Operations
+  Gate_3: AIR + Execution Integrity
+  Gate_4: Swarm Agents + Coordination
+  Gate_5: Dream Cycle v1 (DGX Spark)
+  Gate_6: Dream Cycle v2 (GALILEO + SkillRL)
+  Gate_7: Sovereign Readiness
+
+COMMIT_DISCIPLINE:
+  format: "[Gate1/Area] Brief description"
+  rules:
+    - Tests pass before every commit
+    - Zero TODO/FIXME/HACK in committed code
+    - Update BEAD_FIELD_SPRINT.md running score after milestones
+    - Report blockers immediately (don't guess at solutions)
+```
+
+---
+
+## 9. SEED IDEAS (Vision, Not Sprint Scope)
+
+Do NOT build without G approval:
+
+```yaml
+OLYA_MANIFEST: Extract from her journals/notes → she validates "that's me"
+PARALLEL_SYNTHETIC_PHOENIX: Test hypotheses on sim + 5yr backdata
+FLYWHEEL_AMP: Continuous mining + dynasty memory
+SELF_UPGRADING_META: CARPARK (constitutional muzzle tight)
+```
+
+---
+
+## 10. THINGS TO NEVER DO
+
+- Never auto-promote CLAIM → FACT
+- Never touch Phoenix repo or infrastructure
+- Never add grades/scores/rankings (except DataQuality on FACTs)
+- Never deviate from BEAD_FIELD_SPEC_v0.3 schema definitions
+- Never skip PQC signing (stub if unavailable, but never skip)
+- Never modify src/ (extraction pipeline is COMPLETE)
+- Never write Dream Cycle code in Gate 1
+- Never store energy/coherence/scores on bead schema
+- Never let DGX excitement expand Gate 1 scope
+- Never commit without tests passing
+- Never proceed past Genesis curation halt-points without G approval
+- Never leak Olya's private parameters
+
+---
+
+## 11. CRITICAL REFERENCES
 
 | Document | Location | Purpose |
 |----------|----------|---------|
-| COLD_START.md | docs/ | Quick orientation for new CTO |
-| SPRINT_ROADMAP.md | docs/ | Current priorities P1-P6 |
-| DEXTER_MANIFEST.md | docs/ | Operational status + evidence |
-| DEXTER_ROADMAP_v0.2.md | docs/ | Build history (phases 0-5) |
-| POST_S44_SYNTHESIS_v0.1.md | docs/ | Advisor synthesis source |
-| addendum_from_CTO_Opus_Review.md | docs/ | Seed ideas (Olya_Manifest) |
+| BEAD_FIELD_SPRINT.md | docs/ | Phase tracker and running score |
+| BEAD_FIELD_SPEC_v0.3 | docs/beadfields_plan/ | Data constitution (schema, invariants) |
+| COO_BRIEF_GATE_1.md | docs/beadfields_plan/ | Build instruction manual (phases A-H) |
+| a8ra_MASTER_PLAN_v0.1 | docs/beadfields_plan/ | Strategic world view (Two-Economy, Pulse) |
+| a8ra_SYSTEM_MANIFEST_v1.0 | docs/beadfields_plan/ | Cross-system orientation |
+| DREAM_CYCLE_DESIGN_INTENT_v0.1 | docs/beadfields_plan/ | Gate 5+ vision (do not build) |
+| Advisory Feedback | docs/beadfields_plan/ | Advisor rulings (synthesized into sprint) |
 
 ---
 
-*Human frames. Machine computes. Human promotes.* 🔬
+*The moat is the quality of the record. The record is the Bead Field. Everything else is downstream.*

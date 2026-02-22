@@ -1,0 +1,326 @@
+# a8ra SYSTEM MANIFEST
+
+```yaml
+document: SYSTEM_MANIFEST
+version: 1.0
+date: 2026-02-20
+status: CANONICAL — all offices contributed, cross-instance pressure test complete
+purpose: Single M2M orientation for every Claude instance in the a8ra ecosystem
+update_discipline: Any session making a significant decision appends a MANIFEST DELTA
+owner: G (Sovereign Operator)
+supersedes: SYSTEM_MANIFEST v0.1 (Dexter CTO draft)
+```
+
+---
+
+## 0. READ THIS FIRST
+
+You are a Claude instance serving one office in the a8ra ecosystem. You do not have access to other offices' conversation histories. This document is the single source of truth for the system as a whole.
+
+```yaml
+PRECEDENCE:
+  cross_cutting: This manifest wins (invariants, data schema, security)
+  office_specific: Your office docs win (implementation details)
+  world_view: Read a8ra_MASTER_PLAN.md for strategic context
+```
+
+---
+
+## 1. WHAT a8ra IS
+
+```yaml
+NAME: a8ra (pronounced "a-eight-ra")
+TYPE: Sovereign Intelligence Refinery
+CORE_PRINCIPLE: "Human frames. Machine computes. Human promotes."
+
+TWO_ECONOMIES:
+  governance: Deterministic system state (Phoenix, 17+ bead types, battle-tested)
+  analytical: Mineable knowledge substrate (Bead Field, 8 types, bi-temporal, signed)
+  bridge: One-way valve — analytical→governance only via validated SKILL beads
+  detail: See a8ra_MASTER_PLAN.md Section 2
+```
+
+---
+
+## 2. HUMANS
+
+```yaml
+G:
+  role: Sovereign Operator
+  authority: SUPREME
+  function: Strategic direction, capital allocation, cross-context bridge, sprint approval
+  veto: BROADCAST.md → all offices halt on wake
+
+OLYA:
+  role: CSO / Oracle
+  authority: DOMAIN — sovereign over trading methodology
+  function: CLAIM→FACT promotion, gate calibration, curriculum curation
+  veto: Absolute and final. No appeal. Rejection → NEGATIVE_BEAD → Dream Cycle.
+  principle: "Recognition over recall. Forensic surgeon, not morgue consumer."
+```
+
+---
+
+## 3. HARDWARE TOPOLOGY
+
+```yaml
+NODE_DGX — NVIDIA DGX Spark (Grace-Blackwell):
+  status: INCOMING
+  role: Compute Plane (Economy 2 heavy lifting)
+  office: DEXTER_OFFICE
+
+NODE_M3 — Mac Studio M3 Ultra (512GB):
+  status: INCOMING
+  role: Knowledge Substrate + Control Plane
+  office: DEXTER_OFFICE (knowledge + control)
+
+NODE_M4 — Mac Studio M4 Max (64GB):
+  status: OPERATIONAL
+  role: Core Development + Phoenix Execution
+  office: CORE_OFFICE
+
+NODE_MINIS — Mac Mini Gateway Nodes:
+  status: OPERATIONAL
+  role: Lightweight coordination, CSO, G sovereign
+  offices: G_SOVEREIGN, CSO_OFFICE
+
+NODE_VPS — ChadBoar (Singapore):
+  status: OPERATIONAL (live trading)
+  role: Disposable canary testbed
+  sovereignty: Sandboxed. 14 SOL. No core connection.
+
+CONNECTIVITY:
+  core: Encrypted LAN (10GbE) DGX ↔ M3 Ultra
+  coordination: Git-based (phoenix-swarm/)
+  fallback: API-first ($1-3/day OpenRouter) before local hardware
+```
+
+---
+
+## 4. COMPONENT STATUS
+
+### 4.1 Phoenix (Constitutional Trading System)
+
+```yaml
+status: CORE_NEAR_COMPLETE — 2 sprints from v0.1
+repo: phoenix/ (private)
+current_sprint: S49 BOOTSTRAP_AND_DEPLOY (built) → S50 SEAL → a8ra v0.1
+
+cumulative_metrics:
+  sprints_complete: 19 (S28-S44, S46-S48)
+  tests_passing: 1618+
+  xfailed: 28 (documented, strict)
+  chaos_vectors: 240/240 PASS
+  invariants_proven: 124+ (111 Phoenix + 13 Mission Control)
+  bead_types: 17+
+  gates_mapped: 48
+
+architecture:
+  governance: |
+    Lease/Cartridge system (S46 design locked, S47 implemented).
+    Cartridge = WHAT (strategy identity). Lease = WHEN/HOW MUCH (governance wrapper).
+    State machine: DRAFT→ACTIVE→EXPIRED|REVOKED|HALTED.
+    Insertion: 8-step protocol with rollback.
+    Ceremony: Weekly attestation, PERISH_BY_DEFAULT.
+  execution: |
+    9-state position lifecycle. T2 human gate for capital.
+    IBKR integration (paper mode validated, live ready).
+    Halt: <50ms local, <500ms cascade.
+  cso: |
+    5-drawer gate evaluation via conditions.yaml (48 gates).
+    Boolean only (INV-HARNESS-1). No grades, no confidence scores.
+    CSE emission with evidence. Multi-pair scan.
+  monitoring: |
+    Heartbeat, semantic health, HUD surface (SwiftUI, <500ms latency).
+    manifest_writer.py bridges state to HUD.
+  memory: |
+    Athena: CLAIM/FACT/CONFLICT bead separation (S37).
+    BeadStore: Append-only, provenance-linked.
+    CFP: Conditional fact projector with causal ban (S35).
+    Hunt: Exhaustive grid, no survivor ranking (S38).
+
+key_blockers:
+  s45: BLOCKED (Olya CSO calibration — unblock via CoE model)
+  rule: INV-NO-CORE-REWRITES-POST-S44 ACTIVE
+
+integration_with_bead_field:
+  pattern: Projection, not participation (proven in S48 HUD)
+  mechanism: Phoenix governance events → Bridge → FACT beads in analytical store
+  phoenix_change: Minimal (emit, bridge enriches)
+  timeline: Post Phoenix v0.1, post Bead Field Gate 1
+```
+
+### 4.2 Dexter (Sovereign Evidence Refinery)
+
+```yaml
+status: STAGE_3_COMPLETE — evolving toward end-state
+repo: dexter/ (private)
+
+extraction: COMPLETE (981 signatures, 73 bundles, 363 tests)
+bead_field_spec: v0.2 (OWL PRESSURE-TESTED)
+
+architecture:
+  pipeline: Theorist→Auditor→Bundler→CLAIM_BEADs
+  model_routing: DeepSeek (extraction) + Gemini (audit)
+  memory: Bead chain (JSONL) + THEORY.md (recursive summary)
+  security: Docker sandboxed, 4-layer injection guard, runaway caps
+
+end_state: 24/7 R&D on M3 Ultra + DGX Spark
+```
+
+### 4.3 ChadBoar (Canary Testbed)
+
+```yaml
+status: LIVE TRADING — ~5000 beads/day, ~1800 rejections/day
+purpose: Real-world Bead Field validation
+
+canary_findings:
+  1: "Integration tests must cover actual signing API"
+  2: "Deployment config must be audited (INV-DEPLOYMENT-AUDIT)"
+  3: "Migration tooling needed from Gate 1"
+  4: "Refinery Latency catches hallucination (zero latency = suspicious)"
+  5: "FACT beads need quality flag enum"
+
+cannot_test: [multi-agent, cross-node HLC, PQC, XTDB, DGX compute, agent handoff, HSM]
+```
+
+### 4.4 Mission Control
+
+```yaml
+status: v0.2 LOCKED (13/13 decisions, 32 invariants)
+ground_tests: 6/6 PASS (2026-02-09)
+coordination: phoenix-swarm/ (30 files)
+persistence: 5-layer (CLAUDE.md, /memory, hooks, MCP, git)
+```
+
+---
+
+## 5. CROSS-SYSTEM INVARIANTS
+
+### Sovereignty
+```yaml
+INV-HUMAN-FRAMES: "Human frames. Machine computes. Human promotes."
+INV-SOVEREIGN-VETO: "G can halt any task via BROADCAST"
+INV-OLYA-ABSOLUTE: "Olya's NO on methodology is absolute"
+INV-CAPITAL-GATE: "No live execution without human T2 approval"
+```
+
+### Bridge
+```yaml
+INV-BRIDGE-PROMOTION-GATE: "Economy 2→1 only via validated SKILL beads"
+INV-DEXTER-ALWAYS-CLAIM: "All Dexter output enters Phoenix as CLAIM, never FACT"
+```
+
+### Data Integrity
+```yaml
+INV-BEAD-IMMUTABLE: "Append-only. No mutation."
+INV-BEAD-SIGNED: "Dual PQC+ECDSA on every structural bead"
+INV-BEAD-TEMPORAL: "Every bead has KT. OBSERVATION requires WT."
+INV-SHADOW-RICH: "PROPOSAL_REJECTED = full PROPOSAL + rejection context"
+INV-TEMPORAL-BOUNDING: "DERIVED WT = intersection of OBSERVATION inputs only"
+INV-COMMITMENT-THRESHOLD: "Only Formal Handoffs become beads"
+INV-NO-ORPHAN-INSIGHTS: "All rejections captured, routed to Dream Cycle"
+INV-REJECTION-POLICY-REF: "RISK_BREACH must reference active POLICY version"
+INV-ANCESTRAL-PRESERVED: "981 CLAIMs = Genesis Snapshot, G-signed"
+INV-SOVEREIGN-ANCHOR: "Daily ledger root signed offline HSM"
+```
+
+### Operational
+```yaml
+INV-HALT-1: "halt_local < 50ms"
+INV-HALT-2: "halt_cascade < 500ms"
+INV-HALT-OVERRIDES-LEASE: "Halt wins. Always."
+INV-NO-SESSION-OVERLAP: "One lease per session"
+INV-LEASE-CEILING: "Lease = ceiling, Cartridge = floor"
+INV-STATE-LOCK: "State transitions hash-check prior state"
+INV-PERISH-BY-DEFAULT: "No auto-renew. Ceremony or expire."
+INV-NO-CORE-REWRITES-POST-S44: "Foundation validated."
+```
+
+### Quality
+```yaml
+INV-EXECUTION-FIDELITY: "Intent vs fill delta tracked. >50bps = alert."
+INV-REFINERY-LATENCY-TRACKED: "WT-KT delta first-class. Near-zero = anomaly."
+INV-NO-GRADES: "PASS/FAIL boolean only."
+INV-ATTR-CAUSAL-BAN: "No causal attribution without controlled experiment"
+INV-CLAIM-FACT-SEPARATION: "Binary. No gray."
+```
+
+### Security
+```yaml
+INV-NO-SECRETS-IN-REPO: "Git hooks block credentials"
+INV-DEPLOYMENT-AUDIT: "Audit deployment config, not just code"
+INV-RUNAWAY-CAP: "Hard-capped loops. Cost ceiling."
+INV-CHECKPOINT-BEFORE-DEATH: "70% checkpoint, 90% forced"
+```
+
+---
+
+## 6. DECISION LOG
+
+```yaml
+# Phoenix Core (S28-S48)
+DEC-S35: "Causal ban on attribution (INV-ATTR-CAUSAL-BAN)"
+DEC-S36: "Boolean gates only, no confidence (INV-HARNESS-1)"
+DEC-S37: "Binary CLAIM/FACT, no PROVISIONAL (INV-CLAIM-FACT-SEPARATION)"
+DEC-S38: "Exhaustive grid, no ranking (INV-HUNT-EXHAUSTIVE)"
+DEC-S40: "Self-healing, not self-modifying (SLEEP_SAFE)"
+DEC-S42: "Convergence ≠ correctness (fidelity > consensus)"
+DEC-S46: "Cartridge = WHAT, Lease = WHEN/HOW MUCH"
+DEC-S47: "PERISH_BY_DEFAULT + STATE_LOCK hash protection"
+
+# Bead Field & Analytical
+DEC-TEMPORAL-BOUNDING: "DERIVED WT = intersection of OBSERVATION spans"
+DEC-MERKLE-HYBRID: "Decision Boundary + 500 bead / 1hr fallback"
+DEC-GENESIS-SNAPSHOT: "981 CLAIMs = single Merkle root = Bead Zero"
+DEC-FORMAL-HANDOFF: "commit() is bright line"
+DEC-PQC-FOUNDATIONAL: "Software-first signing. TEE additional."
+
+# System
+DEC-TWO-ECONOMIES: "Governance and analytical beads = separate systems + one-way bridge"
+DEC-PROJECTION: "Phoenix projects into Bead Field. Not vice versa."
+DEC-RIVER-INTERNAL: "River stays Phoenix-internal. Event bus is swarm-level."
+DEC-COE: "Olya validates (recognition), not extracts (recall)"
+DEC-PHYSICS-EXPERIMENT: "Bead Field = physics experiment, not log"
+```
+
+---
+
+## 7. OFFICES
+
+```yaml
+G_SOVEREIGN: { human: G, authority: SUPREME, hardware: Mac Mini }
+CORE_OFFICE: { leader: Phoenix CTO, sprint: S49→S50→v0.1, hardware: M4 Max }
+CSO_OFFICE: { leader: CSO + Olya, function: methodology validation, hardware: Mac Mini }
+DEXTER_OFFICE: { leader: Dexter CTO, function: R&D refinery, hardware: M3 Ultra + DGX }
+ADVISORS: { grok: chaos, owl: structure, gpt: lint, perplexity: research }
+```
+
+---
+
+## 8. CANONICAL DOCUMENTS
+
+```yaml
+STRATEGIC: [a8ra_MASTER_PLAN.md, BRAND_IDENTITY.md]
+TECHNICAL: [BEAD_FIELD_SPEC_v0.2.md, CARTRIDGE_AND_LEASE_DESIGN_v1.0.md, MISSION_CONTROL_DESIGN_v0.2.md]
+OPERATIONAL: [SYSTEM_MANIFEST.md, SPRINT_ROADMAP.md, PHOENIX_MANIFEST.md]
+PHOENIX: [conditions.yaml, schemas/beads.yaml, governance/lease.py, governance/cartridge.py]
+COORDINATION: [phoenix-swarm/AGENTS.md, TASK_QUEUE.yaml, BROADCAST.md]
+PLANNED: [BRIDGE_SPEC.md, REFINERY_CONTRACT.yaml, PULSE_OPERATIONS.md]
+```
+
+---
+
+## 9. DELTA LOG
+
+```yaml
+- date: 2026-02-20
+  office: CTO_SYNTHESIS
+  change: "v1.0. All gaps filled. Two-economy model. 2 new invariants. Full decision log."
+
+# --- APPEND BELOW ---
+```
+
+---
+
+*One manifest. All offices. No drift.*

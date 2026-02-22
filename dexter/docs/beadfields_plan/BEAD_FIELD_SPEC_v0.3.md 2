@@ -1,0 +1,1028 @@
+# BEAD_FIELD_SPEC v0.1
+
+```yaml
+document: BEAD_FIELD_SPEC
+version: 0.3
+date: 2026-02-20
+status: CANONICAL — Three-office approved, ready for Gate 1
+authors: G (Sovereign Operator) + CTO (Claude) + Owl (Gemini Advisor) + Perplexity (Research)
+purpose: Constitutional schema for the a8ra Sovereign Data Layer
+scope: Bead types, bi-temporal semantics, commitment thresholds, integrity model
+amendments:
+  v0.2: |
+    Incorporated 5 Owl pressure-test findings:
+    1. Commitment Threshold → "Formal Handoff" protocol (Section 2.2)
+    2. Temporal Inheritance → "Bounding Constraint" replaces union (Section 4.2)
+    3. Merkle Anchoring → Hybrid Trigger with fallback caps (Section 5.2)
+    4. Ancestral Reserve → Genesis Snapshot with single Merkle root (Section 6)
+    5. Rejection Reasons → Policy Bead references, not free strings (Section 3.2)
+  v0.3: |
+    Added OPEN_SOURCE to source_type enum (Section 3.1).
+    Captures external intelligence (social, narrative, macro research)
+    as distinct from MARKET_DATA providers and EXTRACTION methodology mining.
+    Source: Owl Pulse gap analysis + Phoenix CTO triage (2026-02-20).
+```
+
+---
+
+## 0. Purpose & Scope
+
+This document defines the **Bead Field** — the core data substrate for the a8ra Sovereign Intelligence Refinery.
+
+Every fact, claim, signal, proposal, rejection, and skill in the system exists as a **Bead**: a cryptographically anchored, bi-temporally stamped, provenance-linked unit of knowledge.
+
+The Bead Field is the moat. If the schema is weak, retrieval degrades at scale, provenance becomes untraceable, and the Dream Cycle has nothing meaningful to mine. This spec exists to prevent that.
+
+**Design Principles:**
+- Commitment-based, not thought-based (only Logical Commitments become Beads)
+- Structurally rich rejections (failures are as valuable as successes)
+- Bi-temporal by default (every Bead knows "when in the world" and "when we learned")
+- Cryptographically anchored (tamper-evident, auditable end-to-end)
+- Hardware-agnostic sovereignty (software signing first, hardware TEE layered on)
+
+---
+
+## 1. Physical Topology
+
+### 1.1 Hardware Roles
+
+```yaml
+NODE_A — NVIDIA DGX Spark (Grace–Blackwell):
+  role: Compute Plane
+  function: Dream Cycle, SkillRL distillation, adversarial simulation, heavy inference
+  specs: 20-core Arm CPU, GB10 GPU, 128GB unified memory, 1 PFLOP FP4
+  sovereignty: Compute worker, NOT control authority
+
+NODE_B — Mac Studio M3 Ultra (512GB):
+  role: Knowledge Substrate + Control Plane
+  function: Bead Field store, coordination, orchestration, dashboards, high-context reasoning
+  specs: 32-core CPU, 80-core GPU, 32-core Neural Engine, 512GB unified memory
+  sovereignty: All critical services, keys, and DBs reside here
+
+NODE_C — Mac Studio M4 Max (64GB):
+  role: Core Development + Phoenix Execution
+  function: Phoenix production codebase, sprint execution, test suites
+  specs: Existing hardware, dev-primary workloads
+
+NODE_D+ — Mac Mini Gateway Nodes:
+  role: Lightweight coordination, CSO office, monitoring
+  function: Git sync, task watching, review workflows
+
+CONNECTIVITY:
+  backbone: Encrypted LAN (10GbE) between DGX Spark and M3 Ultra
+  pattern: Control plane on M3 Ultra, compute plane on DGX Spark
+  fallback: M3 Ultra can run local models if DGX unavailable (degraded but sovereign)
+```
+
+### 1.2 Storage Topology
+
+```yaml
+BEAD_FIELD_STORE:
+  engine: XTDB-style bitemporal layer (or equivalent)
+  location: M3 Ultra (primary), DGX Spark (read replica for Dream Cycle)
+  purpose: High-performance bi-temporal range queries at scale
+  query_language: Datalog or SQL with WT/KT predicates
+
+WORK_TREE:
+  engine: Dolt (Git-for-Data)
+  location: M3 Ultra
+  purpose: Agent coordination, task state, logic versioning, branch/merge
+  NOT_FOR: High-frequency bead queries (control plane only)
+
+EPHEMERAL_STORE:
+  engine: Session logs (append-only, non-indexed)
+  location: Per-node local storage
+  purpose: Agent chain-of-thought, working memory, disposable reasoning
+  retention: Configurable (default 7 days, then purge)
+```
+
+---
+
+## 2. The Three-Layer Model
+
+All system cognition falls into exactly one of three layers.
+
+### 2.1 Layer Definitions
+
+```yaml
+LAYER_1 — EPHEMERAL COGNITION:
+  what: Agent internal reasoning, chain-of-thought, exploratory thinking
+  stored_as: Session logs (plain text / JSONL)
+  merkle_verified: NO
+  bi_temporal: NO
+  signed: NO
+  retention: Disposable (configurable TTL)
+  examples:
+    - "Maybe the regime shifted... let me check HTF"
+    - Internal LLM reasoning tokens
+    - Draft calculations before commitment
+  rule: "Thinking out loud — no record, no provenance, no cost"
+
+LAYER_2 — STRUCTURAL BEADS:
+  what: Logical Commitments that change system state or inform decisions
+  stored_as: Bead Field (XTDB-style bitemporal store)
+  merkle_verified: YES
+  bi_temporal: YES (world_time span + knowledge_time point)
+  signed: YES (PQC Dilithium + ECDSA dual signature)
+  retention: Permanent (append-only, never deleted)
+  examples:
+    - FACT: "EURUSD closed at 1.0847 on 2026-02-19"
+    - CLAIM: "HTF bias is bearish based on weekly OB rejection"
+    - SIGNAL: "OTE + FVG confluence valid for London session short"
+    - PROPOSAL: "Enter short EURUSD at 1.0855, SL 1.0880, TP 1.0790"
+    - PROPOSAL_REJECTED: Full context of why proposal was declined
+    - SKILL: Distilled lesson from Dream Cycle analysis
+    - MODEL_VERSION: Metadata for any model used in production
+    - POLICY: Risk rules, position limits, regime definitions
+  rule: "Speaking for the record — permanent, provable, mineable"
+
+LAYER_3 — ATTESTATION ENVELOPE:
+  what: Proof of HOW a structural bead was produced
+  stored_as: Embedded in each structural bead's attestation field
+  merkle_verified: YES (part of bead hash)
+  purpose: Proves code version, model version, input set, execution context
+  rule: "The bead is WHAT was decided. The attestation is HOW it was decided."
+```
+
+### 2.2 The Commitment Threshold
+
+**An agent writes a Structural Bead when, and only when, it makes a state-changing Logical Commitment.**
+
+```yaml
+MANDATORY_BEADS (always committed):
+  - Any PROPOSAL (trade intent)
+  - Any PROPOSAL_REJECTED (declined trade — FULL context required)
+  - Any SIGNAL (tradeable expression with derivation)
+  - Any FACT ingestion (market data, events)
+  - Any MODEL_VERSION change (deployment, rollback)
+  - Any POLICY change (risk rules, regime definitions)
+
+CONDITIONAL_BEADS (committed only via Formal Handoff):
+  - A CLAIM that is written to the WORK_TREE (Dolt) as a completed task artifact
+  - A regime assessment that another agent incorporates as a premise
+  - An intermediate inference explicitly committed via commit() call
+
+  formal_handoff_protocol: |
+    The Commitment Threshold is enforced via "Formal Handoff":
+    - If Agent A wants Agent B to RELY on a conclusion, Agent A must commit() it.
+    - If Agent B merely MONITORS Agent A's thinking, it remains Ephemeral.
+    - Observation (reading another agent's draft) ≠ Incorporation (using it as premise).
+    - The act of writing to the WORK_TREE is the bright line.
+    
+    This prevents the swarm from drowning the Structural Layer in noise
+    when agents "peek" at each other's working memory during coordination.
+
+  threshold_test: |
+    "Has this inference been formally committed to the WORK_TREE
+     as a completed artifact that other agents may incorporate?"
+    If YES → Bead it.
+    If NO  → Ephemeral.
+
+NEVER_BEADED:
+  - Internal chain-of-thought steps
+  - Draft calculations that are superseded
+  - Exploratory reasoning that leads nowhere
+  - Agent-to-agent chatter during coordination
+```
+
+---
+
+## 3. Bead Core Schema
+
+Every Structural Bead shares this base schema. Type-specific fields extend it.
+
+### 3.1 Universal Fields
+
+```yaml
+bead_core:
+  bead_id:
+    type: string
+    format: UUID v7 (time-ordered, 128-bit)
+    description: Globally unique, sortable by creation time
+    required: true
+
+  bead_type:
+    type: enum
+    values: [FACT, CLAIM, SIGNAL, PROPOSAL, PROPOSAL_REJECTED, SKILL, MODEL_VERSION, POLICY]
+    required: true
+
+  content:
+    type: object
+    format: JSON (structured payload, type-specific fields below)
+    required: true
+
+  # --- BI-TEMPORAL FIELDS ---
+
+  world_time_valid_from:
+    type: datetime | null
+    description: Start of the observation window in external reality
+    format: ISO 8601 with microsecond precision
+    nullable: true (null = pattern-type, valid across all time)
+
+  world_time_valid_to:
+    type: datetime | null
+    description: End of the observation window in external reality
+    nullable: true (null = still valid / open-ended)
+
+  knowledge_time_recorded_at:
+    type: datetime
+    description: The moment of conviction — when Dexter committed this bead
+    format: ISO 8601 with microsecond precision
+    required: true
+    clock: Hybrid Logical Clock (HLC) to prevent cross-office skew
+
+  temporal_class:
+    type: enum
+    values: [OBSERVATION, PATTERN, DERIVED]
+    description: |
+      OBSERVATION: Tied to specific market time (has world_time span)
+      PATTERN: Timeless methodology (world_time is null, valid across all time)
+      DERIVED: Computed from other beads (world_time inherited from inputs)
+    required: true
+
+  # --- PROVENANCE ---
+
+  source_ref:
+    type: object
+    description: What produced this bead
+    fields:
+      source_type: enum [MARKET_DATA, AGENT, HUMAN, EXTRACTION, SIMULATION, OPEN_SOURCE]
+      source_id: string (agent ID, data provider, human identifier)
+      source_version: string (code hash, model version, or null for human)
+    required: true
+    open_source_note: |
+      OPEN_SOURCE: External intelligence not from market data providers
+      or methodology extraction. Includes: X/social scrapes, YouTube narrative
+      extraction, Perplexity deep-dives, macro research, news feeds, sentiment signals.
+      Quality tiering: Below REFERENCE in source hierarchy.
+      Requires: Auditor cross-family check (INV-CROSS-FAMILY applies).
+
+  lineage:
+    type: array[string]
+    description: Ordered list of bead_ids this bead was derived from
+    format: Array of bead_id references (hash-verified on read)
+    required: true (empty array for root beads like raw FACT ingestion)
+
+  # --- INTEGRITY ---
+
+  hash_self:
+    type: string
+    format: SHA-256 of (content + all metadata fields except hash_self)
+    required: true
+
+  hash_prev:
+    type: string | null
+    format: SHA-256 of previous bead in this logical stream
+    description: Creates per-stream hash chain for tamper detection
+    nullable: true (null for first bead in stream)
+
+  merkle_batch_id:
+    type: string | null
+    description: ID of the Merkle batch this bead was anchored in
+    nullable: true (set when batch anchor occurs)
+
+  # --- ATTESTATION (Layer 3) ---
+
+  attestation:
+    type: object
+    fields:
+      air_node_id: string (which physical node executed)
+      code_hash: string (reproducible build hash of executing code)
+      model_hash: string | null (model version hash, null if no model involved)
+      container_hash: string | null (container digest, if containerized)
+      ecdsa_sig: string (ECDSA secp256r1 signature over hash_self)
+      pqc_sig: string (Dilithium signature over hash_self)
+      signing_cert_chain: array[string] (certificate chain for verification)
+    required: true
+
+  # --- OPERATIONAL ---
+
+  status:
+    type: enum
+    values: [ACTIVE, SUPERSEDED, RETRACTED]
+    description: |
+      ACTIVE: Current and valid
+      SUPERSEDED: Replaced by a newer bead (superseded_by field set)
+      RETRACTED: Withdrawn due to error (retraction_reason field set)
+    default: ACTIVE
+
+  superseded_by:
+    type: string | null
+    description: bead_id of the bead that replaced this one
+
+  retraction_reason:
+    type: string | null
+    description: Why this bead was retracted (human-authored)
+
+  tags:
+    type: array[string]
+    description: Flexible tagging (drawer assignments, regime labels, etc.)
+    examples: ["HTF_BIAS", "LONDON_SESSION", "EURUSD", "REGIME:TRENDING"]
+```
+
+### 3.2 Type-Specific Content Schemas
+
+#### FACT
+
+```yaml
+fact_content:
+  symbol: string (e.g., "EURUSD", "SPX", "US10Y")
+  field: string (e.g., "close", "high", "volume", "event")
+  value: number | string | object
+  as_of_world_time: datetime (precise market timestamp)
+  provider: string (e.g., "IBKR", "Bloomberg", "manual")
+  quality_score: float [0.0-1.0] | null
+  notes: |
+    quality_score is provider-reported confidence, NOT a Dexter judgment.
+    This is the only field that may contain a score — it reflects data quality,
+    not analytical quality. INV-NO-GRADES still applies to all other bead types.
+```
+
+#### CLAIM
+
+```yaml
+claim_content:
+  conclusion: string (the inference, in ICT-native terminology)
+  reasoning_trace: string (structured explanation of how conclusion was reached)
+  premises_ref: array[bead_id] (FACT and/or CLAIM beads this derives from)
+  confidence_basis: string (qualitative basis, NOT a numeric score)
+  drawer: enum [HTF_BIAS, MARKET_STRUCTURE, PREMIUM_DISCOUNT, ENTRY_MODEL, CONFIRMATION]
+  icm_terms: array[string] (ICT terms used: FVG, MSS, OTE, MMM, etc.)
+```
+
+#### SIGNAL
+
+```yaml
+signal_content:
+  expression: string (tradeable thesis in structured format)
+  direction: enum [LONG, SHORT, NEUTRAL]
+  instrument: string (e.g., "EURUSD")
+  horizon: string (e.g., "intraday", "swing", "position")
+  session_context: string | null (e.g., "London", "NY_AM", "Asian")
+  regime_tags: array[string] (e.g., ["TRENDING", "HIGH_VOL", "RISK_ON"])
+  risk_profile: object
+    fields:
+      invalidation: string (what kills this signal)
+      risk_reward_basis: string (qualitative R:R assessment)
+  supporting_claims: array[bead_id] (CLAIM beads that support this signal)
+  supporting_facts: array[bead_id] (FACT beads that ground this signal)
+```
+
+#### PROPOSAL
+
+```yaml
+proposal_content:
+  signal_ref: bead_id (the SIGNAL this proposal executes)
+  action: enum [ENTER_LONG, ENTER_SHORT, EXIT, ADJUST, HEDGE]
+  instrument: string
+  entry_price: number | null
+  stop_loss: number | null
+  take_profit: number | null
+  position_size: object | null
+    fields:
+      method: string (e.g., "fixed_fractional", "kelly", "manual")
+      value: number
+      unit: enum [LOTS, CONTRACTS, USD, PCT_EQUITY]
+  constraints: array[string] (e.g., ["max_daily_loss_not_exceeded", "regime_filter_passed"])
+  execution_venue: string (e.g., "IBKR_PAPER", "IBKR_LIVE", "SYNTHETIC")
+  simulation_refs: array[bead_id] | null (backtest/simulation result beads)
+```
+
+#### PROPOSAL_REJECTED
+
+**CRITICAL: Structurally identical to PROPOSAL, plus rejection context. Never a lightweight stub.**
+
+```yaml
+proposal_rejected_content:
+  # --- FULL PROPOSAL SNAPSHOT (identical to PROPOSAL) ---
+  signal_ref: bead_id
+  action: enum [ENTER_LONG, ENTER_SHORT, EXIT, ADJUST, HEDGE]
+  instrument: string
+  entry_price: number | null
+  stop_loss: number | null
+  take_profit: number | null
+  position_size: object | null
+  constraints: array[string]
+  execution_venue: string
+  simulation_refs: array[bead_id] | null
+
+  # --- REJECTION CONTEXT (what makes this bead mineable) ---
+  rejection_source: enum [AUDITOR, RISK_ENGINE, HUMAN, DREAM_CYCLE]
+  rejection_reason: string (structured, specific — NOT "low confidence")
+  rejection_category: enum
+    values:
+      - PROVENANCE_FAILURE     # Couldn't trace inputs
+      - LOGICAL_CONTRADICTION  # Internal inconsistency
+      - REGIME_MISMATCH        # Signal valid but wrong regime
+      - RISK_BREACH            # Exceeds risk parameters
+      - STALE_DATA             # Inputs too old
+      - FALSIFICATION_FAILED   # Couldn't survive adversarial check
+      - HUMAN_OVERRIDE         # Olya/G vetoed
+      - DREAM_CYCLE_FAILURE    # Failed counterfactual testing
+  rejection_policy_ref: bead_id | null
+    description: |
+      Reference to the specific POLICY bead version that was active
+      at the moment of rejection. REQUIRED for RISK_BREACH category.
+      Prevents "Governance Drift" — we can always reconstruct WHY
+      a trade was rejected even if the policy has since changed.
+      For HUMAN_OVERRIDE, this is null (human judgment, not policy).
+  risk_metrics_at_rejection: object (snapshot of risk state when rejected)
+  counterfactual_summary: string | null (populated by Dream Cycle, null initially)
+  linked_skills: array[bead_id] | null (SKILL beads generated from this rejection)
+```
+
+#### SKILL
+
+```yaml
+skill_content:
+  skill_name: string (e.g., "avoid_high_leverage_low_liquidity")
+  skill_type: enum [AVOIDANCE, RECOGNITION, TIMING, SIZING, REGIME]
+  description: string (what this skill teaches)
+  failure_trajectory_refs: array[bead_id] (PROPOSAL_REJECTED beads that generated this)
+  success_trajectory_refs: array[bead_id] | null (PROPOSAL beads where this skill would have helped)
+  conditions: object (structured IF-THEN for when this skill applies)
+    fields:
+      if_conditions: array[string]
+      then_action: string
+      confidence_basis: string
+  distillation_method: string (e.g., "SkillRL_v1", "manual_review", "Dream_Cycle_v2")
+  validation_status: enum [CANDIDATE, VALIDATED, PROMOTED, DEPRECATED]
+  validated_by: string | null (human ID or validation pipeline ID)
+```
+
+#### MODEL_VERSION
+
+```yaml
+model_version_content:
+  model_name: string
+  version_hash: string (deterministic hash of weights + config)
+  training_data_refs: array[bead_id] (FACT beads used in training)
+  eval_metrics: object (structured evaluation results)
+  deployment_status: enum [CANDIDATE, STAGING, PRODUCTION, RETIRED]
+  deployment_history: array[object]
+    fields:
+      status: string
+      changed_at: datetime
+      changed_by: string
+```
+
+#### POLICY
+
+```yaml
+policy_content:
+  policy_name: string (e.g., "max_daily_loss", "regime_filter", "position_limit")
+  policy_type: enum [RISK, EXECUTION, REGIME, OPERATIONAL]
+  rules: object (structured policy definition)
+  effective_from: datetime (world_time when policy takes effect)
+  effective_to: datetime | null (null = indefinite)
+  supersedes: bead_id | null (previous policy version)
+  authority: string (who approved this policy: "G", "Olya", "system_default")
+```
+
+---
+
+## 4. Bi-Temporal Semantics
+
+### 4.1 Definitions
+
+```yaml
+WORLD_TIME (WT):
+  meaning: "When was this true in external reality?"
+  representation: Span [world_time_valid_from, world_time_valid_to]
+  examples:
+    - FACT (EURUSD close): WT = [2026-02-19T17:00:00Z, 2026-02-19T17:00:00Z] (point)
+    - CLAIM (regime trending): WT = [2026-02-19T08:00:00Z, 2026-02-19T14:32:00Z] (observation window)
+    - CLAIM (OTE is valid entry model): WT = [null, null] (pattern, timeless)
+    - SIGNAL (short EURUSD London): WT = [2026-02-19T07:00:00Z, 2026-02-19T11:00:00Z] (session window)
+
+KNOWLEDGE_TIME (KT):
+  meaning: "When did the system learn/commit this?"
+  representation: Point — knowledge_time_recorded_at
+  clock: Hybrid Logical Clock (HLC)
+  examples:
+    - FACT ingested at 14:32:07.123456 → KT = 2026-02-19T14:32:07.123456Z
+    - CLAIM committed at 14:33:01.789012 → KT = 2026-02-19T14:33:01.789012Z
+    - Dream Cycle skill distilled at 03:15:22.456789 → KT = 2026-02-20T03:15:22.456789Z
+```
+
+### 4.2 Temporal Classes
+
+```yaml
+OBSERVATION:
+  world_time: Required span (both from and to populated)
+  use: Market data, regime assessments, session-specific signals
+  query_pattern: "What did we observe about EURUSD during London session on Feb 19?"
+
+PATTERN:
+  world_time: Null (valid across all time)
+  use: Methodology CLAIMs, skills, structural trading rules
+  query_pattern: "Show all PATTERN CLAIMs about OTE entry models"
+  note: The 981 ancestral CLAIMs from extraction phase are PATTERN class
+
+DERIVED:
+  world_time: Bounding Constraint from OBSERVATION-class inputs only
+  use: Computed beads (signals, proposals) that synthesize multiple inputs
+  query_pattern: "Show all DERIVED SIGNALs that depended on a regime CLAIM from today"
+
+  inheritance_rule: |
+    DERIVED WT = Intersection of all OBSERVATION-class input spans.
+    PATTERN-class inputs provide LOGIC but contribute ZERO temporal validity.
+    
+    A SIGNAL is only valid for as long as its most volatile OBSERVATION input
+    is valid. If the market data FACT expires, the SIGNAL expires.
+    
+    Example:
+      Input A: PATTERN CLAIM "OTE is valid entry" (WT: null) → provides logic
+      Input B: OBSERVATION CLAIM "HTF bearish" (WT: 08:00–14:00) → provides temporal bound
+      Input C: OBSERVATION FACT "EURUSD at 1.0847" (WT: 14:32) → provides temporal bound
+      
+      DERIVED SIGNAL WT = intersection of B and C = [14:32, 14:32]
+      (bounded by the most recent observation, not expanded by the pattern)
+    
+    The "Null Union Paradox" is avoided: null + span ≠ timeless signal.
+    Patterns constrain WHAT is valid. Observations constrain WHEN it's valid.
+```
+
+### 4.3 Refinery Latency
+
+```yaml
+DEFINITION: |
+  The delta between world_time_valid_to and knowledge_time_recorded_at.
+  Measures how long the system takes to "understand" a market state change.
+
+FORMULA: |
+  refinery_latency = knowledge_time_recorded_at - world_time_valid_to
+
+INTERPRETATION:
+  narrowing: System is getting faster at recognizing market state
+  widening: System is getting sluggish (potential degradation signal)
+  baseline: Establish per-bead-type and per-regime benchmarks
+
+METRIC_STATUS: First-class operational metric, tracked per bead type
+```
+
+### 4.4 Bi-Temporal Query Examples
+
+```yaml
+EXAMPLE_1 — "What did we know on Jan 1 about Q4 2025?":
+  query: |
+    SELECT * FROM beads
+    WHERE knowledge_time_recorded_at <= '2026-01-01T00:00:00Z'
+    AND world_time_valid_from >= '2025-10-01T00:00:00Z'
+    AND world_time_valid_to <= '2025-12-31T23:59:59Z'
+  purpose: Reconstruct state of knowledge at any past point
+
+EXAMPLE_2 — "Show all regime CLAIMs for EURUSD London session today":
+  query: |
+    SELECT * FROM beads
+    WHERE bead_type = 'CLAIM'
+    AND content->>'drawer' = 'HTF_BIAS'
+    AND tags @> '["EURUSD", "LONDON_SESSION"]'
+    AND world_time_valid_from >= '2026-02-20T07:00:00Z'
+    AND world_time_valid_to <= '2026-02-20T11:00:00Z'
+
+EXAMPLE_3 — "Average refinery latency for SIGNALs this week":
+  query: |
+    SELECT AVG(knowledge_time_recorded_at - world_time_valid_to) as avg_latency
+    FROM beads
+    WHERE bead_type = 'SIGNAL'
+    AND knowledge_time_recorded_at >= '2026-02-17T00:00:00Z'
+```
+
+---
+
+## 5. Integrity Model
+
+### 5.1 Hash Chain
+
+```yaml
+PER_STREAM_CHAINING:
+  description: |
+    Each logical stream (e.g., per-instrument, per-agent, per-session)
+    maintains its own hash chain via hash_prev.
+  purpose: Tamper detection within a stream
+  verification: Walk chain backward, verify each hash_prev matches prior bead's hash_self
+
+HASH_COMPUTATION:
+  algorithm: SHA-256
+  input: Canonical JSON serialization of (content + all metadata except hash_self, merkle_batch_id)
+  determinism: Same inputs MUST produce same hash (canonical JSON ordering required)
+```
+
+### 5.2 Merkle Anchoring
+
+```yaml
+ANCHORING_TRIGGER: Hybrid (Decision Boundary + Fallback Caps)
+  description: |
+    Primary trigger: SIGNAL or PROPOSAL bead committed (Decision Boundary).
+    Fallback triggers prevent "Infinite Batch" in cold regimes:
+    - MAX_BEADS: 500 beads since last anchor (prevents massive backfill operations)
+    - MAX_TIME: 1 hour since last anchor (ensures regular integrity checkpoints)
+    
+    Whichever trigger fires first wins.
+    
+    Rationale: In a "Cold Regime" (no trades for 48 hours) with high research
+    activity (10,000 FACTs and CLAIMs), the fallback caps keep Merkle trees
+    shallow and backfill operations deterministic and performant on the M3 Ultra.
+
+  trigger_precedence:
+    1: DECISION_BOUNDARY (SIGNAL or PROPOSAL committed)
+    2: MAX_BEADS_REACHED (500 beads since last anchor, configurable)
+    3: MAX_TIME_ELAPSED (1 hour since last anchor, configurable)
+
+BATCH_CONTENTS:
+  - All structural beads committed since last anchor
+  - Merkle tree built over their hash_self values
+  - Root stored in each bead's merkle_batch_id field (backfilled)
+
+ANCHOR_RECORD:
+  merkle_batch_id: string (UUID v7)
+  merkle_root: string (SHA-256 root of batch tree)
+  bead_count: integer
+  timestamp: datetime (KT of anchor event)
+  trigger_bead_id: string (the SIGNAL/PROPOSAL that triggered anchoring)
+
+SOVEREIGN_ANCHOR (daily):
+  description: |
+    Daily ledger root snapshot signed with offline sovereign key (HSM).
+    Covers all Merkle batches from the day.
+  frequency: Once per day (end of NY session or configurable)
+  key_storage: Offline HSM (not accessible to any agent)
+  purpose: External audit point — proves state at any past day
+```
+
+### 5.3 Signing Protocol (PQC-First)
+
+```yaml
+DUAL_SIGNATURE:
+  purpose: Hardware-agnostic sovereignty + post-quantum readiness
+  signatures:
+    ecdsa:
+      algorithm: ECDSA secp256r1
+      purpose: Immediate compatibility, widely verifiable
+    pqc:
+      algorithm: Dilithium (CRYSTALS-Dilithium, NIST PQC standard)
+      purpose: Quantum-resistant, future-proof
+
+SIGNING_SCOPE: Every structural bead is signed at commitment time
+VERIFICATION: Either signature alone is sufficient for validation
+RATIONALE: |
+  TEE.fail research (Oct 2025) proved hardware enclaves are breakable.
+  Software signing makes the system sovereign regardless of hardware state.
+  Hardware TEE (Blackwell Confidential Compute) is an ADDITIONAL layer, not the foundation.
+```
+
+---
+
+## 6. Ancestral Reserve
+
+### 6.1 Genesis Snapshot
+
+```yaml
+THE_981_CLAIMS:
+  status: Ancestral Reserve — the Gold Reserve backing the new currency
+  migration: NONE — these are not "migrated," they are the Genesis Block
+  temporal_class: PATTERN (world_time null, valid across all time)
+  lineage: Root beads (empty lineage array — they ARE the axioms)
+  tags: ["ANCESTRAL", "EXTRACTION_PHASE", source-specific tags]
+
+GENESIS_SNAPSHOT:
+  description: |
+    The 981 PATTERN beads are NOT treated as 981 individual start-points.
+    They are bundled into a single Genesis Merkle Tree.
+    The root of this tree is signed with the Sovereign Key (G).
+    This becomes "Bead Zero" — the Atomic Origin of the entire refinery.
+    
+    Every future bead in the system has a lineage that can be traced
+    back to this Genesis Root. It provides cryptographic proof that
+    the methodology foundation was established at a known point in time
+    by a known authority.
+
+  implementation:
+    1: Hash all 981 CLAIMs with current schema (retroactive hash_self)
+    2: Build Merkle tree over all 981 hash_self values
+    3: Sign Merkle root with Sovereign Key (G, offline HSM)
+    4: Store Genesis Record as a special POLICY bead:
+      bead_type: POLICY
+      policy_name: "GENESIS_ANCHOR"
+      content: { merkle_root, bead_count: 981, signed_by: "G" }
+    5: All 981 beads get merkle_batch_id pointing to Genesis Record
+    6: Future lineage references can trace to any ancestral CLAIM
+       and verify it was part of the signed Genesis set
+
+RELATIONSHIP_TO_NEW_BEADS:
+  pattern: |
+    New SIGNAL and PROPOSAL beads reference ancestral CLAIMs
+    via their lineage array. The ancestral beads provide the
+    methodology foundation; live observations provide the market context.
+
+  example: |
+    SIGNAL bead for "Short EURUSD at OTE" would have lineage:
+    [
+      "ancestral-claim-OTE-valid-entry",     # PATTERN (from Genesis set)
+      "live-claim-htf-bearish-2026-02-20",   # OBSERVATION (from today)
+      "live-fact-eurusd-1.0847-close"         # OBSERVATION (market data)
+    ]
+```
+
+---
+
+## 7. Agent Integrity Runtime (AIR)
+
+### 7.1 Overview
+
+```yaml
+PURPOSE: |
+  Every agent action that can affect markets or system state is:
+  - Authenticated to a specific code + config state
+  - Executed in a verified environment
+  - Signed with PQC + ECDSA dual signatures
+
+ARCHITECTURE:
+  software_layer: PQC signing + HLC + hash chains (FOUNDATIONAL — Day 1)
+  hardware_layer: Blackwell Confidential Compute TEE (ADDITIONAL — when tooling matures)
+  rationale: Software attestation makes system sovereign even if hardware is compromised
+```
+
+### 7.2 AIR Gate Protocol
+
+```yaml
+HIGH_IMPACT_ACTIONS (require full AIR gate):
+  - Placing any order (live or paper)
+  - Publishing a SIGNAL bead
+  - Changing a POLICY bead
+  - Deploying a MODEL_VERSION
+  - Promoting CLAIM → referenced by SIGNAL
+
+GATE_SEQUENCE:
+  1_ASSEMBLE: |
+    Orchestrator builds Execution Plan:
+    - Agent identity + code hash
+    - Requested action
+    - Input bead set (with hash verification)
+    - Target model version (if applicable)
+
+  2_VERIFY: |
+    AIR checks:
+    - Code hash matches approved build
+    - Model version hash present and approved in MODEL_VERSION beads
+    - All input beads verified (hash_self + Merkle proof)
+    - No POLICY violations in proposed action
+
+  3_EXECUTE: |
+    Action executes in verified context.
+    Produces output bead + execution trace.
+
+  4_SIGN: |
+    AIR signs output bead (PQC + ECDSA).
+    Trace is stored in attestation envelope.
+
+  5_COMMIT: |
+    Bead Field ingests signed output.
+    Unsigned mutations are REJECTED and logged as security events.
+```
+
+---
+
+## 8. The Shadow Field & Dream Cycle Interface
+
+### 8.1 Shadow Field Definition
+
+```yaml
+SHADOW_FIELD: |
+  The collection of all PROPOSAL_REJECTED beads in the Bead Field.
+  This is the negative space — what the system considered and declined.
+  It is the primary fuel for the Dream Cycle's SkillRL distillation.
+
+RICHNESS_REQUIREMENT: |
+  A PROPOSAL_REJECTED bead MUST contain the full context of the failure:
+  - The complete proposal (identical structure to PROPOSAL)
+  - The specific rejection reason (structured, categorical)
+  - The risk state at time of rejection
+  - The input chain (lineage back to supporting CLAIMs and FACTs)
+
+  A rejection without the "why" is noise.
+  A rejection without the full proposal is unmatchable.
+  The Dream Cycle cannot learn from what it cannot trace.
+```
+
+### 8.2 Dream Cycle Intake
+
+```yaml
+DREAM_CYCLE_READS:
+  primary_input: PROPOSAL_REJECTED beads (the Shadow Field)
+  secondary_input: PROPOSAL beads that were executed (success trajectories)
+  tertiary_input: SKILL beads (existing learned skills, for refinement)
+
+DREAM_CYCLE_WRITES:
+  output: SKILL beads (distilled lessons)
+  feedback: Updated counterfactual_summary on PROPOSAL_REJECTED beads
+  links: linked_skills populated on source PROPOSAL_REJECTED beads
+
+PIPELINE:
+  1: Librarian loads PROPOSAL_REJECTED + context (lineage walk)
+  2: Researcher runs counterfactual simulation on DGX (historical + synthetic regimes)
+  3: Leakage diagnostics computed (PC, CI, IDS metrics)
+  4: SkillRL distills failure trajectories into SKILL candidates
+  5: Skills written as CANDIDATE beads, await validation
+  6: Human validates → SKILL status promoted to VALIDATED
+  7: Validated skills condition future agent behavior
+```
+
+---
+
+## 9. Non-Negotiable Invariants
+
+```yaml
+INV-BEAD-IMMUTABLE:
+  rule: "Structural beads are append-only. No mutation, only supersession or retraction."
+  enforcement: Bead Field store rejects UPDATE operations on existing beads.
+
+INV-BEAD-SIGNED:
+  rule: "Every structural bead carries dual PQC+ECDSA signatures."
+  enforcement: AIR rejects unsigned beads at ingestion.
+
+INV-BEAD-TEMPORAL:
+  rule: "Every structural bead has knowledge_time. Observation beads have world_time."
+  enforcement: Schema validation at commit time.
+
+INV-SHADOW-RICH:
+  rule: "PROPOSAL_REJECTED is structurally identical to PROPOSAL plus rejection context."
+  enforcement: Schema validation rejects lightweight rejection stubs.
+
+INV-ANCHOR-AT-DECISIONS:
+  rule: "Merkle anchoring triggers at Decision Boundaries OR fallback caps (500 beads / 1 hour)."
+  enforcement: Anchor daemon monitors bead stream for triggers, whichever fires first.
+
+INV-COMMITMENT-THRESHOLD:
+  rule: "Only Formal Handoffs become beads. Observation ≠ Incorporation. commit() is the bright line."
+  enforcement: Agent contract requires explicit commit() to WORK_TREE to write Structural Bead.
+
+INV-ANCESTRAL-PRESERVED:
+  rule: "The 981 extraction-phase CLAIMs form a Genesis Snapshot, signed as single Merkle root by G."
+  enforcement: Genesis Record is a POLICY bead; all ancestral beads reference its merkle_batch_id.
+
+INV-REFINERY-LATENCY-TRACKED:
+  rule: "WT-to-KT delta is a first-class operational metric per bead type."
+  enforcement: Dashboard + alerting on latency regression.
+
+INV-NO-ORPHAN-INSIGHTS:
+  rule: "All rejected proposals are captured, classified, and routed to Dream Cycle."
+  enforcement: Auditor/Risk Engine MUST produce PROPOSAL_REJECTED bead on any rejection.
+
+INV-SOVEREIGN-ANCHOR:
+  rule: "Daily ledger root signed with offline HSM key."
+  enforcement: Cron job + human verification of anchor.
+
+INV-REJECTION-POLICY-REF:
+  rule: "RISK_BREACH rejections MUST reference the active POLICY bead version at time of rejection."
+  enforcement: Schema validation rejects RISK_BREACH without rejection_policy_ref.
+
+INV-TEMPORAL-BOUNDING:
+  rule: "DERIVED beads inherit WT from OBSERVATION inputs only. PATTERN inputs provide logic, not time."
+  enforcement: Schema validation computes DERIVED WT as intersection of OBSERVATION input spans.
+```
+
+---
+
+## 10. Completion Gates
+
+### Gate 1 — Substrate Ready
+
+```yaml
+DELIVERABLES:
+  - Bead Field store initialized (XTDB-style bitemporal engine)
+  - Dolt work-tree for coordination layer
+  - Ingestion pipeline: market data → FACT beads with WT/KT + hash chain + Merkle
+  - Ancestral Reserve: 981 CLAIMs retroactively hashed, signed, tagged PATTERN
+  - HLC implementation for cross-node clock coordination
+
+EXIT_CRITERIA:
+  - Query: "Show all FACT beads about EURUSD that we knew on Jan 1 about Q4 2025" returns correct results
+  - Merkle proof for any bead reconstructable and verifiable
+  - Ancestral CLAIMs queryable as PATTERN-class beads with intact lineage
+```
+
+### Gate 2 — Bead Field Semantics & Graph Operations
+
+```yaml
+DELIVERABLES:
+  - All 8 bead types implemented with full schema validation
+  - Graph layer: edges FACT→CLAIM→SIGNAL→PROPOSAL→(REJECTED|EXECUTED)
+  - Lineage walk API (given any bead, trace full dependency chain)
+  - Refinery Latency dashboard
+
+EXIT_CRITERIA:
+  - Given an executed synthetic trade, trace back to originating SIGNAL, CLAIMs, FACTs, and model version
+  - PROPOSAL_REJECTED beads contain full proposal + structured rejection
+  - Refinery Latency metric computable for any bead type
+```
+
+### Gate 3 — AIR & Execution Integrity
+
+```yaml
+DELIVERABLES:
+  - AIR runtime with PQC + ECDSA dual signing
+  - Unsigned mutation rejection + security event logging
+  - Code hash verification against approved builds
+  - Merkle anchoring at Decision Boundaries
+
+EXIT_CRITERIA:
+  - Attempted unsigned mutation rejected and logged
+  - Any bead inspectable with full attestation bundle
+  - Local verification of any bead's integrity (hash chain + Merkle proof + signature)
+```
+
+### Gate 4 — Swarm Agents & Coordination
+
+```yaml
+DELIVERABLES:
+  - Director, Librarian, Researcher, Executor agents operational
+  - Event bus wired (NATS/Kafka on M3 Ultra)
+  - Saga orchestration for proposal lifecycle
+  - Commitment Threshold enforced in agent contracts
+
+EXIT_CRITERIA:
+  - New FACT → CLAIM → SIGNAL → PROPOSAL lifecycle completes autonomously
+  - Rejections produce full PROPOSAL_REJECTED beads (Shadow Field populated)
+  - Agent failure → graceful degradation + alert (no orphan state)
+```
+
+### Gate 5 — Dream Cycle v1 (Counterfactuals)
+
+```yaml
+DELIVERABLES:
+  - EnvModel(s) trained on historical FACT beads (DGX Spark)
+  - Counterfactual simulation for PROPOSAL_REJECTED beads
+  - Leakage metrics (PC, CI, IDS) computed
+  - SKILL candidate beads generated from failure trajectories
+
+EXIT_CRITERIA:
+  - Pick any PROPOSAL_REJECTED → view counterfactual replay + failure analysis
+  - SKILL candidates generated and linked to source rejections
+  - Leakage dashboard operational
+```
+
+### Gate 6 — Dream Cycle v2 (GALILEO + SkillRL)
+
+```yaml
+DELIVERABLES:
+  - Adversarial EnvModel (GALILEO-style) on DGX Spark
+  - GAN-based synthetic regime generator
+  - SkillRL pipeline: failure trajectories → validated Skills
+  - Skill conditioning in agent behavior
+
+EXIT_CRITERIA:
+  - For a cohort of PROPOSAL_REJECTED: skills auto-generated and associated
+  - Measurable improvement when agents condition on validated Skills
+  - Red Team Agent can trade against Phoenix strategies (market-neutral evaluation)
+```
+
+### Gate 7 — Sovereign Readiness
+
+```yaml
+DELIVERABLES:
+  - Offline HSM for sovereign key management
+  - Daily ledger root anchoring operational
+  - Load/latency tests at target throughput (DGX + M3 Ultra)
+  - Operational runbooks: backup, restore, disaster recovery, incident response
+
+EXIT_CRITERIA:
+  - Simulated incident (compromised agent) detected, contained, rolled back
+  - External reviewer can audit a full day's decisions end-to-end
+  - State of knowledge reconstructable at any past time slice
+```
+
+---
+
+## 11. Glossary
+
+```yaml
+Bead: Atomic unit of knowledge in the system. Cryptographically anchored, bi-temporally stamped.
+Bead Field: The collection of all structural beads. The core data substrate.
+Shadow Field: The subset of PROPOSAL_REJECTED beads. Fuel for the Dream Cycle.
+Ancestral Reserve: The 981 extraction-phase CLAIMs. Foundation axioms.
+World Time (WT): When something was true in external reality (span).
+Knowledge Time (KT): When the system learned/committed something (point).
+Refinery Latency: The delta between WT end and KT. Measures system responsiveness.
+Temporal Class: OBSERVATION (market-tied), PATTERN (timeless), DERIVED (computed).
+Logical Commitment: A state-changing decision that crosses from cognition to record.
+Commitment Threshold: The rule determining when an agent "speaks for the record."
+AIR: Agent Integrity Runtime. Authenticates and signs all high-impact actions.
+Dream Cycle: Adversarial simulation + SkillRL pipeline that mines the Shadow Field.
+HLC: Hybrid Logical Clock. Prevents cross-node clock skew in distributed system.
+```
+
+---
+
+```yaml
+DOCUMENT_STATUS:
+  version: 0.3
+  status: CANONICAL — Three-office approved, ready for Gate 1
+  amendments: 5 Owl findings (v0.2) + OPEN_SOURCE enum (v0.3)
+  next: Gate 1 implementation on M3 Ultra arrival
+```
+
+---
+
+*Every bead is a commitment. Every commitment is signed. Every signature is sovereign.*
