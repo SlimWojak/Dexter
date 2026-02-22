@@ -355,8 +355,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase G COMPLETE — ready for Phase H (Genesis Curation + Snapshot)
-tests_passing: 226
+phase: Phase H IN PROGRESS — HALT 1 (curation report awaiting G review)
+tests_passing: 254
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
