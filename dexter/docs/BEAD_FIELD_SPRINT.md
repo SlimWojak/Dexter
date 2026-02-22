@@ -118,15 +118,27 @@ DEC-SIMULATION-REPRODUCIBILITY:
 
 ```yaml
 description: Smoke-test all dependencies on ARM Mac Mini before writing code
-status: PENDING
+status: COMPLETE
 tasks:
-  - Install pydantic>=2.0, uuid6, pytest, pytest-cov, pyyaml
-  - Install ecdsa (secp256r1)
-  - Install PQC: try liboqs-python → pqcrypto → dilithium-py → Ed25519 stub
-  - Verify each import works in Python 3.11+
-  - Record PQC outcome in risk log (R1)
-sign_off: —
-blockers: —
+  - Install pydantic>=2.0, uuid6, pytest, pytest-cov, pyyaml — DONE
+  - Install ecdsa (secp256r1) — DONE (sign/verify round-trip confirmed)
+  - Install PQC — DONE (pqcrypto 0.4.0, ML-DSA-65 aka Dilithium3)
+  - Verify each import works in Python 3.14.2 — DONE (all pass)
+  - Record PQC outcome in risk log (R1) — DONE (resolved)
+results:
+  python: 3.14.2 (Homebrew, ARM64)
+  pydantic: 2.12.5
+  uuid6: 2025.0.1
+  ecdsa: 0.19.1 (secp256r1 / NIST P-256)
+  pqc: pqcrypto 0.4.0 (ML-DSA-65 = Dilithium3, native ARM wheel)
+  pqc_stub: false (real Dilithium, no stub needed)
+  sqlite3: 3.51.2 (stdlib)
+  pqc_note: |
+    liboqs-python FAILED (Homebrew builds static only, Python wrapper needs .dylib).
+    pqcrypto worked first try with pre-built ARM64 wheel.
+    verify() returns bool (not raise) — code must check return value.
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase A: Schema
@@ -294,7 +306,7 @@ blockers: —
 
 | ID | Risk | Severity | Mitigation | Status |
 |----|------|----------|------------|--------|
-| R1 | PQC (Dilithium) unavailable on ARM Mac Mini | HIGH | Fallback chain: liboqs → pqcrypto → dilithium-py → Ed25519 stub + PQC_STUB flag | PENDING (Phase 0) |
+| R1 | PQC (Dilithium) unavailable on ARM Mac Mini | HIGH | ~~Fallback chain needed~~ RESOLVED: pqcrypto 0.4.0 with native ARM wheel. ML-DSA-65 (Dilithium3). No stub. | RESOLVED (Phase 0) |
 | R2 | Canonical JSON non-determinism | MEDIUM | Explicit `json.dumps(sort_keys=True, separators=(',', ':'), ensure_ascii=False)`. Test round-trip determinism. | PENDING (Phase B) |
 | R3 | Genesis curation misclassification | HIGH | Halt-and-review protocol. G approves before snapshot. Curation report preserved. | PENDING (Phase H) |
 | R4 | SQLite datetime precision edge cases | LOW | ISO 8601 with microsecond precision. Test boundary cases explicitly. | PENDING (Phase E) |
@@ -324,7 +336,7 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: PLANNING (pre-Phase 0)
+phase: Phase 0 COMPLETE — ready for Phase A (Schema)
 tests_passing: 0
 bead_types_implemented: 0/8
 invariants_proven: 0
@@ -340,7 +352,18 @@ blockers: NONE
 # Timestamped entries. Future sessions learn from past pain.
 # Format: - date: YYYY-MM-DD | phase: X | issue: description | resolution: description
 
-entries: []
+entries:
+  - date: 2026-02-22
+    phase: "0"
+    issue: |
+      liboqs-python 0.14.1 fails on ARM Mac Mini. The Python wrapper tries to
+      auto-install liboqs C library from source (cloning git branch 0.14.1) but
+      the branch doesn't exist. Homebrew's liboqs 0.15.0 only builds static (.a),
+      not shared (.dylib), so the Python wrapper can't load it.
+    resolution: |
+      Used pqcrypto 0.4.0 instead. Has pre-built ARM64 wheel with ML-DSA-65
+      (NIST-standardized Dilithium3). verify() returns bool, not raise.
+      No PQC stub needed.
 ```
 
 ---
