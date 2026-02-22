@@ -220,16 +220,19 @@ blockers: NONE
 ```yaml
 description: Bi-temporal storage with WT/KT range queries + version-tracked migrations
 source: BEAD_FIELD_SPEC_v0.3 Section 4 + Gate 1 exit criteria
-status: PENDING
+status: COMPLETE
 target_tests: 30+
+actual_tests: 37 (20 store + 17 queries)
 deliverables:
   - bead_field/store/bitemporal.py, migrations.py, queries.py
   - bead_field/tests/test_store.py, test_queries.py
 notes:
-  - Version-tracked migrations from day 1 (ChadBoar learning #2)
-  - Test migration with dummy schema change BEFORE Genesis load (Owl)
-sign_off: —
-blockers: —
+  - Version-tracked migrations with rollback (ChadBoar learning #2)
+  - SQLite trigger enforces INV-BEAD-IMMUTABLE at database level
+  - Gate 1 exit criterion EC1 tested directly (bi-temporal query)
+  - Refinery latency computed per bead (WT-KT delta)
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase F: Merkle Anchoring
@@ -343,8 +346,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase D COMPLETE — ready for Phase E (SQLite Bi-Temporal Store)
-tests_passing: 142
+phase: Phase E COMPLETE — ready for Phase F (Merkle Anchoring)
+tests_passing: 179
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
