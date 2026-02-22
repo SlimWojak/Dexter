@@ -35,3 +35,5 @@ dist/
 .coverage
 htmlcov/
 .pytest_cache/
+bead_field/genesis/keys/
+bead_field/genesis/genesis.db
