@@ -146,8 +146,9 @@ blockers: NONE
 ```yaml
 description: Pydantic v2 models for all 8 bead types + enums
 source: BEAD_FIELD_SPEC_v0.3 Section 3 (verbatim — do not invent fields)
-status: PENDING
+status: COMPLETE
 target_tests: 40+
+actual_tests: 79 (27 enum + 52 schema)
 deliverables:
   - bead_field/schema/*.py (core, fact, claim, signal, proposal, proposal_rejected, skill, model_version, policy, enums)
   - bead_field/tests/test_schema.py, test_enums.py
@@ -336,10 +337,10 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase 0 COMPLETE — ready for Phase A (Schema)
-tests_passing: 0
-bead_types_implemented: 0/8
-invariants_proven: 0
+phase: Phase A COMPLETE — ready for Phase B (Hashing + Hash Chain)
+tests_passing: 79
+bead_types_implemented: 8/8
+invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
 blockers: NONE
 ```

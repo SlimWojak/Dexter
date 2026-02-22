@@ -1,0 +1,116 @@
+from enum import Enum
+
+
+class BeadType(str, Enum):
+    FACT = "FACT"
+    CLAIM = "CLAIM"
+    SIGNAL = "SIGNAL"
+    PROPOSAL = "PROPOSAL"
+    PROPOSAL_REJECTED = "PROPOSAL_REJECTED"
+    SKILL = "SKILL"
+    MODEL_VERSION = "MODEL_VERSION"
+    POLICY = "POLICY"
+
+
+class TemporalClass(str, Enum):
+    OBSERVATION = "OBSERVATION"
+    PATTERN = "PATTERN"
+    DERIVED = "DERIVED"
+
+
+class BeadStatus(str, Enum):
+    ACTIVE = "ACTIVE"
+    SUPERSEDED = "SUPERSEDED"
+    RETRACTED = "RETRACTED"
+
+
+class SourceType(str, Enum):
+    MARKET_DATA = "MARKET_DATA"
+    AGENT = "AGENT"
+    HUMAN = "HUMAN"
+    EXTRACTION = "EXTRACTION"
+    SIMULATION = "SIMULATION"
+    OPEN_SOURCE = "OPEN_SOURCE"
+
+
+class Direction(str, Enum):
+    LONG = "LONG"
+    SHORT = "SHORT"
+    NEUTRAL = "NEUTRAL"
+
+
+class ProposalAction(str, Enum):
+    ENTER_LONG = "ENTER_LONG"
+    ENTER_SHORT = "ENTER_SHORT"
+    EXIT = "EXIT"
+    ADJUST = "ADJUST"
+    HEDGE = "HEDGE"
+
+
+class RejectionSource(str, Enum):
+    AUDITOR = "AUDITOR"
+    RISK_ENGINE = "RISK_ENGINE"
+    HUMAN = "HUMAN"
+    DREAM_CYCLE = "DREAM_CYCLE"
+
+
+class RejectionCategory(str, Enum):
+    PROVENANCE_FAILURE = "PROVENANCE_FAILURE"
+    LOGICAL_CONTRADICTION = "LOGICAL_CONTRADICTION"
+    REGIME_MISMATCH = "REGIME_MISMATCH"
+    RISK_BREACH = "RISK_BREACH"
+    STALE_DATA = "STALE_DATA"
+    FALSIFICATION_FAILED = "FALSIFICATION_FAILED"
+    HUMAN_OVERRIDE = "HUMAN_OVERRIDE"
+    DREAM_CYCLE_FAILURE = "DREAM_CYCLE_FAILURE"
+
+
+class SkillType(str, Enum):
+    AVOIDANCE = "AVOIDANCE"
+    RECOGNITION = "RECOGNITION"
+    TIMING = "TIMING"
+    SIZING = "SIZING"
+    REGIME = "REGIME"
+
+
+class SkillValidation(str, Enum):
+    CANDIDATE = "CANDIDATE"
+    VALIDATED = "VALIDATED"
+    PROMOTED = "PROMOTED"
+    DEPRECATED = "DEPRECATED"
+
+
+class DeploymentStatus(str, Enum):
+    CANDIDATE = "CANDIDATE"
+    STAGING = "STAGING"
+    PRODUCTION = "PRODUCTION"
+    RETIRED = "RETIRED"
+
+
+class PolicyType(str, Enum):
+    RISK = "RISK"
+    EXECUTION = "EXECUTION"
+    REGIME = "REGIME"
+    OPERATIONAL = "OPERATIONAL"
+
+
+class Drawer(str, Enum):
+    HTF_BIAS = "HTF_BIAS"
+    MARKET_STRUCTURE = "MARKET_STRUCTURE"
+    PREMIUM_DISCOUNT = "PREMIUM_DISCOUNT"
+    ENTRY_MODEL = "ENTRY_MODEL"
+    CONFIRMATION = "CONFIRMATION"
+
+
+class PositionSizeUnit(str, Enum):
+    LOTS = "LOTS"
+    CONTRACTS = "CONTRACTS"
+    USD = "USD"
+    PCT_EQUITY = "PCT_EQUITY"
+
+
+class DataQuality(str, Enum):
+    NOMINAL = "NOMINAL"
+    DEGRADED = "DEGRADED"
+    PARTIAL = "PARTIAL"
+    ERROR = "ERROR"
