@@ -179,17 +179,19 @@ blockers: NONE
 ```yaml
 description: Hybrid Logical Clock for knowledge_time
 source: BEAD_FIELD_SPEC_v0.3 Section 3.1 + 4.1
-status: PENDING
+status: COMPLETE
 target_tests: 8+
+actual_tests: 13 (5 tick + 4 merge + 2 thread safety + 2 non-regression)
 deliverables:
   - bead_field/clock/hlc.py
   - bead_field/tests/test_hlc.py
 notes:
-  - Include 1000-rapid-tick test verifying HLC non-regression (no backward time)
-  - Include rapid-fire hash chain append test verifying hash_prev linkage holds under fast sequential writes
-  - True multi-thread/multi-process concurrency testing is Gate 2+ (M3 Ultra, multiple agents)
-sign_off: —
-blockers: —
+  - 1000-rapid-tick monotonicity VERIFIED
+  - 400 concurrent ticks across 4 threads — all unique, globally sortable
+  - hash chain rapid-fire (100 appends) already verified in Phase B
+  - True multi-process concurrency testing is Gate 2+ (M3 Ultra, multiple agents)
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase D: Signing
@@ -338,8 +340,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase B COMPLETE — ready for Phase C (HLC)
-tests_passing: 110
+phase: Phase C COMPLETE — ready for Phase D (Signing)
+tests_passing: 123
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
