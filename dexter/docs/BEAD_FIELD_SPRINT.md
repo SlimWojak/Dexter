@@ -199,17 +199,20 @@ blockers: NONE
 ```yaml
 description: Dual PQC (Dilithium) + ECDSA signing
 source: BEAD_FIELD_SPEC_v0.3 Section 5.3
-status: PENDING
+status: COMPLETE
 target_tests: 10+
+actual_tests: 19 (3 key mgmt + 4 sign/verify + 4 tamper + 3 either-sig + 3 degraded + 1 stub + 1 e2e)
 deliverables:
   - bead_field/integrity/signing.py
   - bead_field/tests/test_signing.py
 notes:
-  - Integration tests on ACTUAL library API (ChadBoar learning #1)
-  - If PQC stubbed: flag PQC_STUB=True, log degraded sovereignty alert (Owl)
-  - Either signature alone sufficient for validation, both required for optimal health
-sign_off: —
-blockers: —
+  - Integration tests on ACTUAL pqcrypto + ecdsa APIs (ChadBoar learning #1)
+  - PQC_STUB = False (real ML-DSA-65 Dilithium3, no stub)
+  - verify() return-value semantics normalised (Phase 0 finding applied)
+  - SignatureVerification.degraded flags ECDSA-only or PQC-only (Owl advisory)
+  - KeyManager save/load round-trip verified with cross-key verification
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase E: SQLite Bi-Temporal Store
@@ -340,8 +343,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase C COMPLETE — ready for Phase D (Signing)
-tests_passing: 123
+phase: Phase D COMPLETE — ready for Phase E (SQLite Bi-Temporal Store)
+tests_passing: 142
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
