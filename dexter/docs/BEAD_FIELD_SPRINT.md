@@ -240,13 +240,18 @@ blockers: NONE
 ```yaml
 description: Merkle tree + batch anchoring with hybrid trigger
 source: BEAD_FIELD_SPEC_v0.3 Section 5.2
-status: PENDING
+status: COMPLETE
 target_tests: 15+
+actual_tests: 21 (6 tree + 7 proof + 5 triggers + 3 backfill)
 deliverables:
   - bead_field/integrity/merkle.py
   - bead_field/tests/test_merkle.py
-sign_off: —
-blockers: —
+notes:
+  - Hybrid trigger: SIGNAL/PROPOSAL (decision boundary) > max_beads > max_time
+  - Proof verification for any leaf in 100-leaf tree
+  - Batch records stored in merkle_batches table, beads backfilled
+sign_off: 2026-02-22
+blockers: NONE
 ```
 
 ### Phase G: Ingestion Pipeline
@@ -346,8 +351,8 @@ EC8: 200+ tests passing
 
 ```yaml
 as_of: 2026-02-22
-phase: Phase E COMPLETE — ready for Phase F (Merkle Anchoring)
-tests_passing: 179
+phase: Phase F COMPLETE — ready for Phase G (Ingestion Pipeline)
+tests_passing: 200 (GATE 1 TEST TARGET MET)
 bead_types_implemented: 8/8
 invariants_proven: 3 (INV-SHADOW-RICH, INV-REJECTION-POLICY-REF, temporal class validation)
 genesis_status: NOT_STARTED
