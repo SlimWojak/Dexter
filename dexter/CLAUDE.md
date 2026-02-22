@@ -121,6 +121,7 @@ INV-ANCHOR-AT-DECISIONS: "Merkle triggers on SIGNAL/PROPOSAL or fallback caps (5
 ```yaml
 INV-NO-GRADES: "No grades, no scores, no rankings. PASS/FAIL boolean only."
 INV-NO-NARRATIVE: "Evidence bundles template-locked. No interpretation."
+INV-LLM-REMOVAL-TEST: "Any bead reconstructable from stored fields without LLM reasoning. No prose dependency."
 INV-CROSS-FAMILY: "Theorist and Auditor must be different model families."
 INV-ATTR-CAUSAL-BAN: "No causal attribution without controlled experiment."
 INV-CLAIM-FACT-SEPARATION: "Claims and facts are distinct types. Binary, no gray."

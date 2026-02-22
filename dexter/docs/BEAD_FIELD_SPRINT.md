@@ -139,6 +139,9 @@ target_tests: 40+
 deliverables:
   - bead_field/schema/*.py (core, fact, claim, signal, proposal, proposal_rejected, skill, model_version, policy, enums)
   - bead_field/tests/test_schema.py, test_enums.py
+notes:
+  - Include 1000-rapid-insert test verifying UUID v7 monotonic ordering (R5 mitigation)
+  - Threading/concurrency stress tests are Gate 2+ scope (single-node Mini for now)
 sign_off: —
 blockers: —
 ```
@@ -167,6 +170,10 @@ target_tests: 8+
 deliverables:
   - bead_field/clock/hlc.py
   - bead_field/tests/test_hlc.py
+notes:
+  - Include 1000-rapid-tick test verifying HLC non-regression (no backward time)
+  - Include rapid-fire hash chain append test verifying hash_prev linkage holds under fast sequential writes
+  - True multi-thread/multi-process concurrency testing is Gate 2+ (M3 Ultra, multiple agents)
 sign_off: —
 blockers: —
 ```
@@ -259,19 +266,24 @@ blockers: —
 ### Phase I: Forensic Integrity Stress Test
 
 ```yaml
-description: Manual tamper detection — prove integrity catches corruption
-source: Owl (Advisory Panel, 2026-02-22)
+description: Manual tamper detection + structural integrity — prove the system catches corruption and stands without LLM
+source: Owl (Advisory Panel, 2026-02-22) + CTO (LLM Removal Test, 2026-02-22)
 status: PENDING
-target_tests: 5+
+target_tests: 8+
 procedure:
   1: Manually edit a single byte in SQLite content blob of a FACT bead
   2: Manually change a knowledge_time stamp in the DB
   3: Verify chain.py hash walk triggers HARD_FAIL
   4: Verify merkle.py proof verification fails
   5: Verify signing verification fails on tampered bead
+  6: LLM Removal Test — load any bead from store, reconstruct full object from stored fields
+     only. No LLM call, no prose interpretation. If any field requires inference to parse,
+     that is a structural failure (INV-LLM-REMOVAL-TEST).
 deliverables:
-  - bead_field/tests/test_invariants.py (tamper detection suite)
-rationale: Proving code works is Phases A-H. Proving integrity works is Phase I.
+  - bead_field/tests/test_invariants.py (tamper detection + LLM removal suite)
+rationale: |
+  Proving code works is Phases A-H. Proving integrity works is steps 1-5.
+  Proving the system is sovereign (no LLM dependency in the record) is step 6.
 sign_off: —
 blockers: —
 ```
@@ -336,8 +348,25 @@ entries: []
 ## 8. POST-GATE-1
 
 ```yaml
+SUBSTRATE_ASSERTION:
+  description: |
+    Cryptographic ceremony after Gate 1 PASS, before freeze begins.
+    G signs the exact constitution the refinery began with.
+    The Genesis Snapshot signs the data. This assertion signs the system
+    that produced the data.
+  G_signs:
+    - schema_hash: SHA-256 of all Pydantic model definitions (bead_field/schema/)
+    - migration_version: Current migration version number
+    - invariant_set_hash: SHA-256 of the invariant set enforced by test suite
+    - test_count: Total passing tests at Gate 1 PASS
+    - genesis_merkle_root: Root hash of the Genesis Snapshot
+  output: SUBSTRATE_ASSERTION POLICY bead (signed, stored, permanent)
+  rationale: |
+    Six months from now, diff against this assertion to know exactly
+    what changed. Institutional systems document their baseline.
+
 DEC-SUBSTRATE-FREEZE:
-  trigger: Gate 1 PASS
+  trigger: Gate 1 PASS + Substrate Assertion signed
   duration: 30 days
   allowed: Bug fixes only
   prohibited: Schema field additions, new bead types, invariant changes
