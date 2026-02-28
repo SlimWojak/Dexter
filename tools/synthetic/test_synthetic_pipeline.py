@@ -67,11 +67,14 @@ class TestTransformBar:
     @pytest.fixture(autouse=True)
     def _import_transform(self):
         """Import transform_bar. Available even without signing deps."""
-        # We patch the Dexter imports at module level if they're unavailable
-        import importlib
         import sys
 
-        # Create stubs for Dexter modules if not installed
+        # 1. Remove cached pipeline module so it re-imports with our stubs
+        for mod_name in list(sys.modules):
+            if mod_name.startswith("synthetic_bead_pipeline"):
+                del sys.modules[mod_name]
+
+        # 2. Force-reset all bead_field stubs (unconditional — avoids stale MagicMock attrs)
         stubs_needed = [
             "bead_field", "bead_field.clock", "bead_field.clock.hlc",
             "bead_field.ingestion", "bead_field.ingestion.pipeline",
@@ -80,14 +83,11 @@ class TestTransformBar:
             "bead_field.schema", "bead_field.schema.core", "bead_field.schema.enums",
             "bead_field.store", "bead_field.store.bitemporal",
         ]
-        self._patched = False
         for mod_name in stubs_needed:
-            if mod_name not in sys.modules:
-                sys.modules[mod_name] = MagicMock()
-                self._patched = True
+            sys.modules[mod_name] = MagicMock()
 
-        # Now we need real enum values for the transform to work
-        from bead_field.schema import enums as enums_mod
+        # 3. Set enum values BEFORE importing the pipeline
+        enums_mod = sys.modules["bead_field.schema.enums"]
         enums_mod.BeadType = type("BeadType", (), {
             "FACT": "FACT", "CLAIM": "CLAIM",
         })
@@ -98,12 +98,10 @@ class TestTransformBar:
             "MARKET_DATA": "MARKET_DATA",
         })
 
-        from bead_field.schema import core as core_mod
+        core_mod = sys.modules["bead_field.schema.core"]
         core_mod.SourceRef = lambda **kw: SimpleNamespace(**kw)
 
-        # Re-import the pipeline module to pick up stubs
-        if "synthetic_bead_pipeline" in sys.modules:
-            del sys.modules["synthetic_bead_pipeline"]
+        # 4. NOW import the pipeline — it picks up our stubs via from...import
         import synthetic_bead_pipeline
         self.transform_bar = synthetic_bead_pipeline.transform_bar
 
@@ -274,6 +272,13 @@ class TestBatchCommitContext:
     @pytest.fixture(autouse=True)
     def _import_batch(self):
         import sys
+
+        # 1. Remove cached pipeline module
+        for mod_name in list(sys.modules):
+            if mod_name.startswith("synthetic_bead_pipeline"):
+                del sys.modules[mod_name]
+
+        # 2. Force-reset all bead_field stubs
         stubs_needed = [
             "bead_field", "bead_field.clock", "bead_field.clock.hlc",
             "bead_field.ingestion", "bead_field.ingestion.pipeline",
@@ -283,11 +288,9 @@ class TestBatchCommitContext:
             "bead_field.store", "bead_field.store.bitemporal",
         ]
         for mod_name in stubs_needed:
-            if mod_name not in sys.modules:
-                sys.modules[mod_name] = MagicMock()
+            sys.modules[mod_name] = MagicMock()
 
-        if "synthetic_bead_pipeline" in sys.modules:
-            del sys.modules["synthetic_bead_pipeline"]
+        # 3. Import pipeline with fresh stubs
         import synthetic_bead_pipeline
         self.BatchCommitContext = synthetic_bead_pipeline.BatchCommitContext
 
