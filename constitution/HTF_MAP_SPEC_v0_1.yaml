@@ -1,0 +1,1178 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# HTF MAP SPECIFICATION v0.1
+# The Persistent Spatial-Context Engine — "The Trading Brain"
+# ═══════════════════════════════════════════════════════════════════════════════
+# Design: Blank-canvas architecture for persistent HTF context.
+# Owner: CTO architects. Olya validates. Opus implements.
+# Status: DRAFT — OLYA REVIEW REQUIRED before implementation.
+# Date: 2026-03-28
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# PROVENANCE:
+#   CTO Claude: two-clock model (Map + Execution), four-category decomposition
+#   Olya: confirmed four categories match her cognitive process
+#   Olya's Advisor AI: HTF PDA persistent tracking layer concept, lifecycle model
+#   GPT Reviewer: six refinement points (C1-C6), dealing range formalization
+#   All three reviewers converge on the same architecture.
+#
+# CORE INSIGHT:
+#   Olya does not re-decide HTF context from scratch each session.
+#   She holds a persistent spatial model — a MAP — that updates only on
+#   structural events and persists between sessions. The map tells her
+#   WHERE to pay attention. The LTF execution chain tells her HOW to enter.
+#   These are two fundamentally different systems with different clocks.
+#
+# ARCHITECTURAL PRINCIPLE:
+#   THE MAP IS THE STRATEGY.
+#   Different "strategies" are different Map configurations —
+#   which PDAs to track, which regime to require, which zone to demand.
+#   The execution chain is infrastructure. It doesn't change.
+#
+# RELATIONSHIP TO EXISTING LAYERS:
+#   L1 Primitives (vLOCK, 13/13 locked) → raw event detection, per-bar
+#   State Detection (v2.3) → EXPANSION / RETRACE / RANGE classification
+#   HTF MAP (THIS SPEC) → persistent spatial context, event-driven updates
+#   Execution Gate → boolean: "is the world ready for LTF scanning?"
+#   LTF Execution Chain → sweep → MSS → FVG → OTE → entry
+#
+# RULE: Direction PERMISSION comes from the Map.
+#       Execution TRIGGER comes from LTF confirmation inside map-approved location.
+#       The Map is never a signal engine.
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. THE TWO-CLOCK MODEL
+# ─────────────────────────────────────────────────────────────────────────────
+
+two_clock_model:
+
+  slow_clock:
+    name: "The Map"
+    persistence: CROSS_SESSION
+    update_trigger: STRUCTURAL_EVENTS_ONLY
+    temporal_scale: "days to weeks"
+    character: |
+      Quiet most of the time. This is correct.
+      A day with no structural events means zero Map updates.
+      The Map holds — it does not re-derive.
+    owns:
+      - regime
+      - dealing_range
+      - active_pdas
+      - resting_liquidity
+
+  fast_clock:
+    name: "The Execution"
+    persistence: INTRADAY_SESSION_ONLY
+    update_trigger: PER_BAR_WITHIN_KILL_ZONE
+    temporal_scale: "minutes to hours"
+    character: |
+      Activates ONLY when the Map says "price is at a live PDA
+      in the correct zone during a valid kill zone window."
+      Resets each session. Stateless between sessions.
+      All persistence lives in the Map, not here.
+    runs:
+      - sweep_detection_ltf
+      - mss_detection_ltf
+      - fvg_detection_ltf
+      - ote_calculation
+      - entry_trigger
+
+  separation_principle: |
+    The Map never fires a trade.
+    The Execution never decides direction.
+    The Map answers: "WHERE should we be watching, and in WHICH direction?"
+    The Execution answers: "HOW do we enter, right now, at this location?"
+    These responsibilities never cross.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. THE MAP — OBJECT MODEL
+# ─────────────────────────────────────────────────────────────────────────────
+
+map_object_model:
+
+  overview: |
+    The Map contains four categories of persistent objects.
+    Each has its own lifecycle rules and update semantics.
+    Together they constitute the system's complete HTF worldview.
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # 2A. REGIME — "Which way is the dominant flow?"
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  regime:
+
+    purpose: |
+      The directional context of the market. Determines which direction
+      of trade is permitted. NECESSARY but NOT SUFFICIENT for execution.
+      (You can be bearish and still have no valid premium PDA to trade from.
+       That's a "no trade" condition — the map is empty.)
+
+    fields:
+      direction:          # BULLISH | BEARISH | NEUTRAL
+        type: enum
+        values: [BULLISH, BEARISH, NEUTRAL]
+
+      authority_tf:       # Which timeframe established the regime
+        type: enum
+        values: [DAILY, H4, H1]
+        note: "Daily is primary. H4 takes authority when daily is NEUTRAL."
+
+      phase:              # Where in the event cycle
+        type: enum
+        values: [EXPANSION, RETRACE, RANGE]
+        source: "STATE_DETECTION_LOGIC_v2.yaml"
+
+      source_mss_id:      # Reference to the MSS event that established this regime
+        type: string
+        note: "Links to specific L1 MSS detection event"
+
+      established_at:     # When the regime was established
+        type: datetime
+
+      last_structural_update:  # When the regime was last confirmed or modified
+        type: datetime
+
+    update_rules:
+      - "Regime HOLDS until invalidated by opposing MSS at same or higher TF"
+      - "Regime is NOT age-gated — a 3-week-old daily MSS is still valid if not invalidated"
+      - "Phase (EXPANSION/RETRACE/RANGE) updates on sub-events within the regime"
+      - "Phase change does NOT change direction — only opposing MSS changes direction"
+
+    relationship_to_state_detection: |
+      The regime object subsumes the direction + phase output of STATE_DETECTION_LOGIC_v2.
+      The existing state classifier continues to compute these values.
+      The Map STORES them as a persistent object rather than re-deriving per bar.
+
+    direction_permission_mapping:
+      EXPANSION:
+        BULLISH: LONG_ONLY
+        BEARISH: SHORT_ONLY
+      RETRACE:
+        BULLISH: "COUNTER_ALLOWED (both, but primary expectation is pullback)"
+        BEARISH: "COUNTER_ALLOWED (both)"
+      RANGE:
+        note: "Authority delegated to H4/H1 — most recent MSS wins"
+        permission: BOTH
+
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # 2B. DEALING RANGE — "Where is equilibrium?"
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  dealing_range:
+
+    purpose: |
+      The spatial boundaries of the current regime's expansion leg.
+      Defines premium/discount zones via the 50% equilibrium.
+      Price position relative to equilibrium determines whether
+      the current location is appropriate for the regime direction.
+
+    fields:
+      origin_price:       # Where the expansion move started
+        type: float
+
+      extreme_price:      # Where the expansion move reached
+        type: float
+
+      equilibrium:        # 50% midpoint
+        type: float
+        derivation: "(origin_price + extreme_price) / 2"
+
+      premium_zone:       # Above equilibrium
+        type: object
+        fields: {top: origin_price, bottom: equilibrium}
+        note: "For BEARISH regime: shorts permitted here"
+
+      discount_zone:      # Below equilibrium
+        type: object
+        fields: {top: equilibrium, bottom: extreme_price}
+        note: "For BULLISH regime: longs permitted here"
+
+      source_leg:         # Which MSS + displacement created this range
+        type: string
+
+      status:             # Is this dealing range still active?
+        type: enum
+        values: [ACTIVE, SUPERSEDED]
+
+    # ┌─────────────────────────────────────────────────────────────────────┐
+    # │ OLYA MUST RESOLVE — Dealing Range Derivation                       │
+    # ├─────────────────────────────────────────────────────────────────────┤
+    # │                                                                     │
+    # │ Q1: Origin candle — BODY high/low or WICK high/low?                │
+    # │     STATE_DETECTION_LOGIC says body. Confirm.                       │
+    # │     For BEARISH: origin = body_high of MSS origin candle?          │
+    # │     For BULLISH: origin = body_low of MSS origin candle?           │
+    # │                                                                     │
+    # │ Q2: Extreme candle — BODY or WICK of displacement extreme?         │
+    # │     For BEARISH: extreme = body_low of lowest displacement candle? │
+    # │     For BULLISH: extreme = body_high of highest displacement candle│
+    # │                                                                     │
+    # │ Q3: When the trend EXTENDS (new displacement in same direction     │
+    # │     pushes further than original extreme):                          │
+    # │     a) Does the dealing range STRETCH to the new extreme?          │
+    # │     b) Does a NEW dealing range replace the old one?               │
+    # │     c) Does the original range persist until opposing MSS?         │
+    # │     This affects equilibrium position and premium/discount zones.   │
+    # │                                                                     │
+    # │ Q4: Multi-leg expansions — if daily makes a sequence of bearish    │
+    # │     legs (e.g., Sept 23 displacement, then Oct 5 further drop),    │
+    # │     which leg defines the dealing range? Most recent? Largest?     │
+    # │     The full campaign origin-to-extreme?                            │
+    # │                                                                     │
+    # │ METHOD: Olya marks dealing range on TradingView for 5-6 known      │
+    # │ trades. System derives rules from her markings.                     │
+    # └─────────────────────────────────────────────────────────────────────┘
+
+    update_rules:
+      - "New dealing range created when new regime-establishing MSS fires"
+      - "Old dealing range status → SUPERSEDED when new one created"
+      - "Dealing range does NOT update on phase changes (RETRACE/RANGE within same regime)"
+      - "Extension handling: see OLYA MUST RESOLVE Q3/Q4 above"
+
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # 2C. ACTIVE PDAs — "Where are the interesting places?"
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  active_pdas:
+
+    purpose: |
+      Persistent areas of interest on the map. These are spatial objects
+      with lifecycles — detected once, stored, tracked over time.
+      Price arriving at an active PDA in the correct zone is the
+      primary gate for LTF execution.
+      
+      THIS IS THE CORE ARCHITECTURAL INNOVATION.
+      The system detects PDAs once and HOLDS them, rather than
+      re-scanning for them on every bar.
+
+    pda_types:
+      FVG:
+        description: "Fair Value Gap — 3-candle imbalance"
+        source_primitive: "L1 FVG detector (vLOCK)"
+        applicable_tfs: [DAILY, H4, H1]
+
+      OB:
+        description: "Order Block — last opposing candle before displacement"
+        source_primitive: "L1 OB detector (vLOCK)"
+        applicable_tfs: [DAILY, H4, H1]
+
+      IFVG:
+        description: "Inverse FVG — filled gap that becomes support/resistance"
+        source_primitive: "L1 IFVG detector (vLOCK)"
+        applicable_tfs: [DAILY, H4, H1]
+
+      # ┌─────────────────────────────────────────────────────────────────┐
+      # │ OLYA MUST RESOLVE — PDA Type Completeness                      │
+      # ├─────────────────────────────────────────────────────────────────┤
+      # │                                                                 │
+      # │ Q5: Are FVG, OB, and IFVG the complete set of HTF PDA types    │
+      # │     you track? Or are there others?                             │
+      # │     Candidates: BPR (Balanced Price Range)? Breaker blocks?     │
+      # │                                                                 │
+      # │ Q6: Do you weight PDA types differently?                        │
+      # │     e.g., "I trust a daily FVG more than a daily OB"           │
+      # │     Or are they equivalent areas of interest?                   │
+      # │                                                                 │
+      # └─────────────────────────────────────────────────────────────────┘
+
+    common_fields:
+      pda_id:
+        type: string
+        format: "pda_{type}_{tf}_{created_date}_{seq}"
+        example: "pda_fvg_d1_2025-09-23_001"
+
+      type:
+        type: enum
+        values: [FVG, OB, IFVG]
+
+      timeframe:
+        type: enum
+        values: [DAILY, H4, H1]
+
+      direction_context:
+        type: enum
+        values: [BEARISH, BULLISH]
+        note: "Inherited from the regime that created it"
+
+      zone_top:
+        type: float
+
+      zone_bottom:
+        type: float
+
+      location_class:
+        type: enum
+        values: [PREMIUM, DISCOUNT, NEUTRAL]
+        derivation: |
+          Classified by position relative to dealing range equilibrium.
+          BEARISH regime: PDA above equilibrium → PREMIUM (tradeable for shorts)
+          BULLISH regime: PDA below equilibrium → DISCOUNT (tradeable for longs)
+          PDA straddling equilibrium → see Q8 below
+          PDA in wrong zone → still tracked but NOT an execution gate
+
+      created_at:
+        type: datetime
+
+      source_event_ref:
+        type: string
+        note: "Links to the L1 detection event that created this PDA"
+
+      status:
+        type: enum
+        values: [OPEN, TOUCHED, MITIGATED, INVALIDATED]
+
+      first_touch_time:
+        type: datetime
+        nullable: true
+
+      mitigation_time:
+        type: datetime
+        nullable: true
+
+      invalidation_time:
+        type: datetime
+        nullable: true
+
+    # ┌─────────────────────────────────────────────────────────────────────┐
+    # │ OLYA MUST RESOLVE — PDA Location Classification                    │
+    # ├─────────────────────────────────────────────────────────────────────┤
+    # │                                                                     │
+    # │ Q7: For a PDA to be "in premium" (BEARISH context), must the       │
+    # │     ENTIRE zone be above equilibrium? Or is it sufficient that     │
+    # │     the zone's midpoint is above? Or that any part overlaps?       │
+    # │                                                                     │
+    # │ Q8: If a PDA straddles equilibrium (top in premium, bottom in      │
+    # │     discount), is it valid? Invalid? Context-dependent?            │
+    # │                                                                     │
+    # └─────────────────────────────────────────────────────────────────────┘
+
+
+  # ═══════════════════════════════════════════════════════════════════════════
+  # 2D. RESTING LIQUIDITY — "What might price hunt?"
+  # ═══════════════════════════════════════════════════════════════════════════
+
+  resting_liquidity:
+
+    purpose: |
+      Pools of resting orders at known structural levels.
+      These are sweep targets — the execution chain's first step
+      often involves sweeping one of these.
+      Tracked persistently because liquidity accumulates over time.
+
+    liquidity_types:
+      EQUAL_HIGHS:
+        description: "Two or more swing highs at approximately the same level"
+        note: "Buy-side liquidity resting above"
+
+      EQUAL_LOWS:
+        description: "Two or more swing lows at approximately the same level"
+        note: "Sell-side liquidity resting below"
+
+      SESSION_BOUNDARY:
+        description: "Asia high/low, London high/low, NY high/low"
+        note: "Session extremes become liquidity targets"
+
+      PRIOR_DAY_HL:
+        description: "Previous day high and low"
+        note: "Classic ICT liquidity levels"
+
+    fields:
+      liquidity_id:
+        type: string
+
+      type:
+        type: enum
+        values: [EQUAL_HIGHS, EQUAL_LOWS, SESSION_BOUNDARY, PRIOR_DAY_HL]
+
+      price_level:
+        type: float
+
+      timeframe:
+        type: enum
+        values: [DAILY, H4, H1, M15]
+
+      source_structure:
+        type: string
+        note: "Which swing points or session created this level"
+
+      side:
+        type: enum
+        values: [BUY_SIDE, SELL_SIDE]
+        note: "BUY_SIDE = above price (shorts target), SELL_SIDE = below (longs target)"
+
+      status:
+        type: enum
+        values: [RESTING, SWEPT, EXPIRED]
+
+      created_at:
+        type: datetime
+
+      swept_at:
+        type: datetime
+        nullable: true
+
+    # ┌─────────────────────────────────────────────────────────────────────┐
+    # │ OLYA MUST RESOLVE — Liquidity Tracking Scope                       │
+    # ├─────────────────────────────────────────────────────────────────────┤
+    # │                                                                     │
+    # │ Q9: Which liquidity types do you actively track on your mental     │
+    # │     map? All four above? Others?                                    │
+    # │                                                                     │
+    # │ Q10: How do you determine when a liquidity level expires?          │
+    # │      Age-based (e.g., prior day levels expire after 2 days)?       │
+    # │      Structure-based (new swing replaces old)?                     │
+    # │      Or do they persist until swept?                                │
+    # │                                                                     │
+    # │ Q11: Do you distinguish between "strong" and "weak" liquidity?     │
+    # │      e.g., equal highs tested 3 times vs 2 times?                  │
+    # │      Or is any resting liquidity equally valid as a sweep target?  │
+    # │                                                                     │
+    # └─────────────────────────────────────────────────────────────────────┘
+
+    update_rules:
+      - "Created when structural pattern detected (equal H/L, session close, etc.)"
+      - "Status → SWEPT when price trades through the level"
+      - "SWEPT liquidity is NOT deleted — kept for audit trail"
+      - "Session boundaries refresh each session (new Asia range = new levels)"
+      - "Equal H/L persist until swept or structurally replaced"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. PDA LIFECYCLE — TYPE-SPECIFIC RULES
+# ─────────────────────────────────────────────────────────────────────────────
+
+pda_lifecycle:
+
+  overview: |
+    All PDA types share the same lifecycle ENUM:
+      OPEN → TOUCHED → MITIGATED → INVALIDATED
+    But the TRANSITION RULES differ by type.
+    This is the interface-consistency / implementation-specificity pattern.
+
+  shared_lifecycle_enum:
+    OPEN:
+      meaning: "PDA exists and has not been interacted with"
+      execution_gate: ARMED
+      note: "This is the primary state for execution gating"
+
+    TOUCHED:
+      meaning: "Price has entered the PDA zone"
+      execution_gate: ARMED
+      note: "Still valid for execution — price is interacting"
+
+    MITIGATED:
+      meaning: "Price has sufficiently consumed the PDA"
+      execution_gate: DISARMED
+      note: "No longer valid as an execution gate"
+
+    INVALIDATED:
+      meaning: "Structural event has rendered the PDA irrelevant"
+      execution_gate: DISARMED
+      note: "Opposing MSS or regime change"
+
+  # ─── FVG Lifecycle ───
+
+  fvg_lifecycle:
+
+    OPEN_to_TOUCHED:
+      trigger: "Price enters the FVG zone"
+      # ┌─────────────────────────────────────────────────────────────────┐
+      # │ OLYA MUST RESOLVE — FVG Touch Definition                       │
+      # ├─────────────────────────────────────────────────────────────────┤
+      # │                                                                 │
+      # │ Q12: What constitutes "price enters the FVG zone"?             │
+      # │      a) Any wick into the zone                                  │
+      # │      b) Candle body enters the zone                            │
+      # │      c) Candle closes inside the zone                          │
+      # │      d) CE (Consequent Encroachment — 50% of zone) touched    │
+      # │                                                                 │
+      # │ Q13: Does the touch need to occur on the SAME timeframe as     │
+      # │      the FVG? Or can a 5m candle touch a daily FVG?            │
+      # │      (Likely yes — a daily FVG is a price zone, any TF sees it)│
+      # │                                                                 │
+      # └─────────────────────────────────────────────────────────────────┘
+
+    TOUCHED_to_MITIGATED:
+      trigger: "Price has sufficiently consumed the imbalance"
+      # ┌─────────────────────────────────────────────────────────────────┐
+      # │ OLYA MUST RESOLVE — FVG Mitigation Definition                  │
+      # ├─────────────────────────────────────────────────────────────────┤
+      # │                                                                 │
+      # │ Q14: When is a FVG "mitigated" / fully consumed?               │
+      # │      a) Candle closes through the entire zone (beyond far edge)│
+      # │      b) CE (50%) traded through                                │
+      # │      c) Any body close inside = partial mitigation, but full   │
+      # │         close through = full mitigation                        │
+      # │                                                                 │
+      # │ Q15: Can a FVG be TOUCHED (price enters, reacts) and then      │
+      # │      return to OPEN-like status if price leaves without        │
+      # │      mitigating? Or once TOUCHED, always TOUCHED?              │
+      # │      (Suspect: once TOUCHED stays TOUCHED, still tradeable)    │
+      # │                                                                 │
+      # └─────────────────────────────────────────────────────────────────┘
+
+    ANY_to_INVALIDATED:
+      trigger: "Opposing MSS fires at same or higher TF"
+      rule: |
+        If regime changes (e.g., BEARISH → BULLISH via new daily MSS),
+        all PDAs created under the old regime are INVALIDATED.
+        They no longer represent valid areas of interest.
+
+  # ─── OB Lifecycle ───
+
+  ob_lifecycle:
+
+    OPEN_to_TOUCHED:
+      trigger: "Price returns to the OB zone"
+      note: "Similar semantics to FVG touch — price enters the zone"
+
+    TOUCHED_to_MITIGATED:
+      trigger: "Price closes through the OB body zone"
+      # ┌─────────────────────────────────────────────────────────────────┐
+      # │ OLYA MUST RESOLVE — OB Mitigation                              │
+      # ├─────────────────────────────────────────────────────────────────┤
+      # │                                                                 │
+      # │ Q16: OB mitigation — same rules as FVG? Or different?          │
+      # │      OBs are often "respected" on first touch and then         │
+      # │      broken on second. Does the system track touch count?      │
+      # │                                                                 │
+      # └─────────────────────────────────────────────────────────────────┘
+
+    ANY_to_INVALIDATED:
+      trigger: "Same as FVG — opposing regime MSS"
+
+  # ─── IFVG Lifecycle ───
+
+  ifvg_lifecycle:
+    note: |
+      IFVG is a derived primitive (filled FVG that becomes S/R).
+      Lifecycle likely mirrors OB. Confirm with Olya.
+
+    # ┌─────────────────────────────────────────────────────────────────────┐
+    # │ OLYA MUST RESOLVE — IFVG Lifecycle                                 │
+    # ├─────────────────────────────────────────────────────────────────────┤
+    # │                                                                     │
+    # │ Q17: Do you track IFVGs as HTF areas of interest?                  │
+    # │      Or are they only relevant on LTF execution timeframes?        │
+    # │      If HTF-relevant, lifecycle rules needed.                      │
+    # │                                                                     │
+    # └─────────────────────────────────────────────────────────────────────┘
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. MAP UPDATE MECHANICS
+# ─────────────────────────────────────────────────────────────────────────────
+
+map_update_mechanics:
+
+  principle: |
+    The Map updates on STRUCTURAL EVENTS, not per-bar.
+    Most bars produce zero Map updates. This is correct and intentional.
+    
+    The L1 primitive layer still runs per-bar (detecting swings, FVGs, etc.).
+    The Map CONSUMES L1 output but only updates its own state when
+    a structurally significant event occurs.
+
+  structural_events_that_update_the_map:
+
+    new_mss:
+      affects: [regime, dealing_range]
+      action: |
+        If MSS is at regime TF or higher and opposes current direction:
+          → regime.direction flips
+          → new dealing_range created (old → SUPERSEDED)
+          → PDAs from old regime → INVALIDATED
+          → new PDAs may be created by the displacement that caused MSS
+        If MSS is at lower TF (e.g., 1H within daily regime):
+          → regime.phase may update (EXPANSION → RETRACE)
+          → regime.direction unchanged
+          → existing PDAs unaffected
+
+    new_displacement:
+      affects: [active_pdas]
+      action: |
+        Displacement creates FVGs and OBs as L1 events.
+        If on HTF (daily, H4, H1):
+          → new PDA objects added to the Map
+          → classified by location relative to dealing range equilibrium
+          → status = OPEN
+
+    price_enters_pda:
+      affects: [active_pdas]
+      action: |
+        PDA status: OPEN → TOUCHED
+        If PDA is in correct zone and regime permits:
+          → execution gate ARMED for next valid kill zone
+
+    price_mitigates_pda:
+      affects: [active_pdas]
+      action: |
+        PDA status: TOUCHED → MITIGATED
+        Execution gate for this PDA: DISARMED
+        Other active PDAs unaffected
+
+    liquidity_swept:
+      affects: [resting_liquidity]
+      action: |
+        Liquidity status: RESTING → SWEPT
+        May coincide with LTF execution chain step 1 (sweep)
+
+    new_session:
+      affects: [resting_liquidity]
+      action: |
+        New session boundaries created (Asia H/L, prior day H/L)
+        Previous session boundaries: persist until swept or aged out
+
+  events_that_do_NOT_update_the_map:
+    - "Normal price movement within established range"
+    - "LTF primitive detections (5m/15m FVGs, swings) — these feed Execution, not Map"
+    - "Kill zone transitions — these gate Execution, not Map"
+    - "Phase changes within the same regime direction"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5. EXECUTION GATE — THE BRIDGE
+# ─────────────────────────────────────────────────────────────────────────────
+
+execution_gate:
+
+  purpose: |
+    A boolean function that answers:
+    "Should the LTF execution engine be scanning for setups right now?"
+    
+    This is the bridge between the slow clock (Map) and the fast clock (Execution).
+    It evaluates BEFORE any LTF chain scanning begins.
+
+  gate_conditions:
+    all_required:
+
+      condition_1_regime_valid:
+        check: "map.regime.direction != NEUTRAL"
+        rationale: "Must have a directional view"
+        exception: "RANGE phase with H4/H1 authority delegation — see below"
+
+      condition_2_price_at_active_pda:
+        check: "at least one PDA with status in [OPEN, TOUCHED] AND price in PDA zone"
+        rationale: "Must be at a map-approved location"
+        # ┌─────────────────────────────────────────────────────────────────┐
+        # │ OLYA MUST RESOLVE — PDA Proximity                              │
+        # ├─────────────────────────────────────────────────────────────────┤
+        # │                                                                 │
+        # │ Q18: How close does price need to be to the PDA zone?          │
+        # │      a) Price must be INSIDE the zone (between top and bottom) │
+        # │      b) Price must have TOUCHED the zone edge                  │
+        # │      c) Price within N pips of the zone (buffer)?             │
+        # │                                                                 │
+        # │ Q19: Once price has touched a PDA and moved away (without      │
+        # │      mitigating), does the execution gate stay armed?          │
+        # │      For how long? Until end of session? Until end of day?     │
+        # │                                                                 │
+        # └─────────────────────────────────────────────────────────────────┘
+
+      condition_3_correct_zone:
+        check: "PDA.location_class matches regime permission"
+        rationale: |
+          BEARISH regime → PDA must be PREMIUM (shorts from premium)
+          BULLISH regime → PDA must be DISCOUNT (longs from discount)
+        mapping:
+          BEARISH_EXPANSION: "PDA must be PREMIUM"
+          BULLISH_EXPANSION: "PDA must be DISCOUNT"
+          RETRACE: "Counter-direction PDAs permitted"
+          RANGE: "Either zone, authority delegated to H4/H1"
+
+      condition_4_kill_zone:
+        check: "current time within LOKZ (02:00-05:00 NY) or NYOKZ (07:00-10:00 NY)"
+        rationale: "Execution only in defined windows"
+        source: "vLOCK — locked kill zone definitions"
+
+  gate_output:
+    ARMED:
+      meaning: "All four conditions met → LTF execution engine SCANS for chain"
+      provides_to_execution:
+        - direction          # from regime
+        - active_pda_ref     # which PDA triggered the gate
+        - kill_zone          # which window we're in
+    DISARMED:
+      meaning: "One or more conditions not met → execution engine IDLE"
+
+  # ┌─────────────────────────────────────────────────────────────────────────┐
+  # │ OLYA MUST RESOLVE — RETRACE Gate Configuration                         │
+  # ├─────────────────────────────────────────────────────────────────────────┤
+  # │                                                                         │
+  # │ Q20: In RETRACE phase (counter-trades permitted):                      │
+  # │      Does the counter-direction execution look for PDAs in the         │
+  # │      OPPOSITE zone? e.g., daily BEARISH in RETRACE, counter-longs     │
+  # │      from DISCOUNT PDAs?                                               │
+  # │                                                                         │
+  # │      Or does RETRACE operate differently — perhaps using the           │
+  # │      counter-TF's own dealing range (e.g., H4 bullish dealing range    │
+  # │      within the daily bearish regime)?                                  │
+  # │                                                                         │
+  # │      The 5 RETRACE trades in the ground truth would clarify this.      │
+  # │      Trade_002, 008, 010, 012, 014 — where was price relative to      │
+  # │      what dealing range?                                                │
+  # │                                                                         │
+  # │ Q21: In RANGE phase: does the Map generate TWO dealing ranges          │
+  # │      (one per H4/H1 authority)? Or use a single range from the        │
+  # │      most recent authority MSS?                                         │
+  # │                                                                         │
+  # └─────────────────────────────────────────────────────────────────────────┘
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. MULTI-TF PRECEDENCE
+# ─────────────────────────────────────────────────────────────────────────────
+
+multi_tf_precedence:
+
+  principle: |
+    Multiple PDAs may be active simultaneously across timeframes.
+    Daily FVG in premium + H4 FVG in premium + H1 OB in discount.
+    The system needs precedence rules — not confluence scoring.
+    
+    NO CONFLUENCE SCORING: the system does NOT add up "how many PDAs
+    are near this price" to produce a confidence number.
+    
+    YES PRECEDENCE: higher-TF PDAs take priority over lower-TF PDAs.
+    If a daily PDA and an H1 PDA give conflicting signals, daily wins.
+
+  authority_ordering:
+    1: DAILY
+    2: H4
+    3: H1
+    note: "Same ordering as regime authority"
+
+  conflict_resolution:
+    scenario: "Daily PDA says PREMIUM (trade short), H1 PDA says DISCOUNT (trade long)"
+    rule: "Daily wins. H1 PDA is noted but does NOT override daily context."
+    exception: |
+      In RETRACE phase, the counter-TF PDA may be the relevant one.
+      e.g., daily bearish but H4 bullish retrace — the H4 discount PDA
+      is where Olya would look for counter-longs. See Q20 above.
+
+  confluence_without_scoring: |
+    When multiple PDAs align (daily FVG + H4 OB at same price zone),
+    this is noted as CONFLUENCE in the Map — a spatial overlap.
+    It does NOT produce a numerical score.
+    It MAY inform Olya's confidence (L2 interpretation) but does NOT
+    change the execution gate logic (L1/L1.5).
+
+  # ┌─────────────────────────────────────────────────────────────────────────┐
+  # │ OLYA MUST RESOLVE — Multi-TF PDA Selection                             │
+  # ├─────────────────────────────────────────────────────────────────────────┤
+  # │                                                                         │
+  # │ Q22: When multiple PDAs are active in the correct zone, which one      │
+  # │      gates execution?                                                   │
+  # │      a) Highest TF always (daily over H4 over H1)                      │
+  # │      b) Nearest to current price                                        │
+  # │      c) Most recently created                                           │
+  # │      d) First one price reaches                                         │
+  # │      (Suspect: (d) — first one price interacts with)                   │
+  # │                                                                         │
+  # │ Q23: Can multiple PDAs be armed simultaneously?                        │
+  # │      Or is it strictly "one active PDA per execution window"?          │
+  # │                                                                         │
+  # └─────────────────────────────────────────────────────────────────────────┘
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7. LTF EXECUTION CHAIN — REFERENCE (NOT OWNED BY THIS SPEC)
+# ─────────────────────────────────────────────────────────────────────────────
+
+ltf_execution_chain:
+
+  note: |
+    The execution chain is NOT specified here. It is infrastructure.
+    It lives in its own spec and is consumed identically regardless of
+    which Map configuration triggered it.
+    
+    Included here only as interface documentation — what the Map provides
+    to the Execution layer, and what the Execution layer returns.
+
+  universal_chain:
+    step_1: "Sweep — LTF liquidity sweep (15m swing point or session level)"
+    step_2: "MSS — LTF market structure shift in trade direction"
+    step_3: "FVG — LTF fair value gap created by displacement"
+    step_4: "OTE — 0.62 fib retracement of displacement move"
+    step_5: "Entry — limit order at OTE level"
+
+  inputs_from_map:
+    - direction           # LONG or SHORT
+    - active_pda_ref      # which PDA armed the gate
+    - kill_zone           # LOKZ or NYOKZ
+    - nearby_liquidity    # resting liquidity levels for sweep targeting
+
+  outputs_to_map:
+    - trade_taken: bool
+    - entry_price: float
+    - sl_price: float
+    - tp_price: float
+    - chain_steps_matched: list
+
+  execution_variants:
+    standard:
+      chain: "sweep → MSS → FVG → OTE → entry"
+      entry_method: "limit order at OTE"
+      tp: "2R fixed"
+      prevalence: "9 of 12 state-gated ground truth trades"
+
+    no_sweep:
+      chain: "MSS → FVG → OTE → entry (sweep step skipped)"
+      note: "Observed in trade_011 (RANGE phase, momentum continuation)"
+      # ┌─────────────────────────────────────────────────────────────┐
+      # │ OLYA MUST RESOLVE — Sweep Optional?                        │
+      # ├─────────────────────────────────────────────────────────────┤
+      # │                                                             │
+      # │ Q24: Is the sweep step truly optional in some contexts?    │
+      # │      Or was trade_011 an exception / lower-confidence      │
+      # │      setup that shouldn't be systematic?                   │
+      # │                                                             │
+      # │ Q25: If sweep IS optional, under what Map conditions?      │
+      # │      Only in RANGE phase? Only with strong momentum?       │
+      # │                                                             │
+      # └─────────────────────────────────────────────────────────────┘
+
+    smt_sweep_substitute:
+      chain: "SMT divergence → MSS → FVG → OTE → entry"
+      note: "Observed in trades 002, 012. SMT used as sweep substitute."
+      status: "NOT in locked L1 — tolerated as known miss"
+      # ┌─────────────────────────────────────────────────────────────┐
+      # │ NOTE: SMT is not an L1 primitive. These trades are         │
+      # │ acknowledged as outside current system scope.              │
+      # │ If Olya wants SMT as a formal sweep substitute,            │
+      # │ it requires L1 primitive definition + calibration.         │
+      # └─────────────────────────────────────────────────────────────┘
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 8. MAP INITIALIZATION & COLD START
+# ─────────────────────────────────────────────────────────────────────────────
+
+initialization:
+
+  purpose: |
+    When the system starts (or restarts), the Map must be populated.
+    This requires backward-scanning historical data to establish:
+    - current regime (most recent uncontradicted daily MSS)
+    - current dealing range
+    - all active (non-mitigated, non-invalidated) PDAs
+    - all resting liquidity levels
+
+  cold_start_procedure:
+    step_1:
+      action: "Scan daily bars backward to find most recent daily MSS"
+      lookback: "Until opposing MSS found or data exhausted"
+      output: "regime.direction, regime.source_mss_id, regime.established_at"
+
+    step_2:
+      action: "From regime MSS, derive dealing range"
+      output: "dealing_range origin, extreme, equilibrium"
+
+    step_3:
+      action: "Scan HTF bars from regime establishment forward"
+      detect: "All FVGs, OBs, IFVGs created after regime MSS"
+      classify: "Each by location relative to equilibrium"
+      filter: "Remove any that have been mitigated (price closed through)"
+      output: "active_pdas[] with correct lifecycle status"
+
+    step_4:
+      action: "Identify resting liquidity from recent structure"
+      detect: "Equal H/L, session boundaries, prior day H/L"
+      output: "resting_liquidity[] with status"
+
+  note: |
+    After cold start, the Map transitions to event-driven updates.
+    The cold start is the ONLY time backward scanning is required.
+    This is intentionally expensive (one-time) to enable cheap ongoing updates.
+
+  # ┌─────────────────────────────────────────────────────────────────────────┐
+  # │ OLYA MUST RESOLVE — Lookback Depth                                     │
+  # ├─────────────────────────────────────────────────────────────────────────┤
+  # │                                                                         │
+  # │ Q26: How far back would you look for the current regime?               │
+  # │      e.g., if the last daily MSS was 6 weeks ago, is it still valid?  │
+  # │      (Current design: yes, until opposing MSS. Confirm.)               │
+  # │                                                                         │
+  # │ Q27: How far back should the system look for active PDAs?              │
+  # │      A daily FVG from 4 weeks ago that hasn't been touched —           │
+  # │      is it still on your mental map? Or does it fade?                  │
+  # │      (Current design: persists until mitigated or invalidated.         │
+  # │       No age-based expiry. Confirm.)                                    │
+  # │                                                                         │
+  # └─────────────────────────────────────────────────────────────────────────┘
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 9. STRATEGY AS MAP CONFIGURATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+strategy_as_configuration:
+
+  principle: |
+    A "strategy" is NOT a separate codebase or detection function.
+    A strategy is a CONFIGURATION of the Map — specifying which
+    combination of Map conditions must be true for execution to arm.
+
+  configuration_template:
+    strategy_name: string
+    required_regime:
+      direction: [BULLISH, BEARISH, ANY]
+      phase: [EXPANSION, RETRACE, RANGE, ANY]
+    required_pda:
+      types: [FVG, OB, IFVG, ANY]
+      timeframes: [DAILY, H4, H1, ANY]
+      location_class: [PREMIUM, DISCOUNT, ANY]
+      status: [OPEN, TOUCHED]
+    required_zone:
+      bearish: PREMIUM
+      bullish: DISCOUNT
+    kill_zone: [LOKZ, NYOKZ, BOTH]
+    execution_chain: STANDARD | NO_SWEEP | CUSTOM
+    tp_method: FIXED_2R | OPPOSITE_BOUNDARY | CUSTOM
+
+  example_configurations:
+
+    DMB_EXPANSION_SHORT:
+      description: "Daily Momentum Breakout — bearish expansion"
+      required_regime:
+        direction: BEARISH
+        phase: EXPANSION
+      required_pda:
+        types: [FVG]
+        timeframes: [DAILY]
+        location_class: PREMIUM
+      kill_zone: LOKZ   # per DMB draft — but see kill zone discussion
+      execution_chain: STANDARD
+      tp_method: FIXED_2R
+      reference_trades: [trade_001, trade_013]
+
+    DMB_EXPANSION_LONG:
+      description: "Daily Momentum Breakout — bullish expansion"
+      required_regime:
+        direction: BULLISH
+        phase: EXPANSION
+      required_pda:
+        types: [FVG]
+        timeframes: [DAILY]
+        location_class: DISCOUNT
+      kill_zone: BOTH
+      execution_chain: STANDARD
+      tp_method: FIXED_2R
+      reference_trades: [trade_003, trade_005, trade_006, trade_007]
+
+    RETRACE_COUNTER:
+      description: "Counter-direction trade during HTF retrace"
+      required_regime:
+        direction: ANY  # counter to daily, so direction comes from sub-TF
+        phase: RETRACE
+      required_pda:
+        types: [FVG, OB]
+        timeframes: [H4, H1]
+        location_class: ANY  # uses counter-TF dealing range — see Q20
+      kill_zone: NYOKZ   # 5 of 5 RETRACE trades were NYOKZ
+      execution_chain: STANDARD
+      tp_method: FIXED_2R
+      reference_trades: [trade_002, trade_008, trade_010, trade_012, trade_014]
+
+    RANGE_AUTHORITY:
+      description: "Range-phase trade with H4/H1 authority delegation"
+      required_regime:
+        direction: ANY
+        phase: RANGE
+      required_pda:
+        types: [FVG, OB]
+        timeframes: [H4, H1]
+        location_class: ANY  # authority TF determines
+      kill_zone: NYOKZ
+      execution_chain: STANDARD  # sweep may be optional — see Q24
+      tp_method: FIXED_2R
+      reference_trades: [trade_011]
+
+    ARS:
+      description: "Asia Range Scalp — state-independent"
+      required_regime:
+        direction: ANY
+        phase: ANY
+      note: |
+        ARS bypasses the Map entirely. It has its own pre-conditions
+        (Asia range measurement, sweep window, FVG detection).
+        Included here for completeness. See ARS_CANON v1.3.
+      reference_trades: [trade_004, trade_009]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 10. RELATIONSHIP TO EXISTING ARCHITECTURE
+# ─────────────────────────────────────────────────────────────────────────────
+
+architecture_integration:
+
+  what_stays:
+    L1_primitives: |
+      Unchanged. 13/13 locked. Continue to detect per-bar on all TFs.
+      The Map CONSUMES L1 output — it does not replace it.
+
+    state_detection_v2: |
+      The regime classification (EXPANSION/RETRACE/RANGE) continues to
+      be computed by the state detection logic. The Map STORES the result
+      as a persistent regime object rather than recomputing it.
+
+    ARS: |
+      Unchanged. Self-contained strategy with its own pre-conditions.
+      Operates independently of the Map.
+
+  what_changes:
+    strategy_designer: |
+      Currently a chain composer. Would evolve to become:
+      a) Map configuration tool (which regime + which PDAs + which zone)
+      b) Chain evaluation remains as-is for LTF execution
+
+    execution_pipeline: |
+      Currently runs chain evaluation per-bar within kill zones.
+      Would now only run when execution gate is ARMED.
+      This is a performance optimization and a correctness improvement.
+
+    DMB_draft: |
+      Subsumed by this spec. DMB is not a separate strategy — it is
+      the EXPANSION configuration of the Map. Its Layers 2-3 (premium/
+      discount + daily FVG trigger) are now first-class Map features
+      available to ALL strategy configurations.
+
+  what_is_new:
+    htf_map_engine: |
+      New persistent layer. Stores regime, dealing range, PDAs, liquidity.
+      Event-driven updates. Cross-session persistence.
+      This is the primary architectural addition.
+
+    pda_persistence_store: |
+      New data layer. PDAs stored with lifecycle tracking.
+      Could be in-memory with periodic serialization, or lightweight DB.
+      Must survive system restarts (cold start procedure as fallback).
+
+    execution_gate: |
+      New boolean function. Evaluates Map state before LTF scanning.
+      Simple, stateless, cheap to compute. Runs per-bar but almost
+      always returns DISARMED (most bars are not at active PDAs in KZ).
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 11. OPEN QUESTIONS SUMMARY
+# ─────────────────────────────────────────────────────────────────────────────
+
+open_questions_for_olya:
+
+  dealing_range:
+    Q1: "Origin candle — body or wick?"
+    Q2: "Extreme candle — body or wick?"
+    Q3: "Trend extension — stretch, replace, or persist?"
+    Q4: "Multi-leg campaigns — which leg defines the range?"
+
+  pda_classification:
+    Q5: "PDA type completeness — FVG, OB, IFVG sufficient?"
+    Q6: "PDA type weighting — equal or differential?"
+    Q7: "PDA location threshold — entire zone above EQ or partial overlap?"
+    Q8: "PDA straddling equilibrium — valid or invalid?"
+
+  liquidity:
+    Q9: "Which liquidity types do you actively track?"
+    Q10: "Liquidity expiry — age-based, structure-based, or persist until swept?"
+    Q11: "Strong vs weak liquidity distinction?"
+
+  pda_lifecycle:
+    Q12: "FVG touch definition — wick, body, close, or CE?"
+    Q13: "Cross-TF touch — can LTF touch HTF PDA?"
+    Q14: "FVG mitigation definition — full close through or CE?"
+    Q15: "FVG touch → leave → return: status stays TOUCHED?"
+    Q16: "OB mitigation — same as FVG or different?"
+    Q17: "IFVG on HTF — tracked or LTF-only?"
+
+  execution_gate:
+    Q18: "PDA proximity — inside zone, edge touch, or buffer?"
+    Q19: "Gate persistence after PDA touch — how long armed?"
+    Q20: "RETRACE counter-trade — which dealing range?"
+    Q21: "RANGE phase — one or two dealing ranges?"
+
+  multi_tf:
+    Q22: "Multiple active PDAs — which gates execution?"
+    Q23: "Multiple PDAs armed simultaneously?"
+
+  execution_chain:
+    Q24: "Sweep optional in some contexts?"
+    Q25: "Sweep-optional conditions?"
+
+  initialization:
+    Q26: "Regime lookback depth — how far back?"
+    Q27: "PDA age — fade or persist indefinitely?"
+
+  method: |
+    Recommended approach: Olya opens TradingView on the 14 annotated trades.
+    For each trade, she marks:
+    - The dealing range she held in mind
+    - The PDA(s) she was watching
+    - When she considered the PDA "reached" / "touched"
+    This produces 14 ground truth Map snapshots that resolve most questions.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 12. IMPLEMENTATION SEQUENCE (PROPOSED)
+# ─────────────────────────────────────────────────────────────────────────────
+
+implementation_sequence:
+
+  phase_0_spec_completion:
+    goal: "Resolve all OLYA MUST RESOLVE items"
+    method: "Olya marks dealing ranges + PDAs on TradingView for 14 trades"
+    deliverable: "HTF_MAP_SPEC v0.2 with all questions resolved"
+    gate: "Olya sign-off"
+
+  phase_1_map_engine:
+    goal: "Build persistent Map with regime + dealing range + PDAs"
+    verify: "Cold start produces correct Map state for Oct 1, 2025 (trade_001)"
+    deliverable: "Map engine that can answer 'what is the Map state on date X?'"
+
+  phase_2_execution_gate:
+    goal: "Boolean gate function consuming Map state"
+    verify: "Gate returns ARMED at correct times for all 14 ground truth trades"
+    deliverable: "Gate function integrated with existing chain evaluator"
+
+  phase_3_pda_lifecycle:
+    goal: "Full lifecycle tracking for all PDA types"
+    verify: "PDAs created, touched, mitigated, invalidated correctly across dataset"
+    deliverable: "Lifecycle engine with audit trail"
+
+  phase_4_strategy_configs:
+    goal: "DMB, RETRACE, RANGE as Map configurations"
+    verify: "Each config produces correct ARMED/DISARMED for its reference trades"
+    deliverable: "Configuration-driven strategy definitions"
+
+  phase_5_walk_forward:
+    goal: "Walk-forward validation of full Map + Execution system"
+    verify: "Train/val split, same framework as ARS"
+    deliverable: "Locked parameters, performance report"
+
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# DOCUMENT STATUS
+# ═══════════════════════════════════════════════════════════════════════════════
+
+document_status:
+  version: "0.1 DRAFT"
+  status: "ARCHITECTURAL SPEC — Olya review required"
+  machine_executable: false
+  open_questions: 27
+  date: "2026-03-28"
+  authors:
+    - "CTO Claude (architecture, object model, integration)"
+    - "Olya's Advisor AI (PDA persistence concept, lifecycle model)"
+    - "GPT Reviewer (refinement points C1-C6)"
+    - "G (architectural direction, blank-canvas mandate)"
+    - "Olya (cognitive model validation, four-category confirmation)"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END OF SPECIFICATION
+# ═══════════════════════════════════════════════════════════════════════════════

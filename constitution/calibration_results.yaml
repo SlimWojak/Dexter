@@ -1,0 +1,439 @@
+# ============================================================================
+# HTF MAP CALIBRATION RESULTS
+# Olya's answers to the 27 questions in HTF_MAP_SPEC_v0_1.yaml
+# ============================================================================
+#
+# Session: Phase 5 — Map Calibration with Olya
+# Date: 2026-03-29
+# Facilitator: COO (Claude Code on M3)
+# Method: Run calibration scripts, show output, ask printed question,
+#         record Olya's answer VERBATIM.
+#
+# Format per question:
+#   question_id, question_text, script_used, trade_used,
+#   olya_answer, confidence, locked, notes
+#
+# ============================================================================
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# MSS DETECTION NOTE (non-blocking)
+# ─────────────────────────────────────────────────────────────────────────────
+
+MSS_DETECTION_NOTE:
+  observation: "detect.py found 0 daily MSS in Sept 15-Oct 5 but 2 displacements"
+  likely_cause: "MSS swing lookback too short, or MSS fires earlier and scan window misses it"
+  blocking: NO
+  why_not: |
+    Calibration scripts work from raw daily bars (OHLC).
+    Olya identifies the MSS visually on TradingView.
+    The dealing range computation uses the bars directly.
+    detect.py's MSS detection parameters get tuned AFTER
+    we know what the correct answer looks like.
+  action_post_calibration: |
+    Once Olya confirms the MSS location and dealing range,
+    verify detect.py reproduces it. If not, that's a detection
+    config tuning task — not an architecture problem.
+
+FVG_TIMESTAMP_NOTE:
+  observation: "detect.py timestamps FVGs on Candle A (anchor), plus forex-day offset gives dates ~1 day early"
+  example: "Bearish FVG from Sept 24-25 displacement shows as 2025-09-22 (Candle A=Sept 23, forex-day shifted)"
+  impact: "Zone coordinates (price, gap size) are CORRECT. Timestamp labeling is confusing."
+  blocking: NO
+  action_post_calibration: |
+    Review FVG timestamp convention — consider using Candle C (confirmation)
+    or at minimum Candle B (displacement) as the detection time.
+    Olya reads FVGs from the displacement candle, not the anchor.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 1: DEALING RANGE (Q1-Q4)
+# Script 1: calibrate_dealing_range.py  |  Script 3: calibrate_extension.py
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q1:
+  question_id: Q1
+  question_text: "Origin candle — BODY high/low or WICK high/low?"
+  script_used: calibrate_dealing_range.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: "WICK. Always wick to wick for dealing range, to capture the whole move."
+  confidence: HIGH
+  locked: true
+  notes: "Confirmed on TradingView. Option B selected."
+
+Q2:
+  question_id: Q2
+  question_text: "Extreme candle — BODY or WICK of displacement extreme?"
+  script_used: calibrate_dealing_range.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: "WICK. Same rule — wick to wick, capture the whole move."
+  confidence: HIGH
+  locked: true
+  notes: "Confirmed on TradingView. Option B: origin=1.18199 (wick high), extreme=1.16454 (wick low), EQ=1.17327."
+
+Q3:
+  question_id: Q3
+  question_text: "Trend extension — does dealing range STRETCH, REPLACE, or PERSIST as original?"
+  script_used: calibrate_extension.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: "ROLLING — dealing range tracks pullback-to-displacement cycles within regime. Each new cycle supersedes the previous dealing range."
+  confidence: HIGH
+  locked: true
+  notes: "Refined with CTO + Olya's advisor. Not stretch/replace/persist — it's a rolling cycle model."
+
+Q4:
+  question_id: Q4
+  question_text: "Multi-leg campaigns — which leg defines the range? Most recent / largest / full campaign?"
+  script_used: calibrate_extension.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    Origin = highest liquidity point before displacement.
+    Sweep extreme (wick) if sweep occurs, pullback high (wick) if not.
+    Extreme = wick of expansion extreme.
+    Each new pullback-to-displacement cycle supersedes previous dealing range.
+  confidence: HIGH
+  locked: true
+  notes: |
+    Refined with CTO + Olya's advisor. Priority logic: sweep > pullback.
+    Example: pullback high 1.1750, spike to 1.1780 takes highs, displacement down → origin = 1.1780.
+    Maps directly to detect.py's existing sweep detection primitive.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 2: PDA CLASSIFICATION (Q5-Q8)
+# Script 4: calibrate_pda_zone.py  |  Q5-Q6: no script (general methodology)
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q5:
+  question_id: Q5
+  question_text: "PDA type completeness — are FVG, OB, IFVG the complete set of HTF PDA types you track?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "v1 = FVG only. OB/IFVG deferred to v2+."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1: daily regime + daily FVG only."
+
+Q6:
+  question_id: Q6
+  question_text: "PDA type weighting — do you weight types differently (e.g. trust daily FVG more than daily OB)? Or equivalent?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "v1 = FVG only, priority ordering is moot."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1. Revisit when OB/IFVG added in v2."
+
+Q7:
+  question_id: Q7
+  question_text: "For a PDA to be 'in premium', must the ENTIRE zone be above equilibrium, or is midpoint / any overlap sufficient?"
+  script_used: calibrate_pda_zone.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    PDA midpoint must be at or above equilibrium (bearish) /
+    at or below (bullish). If PDA midpoint is in wrong zone → INVALID.
+    If PDA straddles but midpoint is in correct zone → VALID.
+  confidence: HIGH
+  locked: true
+  notes: "config_value: zone_requirement = midpoint"
+
+Q8:
+  question_id: Q8
+  question_text: "If a PDA straddles equilibrium (top in premium, bottom in discount), is it valid for execution?"
+  script_used: calibrate_pda_zone.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    VALID — but with two constraints:
+    1. Entry must be taken from the premium portion (above EQ for shorts,
+       below EQ for longs). System must NOT enter from wrong side of EQ.
+    2. Straddle setups require clean LTF confirmation
+       (sweep + MSS + displacement — no weak chains).
+  confidence: HIGH
+  locked: true
+  notes: |
+    Implementation: Gate classifies PDA location by MIDPOINT vs equilibrium.
+    Midpoint above EQ → PREMIUM. Midpoint below EQ → DISCOUNT. Midpoint at EQ → VALID but strong chain required.
+    Additional constraint: ENTRY PRICE (OTE from chain) must be on correct side of EQ.
+    Checked at intent_builder level, not gate level. Gate arms the PDA, intent_builder validates entry.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 3: LIQUIDITY (Q9-Q11)
+# No dedicated scripts — general methodology questions
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q9:
+  question_id: Q9
+  question_text: "Which liquidity types do you actively track on your mental map? (equal H/L, session boundaries, prior day H/L, others?)"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. Liquidity tracking not in Map v1 scope."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1."
+
+Q10:
+  question_id: Q10
+  question_text: "How do you determine when a liquidity level expires? Age-based / structure-based / persist until swept?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. Liquidity tracking not in Map v1 scope."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1."
+
+Q11:
+  question_id: Q11
+  question_text: "Do you distinguish between 'strong' and 'weak' liquidity? (e.g. equal highs tested 3x vs 2x)"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. Liquidity tracking not in Map v1 scope."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1."
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 4: PDA LIFECYCLE (Q12-Q17)
+# Script 2: calibrate_daily_fvg.py  |  Q13-14, Q16-17: no script
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q12:
+  question_id: Q12
+  question_text: "What constitutes 'touching' a PDA? (a) any wick into zone (b) body enters (c) close inside (d) CE touched"
+  script_used: calibrate_daily_fvg.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: "ANY_PRICE_ENTRY — wick or body enters zone → TOUCHED. Small pokes do NOT invalidate."
+  confidence: HIGH
+  locked: true
+  notes: "Olya confirmed: any entry counts. No minimum depth requirement."
+
+Q13:
+  question_id: Q13
+  question_text: "Cross-TF touch — can a 5m candle 'touch' a daily FVG? Or must touch occur on same TF?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "YES — any TF can touch HTF PDA. A daily FVG is a price zone, any timeframe sees it."
+  confidence: HIGH
+  locked: true
+  notes: "Implicitly answered by Q12/Q18 — any price entry counts regardless of TF."
+
+Q14:
+  question_id: Q14
+  question_text: "FVG mitigation — when is it fully consumed? (a) close through entire zone (b) CE traded through (c) other"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Candle body closes beyond far edge of zone = MITIGATED. Locked in PDA lifecycle discussion."
+  confidence: HIGH
+  locked: true
+  notes: "Implicitly answered during Q15 lifecycle discussion. close_through is the trigger."
+
+Q15:
+  question_id: Q15
+  question_text: "Once TOUCHED, does PDA stay TOUCHED if price leaves without mitigating? Or revert to OPEN?"
+  script_used: calibrate_daily_fvg.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    TOUCHED is permanent. Multiple touches keep PDA alive.
+    Only REJECTED (LTF chain confirms: sweep + MSS + expansion away)
+    or MITIGATED (candle body closes beyond far edge of zone) kills it.
+  confidence: HIGH
+  locked: true
+  notes: |
+    NEW STATE added to lifecycle: REJECTED (chain-confirmed structural reaction).
+    Full locked lifecycle: OPEN → TOUCHED → REJECTED/MITIGATED/INVALIDATED.
+    TOUCHED→TOUCHED on subsequent touches. Gate stays ARMED while TOUCHED.
+    This replaces the original 4-state model with a 5-state model.
+
+Q16:
+  question_id: Q16
+  question_text: "OB mitigation — same rules as FVG? Or different? Does the system need to track touch count?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. No OB in Map v1."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1. OB mitigation rules needed when OB added in v2."
+
+Q17:
+  question_id: Q17
+  question_text: "Do you track IFVGs as HTF areas of interest? Or are they only relevant on LTF execution timeframes?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. No IFVG in Map v1."
+  confidence: HIGH
+  locked: true
+  notes: "Auto-resolved by INV-MAP-SCOPE-V1."
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 5: EXECUTION GATE (Q18-Q21)
+# Script 5: calibrate_gate.py  |  Q20-Q21: no script
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q18:
+  question_id: Q18
+  question_text: "PDA proximity — for gate to arm, must price be (a) INSIDE zone (b) TOUCHED edge (c) within N pip buffer?"
+  script_used: calibrate_gate.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    ANY price entry — wick or body touching/entering the zone.
+    No buffer needed. No "inside" requirement.
+    Edge touch counts. Shallow wick counts. Everything counts.
+    The gate arms on contact. The CHAIN determines quality.
+  confidence: HIGH
+  locked: true
+  notes: "config_value: proximity_mode = edge_touch"
+
+Q19:
+  question_id: Q19
+  question_text: "After price touches PDA and moves away (without mitigating), does gate stay armed? For how long?"
+  script_used: calibrate_gate.py
+  trade_used: trade_001 (Oct 1 2025, EXPANSION BEARISH)
+  olya_answer: |
+    YES — TOUCHED is permanent. Gate re-arms every kill zone
+    until PDA reaches terminal state (REJECTED / MITIGATED / INVALIDATED).
+    Price leaving and returning does not reset anything.
+  confidence: HIGH
+  locked: true
+  notes: "Pre-answered — consistent with lifecycle rules locked on Q12/Q15. config_value: gate_persist_after_touch = true"
+
+Q20:
+  question_id: Q20
+  question_text: "RETRACE counter-trade — does counter look at PDAs in OPPOSITE zone? Or use counter-TF's own dealing range?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. RETRACE is a non-EXPANSION strategy config."
+  confidence: HIGH
+  locked: true
+  notes: "v1 = EXPANSION phase only. RETRACE counter-trade rules needed for RETRACE_COUNTER strategy in v2."
+
+Q21:
+  question_id: Q21
+  question_text: "RANGE phase — does Map generate TWO dealing ranges (per H4/H1 authority)? Or single from most recent MSS?"
+  script_used: none
+  trade_used: ~
+  olya_answer: "Deferred to v2. RANGE is a non-EXPANSION strategy config."
+  confidence: HIGH
+  locked: true
+  notes: "v1 = EXPANSION phase only. RANGE authority delegation needed for RANGE_AUTHORITY strategy in v2."
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 6: MULTI-TF (Q22-Q23)
+# Script 7: calibrate_multi_pda.py
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q22:
+  question_id: Q22
+  question_text: "Multiple active PDAs in correct zone — which gates execution? (a) highest TF (b) nearest (c) most recent (d) first reached"
+  script_used: calibrate_multi_pda.py
+  trade_used: trade_003/005 (Dec 12 2025, EXPANSION BULLISH)
+  olya_answer: |
+    First valid PDA price reaches in correct zone = primary gate.
+    If chain fails there, next deeper PDA cascades to primary.
+    Daily and 4H are equal — proximity wins, not timeframe.
+    H1 is execution-layer, not Map-layer.
+    Overlapping PDAs flagged as confluence (metadata, not logic change).
+  confidence: HIGH
+  locked: true
+  notes: |
+    Three additions locked:
+    1. CASCADE: chain fails at PDA → next deeper PDA becomes primary. Sorted by proximity.
+    2. TF PARITY: Daily and 4H equal for gating. H1 feeds chain_evaluator, NOT pda_store.
+    3. CONFLUENCE: overlapping daily+4H zones = metadata flag (confluence: bool, confluent_pdas: list).
+       No scoring, no confidence number. Just a flag for Olya's information.
+
+Q23:
+  question_id: Q23
+  question_text: "Can multiple PDAs be armed simultaneously? Or strictly one active PDA per execution window?"
+  script_used: calibrate_multi_pda.py
+  trade_used: trade_003/005 (Dec 12 2025, EXPANSION BULLISH)
+  olya_answer: |
+    YES — multiple PDAs can be active within current dealing range
+    (e.g. daily FVG + 4H FVG from same leg). First one price reaches
+    → gate arms → chain evaluates. If chain doesn't complete,
+    other PDAs remain active.
+  confidence: HIGH
+  locked: true
+  notes: |
+    Follows from Q3/Q4 (rolling dealing range). PDA gets dealing_range_ref field.
+    Gate filters by current active range. No new PDA states needed.
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 7: EXECUTION CHAIN (Q24-Q25)
+# No dedicated script — general methodology + trade_011 reference
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q24:
+  question_id: Q24
+  question_text: "Is the sweep step truly optional in some contexts? Or was trade_011 an exception?"
+  script_used: none
+  trade_used: trade_011 (RANGE phase, momentum continuation)
+  olya_answer: "Deferred to v2. Only observed in RANGE phase (trade_011), not in EXPANSION."
+  confidence: HIGH
+  locked: true
+  notes: "v1 = EXPANSION with standard chain (sweep required). Sweep-optional rules needed for v2 RANGE strategy."
+
+Q25:
+  question_id: Q25
+  question_text: "If sweep IS optional, under what Map conditions? Only RANGE phase? Only with strong momentum?"
+  script_used: none
+  trade_used: trade_011 (RANGE phase)
+  olya_answer: "Deferred to v2. Conditions TBD when RANGE strategy implemented."
+  confidence: HIGH
+  locked: true
+  notes: "v1 = EXPANSION with standard chain. Sweep-optional conditions are v2 scope."
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SECTION 8: INITIALIZATION / PERSISTENCE (Q26-Q27)
+# Script 6: calibrate_persistence.py
+# ─────────────────────────────────────────────────────────────────────────────
+
+Q26:
+  question_id: Q26
+  question_text: "Regime lookback — how far back for current regime? (a) no limit until opposing MSS (b) max N days (c) context-dependent"
+  script_used: calibrate_persistence.py
+  trade_used: trade_001 (Oct 1 2025 — MSS was 5 trading days prior)
+  olya_answer: "No limit — valid until opposing MSS. Structure invalidates structure, not time. Core ICT principle."
+  confidence: HIGH
+  locked: true
+  notes: "config_value: max_lookback_days = None"
+
+Q27:
+  question_id: Q27
+  question_text: "PDA age — does an untouched PDA expire? (a) no limit until mitigated/invalidated (b) max N days (c) depends on consumption"
+  script_used: calibrate_persistence.py
+  trade_used: trade_001 (Oct 1 2025 — FVG created Sept 24)
+  olya_answer: "No age expiry. PDAs persist until REJECTED, MITIGATED, or INVALIDATED. A 3-week-old untouched daily FVG is still valid."
+  confidence: HIGH
+  locked: true
+  notes: "config_value: max_pda_age_days = None. Consistent with lifecycle model — only structural events kill PDAs."
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SESSION SUMMARY (fill after calibration)
+# ─────────────────────────────────────────────────────────────────────────────
+
+session_summary:
+  total_questions: 27
+  resolved: 27
+  breakdown:
+    locked_with_olya_via_scripts: 14  # Q1-Q4, Q7-Q8, Q12, Q15, Q18-Q19, Q22-Q23, Q26-Q27
+    auto_resolved_by_v1_scope: 7     # Q5-Q6, Q9-Q11, Q16-Q17 (INV-MAP-SCOPE-V1: FVG only)
+    deferred_to_v2: 4                # Q20-Q21, Q24-Q25 (non-EXPANSION strategies)
+    implicitly_answered: 2           # Q13-Q14 (from lifecycle discussion)
+  olya_sign_off: true
+  sign_off_date: 2026-03-29
+  post_calibration_items:
+    - "MSS detection: detect.py found 0 daily MSS in Sept 15-Oct 5 — verify lookback after calibration"
+    - "FVG timestamps: detect.py uses Candle A anchor time + forex-day offset — consider Candle B/C"
+    - "PDAStatus enum: add REJECTED state to context_types.py (5-state lifecycle)"
+    - "MapConfig updates: apply locked values (wick/wick, midpoint zone, edge_touch, etc.)"
+  notes: |
+    Map v1 spec is lockable. All 27 questions resolved.
+    Key architectural insight from session: Olya's model is permissive on gating
+    (any touch arms) and strict on quality (LTF chain filters). The gate is a
+    wide net, the chain is the precision instrument.

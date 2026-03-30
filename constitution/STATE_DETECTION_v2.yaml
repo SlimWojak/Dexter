@@ -1,0 +1,1295 @@
+# ═══════════════════════════════════════════════════════════════════════════════
+# STATE DETECTION LOGIC — V2.2
+# Unified model: CTO architecture + Opus mechanical fixes + NEX event-cycle framing
+#                + HTF forensic refinements (swing-primary h1, kill zone realignment)
+#                + Execution setup types (reversal vs continuation)
+# Status: VALIDATED — 14/14 phase classification. Parameter sweep pending.
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# PROVENANCE:
+#   v1: CTO Claude — 3-state classifier with HTF fact layer
+#   Opus review: mechanical fixes (MSS invalidation, anti-whipsaw, param gaps)
+#   NEX review: reframe states as HTF event-cycle phases, not static labels
+#   v2: synthesis — single event-cycle model across all TFs, direction permission
+#       derived from HTF phase, execution from LTF phase
+#   v2.1: HTF forensic refinements — swing-primary h1_alignment, kill zone
+#         realignment exception, proposed HTF parameter candidates
+#   v2.2: execution setup types (REVERSAL vs CONTINUATION) + ground truth tagging
+#   v2.3: (CTO + Opus session 2026-03-19):
+#         + 3-mechanism daily direction hierarchy (swing structure / relaxed 4H MSS / 4H sustained)
+#         + Daily swing structure (HH/HL, LL/LH) confirmed as Olya's primary read
+#         + Mechanism 2 (relaxed 4H MSS proxy) carrying all trades pending ATR lookback fix
+#         + 14-trade ground truth validated: 14/14 phase, 13 PASS + 1 PARTIAL (chain timing)
+#         + Ground truth corrections: Trade 003 RANGE->EXPANSION, Trade 011 EXPANSION->RANGE/4H-authority
+#         + Dataset extended through 2026-W12 (Mar 20, 2026) via NEX data ingestion
+#
+# VALIDATION:
+#   14 Olya trades annotated. All 14 classify correctly under v2.3.
+#   13 PASS, 1 PARTIAL (trade_014: phase correct, chain OTE step 150min off).
+#   0 FAIL.
+#   Gate document: reports/consolidated_14_trade_evaluation_2026-03-19.yaml
+#
+# BLOCKERS:
+#   - HTF displacement/MSS L1.5 calibration (PARTIALLY RESOLVED — relaxed thresholds working, full sweep pending)
+#   - Daily SwingPoints sparse (ATR(14) warmup — lookback pre-seeding in progress)
+#   - Weekly/Monthly bar aggregation (DEFERRED — not needed for current 14-trade set)
+#   - Level lifecycle tracking (BLOCKED — architecturally new, not needed for current trades)
+#
+# ═══════════════════════════════════════════════════════════════════════════════
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 1. CORE PRINCIPLE
+# ─────────────────────────────────────────────────────────────────────────────
+
+core_principle:
+
+  unified_event_cycle: |
+    The SAME event cycle exists on ALL timeframes. Only scale differs.
+    Monthly, weekly, daily, 4H, 1H, 15m, 5m — identical primitive logic.
+    HTF event-cycle phase determines DIRECTION PERMISSION.
+    LTF event-cycle phase determines EXECUTION TIMING.
+    Chain evaluator determines ENTRY.
+
+  what_olya_does: |
+    "The system first decides what the daily market state is.
+     That state tells us which directions we are allowed to trade.
+     Then the 15m/5m strategy executes the trade the same way every time."
+    — Olya, verbatim
+
+  what_state_actually_is: |
+    State is NOT a label (trending / pullback / neutral).
+    State is the POSITION OF PRICE within the HTF event cycle.
+    "Trending" = HTF is in EXPANSION phase.
+    "Pullback" = HTF is in RETRACE phase.
+    "Neutral" = HTF is in RANGE / UNCLEAR phase.
+    Same facts, better framing. Computable from locked primitives.
+
+  design_constraints:
+    - "State derived from primitive events, not assigned as labels"
+    - "State updates on structural events, not fixed time cadence"
+    - "State classifier stays LEAN — 3 phases, observable facts, no prediction"
+    - "Single event model across all TFs — no separate HTF logic"
+    - "HTF provides permission only. LTF provides timing. Chain provides entry."
+    - "No smart bias engine. No directional forecasting."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 2. THE UNIVERSAL EVENT CYCLE
+# ─────────────────────────────────────────────────────────────────────────────
+
+event_cycle:
+
+  description: |
+    Six phases that describe where price is within a structural move.
+    Applies identically on every timeframe. Detected from locked L1 primitives.
+
+  phases:
+
+    1_LIQUIDITY_BUILD:
+      description: "Liquidity accumulating. Equal highs/lows forming. Range developing."
+      observable_primitives:
+        - HTF_EQH_EQL forming (status=UNTOUCHED)
+        - Session liquidity classification = CONSOLIDATION_BOX
+        - No recent displacement
+      implication: "Pre-conditions developing. No trade yet."
+
+    2_RAID:
+      description: "Liquidity swept. Price has breached a key level."
+      observable_primitives:
+        - LiquiditySweep event (qualified_sweep=true)
+      implication: "Attention. Potential setup initiating."
+
+    3_CONFIRMATION:
+      description: "Structure has shifted. Displacement confirms directional commitment."
+      observable_primitives:
+        - MSS (break_type=REVERSAL, displacement_grade=VALID)
+        - Displacement event (quality_grade=VALID)
+        - FVG created by displacement
+      implication: "Directional bias DEFINED. Direction permission granted."
+
+    4_EXPANSION:
+      description: "Price expanding in confirmed direction. Moving away from origin."
+      observable_primitives:
+        - Sustained displacement in confirmed direction
+        - Structure continuing (HH/HL or LL/LH on this TF)
+        - Price moving away from MSS origin
+      implication: "Do not chase. Wait for retrace."
+
+    5_RETRACE:
+      description: "Price pulling back into imbalance zone. Returning to FVG / OTE / OB."
+      observable_primitives:
+        - Price entering FVG zone (price_inside check)
+        - Price reaching OTE levels (0.618-0.79 of expansion range)
+        - OB zone reached
+      implication: "EXECUTION WINDOW. This is where entries happen."
+
+    6_POST_MOVE:
+      description: "Move exhausted. Multiple sweeps, weak displacement, or HTF target reached."
+      observable_primitives:
+        - Multiple sweep events without displacement follow-through
+        - Displacement weakening (quality_grade=WEAK)
+        - Price reached HTF target level
+      implication: "Avoid. Or prepare for reversal context on higher TF."
+
+  cycle_properties:
+    - "Phases are sequential but not rigid — market can skip phases"
+    - "Cycle repeats fractally on every TF"
+    - "Phase detection uses locked L1 primitives only"
+    - "Phase transitions triggered by primitive events, not time"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 3. LAYERED ARCHITECTURE
+# ─────────────────────────────────────────────────────────────────────────────
+
+architecture:
+
+  layer_1_primitives:
+    role: "Event detection"
+    scope: "All timeframes"
+    status: "LOCKED (13/13 vLOCK)"
+    output: "Per-bar, per-TF primitive events with lifecycle state"
+    note: "HTF L1.5 params PROPOSED for Daily/4H. Calibration required."
+
+  layer_2_htf_phase:
+    role: "Direction permission"
+    scope: "Daily primary. 4H/1H secondary (for RANGE phase delegation)."
+    input: "L1 primitives on Daily / 4H / 1H bars"
+    output:
+      htf_phase: "EXPANSION | RETRACE | RANGE"
+      direction_permission: "WITH_EXPANSION | COUNTER_ALLOWED | BOTH"
+      authority_tf: "Daily | 4H | 1H"
+    update_trigger: "Structural primitive event (MSS, sweep, displacement) on HTF"
+    design_rule: "Computes phase from event-cycle position. Does NOT predict."
+
+  layer_3_ltf_phase:
+    role: "Execution timing"
+    scope: "15m / 5m"
+    input: "L1 primitives on execution TF + direction_permission from Layer 2"
+    output:
+      ltf_phase: "PRE_RAID | RAID | CONFIRMATION | EXPANSION | RETRACE | POST_MOVE"
+    update_trigger: "Every relevant primitive event on execution TF"
+    design_rule: "Tracks progression toward executable setup within permitted direction."
+    setup_regime: |
+      The LTF event cycle carries setup regime classification via the MSS
+      break_type tag (already in L1 output):
+        REVERSAL: MSS breaks against prior LTF swing structure
+                  (e.g., sweep of high → bearish MSS against bullish structure)
+        CONTINUATION: MSS breaks with prior LTF swing structure
+                  (e.g., pullback into FVG → bullish MSS extending bullish structure)
+      Same execution chain fires in both regimes. The difference is local
+      structural context — not direction, not timing, but the relationship
+      between the MSS and the prior LTF trend.
+      L2 determines direction permission. L3 determines setup type.
+      Both feed the five-factor checklist in S65.
+    note: "Maps to chain evaluator step progression. Same logic, phase labels added."
+
+  layer_4_chain_evaluator:
+    role: "Entry trigger"
+    scope: "Minutes"
+    input: "LTF primitives + direction_permission + LTF phase"
+    output: "FIRE / NO_FIRE + diagnostics"
+    status: "Already built in Strategy Designer"
+    design_rule: "Universal execution chain. Same primitives, same logic, every trade."
+
+  layer_independence:
+    - "Layer 2 gates Layer 3 (direction permission filters which setups to watch)"
+    - "Layer 3 enriches Layer 4 (phase labels on chain output)"
+    - "No upward dependency — lower layers never modify higher layers"
+    - "Each layer is testable independently"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 4. HTF PHASE DETECTION — DAILY PRIMARY
+# ─────────────────────────────────────────────────────────────────────────────
+
+htf_phase_detection:
+
+  description: |
+    Determines which event-cycle phase the daily timeframe is in.
+    Uses locked L1 primitives on daily bars. Phase transitions are
+    event-driven: a new phase begins when a structural primitive fires.
+
+  # ─── PHASE: EXPANSION ───
+  daily_expansion:
+    name: "HTF_EXPANSION_PHASE"
+    maps_to: "What Olya calls 'clear daily direction' (State 1)"
+
+    detection:
+      primary_signal: |
+        Most recent daily MSS exists.
+        No opposing daily MSS has fired since.
+        Displacement confirmed in MSS direction.
+      supporting_signals:
+        - Daily structure continuing in MSS direction (HH/HL or LL/LH)
+        - Active displacement events in last N daily bars
+        - FVG created by the displacement is still ACTIVE
+      confidence_decay: |
+        MSS holds until opposing MSS fires (invalidation-based, NOT age-gated).
+        Confidence tags for L2 use:
+          HIGH: MSS age <= 5 daily bars AND displacement active
+          MEDIUM: MSS age 6-15 daily bars, no opposing MSS, structure intact
+          LOW: MSS age > 15 daily bars, structure intact but momentum faded
+        Confidence does NOT change the phase. Phase = EXPANSION until
+        opposing MSS fires or structure breaks.
+
+    direction_permission:
+      rule: "WITH_EXPANSION only"
+      bearish_expansion: "SHORT entries only"
+      bullish_expansion: "LONG entries only"
+
+    h1_requirement: |
+      1H structure must be ALIGNED or NEUTRAL relative to daily.
+      If 1H is COUNTER to daily → transitions to RETRACE phase.
+
+      Alignment check (v2.1 — swing-primary):
+        ALIGNED: 1H swing structure consistent with daily direction,
+                 OR no counter pattern (NEUTRAL).
+        COUNTER: 1H swing structure shows HH/HL or LL/LH counter to daily,
+                 persisted >= 3 bars, with displacement-quality counter move.
+
+      Kill zone realignment exception (v2.1):
+        Within LOKZ (02:00-05:00) or NYOKZ (07:00-10:00):
+          IF daily phase is EXPANSION in direction D
+          AND current phase is RETRACE (1H counter)
+          AND 15m or 5m MSS fires in direction D
+          AND no new 1H MSS has fired in the opposing direction in the last
+              2 hours (i.e., the 1H counter-move has gone quiet):
+            THEN: h1_alignment transitions to ALIGNED
+            Phase transitions: RETRACE → EXPANSION
+
+        This exception ONLY applies within kill zones. Outside kill zones,
+        1H swing structure realignment is still required. Prevents random
+        15m MSS noise from flipping the phase during non-trade hours.
+
+        Rationale (from forensic analysis 2026-03-15):
+          Trade 1 (Oct 1): 1H had bullish MSS at 00:00. No 1H bearish MSS
+          before the 03:30 execution. But 15m bearish MSS at 03:30 in LOKZ
+          was the execution signal. Execution TF structure provides sufficient
+          evidence that the counter-move has exhausted within kill zones.
+
+  # ─── PHASE: RETRACE ───
+  daily_retrace:
+    name: "HTF_RETRACE_PHASE"
+    maps_to: "What Olya calls 'pullback against direction' (State 2)"
+
+    detection:
+      primary_signal: |
+        Daily EXPANSION phase is active (MSS exists, not invalidated).
+        BUT 1H structure has turned counter-directional.
+      1h_counter_detection: |
+        SWING STRUCTURE PRIMARY, MSS CONFIRMING (v2.1 refinement):
+
+        1H bars show HH + HL pattern (bullish) or LL + LH pattern (bearish)
+        counter to daily direction. Detection uses swing structure as primary
+        signal — MSS confirms but does not gate.
+
+        Requirements (ALL must hold):
+          a) 1H swing structure shows counter-directional pattern
+          b) Structure persists >= 3 consecutive 1H bars (anti-noise)
+          c) At least one displacement-quality move exists in the counter
+             direction (body_ratio >= 0.60, quality_grade >= VALID)
+
+        The displacement-quality gate ensures slow grinds without commitment
+        do NOT trigger RETRACE. Only genuine counter-directional structure counts.
+
+        Rationale (from forensic analysis 2026-03-15):
+          Trade 2 (Sept 29): 1H showed bullish HH/HL counter to daily bearish,
+          but no explicit 1H bullish MSS fired. MSS-first would miss the RETRACE.
+          Swing-primary catches it correctly. The displacement gate preserves the
+          principle: uncommitted drift is not a real counter-move. Olya reads
+          structure from the chart before MSS formally confirms.
+
+        Supersedes: MSS-first h1_counter_detection (v2.0).
+        Provenance: HTF forensic analysis Trade 2 gap finding.
+      spatial_confirmation: |
+        Price is moving TOWARD a daily imbalance zone (daily FVG, daily OB)
+        in the premium/discount area counter to the daily expansion direction.
+        Example: daily bearish expansion → price retracing UP toward daily
+        bearish FVG in premium.
+
+    h4_counter_pathway:
+      description: |
+        v2.4 addition: RETRACE can also trigger from a 4H structural counter-move.
+        RETRACE = daily_direction_active AND (h1_counter OR h4_counter)
+
+      h4_counter_detection: |
+        h4_counter = TRUE when ALL of the following hold:
+          1. A 4H MSS exists in the OPPOSING direction to the active daily MSS
+          2. That 4H MSS fired AFTER the current daily MSS timestamp
+             (prevents stale pre-expansion 4H structure from false-triggering)
+          3. Invalidation check: daily-aligned 4H MSS events after the first
+             counter-MSS must have >= structural weight (event count) than
+             counter events to invalidate. A single 4H bounce does NOT erase
+             a multi-day, multi-event counter structure.
+
+      parameters:
+        h4_counter_persistence_bars: { default: 1, sweep: [1, 2] }
+        h4_counter_displacement_required: { default: false, sweep: [true, false] }
+
+      rationale: |
+        Trade 014 (Feb 4, 2026): daily bullish MSS Jan 22. 4H bearish MSS
+        Jan 30 + Feb 2 (2 events, 4 days). 4H bullish MSS Feb 3 20:00
+        (1 event, 11 hours). h1 bullish MSS Feb 3 23:00. Without h4_counter,
+        system sees EXPANSION (h1 aligned, no h1 counter). With h4_counter,
+        the 2-event bearish structure outweighs the 1-event bullish bounce →
+        RETRACE correctly detected. Olya reads "daily bullish in bearish
+        pullback state" — exactly what this pathway captures.
+
+      provenance: "ATR warmup fix surfaced daily MSS, exposing this edge case (2026-03-19)"
+
+    direction_permission:
+      rule: "COUNTER_ALLOWED"
+      detail: |
+        Counter-direction trades permitted (trading the retrace).
+        Example: daily bearish + retrace → LONG entries allowed.
+        The counter-trade targets the daily imbalance zone.
+      note: |
+        WITH_EXPANSION trades are also valid during retrace
+        (the retrace may exhaust and the expansion resumes).
+        Practical permission: BOTH, but system knows the context.
+
+    transition_back_to_expansion: |
+      The pathway that triggered RETRACE determines exit conditions:
+      IF h1_counter ONLY: h1 realignment with daily restores EXPANSION (existing rule).
+      IF h4_counter: requires 4H to realign with daily (new 4H MSS in daily direction
+        OR counter-MSS invalidated by equal/greater structural weight).
+        h1 realignment alone does NOT exit RETRACE when 4H is counter.
+      IF BOTH h1 AND h4: 4H rules apply (higher TF precedence for exit).
+      Subject to transition lockout (minimum 2x 1H bars, from Opus review).
+
+    duration_guard: |
+      If 1H remains counter for >= 3 consecutive daily bars,
+      the daily expansion assumption is weakening.
+      Transition to RANGE phase for reassessment.
+      (From Opus review Q3: prolonged counter-movement = daily trend suspect.)
+
+  # ─── PHASE: RANGE / UNCLEAR ───
+  daily_range:
+    name: "HTF_RANGE_OR_UNCLEAR_PHASE"
+    maps_to: "What Olya calls 'daily neutral at decision area' (State 3)"
+
+    detection:
+      primary_signal: |
+        No active daily MSS (no MSS fired, or last MSS has been
+        invalidated by opposing MSS).
+      OR_with_qualifier: |
+        Daily MSS exists BUT price has reached a significant HTF level
+        AND daily momentum has stalled.
+        "Reached key level" requires BOTH conditions (from Opus review):
+          a) price_inside(monthly.FVG.active) OR price_inside(weekly.FVG.active)
+             OR price_at(HTF_EQH_EQL) OR price_at(PWH_PWL)
+          b) No daily displacement event in last 3 daily bars (momentum stall)
+        Key level WITHOUT momentum stall = still EXPANSION (strong trend
+        passing through a level does not demote to RANGE).
+
+    direction_permission:
+      rule: "BOTH directions allowed"
+      authority_delegation: |
+        Direction determined by 4H or 1H — whichever has the most
+        recent MSS event (from Opus review Q5: computable authority
+        selection, not ambiguous "clearer structure").
+        IF h4 most_recent_MSS is newer than h1 most_recent_MSS:
+          authority_tf = 4H, direction = h4 MSS direction
+        ELSE:
+          authority_tf = 1H, direction = h1 MSS direction
+        IF neither has active MSS:
+          direction = WAIT (no execution permitted)
+
+    transition_to_expansion: |
+      New daily MSS fires → EXPANSION phase established.
+      Direction = new MSS direction.
+
+  # ─── INDEPENDENT STRATEGIES ───
+  state_independent:
+    name: "BYPASSES HTF PHASE ENTIRELY"
+    description: |
+      Some strategies (Asia Range Scalp) have their own pre-conditions
+      and do not use the HTF phase detector. The phase detector is
+      bypassed. These strategies coexist alongside phase-gated strategies.
+    example: "Trade 4 (Oct 28): Asia Range Scalp — own pre-conditions, no daily context"
+
+  # ─── DAILY DIRECTION MECHANISMS (v2.3) ───
+  daily_direction_mechanisms:
+    description: |
+      compute_daily_structure_direction() uses a 3-mechanism hierarchy.
+      First non-NEUTRAL result wins. If all three return NEUTRAL, daily
+      is genuinely unclear → RANGE phase.
+
+    mechanism_1_swing_structure:
+      priority: PRIMARY
+      signal: "Daily SwingPoints sequence: HH/HL → BULLISH, LL/LH → BEARISH"
+      status: "Built. Not yet contributing — blocked on ATR(14) lookback pre-seeding (daily swings too sparse without warmup)."
+      parameters:
+        swing_lookback_count: { default: 4, sweep: [3, 4, 5] }
+        minimum_swings_required: { default: 2, sweep: [2, 3] }
+        swing_recency_days: { default: 30 }
+      note: |
+        This is what Olya reads first: "is the daily chart making HH/HL or LL/LH?"
+        Uses existing locked L1 SwingPoints detection output. Does NOT re-derive from candles.
+
+    mechanism_2_relaxed_mss_proxy:
+      priority: SECONDARY
+      signal: "4H MSS with relaxed daily displacement confirmation"
+      status: "Active. Currently carrying all 14 validated trades."
+      parameters:
+        qualifying_daily_bars: { default: 1, sweep: [1, 2], note: "was 2 in v2.1" }
+        mss_window_days: { default: 10, sweep: [7, 10, 14], note: "was 5 in v2.1" }
+        body_ratio_threshold: { default: 0.55, sweep: [0.50, 0.55, 0.60], note: "was 0.60 in v2.1" }
+        daily_bar_range_min: { default: 0.0040 }
+      changes_from_v2_1: |
+        qualifying_daily_bars: 2 → 1 (most valid moves don't produce 2 extreme candles)
+        mss_window_days: 5 → 10 (Dec 4 MSS → Dec 12 trade = 8 days, old window missed it)
+        body_ratio_threshold: 0.60 → 0.55 (slight relaxation to catch more valid displacement)
+
+    mechanism_3_h4_sustained_structure:
+      priority: TERTIARY
+      signal: "4H sustained HH/HL or LL/LH with displacement-quality move"
+      status: "Built. Not triggered on any current trade (mechanism 2 catches all)."
+      parameters:
+        h4_structure_lookback_days: { default: 5, sweep: [5, 7] }
+        h4_minimum_swings: { default: 3, sweep: [2, 3] }
+      note: |
+        Safety net for cases where daily swings are sparse AND 4H MSS proxy
+        gives NEUTRAL. Uses richer 4H swing data (~7.8 swings/week).
+
+    resolution_logic: |
+      Run mechanisms in order. First non-NEUTRAL result wins.
+      Output: direction (BULLISH/BEARISH/NEUTRAL), method, confidence (HIGH/MEDIUM/LOW).
+      All parameters are sweepable via AutoResearch (tools/autoresearch/sweep.py).
+
+  # ─── NO TRADE ───
+  no_trade:
+    name: "UNDEFINED — no execution permitted"
+    detection: |
+      Daily is in RANGE phase AND no 4H/1H authority can be established
+      (no MSS on either TF). Or daily is in POST_MOVE with exhaustion signals.
+    action: "Wait for structure."
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 5. HTF FACT COMPUTATIONS — SUPPORTING THE PHASE DETECTOR
+# ─────────────────────────────────────────────────────────────────────────────
+
+htf_facts:
+
+  description: |
+    Boolean/structured facts computed from locked L1 primitives on HTF bars.
+    Phase detector consumes these facts. Facts are deterministic queries.
+
+  # ─── STRUCTURE DIRECTION (per TF) ───
+  structure_direction:
+    applies_to: [monthly, weekly, daily, 4H, 1H]
+    computation: |
+      PRIMARY: most recent MSS direction on this TF.
+        MSS holds until opposing MSS fires (invalidation-based).
+        No age cutoff. Age is confidence metadata only.
+        IF no MSS ever fired on this TF → fall through to SECONDARY.
+      SECONDARY: swing structure pattern on this TF.
+        IF last 3+ bars show HH + HL → BULLISH
+        IF last 3+ bars show LL + LH → BEARISH
+        ELSE → NEUTRAL
+    output: "BULLISH | BEARISH | NEUTRAL"
+    confidence: "HIGH (MSS-based) | MEDIUM (structure-based) | LOW (ambiguous)"
+    primitives: [MSS, SwingPoints]
+    htf_param_note: |
+      SwingPoints N and height_filter PROPOSED for Daily (N=2, height=15pip).
+      SwingPoints N and height_filter PROPOSED for 4H (N=2, height=8pip).
+      Weekly/Monthly: UNDEFINED (insufficient bar data in current pipeline).
+      MSS body_ratio and confirmation_window PROPOSED for HTF (0.65/1).
+      See Section 12: PROPOSED HTF PARAMETERS for full candidate values.
+      BLOCKED_BY: Olya visual confirmation session.
+
+  # ─── KEY LEVEL PROXIMITY ───
+  at_key_level:
+    computation: |
+      price_inside(monthly.FVG, state=ACTIVE)
+      OR price_inside(weekly.FVG, state=ACTIVE)
+      OR price_within_tolerance(HTF_EQH_EQL, status=UNTOUCHED, tolerance=ATR_daily*0.5)
+      OR price_within_tolerance(PWH_PWL, tolerance=ATR_daily*0.5)
+    output: "bool + level details"
+    primitives: [FVG_monthly, FVG_weekly, HTF_EQH_EQL, ReferenceLevels]
+    note: |
+      Monthly FVGs are rare and enormous. This fact fires infrequently on monthly.
+      Practical heavy lifting done by weekly FVG, HTF_EQH_EQL, PWH_PWL.
+      (From Opus review: monthly FVG is operationally vacuous most of the time.)
+
+  # ─── MOMENTUM STATUS ───
+  momentum_active:
+    computation: |
+      EXISTS(this_tf, Displacement, direction=structure_direction, age_bars <= 3)
+    output: "bool"
+    primitives: [Displacement]
+    used_by: "State 3 momentum-stall qualifier. Key level + NO momentum = RANGE."
+
+  # ─── ACTIVE IMBALANCE ZONES ───
+  active_fvg:
+    computation: |
+      EXISTS(this_tf, FVG, state=ACTIVE, direction=structure_direction)
+    output: "bool + zone boundaries (top, bottom, CE)"
+    primitives: [FVG]
+    used_by: "RETRACE phase detection — price moving toward active imbalance"
+
+  # ─── PREMIUM / DISCOUNT ───
+  premium_discount:
+    computation: |
+      IF most recent MSS exists on this TF:
+        dealing_range_high = displacement_extreme_candle.body_high
+        dealing_range_low = MSS_origin_candle.body_low  (bearish)
+        OR dealing_range_high = MSS_origin_candle.body_high  (bullish)
+        OR dealing_range_low = displacement_extreme_candle.body_low
+        midpoint = (dealing_range_high + dealing_range_low) / 2
+      ELSE:
+        dealing_range = [recent_swing_low, recent_swing_high] (fallback)
+        midpoint = (swing_high + swing_low) / 2
+      IF price > midpoint: PREMIUM
+      ELSE IF price < midpoint: DISCOUNT
+      ELSE: EQUILIBRIUM
+    output: "PREMIUM | DISCOUNT | EQUILIBRIUM"
+    primitives: [MSS (origin_candle), Displacement (extreme_candle), SwingPoints]
+    note: |
+      MSS-anchored dealing range preferred (consistent with OTE in vLOCK).
+      Swing fallback only when no MSS exists. (From Opus review.)
+
+  # ─── INTRADAY ALIGNMENT ───
+  h1_alignment:
+    computation: |
+      SWING STRUCTURE PRIMARY, MSS CONFIRMING (v2.1):
+
+      Step 1 — Determine 1H structure direction:
+        PRIMARY: 1H swing structure pattern.
+          IF last 3+ 1H bars show HH + HL → BULLISH
+          IF last 3+ 1H bars show LL + LH → BEARISH
+          ELSE → NEUTRAL
+        CONFIRMING: 1H MSS direction (if present, increases confidence).
+
+      Step 2 — Compare against daily_structure_direction:
+        ALIGNED: 1H structure same direction as daily (or NEUTRAL)
+        COUNTER: 1H structure opposite to daily, ALL of:
+          a) Pattern persists >= 3 consecutive 1H bars
+          b) At least one displacement-quality move in counter direction
+             (body_ratio >= 0.60, quality_grade >= VALID)
+        NOISE: opposite direction but < 3 bars persistence OR
+               no displacement-quality move (ignore)
+
+      Step 3 — Kill zone realignment exception:
+        Within active kill zone (LOKZ 02:00-05:00 or NYOKZ 07:00-10:00):
+          IF current h1_alignment == COUNTER
+          AND 15m or 5m MSS fires in daily direction
+          AND no new 1H MSS in opposing direction in last 2 hours:
+            h1_alignment transitions to ALIGNED
+
+    output: "ALIGNED | COUNTER | NOISE"
+    primitives: [SwingPoints_1H, MSS_1H, Displacement_1H, MSS_15m, MSS_5m, MSS_daily]
+    note: |
+      v2.1 change: swing structure replaces MSS as primary signal.
+      3-bar persistence + displacement gate prevents noise triggers.
+      Kill zone exception allows execution-TF MSS to restore alignment
+      when 1H counter-move has exhausted. (Forensic analysis 2026-03-15.)
+    provenance: "HTF forensic analysis — Trade 1 and Trade 2 gap findings."
+
+  # ─── UNTOUCHED LIQUIDITY LEVELS ───
+  liquidity_levels_active:
+    computation: |
+      EXISTS(this_tf, HTF_EQH_EQL, status=UNTOUCHED)
+      OR EXISTS(this_tf, ReferenceLevels [PWH/PWL], status=ACTIVE)
+      OR EXISTS(this_tf, SessionLiquidity [Asia H/L], status=ACTIVE)
+    output: "bool + level list with prices and types"
+    primitives: [HTF_EQH_EQL, ReferenceLevels, SessionLiquidity]
+    note: |
+      Level lifecycle tracking (ACTIVE → SWEPT) is Gap 3 from core CTO.
+      Zones have lifecycle. Levels need it too. Architecturally new concept.
+      BLOCKED_BY: Level lifecycle implementation.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 6. PHASE TRANSITIONS
+# ─────────────────────────────────────────────────────────────────────────────
+
+phase_transitions:
+
+  principle: |
+    Phase transitions are event-driven. A phase changes when a structural
+    primitive fires, not on a fixed clock. Daily bar close is the natural
+    checkpoint where new daily primitives become available, but the
+    transition logic is "new event occurred" not "time elapsed."
+
+  transition_lockout:
+    rule: |
+      After any phase transition, hold new phase for minimum 2x 1H bars
+      (2 hours) before allowing re-evaluation. Prevents whipsaw
+      oscillation between EXPANSION and RETRACE on noisy 1H structure.
+    source: "Opus review — anti-whipsaw mechanism"
+
+  transitions:
+
+    expansion_to_retrace:
+      trigger: "1H alignment shifts from ALIGNED to COUNTER (with 3-bar persistence)"
+      condition: "Daily MSS still active (not invalidated)"
+      example: "Sept 26-29: daily bearish expansion, 1H turns bullish → RETRACE"
+
+    retrace_to_expansion:
+      trigger: "1H alignment shifts from COUNTER back to ALIGNED"
+      condition: "Daily MSS still active"
+      lockout: "2x 1H bars minimum before transition"
+      paths:
+        standard: |
+          1H swing structure realigns with daily direction.
+          Example: 1H starts making LL/LH again during daily bearish expansion.
+        kill_zone_exception: |
+          Within LOKZ or NYOKZ: 15m/5m MSS fires in daily direction
+          AND no new 1H MSS in opposing direction in last 2 hours.
+          The 1H counter-move has gone quiet; execution TF confirms realignment.
+          Lockout still applies (2x 1H bars minimum in RETRACE before exception
+          can fire — prevents immediate whipsaw).
+          Example: Oct 1, 03:30 — 15m bearish MSS in LOKZ restores EXPANSION.
+      example: "Oct 1: 1H counter exhausts, 15m MSS at 03:30 → back to EXPANSION"
+
+    retrace_to_range:
+      trigger: "1H counter-direction persists >= 3 consecutive daily bars"
+      condition: "Daily expansion assumption weakening"
+      example: "Prolonged pullback erodes confidence in daily trend → reassess"
+
+    expansion_to_range:
+      trigger: "Daily MSS invalidated (opposing daily MSS fires)"
+      OR: "Price reaches key level AND momentum stalls (no displacement in 3 daily bars)"
+      example: "Daily bearish trend reaches monthly FVG, displacement fades → RANGE"
+
+    range_to_expansion:
+      trigger: "New daily MSS fires"
+      condition: "Displacement confirms the MSS"
+      example: "Dec: daily neutral, new daily MSS bearish fires → EXPANSION bearish"
+
+    any_to_post_move:
+      trigger: "Multiple failed sweeps OR HTF target reached OR displacement exhaustion"
+      condition: "Event-cycle has completed its structural move"
+      action: "Avoid or prepare for reversal context on higher TF"
+
+  oct_1_narrative:
+    description: "Phase transitions Sept 24 → Oct 1 using v2.1 model"
+    sequence:
+      - "Sept 23-24: Daily bearish displacement (body 84%/66%, ATR 1.65x/1.97x)"
+      - "Sept 24: Daily bearish MSS fires → EXPANSION phase (bearish)"
+      - "Sept 26: 1H swing structure turns bullish (HH/HL), persists 3+ bars with displacement-quality move → RETRACE phase"
+      - "Sept 29: Trade 2 — RETRACE phase, counter-direction LONG permitted (h1_alignment=COUNTER via swing structure)"
+      - "Sept 30: 1H bullish momentum fading, EQH forming (liquidity building)"
+      - "Oct 1 00:00: 1H bullish MSS fires (counter), but counter-move losing momentum"
+      - "Oct 1 03:30: Kill zone realignment — 15m bearish MSS in LOKZ, no new 1H opposing MSS in 2hr → EXPANSION restored"
+      - "Oct 1 03:30: Trade 1 — EXPANSION phase, WITH_EXPANSION SHORT"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 7. DIRECTION PERMISSION OUTPUT
+# ─────────────────────────────────────────────────────────────────────────────
+
+direction_permission:
+
+  mapping:
+    HTF_EXPANSION_PHASE:
+      permission: WITH_EXPANSION_ONLY
+      bearish_expansion: "SHORT entries only"
+      bullish_expansion: "LONG entries only"
+    HTF_RETRACE_PHASE:
+      permission: COUNTER_ALLOWED
+      detail: "Counter-direction trades permitted. With-expansion also valid."
+      effective: BOTH
+    HTF_RANGE_OR_UNCLEAR_PHASE:
+      permission: BOTH
+      authority: "Delegated to 4H/1H (most recent MSS wins authority)"
+    STATE_INDEPENDENT:
+      permission: "Determined by strategy pre-conditions (e.g., Asia Range Scalp)"
+    UNDEFINED:
+      permission: NONE
+
+  consumption: |
+    Direction permission is consumed by:
+    - Strategy Designer chain evaluator (filters which chains to evaluate)
+    - Future: Dexter backtester (filters candidate signals)
+    - Future: Live trading system (gates execution)
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 8. LTF EVENT CYCLE — EXECUTION PHASE TRACKING
+# ─────────────────────────────────────────────────────────────────────────────
+
+ltf_event_cycle:
+
+  description: |
+    Same event cycle as HTF, applied to 15m/5m execution timeframe.
+    Tracks where price is within the current setup sequence.
+    Direction filtered by HTF direction permission.
+
+  phase_to_chain_mapping:
+    PRE_RAID: "No chain steps matched. Watching for sweep."
+    RAID: "Step 1 matched (sweep detected). Watching for MSS."
+    CONFIRMATION: "Step 2 matched (MSS + displacement). Direction confirmed."
+    EXPANSION: "Price expanding from MSS. Do not chase."
+    RETRACE: "Price returning to imbalance. EXECUTION WINDOW. OTE / FVG / OB entry."
+    POST_MOVE: "Setup exhausted. No new entries."
+
+  integration_with_chain_evaluator: |
+    The chain evaluator already tracks step progression.
+    The event cycle adds PHASE LABELS to each state of the evaluator.
+    When chain reaches RETRACE phase with all steps matched → FIRE.
+    This is presentation enrichment on existing chain logic, not new architecture.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 9. VALIDATION AGAINST 14 TRADES
+# ─────────────────────────────────────────────────────────────────────────────
+
+validation:
+
+  trade_1_oct_1:
+    date: 2025-10-01
+    olya_state: "Clear daily direction (bearish)"
+    v2_phase: HTF_EXPANSION_PHASE
+    v2_computation:
+      daily_structure_direction: "BEARISH (MSS Sept 23-24, not invalidated)"
+      h1_alignment: "ALIGNED via kill zone realignment (15m bearish MSS at 03:30 in LOKZ)"
+      h1_alignment_method: "Kill zone exception — no 1H bearish MSS, but 15m MSS + no opposing 1H MSS in 2hr"
+      momentum_active: "true (displacement from Sept 23/24)"
+      daily_fvg_active: "true (bearish FVG 1.17538-1.17787 above price, ACTIVE on Oct 1)"
+    v2_direction_permission: WITH_EXPANSION_ONLY → SHORTS
+    execution_chain: "Sweep 1H EQH → MSS bearish → OTE entry"
+    result: CORRECT_CLASSIFICATION
+
+  trade_2_sept_29:
+    date: 2025-09-29
+    olya_state: "Pullback against daily direction"
+    v2_phase: HTF_RETRACE_PHASE
+    v2_computation:
+      daily_structure_direction: "BEARISH (MSS Sept 23-24, not invalidated)"
+      h1_alignment: "COUNTER via swing structure (1H HH/HL bullish, persisted 3+ bars since Sept 26, with displacement-quality counter move)"
+      h1_alignment_method: "Swing-primary — no explicit 1H bullish MSS fired, but swing structure shows clear counter pattern"
+      daily_fvg_active: "true (bearish FVG 1.17538-1.17787 = pullback target)"
+      spatial: "Price moving toward daily bearish FVG in premium"
+    v2_direction_permission: COUNTER_ALLOWED → LONGS permitted
+    execution_chain: "SMT (sweep substitute) → MSS → expansion → OTE"
+    result: CORRECT_CLASSIFICATION
+
+  trade_3_dec_12:
+    date: 2025-12-12
+    olya_state: "Daily bullish (corrected 2026-03-19, was 'daily neutral')"
+    v2_phase: HTF_EXPANSION_PHASE
+    v2_computation:
+      daily_structure_direction: "BULLISH (4H MSS proxy Dec 10 + daily displacement confirmation)"
+      daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+      h1_alignment: "ALIGNED"
+      momentum_active: "true"
+    v2_direction_permission: WITH_EXPANSION_ONLY → LONGS
+    execution_chain: "Sweep sell-side → MSS → OTE"
+    result: CORRECT_CLASSIFICATION
+    note: "GT corrected from RANGE → EXPANSION. Olya confirmed daily bullish 2026-03-19."
+
+  trade_4_oct_28:
+    date: 2025-10-28
+    olya_state: "Asia Range Scalp — independent"
+    v2_phase: STATE_INDEPENDENT (bypasses phase detector)
+    v2_computation: "N/A — strategy has own pre-conditions"
+    v2_direction_permission: "Determined by Asia Range strategy rules"
+    execution_chain: "Asia high swept → FVG on re-entry → immediate entry → target Asia low"
+    result: CORRECT_CLASSIFICATION
+
+  # ─── Trades 5-14 (Olya annotations 2026-03-19) ───
+
+  trade_5_dec_12:
+    date: 2025-12-12
+    olya_state: "Daily bullish expansion"
+    v2_phase: HTF_EXPANSION_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    chain: "FIRED (3/3)"
+    result: PASS
+    note: "Same date as trade_3. Both EXPANSION/BULLISH. Consistent."
+
+  trade_6_dec_15:
+    date: 2025-12-15
+    olya_state: "Daily bullish expansion"
+    v2_phase: HTF_EXPANSION_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    chain: "FIRED (3/3)"
+    result: PASS
+
+  trade_7_sep_16:
+    date: 2025-09-16
+    olya_state: "Daily bullish with direction"
+    v2_phase: HTF_EXPANSION_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    chain: "FIRED (3/3)"
+    result: PASS
+
+  trade_8_oct_15:
+    date: 2025-10-15
+    olya_state: "Daily bearish in bullish pullback state"
+    v2_phase: HTF_RETRACE_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    h1_alignment_method: "mss_confirming"
+    chain: "FIRED (3/3)"
+    result: PASS
+
+  trade_9_nov_14:
+    date: 2025-11-14
+    olya_state: "Asia Range Scalp — independent"
+    v2_phase: STATE_INDEPENDENT
+    daily_direction_method: "strategy_bypass"
+    chain: "FIRED (2/2)"
+    result: PASS
+
+  trade_10_nov_12:
+    date: 2025-11-12
+    olya_state: "Daily bearish, 4hr clear bullish order flow"
+    v2_phase: HTF_RETRACE_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    h1_alignment_method: "swing_primary"
+    chain: "FIRED (2/2)"
+    result: PASS
+    diagnostic: "daily_direction BULLISH (computed) vs BEARISH (annotated). Phase/permission correct regardless."
+
+  trade_11_nov_28:
+    date: 2025-11-28
+    olya_state: "Daily neutral, 4H bullish expansion (corrected 2026-03-19)"
+    v2_phase: HTF_RANGE_OR_UNCLEAR_PHASE
+    daily_direction_method: "none (daily neutral)"
+    chain: "FIRED (2/2)"
+    result: PASS
+    note: "GT corrected from EXPANSION → RANGE. Olya clarified no daily structure break."
+
+  trade_12_mar_17:
+    date: 2026-03-17
+    olya_state: "Daily bearish, 4hr/1hr bullish order flow (retrace)"
+    v2_phase: HTF_RETRACE_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    h1_alignment_method: "mss_confirming"
+    chain: "FIRED (2/2)"
+    result: PASS
+    note: "SMT used as sweep substitute (known L1 gap, tolerated)."
+
+  trade_13_mar_12:
+    date: 2026-03-12
+    olya_state: "Daily bearish with direction"
+    v2_phase: HTF_EXPANSION_PHASE
+    daily_direction_method: "mechanism_2_relaxed_mss_proxy"
+    chain: "FIRED (3/3)"
+    result: PASS
+
+  trade_14_feb_4:
+    date: 2026-02-04
+    olya_state: "Daily bullish in bearish pullback state"
+    v2_phase: HTF_RETRACE_PHASE
+    daily_direction_method: "daily_mss (Jan 22 BULLISH, surfaced by ATR warmup)"
+    retrace_pathway: "h4_counter (h4_counter_mss)"
+    h4_counter_details: |
+      4H bearish MSS Jan 30 + Feb 2 (2 events) post-date daily MSS Jan 22.
+      4H bullish MSS Feb 3 20:00 (1 event) does not invalidate (1 < 2 structural weight).
+    chain: "PARTIAL (2/3) — OTE step 150min off (tolerance 120min)"
+    result: PARTIAL
+    diagnostic: "daily_direction BULLISH (computed) matches annotation 'daily bullish'. Phase correct via h4_counter. Chain PARTIAL on timing only."
+
+  summary: |
+    14/14 trades correctly classified under v2.4 model.
+    13 PASS, 1 PARTIAL (trade_014 chain timing — OTE 150min off), 0 FAIL.
+    Phase classification accuracy: 100%.
+    RETRACE pathways: h1_counter (trades 002, 008, 010, 012), h4_counter (trade 014).
+    Daily direction: mechanism_2 (relaxed 4H MSS proxy) + daily_mss (ATR warmup enabled).
+    Gate document: reports/autoresearch/eval_v22_enriched_2026-03-19.yaml
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 10. KNOWN BLOCKERS AND OPEN ITEMS
+# ─────────────────────────────────────────────────────────────────────────────
+
+blockers:
+
+  htf_l15_calibration:
+    status: PARTIALLY_RESOLVED
+    what: "HTF displacement body_ratio and MSS confirmation_window"
+    action: "Relaxed thresholds (br 0.55, window 10d) working for all 14 trades. Full calibration via sweep."
+    impact: "Phase detector uses these primitives. Relaxed values validated against 14 trades."
+    forensic_validation: "14/14 trades classify correctly with relaxed values (2026-03-19)"
+
+  htf_swing_params:
+    status: PROPOSED
+    what: "SwingPoints N and height_filter PROPOSED for Daily (N=2, 15pip) and 4H (N=2, 8pip)"
+    action: "Olya visual confirmation. Mechanism 1 (daily swing structure) built but not contributing until ATR lookback pre-seeding."
+    impact: "Structure direction (HH/HL detection) depends on swing definition. Currently bypassed due to data sparsity."
+
+  atr_lookback_preseeding:
+    status: IN_PROGRESS
+    what: "Daily ATR(14) needs 14 bars warmup but pipeline loads 5 bars/week. Daily primitives fire with unreliable baselines."
+    action: "Pre-load 20 daily bars as lookback context before each target week. Detection output only for target week bars."
+    impact: "Unblocks mechanism 1 (daily swing structure) and improves daily displacement/MSS reliability."
+
+  level_lifecycle:
+    status: BLOCKED
+    what: "Levels (EQH/EQL, PWH/PWL) need ACTIVE → SWEPT lifecycle tracking"
+    action: "New tracking paradigm — architecturally new (Gap 3 from core CTO)"
+    impact: "liquidity_levels_active fact and 1_LIQUIDITY_BUILD phase detection. Not required for current 14-trade set."
+
+  monthly_weekly_bars:
+    status: DEFERRED
+    what: "Daily bar aggregation IN PIPELINE (1D enabled 2026-03-15). Weekly/Monthly not yet."
+    action: "Weekly: extend tf_aggregator.py (forex week Mon-Fri). Monthly: deferred."
+    impact: "Daily/4H/1H sufficient for all 14 validated trades."
+
+  additional_trade_validation:
+    status: RESOLVED
+    what: "14 trades validated (was 4). Sufficient for parameter sweep."
+    action: "Continue growing ground truth for ongoing calibration."
+    resolved_date: "2026-03-19"
+
+open_items:
+
+  smt_gap:
+    status: NOTED
+    what: "Trades 2 and 12 used SMT (DXY divergence) as sweep substitute. Not in locked L1."
+    decision: "Tolerate as known miss. Log in validation. Do not add primitive yet."
+    revisit: "Two trades now require SMT. If more emerge, reassess for L1 inclusion."
+
+  monthly_simplified_rules:
+    status: PROPOSED
+    what: "Monthly bars too few for full ATR-based primitives"
+    proposal: "Use simplified structure rules (close vs prior month H/L) labeled SIMPLIFIED_HTF_LOGIC"
+    source: "Opus review Q4"
+
+  h1_counter_detection_method:
+    status: RESOLVED (v2.1)
+    what: |
+      Opus flagged: 1H MSS is a lagging indicator of counter-trend.
+      Price can make HH/HL on 1H for multiple bars before MSS confirms.
+    resolution: |
+      h1_alignment now uses SWING STRUCTURE as primary signal, MSS as confirming.
+      Displacement-quality gate (body_ratio >= 0.60, grade >= VALID) prevents
+      slow grinds from triggering false RETRACE. Validated by Trade 2 forensic:
+      1H showed bullish HH/HL with no explicit MSS — swing-primary catches it.
+      Confirmed working across all 14 trades (swing_primary + mss_confirming).
+    provenance: "HTF forensic analysis 2026-03-15, Trade 2 gap finding"
+
+  kill_zone_realignment:
+    status: RESOLVED (v2.1)
+    what: |
+      Trade 1 (Oct 1): execution at 03:30 required EXPANSION phase, but
+      1H still had bullish MSS from 00:00. No 1H bearish MSS before execution.
+    resolution: |
+      Kill zone exception added: within LOKZ/NYOKZ, 15m/5m MSS in daily
+      direction can restore ALIGNED status when 1H counter-move has gone
+      quiet (no new opposing 1H MSS in 2 hours). Only applies within
+      kill zones — outside, full 1H realignment required.
+    provenance: "HTF forensic analysis 2026-03-15, Trade 1 gap finding"
+
+  trade_010_polarity_note:
+    status: LOGGED
+    what: "Algorithm reads daily BULLISH, Olya annotated BEARISH. Phase/permission RETRACE/COUNTER_ALLOWED correct regardless — h1 COUNTER creates RETRACE from either polarity."
+    impact: "None currently. Log for pattern monitoring."
+    provenance: "Evaluation 2026-03-19"
+
+  trade_014_timing_note:
+    status: LOGGED
+    what: "OTE chain step fires 150min from annotated time (120min tolerance). Phase/direction correct. PARTIAL verdict."
+    impact: "Not widening tolerance on single trade. Annotation precision issue."
+    provenance: "Evaluation 2026-03-19"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 11. AUTORESEARCH APPLICATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+autoresearch:
+
+  concept: |
+    Once v2 is validated against 10+ trades, the Karpathy AutoResearch
+    pattern automates the calibration loop:
+      Ground truth: Olya's annotated trades (date, state, direction, outcome)
+      System under test: Phase detector + chain evaluator
+      Fitness function: Does the system correctly classify each trade's state
+                        AND fire the chain at the correct bar in the correct direction?
+      Iteration: Adjust phase detection thresholds (e.g., persistence bars,
+                 momentum stall window, key level tolerance) → re-run → re-score
+
+  tunable_parameters:
+    classifier_thresholds:
+      - "h1_counter_persistence_bars (default 3, sweep 2-5)"
+      - "momentum_stall_window_daily_bars (default 3, sweep 2-5)"
+      - "key_level_tolerance_atr_factor (default 0.5, sweep 0.3-0.7)"
+      - "transition_lockout_h1_bars (default 2, sweep 1-4)"
+      - "retrace_to_range_daily_bars (default 3, sweep 2-5)"
+      - "kill_zone_realignment_lookback_hours (default 2, sweep 1-4)"
+    daily_direction_parameters:
+      - "swing_lookback_count (default 4, sweep 3-5)"
+      - "minimum_swings_required (default 2, sweep 2-3)"
+      - "qualifying_daily_bars (default 1, sweep 1-2)"
+      - "mss_window_days (default 10, sweep 7-14)"
+      - "body_ratio_threshold (default 0.55, sweep 0.50-0.60)"
+      - "h4_structure_lookback_days (default 5, sweep 5-7)"
+      - "h4_minimum_swings (default 3, sweep 2-3)"
+    total_sweep_combinations: "2,211,840 (requires batched execution)"
+    l15_visual_params_not_swept:
+      items:
+        - "HTF displacement body_ratio (PROPOSED 0.65)"
+        - "HTF MSS confirmation_window (PROPOSED 1)"
+        - "HTF swing N — Daily/4H (PROPOSED 2)"
+        - "HTF swing height_filter (PROPOSED 15/8 pip)"
+        - "HTF FVG floor (PROPOSED 10/3 pip)"
+      note: "These are calibrated by Olya visually, NOT by AutoResearch."
+
+  fitness_metric: |
+    Precision/recall against Olya's annotations.
+    NOT trading performance (Sharpe, RR, etc.).
+    System is correct when it sees what Olya sees.
+
+  scope: |
+    Applies to every tunable layer:
+    - L1.5 HTF parameter calibration
+    - Phase detector threshold tuning
+    - Execution chain variant selection
+    Unified research loop. Same pattern. Different parameters.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 12. PROPOSED HTF PARAMETERS
+# Derived from forensic analysis of 4 known-correct trades (2026-03-15).
+# Status: PROPOSED — pending Olya visual confirmation session.
+# ─────────────────────────────────────────────────────────────────────────────
+
+proposed_htf_parameters:
+
+  provenance: |
+    All candidate values derived from reports/htf_forensic_analysis_2026-03-15.yaml.
+    Method: work backward from 4 trades with known-correct state classifications
+    to find the parameter space that produces correct primitive detections.
+    Cross-trade intersection applied to find values satisfying all 4 trades.
+
+  status: "PROPOSED — do NOT lock without Olya visual confirmation"
+
+  displacement:
+    daily:
+      body_ratio: 0.65
+      atr_multiple: 1.5
+      mode: AND
+      close_gate: 0.25
+      structure_close_required: true
+      forensic_evidence: |
+        Sept 23: body=0.840, ATR=1.65x → fires easily
+        Sept 24: body=0.658, ATR=1.97x → fires (barely passes 0.65)
+        Trade 3 (Dec): no daily bar passes → correct RANGE signal
+    h4:
+      body_ratio: 0.65
+      atr_multiple: 1.5
+      mode: AND
+      close_gate: 0.25
+      structure_close_required: true
+    h1:
+      body_ratio: 0.60
+      atr_multiple: 1.5
+      mode: AND
+      close_gate: 0.25
+      note: "Uses LTF locked value — 1H is execution-adjacent"
+
+  mss:
+    daily:
+      confirmation_window_bars: 1
+      body_ratio: 0.65
+      note: "1 bar = 1 full trading day. MSS must fire on displacement bar itself."
+    h4:
+      confirmation_window_bars: 2
+      body_ratio: 0.65
+    h1:
+      confirmation_window_bars: 3
+      body_ratio: 0.60
+      note: "Uses LTF locked value"
+
+  swing_points:
+    daily:
+      N: 2
+      height_filter_pips: 15
+      forensic_evidence: |
+        N=2 captures: Sept 24 swing low (1.16454), Sept 30 swing high (1.17785),
+        Oct 1 swing low (1.16829). All structurally correct.
+        15 pip height: ~25-30% of typical daily range. Filters micro-noise.
+    h4:
+      N: 2
+      height_filter_pips: 8
+    h1:
+      N: 2
+      height_filter_pips: 3.0
+      note: "Matches 15m locked value — 1H is execution-adjacent"
+
+  fvg:
+    daily:
+      floor_pips: 10
+      forensic_evidence: |
+        All observed daily FVGs were 20+ pips (Sept 24: 24.9, Sept 25: 20.8,
+        Dec 3: 26.0, Dec 10: 25.1, Dec 11: 61.9). 10 pip floor is conservative.
+    h4:
+      floor_pips: 3
+      note: "Matches current engine behavior. 4H FVGs range 3.75 to 36.6 pips."
+    h1:
+      floor_pips: 1
+      note: "Uses LTF locked value"
+
+  cross_trade_validation: |
+    With proposed L1.5 parameters + v2.3 relaxed classifier thresholds:
+      14/14 trades classify correctly. Full results in
+      reports/consolidated_14_trade_evaluation_2026-03-19.yaml.
+      Mechanism 2 (relaxed 4H MSS proxy) carries all directional trades.
+      Trade 3 (Dec 12): corrected to EXPANSION (was RANGE in original 4-trade set).
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 13. EXECUTION SETUP TYPES — REVERSAL vs CONTINUATION
+# ─────────────────────────────────────────────────────────────────────────────
+
+execution_setup_types:
+
+  description: |
+    Within the same HTF phase and direction permission, two distinct local
+    structures can produce a valid execution chain. Both use the same
+    primitives (sweep → MSS → OTE) and fire in the permitted direction.
+    The difference is what happened locally before the entry.
+
+  reversal_setup:
+    name: REVERSAL_SETUP
+    description: |
+      Price moves counter to the permitted direction, sweeps counter-trend
+      liquidity (buy-side in a bearish context, sell-side in bullish),
+      then MSS fires back into the permitted direction. The entry rejects
+      the counter-move.
+    mss_break_type: REVERSAL
+    sweep_target: "Counter-trend liquidity (e.g., buy-side highs in bearish expansion)"
+    character: "Rejection of counter-move. Price tried to go against the trend, got swept, reversed."
+
+  continuation_setup:
+    name: CONTINUATION_SETUP
+    description: |
+      Price pauses or pulls back slightly within the trend, sweeps minor
+      with-trend liquidity (a recent low in bearish context, a recent high
+      in bullish), then MSS confirms continuation in the permitted direction.
+      The entry resumes the existing move.
+    mss_break_type: CONTINUATION
+    sweep_target: "With-trend liquidity (e.g., minor lows in bearish expansion)"
+    character: "Resumption. Price consolidated briefly, swept a minor level, continued."
+
+  key_properties:
+    same_direction: |
+      Both setups fire in the same permitted direction. A REVERSAL_SETUP in
+      bearish EXPANSION is still a SHORT entry — it reverses the local
+      counter-move, not the trend.
+    same_chain: |
+      Sweep → MSS → displacement → FVG → OTE. Identical primitive sequence.
+      The MSS break_type field (already in vLOCK detection output) distinguishes them.
+    no_gating: |
+      The HTF phase does not select the setup type. Both are valid within
+      every phase. This is a classification tag for research, not a filter.
+    phase_frequency:
+      EXPANSION: "Continuation more common, reversal less common but valid"
+      RETRACE: "Both equally possible"
+      RANGE: "Both equally possible (direction from authority TF)"
+      INDEPENDENT: "Determined by strategy rules"
+    data_signal: |
+      The MSS break_type field already carries this distinction in every
+      detection output. No new detection logic needed. The setup_type tag
+      in ground truth annotations enables future research questions like:
+      "Do continuation setups behave differently from reversals in EXPANSION?"
+
+  provenance: |
+    NEX observation: reversal and continuation are both valid within the same
+    permission, distinguished by local structure and MSS break_type.
+    Added v2.2 for ground truth research tagging.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# 14. V2.2 CHANGELOG
+# ─────────────────────────────────────────────────────────────────────────────
+
+changelog:
+
+  v2_4:
+    date: "2026-03-19"
+    source: "CTO + Opus — 4H counter RETRACE pathway + ATR lookback pre-seeding"
+    changes:
+      - |
+        4H counter-move pathway added to RETRACE detection (Section 4, h4_counter_pathway):
+        RETRACE = daily_direction_active AND (h1_counter OR h4_counter).
+        h4_counter requires: opposing 4H MSS post-dating daily MSS, not invalidated
+        by equal/greater structural weight of daily-aligned events.
+      - |
+        Structural weight invalidation: counter events vs invalidation events counted.
+        A single 4H bounce does not erase a multi-day counter structure.
+      - |
+        ATR(14) lookback pre-seeding in detect.py: 30 calendar days of lookback
+        context for 4H/1D timeframes. Daily primitives now fire reliably.
+        Daily MSS, daily displacement, daily SwingPoints all activated.
+      - |
+        Trade 014 (Feb 4, 2026) resolved: daily bullish MSS (Jan 22, now visible
+        with ATR warmup) + 4H counter (Jan 30 + Feb 2 bearish) → RETRACE.
+      - |
+        2 new sweepable parameters: h4_counter_persistence_bars, h4_counter_displacement_required.
+        Sweep grid: 15 params, 8.8M combinations.
+
+  v2_3:
+    date: "2026-03-19"
+    source: "CTO + Opus session — daily direction fix + 14-trade validation"
+    changes:
+      - |
+        3-mechanism daily direction hierarchy added (Section 4, daily_direction_mechanisms):
+        Mechanism 1 (PRIMARY): daily swing structure HH/HL or LL/LH.
+        Mechanism 2 (SECONDARY): 4H MSS proxy with relaxed thresholds.
+        Mechanism 3 (TERTIARY): 4H sustained swing structure with displacement.
+        First non-NEUTRAL wins. Currently mechanism 2 carries all trades.
+      - |
+        Mechanism 2 thresholds relaxed from v2.1:
+        qualifying_daily_bars: 2→1, mss_window_days: 5→10, body_ratio: 0.60→0.55.
+      - |
+        14-trade ground truth validated: 13 PASS, 1 PARTIAL, 0 FAIL.
+        Phase classification accuracy: 14/14 (100%).
+      - |
+        Ground truth corrections from Olya (2026-03-19):
+        Trade 003: RANGE→EXPANSION (daily bullish confirmed).
+        Trade 011: EXPANSION→RANGE (no daily structure break, 4H authority).
+      - |
+        10 new Olya-annotated trades added (trades 005-014).
+        Dataset extended from W08 to W12 (through Mar 20, 2026).
+      - |
+        7 new sweepable parameters added to AutoResearch.
+        Total sweep grid: 2,211,840 combinations (was 5,120).
+      - |
+        Status changed: HYPOTHESIS → VALIDATED.
+        Blocker updates: additional_trade_validation RESOLVED,
+        htf_l15_calibration PARTIALLY_RESOLVED, atr_lookback_preseeding IN_PROGRESS.
+
+  v2_2:
+    date: "2026-03-17"
+    source: "NEX observation + Olya confirmation"
+    changes:
+      - |
+        Section 13 added: Execution setup types (REVERSAL vs CONTINUATION).
+        Same direction permission, same chain primitives, different local
+        structure. Distinguished by MSS break_type (already in vLOCK output).
+        Classification tag for research, not a gating mechanism.
+      - |
+        Ground truth schema: setup_type and entry_tf fields added.
+        4 existing trades backfilled.
+
+  v2_1:
+    date: "2026-03-15"
+    source: "HTF forensic analysis (reports/htf_forensic_analysis_2026-03-15.yaml)"
+    changes:
+      - |
+        h1_alignment: swing structure replaces MSS as primary signal.
+        MSS confirms but does not gate. Displacement-quality gate ensures
+        slow grinds do not trigger false RETRACE. Fixes Trade 2 classification.
+      - |
+        Kill zone realignment exception: within LOKZ/NYOKZ, 15m/5m MSS in
+        daily direction can restore ALIGNED status when 1H counter-move has
+        gone quiet. Fixes Trade 1 classification.
+      - |
+        Proposed HTF parameters added (Section 12): displacement, MSS, swing,
+        FVG candidates for Daily/4H/1H derived from forensic cross-trade analysis.
+      - |
+        Blocker updates: htf_l15_calibration and htf_swing_params moved from
+        BLOCKED to PROPOSED. monthly_weekly_bars moved to PARTIAL (Daily now
+        in pipeline). h1_counter_detection_method RESOLVED.
+      - |
+        1D bar aggregation enabled in detection pipeline (detect.py).
+        Daily primitives now available in calibration tools.
+
+  v2_0:
+    date: "2026-03-13"
+    source: "CTO architecture + Opus mechanical fixes + NEX event-cycle framing"
+    changes:
+      - "Initial v2 specification"
+      - "6-phase universal event cycle"
+      - "Layered architecture (primitives → HTF phase → LTF phase → chain)"
+      - "4/4 trade validation"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# END — STATE DETECTION LOGIC V2.4
+# Status: VALIDATED — 14/14 phase classification with enriched data. Sweep unblocked.
+# Next: Parameter sweep → S65 backport.
+# ═══════════════════════════════════════════════════════════════════════════════

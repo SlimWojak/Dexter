@@ -1,0 +1,20 @@
+# Data (too large for git)
+data/river/data/
+data/river/.git/
+data/river/logs/
+data/detections/
+data/traces/
+
+# Secrets
+hermes/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+logs/*.log
+
+# OS
+.DS_Store
